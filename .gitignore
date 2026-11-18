@@ -1,0 +1,15 @@
+build/
+release/
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.res
+*.log
+logs/
+loaded/
+__pycache__/
+settings.json
+save_backups/
+data/data/

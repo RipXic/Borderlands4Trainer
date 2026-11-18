@@ -1,0 +1,2489 @@
+{
+"categories": [
+"Towns & hubs",
+"Safehouses",
+"Silos",
+"Boss rooms & arenas",
+"Dungeons & landmarks",
+"Rifts & secrets",
+"Mission arenas (replay)",
+"Spots - Grasslands",
+"Spots - Mountains",
+"Spots - Shattered Lands",
+"Spots - City",
+"Spots - Other"
+],
+"places": [
+{
+"name": "World_P.FT_City_MNT_CentralAlley",
+"label": "Central Alley",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_City_AscensionPlazza",
+"label": "City Ascension Plazza",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.FTS_City_Meteor_Transition",
+"label": "City Meteor Transition",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FTS"
+},
+{
+"name": "World_P.FTS_City_MountainSafehouse",
+"label": "City Mountain Safehouse",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FTS"
+},
+{
+"name": "World_P.FTS_City_MountainSafehouse2",
+"label": "City Mountain Safehouse 2",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FTS"
+},
+{
+"name": "World_P.RS_City_MNT_Plaza",
+"label": "Plaza",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.FTS_City_SHA_Safehouse",
+"label": "Safehouse",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FTS"
+},
+{
+"name": "World_P.FTS_City_SHA_Safehouse1",
+"label": "Safehouse 1",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FTS"
+},
+{
+"name": "World_P.RS_City_SHA_VitoBar",
+"label": "Vito Bar",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_City_GRA_ZadrasCityHideout",
+"label": "Zadras City Hideout",
+"category": "Towns & hubs",
+"region": "City",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_Grasslands_ClaptrapBeach",
+"label": "Claptrap Beach",
+"category": "Towns & hubs",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_GRA_West_SurvivalistHQ",
+"label": "West Survivalist HQ",
+"category": "Towns & hubs",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_AugerHQ",
+"label": "Auger HQ",
+"category": "Towns & hubs",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Sanctuary3",
+"label": "Sanctuary 3",
+"category": "Towns & hubs",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FTS_ElectiTown",
+"label": "Electi Town",
+"category": "Towns & hubs",
+"region": "Shattered Lands",
+"kind": "FTS"
+},
+{
+"name": "World_P.RS_SHA_ElectiTown1",
+"label": "Electi Town 1",
+"category": "Towns & hubs",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiTown_SouthPassage",
+"label": "Electi Town South Passage",
+"category": "Towns & hubs",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_SHA_Fortress_HUB",
+"label": "Fortress HUB",
+"category": "Towns & hubs",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_ZanesBar",
+"label": "Zanes Bar",
+"category": "Towns & hubs",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_CITY_GRA_Safehouse3",
+"label": "Safehouse 3",
+"category": "Safehouses",
+"region": "City",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_Safehouse3",
+"label": "Safehouse 3",
+"category": "Safehouses",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_Safehouse4",
+"label": "Safehouse 4",
+"category": "Safehouses",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_West_NorthSafehouse",
+"label": "West North Safehouse",
+"category": "Safehouses",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_West_NorthSafehouse2",
+"label": "West North Safehouse 2",
+"category": "Safehouses",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_NorthCliffs_Safehouse4",
+"label": "North Cliffs Safehouse 4",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Safehouse1_Timberland",
+"label": "Safehouse 1 Timberland",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Safehouse2_Highlands",
+"label": "Safehouse 2 Highlands",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Safehouse3_Valley",
+"label": "Safehouse 3 Valley",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Safehouse_Highlands",
+"label": "Safehouse Highlands",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Safehouse_Timberland",
+"label": "Safehouse Timberland",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Safehouse_Valley",
+"label": "Safehouse Valley",
+"category": "Safehouses",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Safehouse1",
+"label": "Safehouse 1",
+"category": "Safehouses",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Safehouse2",
+"label": "Safehouse 2",
+"category": "Safehouses",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Safehouse2_OrderPlateau",
+"label": "Safehouse 2 Order Plateau",
+"category": "Safehouses",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SA_Safehouse3",
+"label": "Safehouse 3",
+"category": "Safehouses",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Safehouse3",
+"label": "Safehouse 3",
+"category": "Safehouses",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_Silo_01",
+"label": "Silo 01",
+"category": "Silos",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_Silo3",
+"label": "Silo 3",
+"category": "Silos",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_GRA_West_Silo2",
+"label": "West Silo 2",
+"category": "Silos",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_MOU_M_Silo",
+"label": "M Silo",
+"category": "Silos",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_MOU_Silo1_CentralValley",
+"label": "Silo 1 Central Valley",
+"category": "Silos",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Silo2_Gorge",
+"label": "Silo 2 Gorge",
+"category": "Silos",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Silo3_NorthValley",
+"label": "Silo 3 North Valley",
+"category": "Silos",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_MOU_SiloCave",
+"label": "Silo Cave",
+"category": "Silos",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_MOU_Silo_CentralValley",
+"label": "Silo Central Valley",
+"category": "Silos",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Silo_Gorge",
+"label": "Silo Gorge",
+"category": "Silos",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_MOU_Silo_NorthValley",
+"label": "Silo North Valley",
+"category": "Silos",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_HydroHills_SiloHill",
+"label": "Hydro Hills Silo Hill",
+"category": "Silos",
+"region": "Other",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_SHA_Silo_01",
+"label": "Silo 01",
+"category": "Silos",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Silo_03",
+"label": "Silo 03",
+"category": "Silos",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Silo2_EleciPlat",
+"label": "Silo 2 Eleci Plat",
+"category": "Silos",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.FT_SHA_Silo_EleciPlat",
+"label": "Silo Eleci Plat",
+"category": "Silos",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_City_MNT_BunkerBossRoom",
+"label": "Bunker Boss Room",
+"category": "Boss rooms & arenas",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_MineBossRoom",
+"label": "Mine Boss Room",
+"category": "Boss rooms & arenas",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_GRA_FoodProcessingPlant_PreBoss",
+"label": "Food Processing Plant Pre Boss",
+"category": "Boss rooms & arenas",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_GRA_HydroPlant_Boss",
+"label": "Hydro Plant Boss",
+"category": "Boss rooms & arenas",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_KOTOMotherbaseBoss",
+"label": "KOTOMotherbase Boss",
+"category": "Boss rooms & arenas",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_GRA_SplashZoneBoss",
+"label": "Splash Zone Boss",
+"category": "Boss rooms & arenas",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_GRA_ThresherArena",
+"label": "Thresher Arena",
+"category": "Boss rooms & arenas",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_MOU_Augerland_OrderBunkerEridiumBoss",
+"label": "Augerland Order Bunker Eridium Boss",
+"category": "Boss rooms & arenas",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Blacksite_Boss",
+"label": "Blacksite Boss",
+"category": "Boss rooms & arenas",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_ComArrayBoss",
+"label": "Com Array Boss",
+"category": "Boss rooms & arenas",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOU_HoMIntBossDrop",
+"label": "Ho MInt Boss Drop",
+"category": "Boss rooms & arenas",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_MOU_Orderland_AugerMineCursedBoss",
+"label": "Orderland Auger Mine Cursed Boss",
+"category": "Boss rooms & arenas",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Orderland_OrderBunkerBruteBoss",
+"label": "Orderland Order Bunker Brute Boss",
+"category": "Boss rooms & arenas",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_ElectiMission3Bunker_FinalBoss",
+"label": "Electi Mission 3Bunker Final Boss",
+"category": "Boss rooms & arenas",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_Scrapyard_GreatDist2_boss",
+"label": "Scrapyard Great Dist 2 boss",
+"category": "Boss rooms & arenas",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Scrapyard_UnderSYardCynBoss",
+"label": "Scrapyard Under SYard Cyn Boss",
+"category": "Boss rooms & arenas",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_BunkerEntrance",
+"label": "Bunker Entrance",
+"category": "Dungeons & landmarks",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_DroneFactory",
+"label": "Drone Factory",
+"category": "Dungeons & landmarks",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_Mine",
+"label": "Mine",
+"category": "Dungeons & landmarks",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_City_MNT_UnderwaterLabExterior",
+"label": "Underwater Lab Exterior",
+"category": "Dungeons & landmarks",
+"region": "City",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_City_MNT_UnderwaterLabInterior",
+"label": "Underwater Lab Interior",
+"category": "Dungeons & landmarks",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_GRA_AugerMine_Acid",
+"label": "Auger Mine Acid",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_GRA_AugerMine_Cultists",
+"label": "Auger Mine Cultists",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_GRA_CoastalBS_AugerMine_CultEntrance",
+"label": "Coastal BS Auger Mine Cult Entrance",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_DrillSite_RipperFarmlands",
+"label": "Drill Site Ripper Farmlands",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_FortressFlats_AugerMine_AcidEntrance",
+"label": "Fortress Flats Auger Mine Acid Entrance",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_FortressFlats_MotherBaseElev",
+"label": "Fortress Flats Mother Base Elev",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_FortressFlats_PlanetaryLab",
+"label": "Fortress Flats Planetary Lab",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_HydroPlant",
+"label": "Hydro Plant",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_KotOCoast_Bunker_Ordonite",
+"label": "Kot OCoast Bunker Ordonite",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_KotOCoast_Bunker_OrdoniteEntrance",
+"label": "Kot OCoast Bunker Ordonite Entrance",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperTun_OrderBunker_Flood",
+"label": "Ripper Tun Order Bunker Flood",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperTun_OrderBunker_FloodEntrance",
+"label": "Ripper Tun Order Bunker Flood Entrance",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_West_Drill",
+"label": "West Drill",
+"category": "Dungeons & landmarks",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Augerland_OrderBunkerEridiumEntr",
+"label": "Augerland Order Bunker Eridium Entr",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_DrillStation_Gorge",
+"label": "Drill Station Gorge",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Drillsite_Cliffs",
+"label": "Drillsite Cliffs",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_FortressExterior",
+"label": "Fortress Exterior",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Gorge_AugerMine_Frozen",
+"label": "Gorge Auger Mine Frozen",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Gorge_AugerMine_FrozenEntrance",
+"label": "Gorge Auger Mine Frozen Entrance",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Mine_Transition",
+"label": "Mine Transition",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Orderland_AugerMineEntrance",
+"label": "Orderland Auger Mine Entrance",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_MOU_Orderland_FortressFoot",
+"label": "Orderland Fortress Foot",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_MOU_Orderland_OrderBunkerBruteEntr",
+"label": "Orderland Order Bunker Brute Entr",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOU_PhaseBunker",
+"label": "Phase Bunker",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_MOU_PhaseFactory",
+"label": "Phase Factory",
+"category": "Dungeons & landmarks",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_SHA_AugerMine_Excavation",
+"label": "Auger Mine Excavation",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_SHA_AugerMine_Oasis",
+"label": "Auger Mine Oasis",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_Beach_AugerMineOasisEntr",
+"label": "Beach Auger Mine Oasis Entr",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Beach_MegaDrill",
+"label": "Beach Mega Drill",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_Bunker_Sand",
+"label": "Bunker Sand",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_DrillStation",
+"label": "Drill Station",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_DrillStation_MidPoint",
+"label": "Drill Station Mid Point",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Drillsite_BEACH",
+"label": "Drillsite BEACH",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_ElectiMission3Bunker",
+"label": "Electi Mission 3Bunker",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_OrderPlat_AugerMineExcavEntr",
+"label": "Order Plat Auger Mine Excav Entr",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_OrderPlat_DrillSitePass",
+"label": "Order Plat Drill Site Pass",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_OrderPlat_OrderBunkerSandEntr",
+"label": "Order Plat Order Bunker Sand Entr",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Scrapyard_DrillStationTunn",
+"label": "Scrapyard Drill Station Tunn",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_South_Drill",
+"label": "South Drill",
+"category": "Dungeons & landmarks",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.TravelStation_Rift_PlanetaryEscape_Lab1",
+"label": "Rift Planetary Escape Lab 1",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.TravelStation_Rift_PlanetaryEscape_Lab2",
+"label": "Rift Planetary Escape Lab 2",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.Travelstation_Rift_PlanetaryEscape_Machine",
+"label": "Rift Planetary Escape Machine",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.TravelStation_Rift_PlanetaryEscape_Surface",
+"label": "Rift Planetary Escape Surface",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface3a",
+"label": "Rift Planetary Escape Surface 3a",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface3b",
+"label": "Rift Planetary Escape Surface 3b",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface4a",
+"label": "Rift Planetary Escape Surface 4a",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface4b",
+"label": "Rift Planetary Escape Surface 4b",
+"category": "Rifts & secrets",
+"region": "Other",
+"kind": "TRAVELSTATION"
+},
+{
+"name": "World_P.RS_SHA_DrillStation_SecretPath",
+"label": "Drill Station Secret Path",
+"category": "Rifts & secrets",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.MissionReplay_BanjoDLC",
+"label": "Banjo DLC",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Beach",
+"label": "Beach",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_BelowTheSurface",
+"label": "Below The Surface",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_CastingCall",
+"label": "Casting Call",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_City1B",
+"label": "City 1B",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_ClaptrapOfPandora",
+"label": "Claptrap Of Pandora",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_FlatKairoser",
+"label": "Flat Kairoser",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_GenIVIV",
+"label": "Gen IVIV",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_GottaGoFast",
+"label": "Gotta Go Fast",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Grasslands1",
+"label": "Grasslands 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Grasslands2A",
+"label": "Grasslands 2A",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Grasslands2B",
+"label": "Grasslands 2B",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Grasslands3",
+"label": "Grasslands 3",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Heist",
+"label": "Heist",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_IslandMurderMystery",
+"label": "Island Murder Mystery",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_LegendaryVendingMachine",
+"label": "Legendary Vending Machine",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_LifesPurpose",
+"label": "Lifes Purpose",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_MadScientist",
+"label": "Mad Scientist",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_MicroNations1",
+"label": "Micro Nations 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Micronations2",
+"label": "Micronations 2",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Mountain1",
+"label": "Mountain 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_MountainFaction1",
+"label": "Mountain Faction 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Mountains2A",
+"label": "Mountains 2A",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Mountains2B",
+"label": "Mountains 2B",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Mountains3",
+"label": "Mountains 3",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_MountainsFaction_Club",
+"label": "Mountains Faction Club",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_NoEscapeRoom",
+"label": "No Escape Room",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_ObstacleCourseGlide",
+"label": "Obstacle Course Glide",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_ObstacleCourseGrapple",
+"label": "Obstacle Course Grapple",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_OldRaymondPart1",
+"label": "Old Raymond Part 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_OldRaymondPart2",
+"label": "Old Raymond Part 2",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_OneGassyIssue",
+"label": "One Gassy Issue",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_PlanetaryEscape",
+"label": "Planetary Escape",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_PriceOfFreedomPart1",
+"label": "Price Of Freedom Part 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_PriceOfFreedomPart2",
+"label": "Price Of Freedom Part 2",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_PriceOfFreedomPart3",
+"label": "Price Of Freedom Part 3",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_RocketMosnters",
+"label": "Rocket Mosnters",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_SearchForLilith",
+"label": "Search For Lilith",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_SeedsOfRevolutionPart1",
+"label": "Seeds Of Revolution Part 1",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_SeedsOfRevolutionPart2",
+"label": "Seeds Of Revolution Part 2",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Shatteredlands1_A",
+"label": "Shatteredlands 1 A",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Shatteredlands1_B",
+"label": "Shatteredlands 1 B",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Shatteredlands1B",
+"label": "Shatteredlands 1B",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_Shatteredlands3",
+"label": "Shatteredlands 3",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_TheCure",
+"label": "The Cure",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_ThresherRancher",
+"label": "Thresher Rancher",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_WhatLurksBeneath",
+"label": "What Lurks Beneath",
+"category": "Mission arenas (replay)",
+"region": "Other",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_ElectiFaction3",
+"label": "Electi Faction 3",
+"category": "Mission arenas (replay)",
+"region": "Shattered Lands",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.MissionReplay_FactionElecti1",
+"label": "Faction Electi 1",
+"category": "Mission arenas (replay)",
+"region": "Shattered Lands",
+"kind": "MISSIONREPLAY"
+},
+{
+"name": "World_P.FT_GRA_BeachTower",
+"label": "Beach Tower",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.RTS_GRA_BethCamp",
+"label": "Beth Camp",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_GRA_Biosphere",
+"label": "Biosphere",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_GRA_CliffShacks",
+"label": "Cliff Shacks",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_CoastalBS_EventAirship",
+"label": "Coastal BS Event Airship",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_CoastalDock1",
+"label": "Coastal Dock 1",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_CoastalDock2",
+"label": "Coastal Dock 2",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_CoastalHills",
+"label": "Coastal Hills",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_Distillery",
+"label": "Distillery",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_East_Road01",
+"label": "East Road 01",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road02",
+"label": "East Road 02",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road03",
+"label": "East Road 03",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road04",
+"label": "East Road 04",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_East_Road05",
+"label": "East Road 05",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road08",
+"label": "East Road 08",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road09",
+"label": "East Road 09",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road10",
+"label": "East Road 10",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_East_Road11",
+"label": "East Road 11",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_Evocarium_RipperFarmlands",
+"label": "Evocarium Ripper Farmlands",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_FoodProcStart",
+"label": "Food Proc Start",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_FoodProcessingIntro",
+"label": "Food Processing Intro",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_HillCave",
+"label": "Hill Cave",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_HillShack",
+"label": "Hill Shack",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_KOTOFOB",
+"label": "KOTOFOB",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_KOTOFOB2",
+"label": "KOTOFOB 2",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_KOTOLieutenant",
+"label": "KOTOLieutenant",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_LargePond",
+"label": "Large Pond",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_LargeTree",
+"label": "Large Tree",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_MountainPass",
+"label": "Mountain Pass",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_GRA_OldRaymond",
+"label": "Old Raymond",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.FT_GRA_POI_ZadrasHouse",
+"label": "POI Zadras House",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_GRA_RipperCamp",
+"label": "Ripper Camp",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperCrane",
+"label": "Ripper Crane",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperFL_RipperBeach",
+"label": "Ripper FL Ripper Beach",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperFarmlands",
+"label": "Ripper Farmlands",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperTunn_ExitLedge",
+"label": "Ripper Tunn Exit Ledge",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperTunn_StartLedge",
+"label": "Ripper Tunn Start Ledge",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_RipperTunnel",
+"label": "Ripper Tunnel",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_RiverBeastFarm",
+"label": "River Beast Farm",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_RiverBeastFarmExit",
+"label": "River Beast Farm Exit",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_RiverWest",
+"label": "River West",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_SolarArray",
+"label": "Solar Array",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_GRA_SortingStation",
+"label": "Sorting Station",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_GRA_WaterTreatment",
+"label": "Water Treatment",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_Grasslands_WaterwheelDocks",
+"label": "Waterwheel Docks",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_WaterwheelExit",
+"label": "Waterwheel Exit",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_WaterwheelLake",
+"label": "Waterwheel Lake",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road01",
+"label": "West Road 01",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road02",
+"label": "West Road 02",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road03",
+"label": "West Road 03",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road04",
+"label": "West Road 04",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road05",
+"label": "West Road 05",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road06",
+"label": "West Road 06",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road07",
+"label": "West Road 07",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road08",
+"label": "West Road 08",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road12",
+"label": "West Road 12",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road13",
+"label": "West Road 13",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road14",
+"label": "West Road 14",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road15",
+"label": "West Road 15",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road16",
+"label": "West Road 16",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road17",
+"label": "West Road 17",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road18",
+"label": "West Road 18",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road19",
+"label": "West Road 19",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road20",
+"label": "West Road 20",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road21",
+"label": "West Road 21",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road22",
+"label": "West Road 22",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road23",
+"label": "West Road 23",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road24",
+"label": "West Road 24",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Grasslands_West_Road25",
+"label": "West Road 25",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_WesternCave",
+"label": "Western Cave",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_ZoneTransGRAtoMOU",
+"label": "Zone Trans GRAto MOU",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_GRA_ZoneTransGRAtoSHA",
+"label": "Zone Trans GRAto SHA",
+"category": "Spots - Grasslands",
+"region": "Grasslands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_AbandonedAugerVillage",
+"label": "Abandoned Auger Village",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOU_BSExterior",
+"label": "BSExterior",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RTS_MOU_BelowComArray",
+"label": "Below Com Array",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_MOU_BlacksiteEntrance",
+"label": "Blacksite Entrance",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_BlacksiteExit",
+"label": "Blacksite Exit",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_CatCanyon",
+"label": "Cat Canyon",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_ChkPnt_Gorge",
+"label": "Chk Pnt Gorge",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_CliffsA",
+"label": "Cliffs A",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_CliffsB",
+"label": "Cliffs B",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_CliffsD",
+"label": "Cliffs D",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_CliffsE",
+"label": "Cliffs E",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_CliffsEntrance",
+"label": "Cliffs Entrance",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_ComArrayEntrance",
+"label": "Com Array Entrance",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOU_ComArrayIceHall",
+"label": "Com Array Ice Hall",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_MOU_ElectiPlateau",
+"label": "Electi Plateau",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Far_mou_base",
+"label": "Far mou base",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Gorge_EventColosseumOutside",
+"label": "Gorge Event Colosseum Outside",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Gorge_Riverbend",
+"label": "Gorge Riverbend",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Gorge_Shore",
+"label": "Gorge Shore",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_HL_North",
+"label": "HL North",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_HoM_Int_Ent",
+"label": "Ho M Int Ent",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_HoM_Int_FTunnel",
+"label": "Ho M Int FTunnel",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_HoM_Int_Office",
+"label": "Ho M Int Office",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Mining_Lift",
+"label": "Mining Lift",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_MountainTop_Ship",
+"label": "Mountain Top Ship",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_MOU_NorthCliffs",
+"label": "North Cliffs",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_MOU_NorthernCorridor",
+"label": "Northern Corridor",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_ObstacleCourse",
+"label": "Obstacle Course",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_OrderCorridor",
+"label": "Order Corridor",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOU_OutsideTemple",
+"label": "Outside Temple",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_MOU_PtoSanc",
+"label": "Pto Sanc",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_Sanc_Path_S",
+"label": "Sanc Path S",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_SecurityCheckpointA",
+"label": "Security Checkpoint A",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_SecurityCheckpointB",
+"label": "Security Checkpoint B",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOU_Temple",
+"label": "Temple",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_MOU_TempleLeadup",
+"label": "Temple Leadup",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_UndGrd_Cave",
+"label": "Und Grd Cave",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WS",
+"label": "WS",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WS_Alt",
+"label": "WS Alt",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WS_Lower",
+"label": "WS Lower",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WS_Tim_Ent",
+"label": "WS Tim Ent",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WW_Int1",
+"label": "WW Int 1",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WW_Int2",
+"label": "WW Int 2",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WW_Plat",
+"label": "WW Plat",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_WaterWheel",
+"label": "Water Wheel",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_ZoneTransMOUtoGRA",
+"label": "Zone Trans MOUto GRA",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_MOU_ZoneTransMoutoSHA",
+"label": "Zone Trans Mouto SHA",
+"category": "Spots - Mountains",
+"region": "Mountains",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_AirlockToCity",
+"label": "Airlock To City",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_BeachCenter",
+"label": "Beach Center",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_Beach_ElectiNorthPassage",
+"label": "Beach Electi North Passage",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Beach_Shorefront",
+"label": "Beach Shorefront",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_BeachUpper",
+"label": "Beach Upper",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_BeforeGrasslandCanyon",
+"label": "Before Grassland Canyon",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Canyon_CenterEast",
+"label": "Canyon Center East",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Canyon_EastEntrance",
+"label": "Canyon East Entrance",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_CanyonEntranceSouth",
+"label": "Canyon Entrance South",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Canyon_South",
+"label": "Canyon South",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Canyon_Towers",
+"label": "Canyon Towers",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_CastingCall",
+"label": "Casting Call",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_CityEntrance",
+"label": "City Entrance",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Crater_Ext",
+"label": "Crater Ext",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiBridgeSouth",
+"label": "Electi Bridge South",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiOutlook",
+"label": "Electi Outlook",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiPlat_CraterJump",
+"label": "Electi Plat Crater Jump",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiPlat_GreatDist1",
+"label": "Electi Plat Great Dist 1",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiPlat_MoxxiApproach",
+"label": "Electi Plat Moxxi Approach",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiPlat_MoxxiEntrance",
+"label": "Electi Plat Moxxi Entrance",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiPlat_MoxxisCaveExit",
+"label": "Electi Plat Moxxis Cave Exit",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ElectiPlateauRipperGate",
+"label": "Electi Plateau Ripper Gate",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_EnterGrasslandCanyon",
+"label": "Enter Grassland Canyon",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_EntranceFrackingTower",
+"label": "Entrance Fracking Tower",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_GreatDisturbanceCave2",
+"label": "Great Disturbance Cave 2",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_MoxxisRoom",
+"label": "Moxxis Room",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_NatPlat_RipperRaidRoad",
+"label": "Nat Plat Ripper Raid Road",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_OrderPlat_SouthRoad",
+"label": "Order Plat South Road",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_SHA_SH_OrderPlateau",
+"label": "SH Order Plateau",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_SHA_ScrapYardEntrance",
+"label": "Scrap Yard Entrance",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_Scrapyard_LowerRoad",
+"label": "Scrapyard Lower Road",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.FT_SHA_Scrapyard_M2RipMachToElecti",
+"label": "Scrapyard M 2Rip Mach To Electi",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "FT"
+},
+{
+"name": "World_P.RS_SHA_Scrapyard_UnderSYardTunn",
+"label": "Scrapyard Under SYard Tunn",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_SHA_Seabase2",
+"label": "Seabase 2",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_SHA_SrapyardSwamp",
+"label": "Srapyard Swamp",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_UnderScrapYardCanyonEntrance",
+"label": "Under Scrap Yard Canyon Entrance",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_UnderScrapyard",
+"label": "Under Scrapyard",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ZoneTransSHAtoGRA",
+"label": "Zone Trans SHAto GRA",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_SHA_ZoneTransSHAtoMOU",
+"label": "Zone Trans SHAto MOU",
+"category": "Spots - Shattered Lands",
+"region": "Shattered Lands",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_AscensionTop",
+"label": "Ascension Top",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_Canal",
+"label": "Canal",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_Central",
+"label": "Central",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_Dred",
+"label": "Dred",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_MeteorHole_Industrial",
+"label": "Meteor Hole Industrial",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_NoEscapeRoom",
+"label": "No Escape Room",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_NuclearFacility_Top",
+"label": "Nuclear Facility Top",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_OrderChokepoint",
+"label": "Order Chokepoint",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_OrdoniteSmelter",
+"label": "Ordonite Smelter",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_OrdoniteSmelter2",
+"label": "Ordonite Smelter 2",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_PreRedLight",
+"label": "Pre Red Light",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_RadioactivePit",
+"label": "Radioactive Pit",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_To_GRA_Transition",
+"label": "To GRA Transition",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_To_GRA_Transition",
+"label": "To GRA Transition",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_GRA_To_MNT_Transition",
+"label": "To MNT Transition",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_SHA_To_MNT_Transition",
+"label": "To MNT Transition",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_GRA_To_SHA_Transition",
+"label": "To SHA Transition",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_To_SHA_Transition",
+"label": "To SHA Transition",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_City_MNT_WaterCoolingEntrance",
+"label": "Water Cooling Entrance",
+"category": "Spots - City",
+"region": "City",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_FF_ZadraElevator",
+"label": "FF Zadra Elevator",
+"category": "Spots - Other",
+"region": "Other",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_HydroHills_Dam",
+"label": "Hydro Hills Dam",
+"category": "Spots - Other",
+"region": "Other",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_HydroHills_Stockpile",
+"label": "Hydro Hills Stockpile",
+"category": "Spots - Other",
+"region": "Other",
+"kind": "RS"
+},
+{
+"name": "World_P.RTS_MOUT_PhaseUnderground",
+"label": "MOUT Phase Underground",
+"category": "Spots - Other",
+"region": "Other",
+"kind": "RTS"
+},
+{
+"name": "World_P.RS_OrderPlateauWildlifeBattlefield",
+"label": "Order Plateau Wildlife Battlefield",
+"category": "Spots - Other",
+"region": "Other",
+"kind": "RS"
+},
+{
+"name": "World_P.RS_Shatterlands_CraterStart",
+"label": "Shatterlands Crater Start",
+"category": "Spots - Other",
+"region": "Other",
+"kind": "RS"
+}
+]
+}

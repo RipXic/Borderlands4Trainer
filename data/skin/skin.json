@@ -1,0 +1,168 @@
+{
+ "version": 2,
+ "style": "gold",
+ "pieces": {
+  "row": {
+   "kind": "3slice",
+   "w": 679,
+   "h": 66,
+   "l": 20,
+   "r": 20
+  },
+  "tab_active": {
+   "kind": "3slice",
+   "w": 251,
+   "h": 80,
+   "l": 16,
+   "r": 16
+  },
+  "tab": {
+   "kind": "3slice",
+   "w": 251,
+   "h": 80,
+   "l": 16,
+   "r": 14
+  },
+  "header_bar": {
+   "kind": "3slice",
+   "w": 344,
+   "h": 49,
+   "l": 22,
+   "r": 150
+  },
+  "badge": {
+   "kind": "3slice",
+   "w": 165,
+   "h": 49,
+   "l": 12,
+   "r": 12
+  },
+  "field": {
+   "kind": "3slice",
+   "w": 186,
+   "h": 46,
+   "l": 12,
+   "r": 36
+  },
+  "button": {
+   "kind": "3slice",
+   "w": 179,
+   "h": 45,
+   "l": 16,
+   "r": 16
+  },
+  "check_on": {
+   "kind": "image",
+   "w": 43,
+   "h": 40
+  },
+  "check_off": {
+   "kind": "image",
+   "w": 43,
+   "h": 40
+  },
+  "lightbar": {
+   "kind": "image",
+   "w": 198,
+   "h": 44
+  },
+  "winbtns": {
+   "kind": "image",
+   "w": 148,
+   "h": 51
+  },
+  "ico_weapons": {
+   "kind": "image",
+   "w": 60,
+   "h": 60
+  },
+  "ico_inventory": {
+   "kind": "image",
+   "w": 60,
+   "h": 60
+  },
+  "ico_world": {
+   "kind": "image",
+   "w": 60,
+   "h": 60
+  },
+  "ico_teleport": {
+   "kind": "image",
+   "w": 60,
+   "h": 60
+  },
+  "ico_player": {
+   "kind": "image",
+   "w": 60,
+   "h": 60
+  },
+  "top_l": {
+   "kind": "3slice",
+   "w": 561,
+   "h": 245,
+   "l": 150,
+   "r": 409
+  },
+  "top_r": {
+   "kind": "3slice",
+   "w": 561,
+   "h": 245,
+   "l": 374,
+   "r": 185
+  },
+  "logo_low": {
+   "kind": "image",
+   "w": 745,
+   "h": 55
+  },
+  "band": {
+   "kind": "3slice",
+   "w": 1122,
+   "h": 267,
+   "l": 700,
+   "r": 406
+  },
+  "frame": {
+   "kind": "9slice",
+   "w": 1122,
+   "h": 890,
+   "l": 660,
+   "t": 195,
+   "r": 342,
+   "b": 285
+  }
+ },
+ "layout": {
+  "frame_top_in_ref": 245,
+  "band_h": 267,
+  "top_band": 1,
+  "logo_low_y": 0,
+  "lightbar_y": 69,
+  "winbtns_y": 75,
+  "winbtns_from_right": 230,
+  "header_x": 318,
+  "header_y": 130,
+  "header_natural": 1,
+  "header_text_x": 48,
+  "header_strip": 1.0,
+  "tabs_x": 57,
+  "tabs_y": 175,
+  "tab_step": 90,
+  "tabs_bottom_from_bottom": 552,
+  "tab_icons": 1,
+  "rows_x": 342,
+  "rows_y": 207,
+  "rows_right": 101,
+  "row_upper": 0,
+  "content_bottom_from_bottom": 302,
+  "status_text_x": 410,
+  "status_text_y0": 180,
+  "status_text_y1": 138,
+  "status_text_right_from_right": 406,
+  "version_x0_from_right": 307,
+  "version_x1_from_right": 127,
+  "version_y0": 178,
+  "version_y1": 130,
+  "badge_prefix": "Hotkey:"
+ }
+}

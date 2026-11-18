@@ -1,0 +1,859 @@
+{
+ "_about": "Trainer actions: every action calls the game's own function (by its reflected name) on a target object. The trainer re-reads this file within a second when it changes.",
+ "readouts": {
+  "position": {
+   "target": "player.pawn",
+   "func": "K2_GetActorLocation",
+   "desc": "world position (cm)"
+  },
+  "god": {
+   "target": "cdo:DamageStatics",
+   "func": "IsInGodMode",
+   "args": {
+    "OwnerContext": "target:player.pawn"
+   },
+   "desc": "god mode active (game's own check)"
+  },
+  "level": {
+   "target": "player.ps",
+   "func": "BP_GetExperienceLevel",
+   "args": {
+    "ExperienceDef": "def:(\"Character\",\"GbxExperienceDef\")"
+   },
+   "desc": "character level"
+  },
+  "spec_level": {
+   "target": "player.ps",
+   "func": "BP_GetExperienceLevel",
+   "args": {
+    "ExperienceDef": "def:(\"Specialization\",\"GbxExperienceDef\")"
+   },
+   "desc": "specialization level"
+  },
+  "ground_speed_scale": {
+   "attr": "ground_speed_scale",
+   "desc": "ground speed multiplier"
+  },
+  "health": {
+   "attr": "health_resource_current_value",
+   "desc": "health"
+  },
+  "max_health": {
+   "attr": "health_resource_max_value",
+   "desc": "max health"
+  },
+  "shield": {
+   "attr": "shield_resource_current_value",
+   "desc": "shield"
+  },
+  "max_shield": {
+   "attr": "shield_resource_max_value",
+   "desc": "max shield"
+  },
+  "overshield": {
+   "attr": "overshield_resource_current_value",
+   "desc": "overshield"
+  },
+  "damage_mult": {
+   "attr": "damage_dealt_multiplier",
+   "desc": "damage dealt multiplier"
+  },
+  "damage_taken": {
+   "attr": "damage_taken_multiplier",
+   "desc": "damage taken multiplier"
+  },
+  "fire_rate": {
+   "attr": "weapon_fire_rate",
+   "desc": "weapon fire rate (shots/s)"
+  },
+  "reload_time": {
+   "attr": "weapon_reload_time",
+   "desc": "reload time (s)"
+  },
+  "weapon_damage": {
+   "attr": "weapon_damage",
+   "desc": "weapon damage per shot"
+  },
+  "loaded_ammo": {
+   "attr": "weapon_loaded_ammo",
+   "desc": "magazine"
+  },
+  "cash": {
+   "currency": "Cash",
+   "desc": "cash"
+  },
+  "eridium": {
+   "currency": "eridium",
+   "desc": "eridium"
+  },
+  "action_skill_cooldown": {
+   "target": "cdo:GbxSkillComponentFunctions_ActionSkill",
+   "func": "GetCooldownAsPercent",
+   "args": {
+    "target": "target:player.pawn"
+   },
+   "desc": "Action Skill cooldown, 0..1"
+  },
+  "skill_points_earned": {
+   "points": "skill_points",
+   "desc": "skill points earned (spent + unspent)"
+  },
+  "spec_tokens_earned": {
+   "points": "spec_tokens",
+   "desc": "specialization tokens earned"
+  },
+  "sdu_tokens_earned": {
+   "points": "sdu_tokens",
+   "desc": "SDU tokens earned (spent + unspent)"
+  }
+ },
+ "actions": {
+  "Engine.Version": {
+   "target": "cdo:KismetSystemLibrary",
+   "func": "GetEngineVersion",
+   "write": false,
+   "desc": "engine version string (smoke test for ProcessEvent)"
+  },
+  "Player.GodOn": {
+   "target": "cdo:OakDamageStatics",
+   "func": "SetGodLock",
+   "args": {
+    "OwnerContext": "target:player.pawn"
+   },
+   "after": "god",
+   "desc": "god mode on (OakDamageStatics::SetGodLock)"
+  },
+  "Player.GodOff": {
+   "target": "cdo:OakDamageStatics",
+   "func": "UnSetGodLock",
+   "args": {
+    "OwnerContext": "target:player.pawn"
+   },
+   "after": "god",
+   "desc": "god mode off"
+  },
+  "Player.AddOvershield": {
+   "target": "cdo:OakInventoryStatics",
+   "func": "AddOvershieldToOakCharacter",
+   "args": {
+    "TargetActor": "target:player.pawn",
+    "Amount": "$v"
+   },
+   "arg": "Amount",
+   "desc": "add overshield points (v = amount)"
+  },
+  "Currency.Give": {
+   "target": "cdo:GbxCurrencyFunctionLibrary",
+   "func": "GiveCurrency",
+   "args": {
+    "OwnerContext": "target:player.pc",
+    "currency": "$v",
+    "Amount": 1000
+   },
+   "arg": "currency",
+   "desc": "give any currency through the game: v = def text, e.g. (\"Cash\",\"GbxCurrencyDef\"); args.Amount"
+  },
+  "Currency.AddCash": {
+   "target": "cdo:GbxCurrencyFunctionLibrary",
+   "func": "GiveCurrency",
+   "args": {
+    "OwnerContext": "target:player.pc",
+    "currency": "def:(\"Cash\",\"GbxCurrencyDef\")",
+    "Amount": "$v"
+   },
+   "arg": "Amount",
+   "after": "cash",
+   "desc": "add cash (v = amount)"
+  },
+  "Currency.AddEridium": {
+   "target": "cdo:GbxCurrencyFunctionLibrary",
+   "func": "GiveCurrency",
+   "args": {
+    "OwnerContext": "target:player.pc",
+    "currency": "def:(\"eridium\",\"GbxCurrencyDef\")",
+    "Amount": "$v"
+   },
+   "arg": "Amount",
+   "after": "eridium",
+   "desc": "add eridium (v = amount)"
+  },
+  "Loot.SpawnPool": {
+   "target": "cdo:NexusConfigStoreItemPool",
+   "func": "SpawnInventoryFromItemPool",
+   "args": {
+    "WorldContextObject": "target:player.pawn",
+    "Transform": "$transform:position",
+    "GameStage": 50,
+    "ItemPoolName": "$v"
+   },
+   "arg": "ItemPoolName",
+   "desc": "spawn loot from a named item pool at the player (dev store function). v = item pool name (itempool_*), args.GameStage = item level"
+  },
+  "Loot.DropPool": {
+   "target": "cdo:ItemPoolFunctionLibrary",
+   "func": "SpawnItemsFromItemPoolUsingActor_Drop",
+   "args": {
+    "SourceActor": "target:player.pawn",
+    "itempool": "$v"
+   },
+   "arg": "itempool",
+   "desc": "drop loot from a game item pool at the player (game's own loot roll). v = gdh:<pool name>, e.g. gdh:itempool_guns_tor (itempool_* / ItemPoolList_*)"
+  },
+  "Player.SetLevel": {
+   "target": "player.ps",
+   "func": "BP_SetExperienceLevel",
+   "args": {
+    "ExperienceDef": "def:(\"Character\",\"GbxExperienceDef\")",
+    "ExperienceLevel": "$v"
+   },
+   "arg": "ExperienceLevel",
+   "after": "level",
+   "desc": "set character level (game's own BP_SetExperienceLevel; stats scale, skill points follow)"
+  },
+  "Player.SetSpecLevel": {
+   "target": "player.ps",
+   "func": "BP_SetExperienceLevel",
+   "args": {
+    "ExperienceDef": "def:(\"Specialization\",\"GbxExperienceDef\")",
+    "ExperienceLevel": "$v"
+   },
+   "arg": "ExperienceLevel",
+   "after": "spec_level",
+   "desc": "set specialization level"
+  },
+  "Player.SetExperienceLevel": {
+   "target": "player.ps",
+   "func": "BP_SetExperienceLevel",
+   "args": {
+    "ExperienceDef": "$v",
+    "ExperienceLevel": 1
+   },
+   "arg": "ExperienceDef",
+   "desc": "any experience track: v = def text (\"VaultCard01_Experience\",\"GbxExperienceDef\"), args.ExperienceLevel"
+  },
+  "World.TimeScale": {
+   "target": "cdo:GameplayStatics",
+   "func": "SetGlobalTimeDilation",
+   "args": {
+    "WorldContextObject": "target:player.pawn",
+    "TimeDilation": "$v"
+   },
+   "arg": "TimeDilation",
+   "desc": "game speed (1 = normal, 0.3 = slow motion, 2 = fast)"
+  },
+  "Move.GroundSpeed": {
+   "target": "player.comp:OakCharacterMovementComponent",
+   "field": "MaxGroundSpeedScale",
+   "arg": "v",
+   "after": "ground_speed_scale",
+   "desc": "ground speed multiplier (1 = normal)"
+  },
+  "Move.DashSpeed": {
+   "target": "player.comp:OakCharacterMovementComponent",
+   "field": "DashSpeed",
+   "arg": "v",
+   "desc": "dash speed"
+  },
+  "Move.GlideSpeed": {
+   "target": "player.comp:OakCharacterMovementComponent",
+   "field": "GlidingSpeed",
+   "arg": "v",
+   "desc": "glide speed"
+  },
+  "Move.FreeVaultPower": {
+   "target": "player.comp:OakCharacterMovementComponent",
+   "fields": [
+    "VaultPowerCost_Dash",
+    "VaultPowerCost_DoubleJump",
+    "VaultPowerCost_Glide"
+   ],
+   "value": 0,
+   "desc": "dash / double jump / glide cost no vault power"
+  },
+  "Move.Launch": {
+   "target": "player.pawn",
+   "func": "LaunchCharacter",
+   "args": {
+    "LaunchVelocity": {
+     "Z": 1500
+    },
+    "bXYOverride": false,
+    "bZOverride": true
+   },
+   "desc": "super jump (launch up)"
+  },
+  "Inventory.BackpackSize": {
+   "target": "player.ps",
+   "field": "BackpackContainer.MaxSize",
+   "arg": "v",
+   "desc": "backpack capacity (OakPlayerState.BackpackContainer.MaxSize, memory write - no game setter). Normal 16 + SDU upgrades"
+  },
+  "Inventory.BankSize": {
+   "target": "player.ps",
+   "field": "BankContainer.MaxSize",
+   "arg": "v",
+   "desc": "bank capacity (BankContainer.MaxSize, memory write)"
+  },
+  "Player.Revive": {
+   "target": "player.pawn",
+   "func": "GoFromDeadToHealthy",
+   "desc": "get up from Fight For Your Life / death"
+  },
+  "Weapon.RefillAmmo": {
+   "target": "cdo:OakWeaponStatics",
+   "func": "RefillAmmoForCurrentCharacterWeapon",
+   "args": {
+    "OwnerContext": "target:player.pawn",
+    "Amount": 100,
+    "bAsPercent": true
+   },
+   "desc": "refill ammo of the weapon in hand (100%)"
+  },
+  "Weapon.InfiniteAmmo": {
+   "target": "player.pc",
+   "field": "InfiniteAmmoLock.bLocked",
+   "arg": "v",
+   "desc": "the game's own infinite-ammo lock (OakPlayerController.InfiniteAmmoLock), v = 1 on / 0 off"
+  },
+  "Skill.RefillCooldown": {
+   "target": "cdo:GbxSkillComponentFunctions_ActionSkill",
+   "func": "RefillCooldown",
+   "args": {
+    "target": "target:player.pawn",
+    "Percent": 1.0,
+    "RefillMode": 0
+   },
+   "after": "action_skill_cooldown",
+   "desc": "Action Skill ready again"
+  },
+  "Player.InvisibleOn": {
+   "target": "cdo:GbxTeamFunctionLibrary",
+   "func": "SetTeam",
+   "args": {
+    "AIActor": "target:player.pawn",
+    "Team": "gdh:Team_FriendlyToAll:15"
+   },
+   "desc": "enemies ignore you: your character joins the game's Team_FriendlyToAll"
+  },
+  "Player.InvisibleOff": {
+   "target": "cdo:GbxTeamFunctionLibrary",
+   "func": "SetTeam",
+   "args": {
+    "AIActor": "target:player.pawn",
+    "Team": "gdh:Team_Player:15"
+   },
+   "desc": "back on the player team"
+  },
+  "Skill.RefillDuration": {
+   "target": "cdo:GbxSkillComponentFunctions_ActionSkill",
+   "func": "RefillDuration",
+   "args": {
+    "target": "target:player.pawn",
+    "Percent": 1.0,
+    "RefillMode": 0
+   },
+   "desc": "Action Skill duration back to full"
+  },
+  "Skill.GetCooldown": {
+   "target": "cdo:GbxSkillComponentFunctions_ActionSkill",
+   "func": "GetCooldown",
+   "args": {
+    "target": "target:player.pawn"
+   },
+   "write": false,
+   "desc": "Action Skill cooldown pool value"
+  },
+  "Skill.GetDuration": {
+   "target": "cdo:GbxSkillComponentFunctions_ActionSkill",
+   "func": "GetDuration",
+   "args": {
+    "target": "target:player.pawn"
+   },
+   "write": false,
+   "desc": "Action Skill duration pool value"
+  },
+  "Skill.RefillCooldownByValue": {
+   "target": "cdo:GbxSkillComponentFunctions_ActionSkill",
+   "func": "RefillCooldownByValue",
+   "args": {
+    "target": "target:player.pawn"
+   },
+   "arg": "Value",
+   "desc": "Add to the Action Skill cooldown pool"
+  }
+ },
+ "presets": {
+  "god_run": {
+   "label": "God run",
+   "steps": [
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "god",
+      "v": true
+     }
+    },
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "inf_ammo",
+      "v": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_shot_cost",
+      "v": 0,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "damage_taken_multiplier",
+      "v": 0,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "no_skill_cooldown",
+      "v": true
+     }
+    }
+   ],
+   "undo": [
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "god",
+      "v": false
+     }
+    },
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "inf_ammo",
+      "v": false
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_shot_cost",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "damage_taken_multiplier",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "no_skill_cooldown",
+      "v": false
+     }
+    }
+   ]
+  },
+  "loot_farm": {
+   "label": "Loot farm",
+   "steps": [
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_Luck_Gear",
+      "v": 500,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_CombatXP_Multiplier",
+      "v": 5,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_PickupCash_Multiplier",
+      "v": 5,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_PlayerDifficulty_EnemyHealth_Multiplier",
+      "v": 0.05,
+      "mode": "set"
+     }
+    }
+   ],
+   "undo": [
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_Luck_Gear",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_CombatXP_Multiplier",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_PickupCash_Multiplier",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "Att_PlayerDifficulty_EnemyHealth_Multiplier",
+      "reset": true
+     }
+    }
+   ]
+  },
+  "speed": {
+   "label": "Speed demon",
+   "steps": [
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "ground_speed_scale",
+      "v": 2.5,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "dash_speed",
+      "v": 7000,
+      "mode": "set"
+     }
+    },
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "free_vault_power",
+      "v": true
+     }
+    }
+   ],
+   "undo": [
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "ground_speed_scale",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "dash_speed",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.TOGGLE",
+     "args": {
+      "id": "free_vault_power",
+      "v": false
+     }
+    }
+   ]
+  },
+  "fly": {
+   "label": "Fly (no-clip)",
+   "steps": [
+    {
+     "cmd": "BL.FLY",
+     "args": {
+      "on": true,
+      "noclip": true
+     }
+    }
+   ],
+   "undo": [
+    {
+     "cmd": "BL.FLY",
+     "args": {
+      "on": false
+     }
+    }
+   ]
+  },
+  "weapon_reset": {
+   "label": "Weapon stats reset",
+   "steps": [
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_damage",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_fire_rate",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_max_loaded_ammo",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_reload_time",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_damage_modifier_add_critical_hit",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_projectile_per_shot",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_projectile_speed_scale",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_spread",
+      "reset": true
+     }
+    },
+    {
+     "cmd": "BL.ATTR",
+     "args": {
+      "name": "weapon_recoil_scale",
+      "reset": true
+     }
+    }
+   ],
+   "undo": []
+  }
+ },
+ "hotkeys": {
+  "F5": {
+   "preset": "god_run"
+  },
+  "F6": {
+   "cmd": "BL.KILL",
+   "args": {
+    "radius_m": 80
+   },
+   "label": "Kill hostiles 80 m"
+  },
+  "F7": {
+   "cmd": "BL.VACUUM",
+   "args": {
+    "radius_m": 60
+   },
+   "label": "Loot vacuum"
+  },
+  "F9": {
+   "cmd": "BL.WAYPOINT",
+   "label": "Teleport to map pin"
+  },
+  "F10": {
+   "preset": "fly"
+  },
+  "F11": {
+   "preset": "loot_farm"
+  },
+  "Ctrl+F5": {
+   "preset": "speed"
+  },
+  "Ctrl+F9": {
+   "cmd": "BL.POS_SAVE",
+   "label": "Position saved"
+  },
+  "Shift+F9": {
+   "cmd": "BL.POS_LOAD",
+   "label": "Back to saved position"
+  },
+  "F4": {
+   "toggle": "invisible"
+  },
+  "F3": {
+   "cmd": "BL.CAMERA",
+   "args": {
+    "free": "toggle"
+   },
+   "label": "Free camera"
+  },
+  "Shift+F3": {
+   "cmd": "BL.CAMERA",
+   "args": {
+    "hud": "toggle"
+   },
+   "label": "HUD"
+  },
+  "Ctrl+F3": {
+   "cmd": "BL.CAMERA",
+   "args": {
+    "matrix": "toggle"
+   },
+   "label": "Matrix look"
+  },
+  "Ctrl+F4": {
+   "cmd": "BL.CAMERA",
+   "args": {
+    "third": "toggle"
+   },
+   "label": "Third person"
+  },
+  "Ctrl+F6": {
+   "cmd": "BL.CAMERA",
+   "args": {
+    "tp_left": "toggle"
+   },
+   "label": "Third person shoulder"
+  }
+ },
+ "toggles": {
+  "god": {
+   "desc": "God mode (game's own god lock). Re-applied after map changes.",
+   "on": {
+    "action": "Player.GodOn"
+   },
+   "off": {
+    "action": "Player.GodOff"
+   }
+  },
+  "inf_ammo": {
+   "desc": "Infinite ammo: the game's own InfiniteAmmoLock (kept on) + reserve refill twice a second",
+   "on": {
+    "action": "Weapon.InfiniteAmmo",
+    "v": 1
+   },
+   "off": {
+    "action": "Weapon.InfiniteAmmo",
+    "v": 0
+   },
+   "tick": {
+    "action": "Weapon.InfiniteAmmo",
+    "v": 1
+   },
+   "every_ms": 500
+  },
+  "big_backpack": {
+   "desc": "Backpack capacity kept at the chosen size (re-applied every 2 s and after loads)",
+   "value": 60,
+   "on": {
+    "action": "Inventory.BackpackSize"
+   },
+   "tick": {
+    "action": "Inventory.BackpackSize"
+   },
+   "every_ms": 2000
+  },
+  "big_bank": {
+   "desc": "Bank capacity kept at the chosen size",
+   "value": 500,
+   "on": {
+    "action": "Inventory.BankSize"
+   },
+   "tick": {
+    "action": "Inventory.BankSize"
+   },
+   "every_ms": 2000
+  },
+  "free_vault_power": {
+   "desc": "Dash / double jump / glide cost nothing (kept every second)",
+   "tick": {
+    "action": "Move.FreeVaultPower"
+   },
+   "every_ms": 1000
+  },
+  "no_skill_cooldown": {
+   "desc": "Action Skill always ready",
+   "tick": {
+    "action": "Skill.RefillCooldown"
+   },
+   "every_ms": 500
+  },
+  "invisible": {
+   "desc": "Enemies ignore you (Team_FriendlyToAll). Re-applied after map changes.",
+   "on": {
+    "action": "Player.InvisibleOn"
+   },
+   "off": {
+    "action": "Player.InvisibleOff"
+   }
+  },
+  "instant_reload": {
+   "desc": "Reloads finish almost at once (reload time 0.1 s). Off = the gun's normal reload time. Kept after map changes.",
+   "on": {
+    "cmd": "BL.ATTR",
+    "args": {
+     "name": "weapon_reload_time",
+     "v": 0.1,
+     "mode": "set"
+    }
+   },
+   "off": {
+    "cmd": "BL.ATTR",
+    "args": {
+     "name": "weapon_reload_time",
+     "reset": true
+    }
+   }
+  },
+  "skill_endless": {
+   "desc": "Action Skill never runs out while it is active (duration refilled twice a second)",
+   "tick": {
+    "action": "Skill.RefillDuration"
+   },
+   "every_ms": 500
+  },
+  "fast_cooldown": {
+   "desc": "Action Skill cooldown runs faster: value = speed (4 = four times as fast). Refilled 4x a second with the game's own RefillCooldownByValue.",
+   "value": 4,
+   "tick": {
+    "cmd": "BL.SKILL_CD_TICK"
+   },
+   "every_ms": 250
+  },
+  "infinite_jump": {
+   "desc": "Double jump as often as you like in the air (the jump counters are kept at one jump used). Kept after map changes."
+  }
+ }
+}

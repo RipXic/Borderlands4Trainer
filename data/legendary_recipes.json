@@ -1,0 +1,5035 @@
+{
+ "note": "made by legrecipes.py from the game (InventoryCompDef PartTypeSelectionRules)",
+ "types": {
+  "275": [
+   {
+    "comp": 31,
+    "rarity": "05_legendary",
+    "name": "DiscJockey",
+    "parts": [
+     {
+      "list": 275,
+      "index": 30,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Disc Jockey"
+   },
+   {
+    "comp": 38,
+    "rarity": "05_legendary",
+    "name": "Draupner",
+    "parts": [
+     {
+      "list": 275,
+      "index": 37,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Draupner"
+   },
+   {
+    "comp": 36,
+    "rarity": "05_legendary",
+    "name": "jetset",
+    "parts": [
+     {
+      "list": 275,
+      "index": 35,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Jetsetter"
+   },
+   {
+    "comp": 32,
+    "rarity": "05_legendary",
+    "name": "Streamer",
+    "parts": [
+     {
+      "list": 275,
+      "index": 1,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Streamer"
+   }
+  ],
+  "7": [
+   {
+    "comp": 100,
+    "rarity": "05_legendary",
+    "name": "convergence",
+    "parts": [
+     {
+      "list": 7,
+      "index": 64,
+      "slot": "barrel"
+     },
+     {
+      "list": 7,
+      "index": 15,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Convergence"
+   },
+   {
+    "comp": 54,
+    "rarity": "06_pearlescent",
+    "name": "CrazedEarl",
+    "parts": [
+     {
+      "list": 7,
+      "index": 21,
+      "slot": "barrel"
+     },
+     {
+      "list": 7,
+      "index": 58,
+      "slot": "magazine"
+     },
+     {
+      "list": 7,
+      "index": 67,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 7,
+      "index": 50,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Crazed Earl"
+   },
+   {
+    "comp": 56,
+    "rarity": "05_legendary",
+    "name": "demo",
+    "parts": [
+     {
+      "list": 7,
+      "index": 55,
+      "slot": "barrel"
+     },
+     {
+      "list": 7,
+      "index": 70,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 7,
+      "index": 15,
+      "slot": "magazine"
+     },
+     {
+      "list": 7,
+      "index": 50,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Hair Trigger"
+   },
+   {
+    "comp": 19,
+    "rarity": "05_legendary",
+    "name": "GoldenGod",
+    "parts": [
+     {
+      "list": 7,
+      "index": 18,
+      "slot": "barrel"
+     },
+     {
+      "list": 7,
+      "index": 17,
+      "slot": "magazine"
+     },
+     {
+      "list": 7,
+      "index": 66,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Golden God"
+   },
+   {
+    "comp": 20,
+    "rarity": "05_legendary",
+    "name": "GoreMaster",
+    "parts": [
+     {
+      "list": 7,
+      "index": 1,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Goremaster"
+   },
+   {
+    "comp": 65,
+    "rarity": "05_legendary",
+    "name": "plumbbob",
+    "parts": [
+     {
+      "list": 7,
+      "index": 59,
+      "slot": "barrel"
+     },
+     {
+      "list": 7,
+      "index": 15,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Plumb Bob"
+   },
+   {
+    "comp": 85,
+    "rarity": "06_pearlescent",
+    "name": "relay",
+    "parts": [
+     {
+      "list": 7,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 7,
+      "index": 15,
+      "slot": "magazine"
+     },
+     {
+      "list": 7,
+      "index": 50,
+      "slot": "foregrip"
+     },
+     {
+      "list": 7,
+      "index": 66,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Astonisher"
+   }
+  ],
+  "19": [
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "enumeration",
+    "parts": [
+     {
+      "list": 19,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 19,
+      "index": 82,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Enumeration"
+   },
+   {
+    "comp": 59,
+    "rarity": "05_legendary",
+    "name": "falke",
+    "parts": [
+     {
+      "list": 19,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 19,
+      "index": 58,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Falke"
+   },
+   {
+    "comp": 19,
+    "rarity": "05_legendary",
+    "name": "hellfire",
+    "parts": [
+     {
+      "list": 19,
+      "index": 5,
+      "slot": "body_acc"
+     },
+     {
+      "list": 19,
+      "index": 67,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 19,
+      "index": 20,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Hellfire"
+   },
+   {
+    "comp": 61,
+    "rarity": "06_pearlescent",
+    "name": "Jailbroken",
+    "parts": [
+     {
+      "list": 19,
+      "index": 60,
+      "slot": "barrel"
+     },
+     {
+      "list": 19,
+      "index": 66,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 19,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 19,
+      "index": 42,
+      "slot": "grip"
+     },
+     {
+      "list": 19,
+      "index": 54,
+      "slot": "foregrip"
+     },
+     {
+      "list": 19,
+      "index": 62,
+      "slot": "secondary_ammo"
+     },
+     {
+      "list": 19,
+      "index": 4,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Jail-broken Gatling"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "prince",
+    "parts": [
+     {
+      "list": 19,
+      "index": 17,
+      "slot": "barrel"
+     },
+     {
+      "list": 19,
+      "index": 27,
+      "slot": "scope"
+     }
+    ],
+    "display": "Prince Harming"
+   },
+   {
+    "comp": 56,
+    "rarity": "05_legendary",
+    "name": "Roil",
+    "parts": [
+     {
+      "list": 19,
+      "index": 21,
+      "slot": "foregrip"
+     },
+     {
+      "list": 19,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 19,
+      "index": 57,
+      "slot": "barrel"
+     },
+     {
+      "list": 19,
+      "index": 66,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Roil"
+   }
+  ],
+  "23": [
+   {
+    "comp": 61,
+    "rarity": "06_pearlescent",
+    "name": "Abyss",
+    "parts": [
+     {
+      "list": 23,
+      "index": 60,
+      "slot": "barrel"
+     },
+     {
+      "list": 23,
+      "index": 70,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 23,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 23,
+      "index": 43,
+      "slot": "grip"
+     },
+     {
+      "list": 23,
+      "index": 50,
+      "slot": "foregrip"
+     },
+     {
+      "list": 23,
+      "index": 63,
+      "slot": "secondary_ammo"
+     },
+     {
+      "list": 23,
+      "index": 4,
+      "slot": "body_acc"
+     },
+     {
+      "list": 23,
+      "index": 26,
+      "slot": "scope"
+     }
+    ],
+    "display": "Abyss"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "devourer",
+    "parts": [
+     {
+      "list": 23,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 23,
+      "index": 50,
+      "slot": "foregrip"
+     },
+     {
+      "list": 1,
+      "index": 10,
+      "slot": "body_ele"
+     }
+    ]
+   },
+   {
+    "comp": 57,
+    "rarity": "05_legendary",
+    "name": "rainmaker",
+    "parts": [
+     {
+      "list": 23,
+      "index": 58,
+      "slot": "barrel"
+     },
+     {
+      "list": 23,
+      "index": 50,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Rainmaker"
+   },
+   {
+    "comp": 19,
+    "rarity": "05_legendary",
+    "name": "Stray",
+    "parts": [
+     {
+      "list": 23,
+      "index": 20,
+      "slot": "barrel"
+     },
+     {
+      "list": 23,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 23,
+      "index": 50,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Stray"
+   },
+   {
+    "comp": 56,
+    "rarity": "05_legendary",
+    "name": "tankbuster",
+    "parts": [
+     {
+      "list": 23,
+      "index": 22,
+      "slot": "barrel"
+     },
+     {
+      "list": 23,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 23,
+      "index": 50,
+      "slot": "foregrip"
+     },
+     {
+      "list": 23,
+      "index": 66,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Tankbuster"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Vamoose",
+    "parts": [
+     {
+      "list": 23,
+      "index": 21,
+      "slot": "barrel"
+     },
+     {
+      "list": 23,
+      "index": 70,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 23,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 23,
+      "index": 43,
+      "slot": "grip"
+     }
+    ],
+    "display": "Vamoose"
+   }
+  ],
+  "13": [
+   {
+    "comp": 85,
+    "rarity": "05_legendary",
+    "name": "firstimpression",
+    "parts": [
+     {
+      "list": 13,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     }
+    ],
+    "display": "First Impression"
+   },
+   {
+    "comp": 87,
+    "rarity": "05_legendary",
+    "name": "harddark",
+    "parts": [
+     {
+      "list": 13,
+      "index": 86,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     },
+     {
+      "list": 13,
+      "index": 13,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 13,
+      "index": 53,
+      "slot": "grip"
+     }
+    ]
+   },
+   {
+    "comp": 91,
+    "rarity": "06_pearlescent",
+    "name": "Kaos",
+    "parts": [
+     {
+      "list": 13,
+      "index": 88,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 13,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 13,
+      "index": 2,
+      "slot": "body_acc"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     },
+     {
+      "list": 13,
+      "index": 29,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 13,
+      "index": 53,
+      "slot": "grip"
+     },
+     {
+      "list": 13,
+      "index": 64,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Kaos"
+   },
+   {
+    "comp": 72,
+    "rarity": "05_legendary",
+    "name": "Lumberjack",
+    "parts": [
+     {
+      "list": 13,
+      "index": 57,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 13,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 13,
+      "index": 25,
+      "slot": "magazine"
+     },
+     {
+      "list": 13,
+      "index": 54,
+      "slot": "grip"
+     },
+     {
+      "list": 13,
+      "index": 64,
+      "slot": "foregrip"
+     },
+     {
+      "list": 13,
+      "index": 2,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Bloody Lumberjack"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "Mercredi",
+    "parts": [
+     {
+      "list": 13,
+      "index": 90,
+      "slot": "foregrip"
+     },
+     {
+      "list": 13,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Mercredi"
+   },
+   {
+    "comp": 100,
+    "rarity": "05_legendary",
+    "name": "OM",
+    "parts": [
+     {
+      "list": 13,
+      "index": 67,
+      "slot": "foregrip"
+     },
+     {
+      "list": 13,
+      "index": 8,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Oscar Mike"
+   },
+   {
+    "comp": 93,
+    "rarity": "05_legendary",
+    "name": "Shardenfreude",
+    "parts": [
+     {
+      "list": 13,
+      "index": 2,
+      "slot": "body_acc"
+     },
+     {
+      "list": 13,
+      "index": 92,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 11,
+      "slot": "body_ele"
+     },
+     {
+      "list": 13,
+      "index": 64,
+      "slot": "foregrip"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Shardenfreude"
+   },
+   {
+    "comp": 73,
+    "rarity": "05_legendary",
+    "name": "star_helix",
+    "parts": [
+     {
+      "list": 13,
+      "index": 76,
+      "slot": "foregrip"
+     },
+     {
+      "list": 13,
+      "index": 77,
+      "slot": "barrel"
+     },
+     {
+      "list": 13,
+      "index": 24,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Star Helix"
+   }
+  ],
+  "2": [
+   {
+    "comp": 87,
+    "rarity": "05_legendary",
+    "name": "blackout",
+    "parts": [
+     {
+      "list": 2,
+      "index": 86,
+      "slot": "barrel"
+     },
+     {
+      "list": 2,
+      "index": 85,
+      "slot": "foregrip"
+     },
+     {
+      "list": 2,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Shield Overflow"
+   },
+   {
+    "comp": 59,
+    "rarity": "05_legendary",
+    "name": "rangefinder",
+    "parts": [
+     {
+      "list": 2,
+      "index": 78,
+      "slot": "barrel"
+     },
+     {
+      "list": 2,
+      "index": 65,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 2,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 2,
+      "index": 29,
+      "slot": "scope"
+     },
+     {
+      "list": 2,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 2,
+      "index": 36,
+      "slot": "scope_acc"
+     },
+     {
+      "list": 2,
+      "index": 76,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Rangefinder"
+   },
+   {
+    "comp": 84,
+    "rarity": "05_legendary",
+    "name": "silversliver",
+    "parts": [
+     {
+      "list": 2,
+      "index": 83,
+      "slot": "barrel"
+     },
+     {
+      "list": 2,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Silver Sliver"
+   },
+   {
+    "comp": 80,
+    "rarity": "06_pearlescent",
+    "name": "soulsurvivor",
+    "parts": [
+     {
+      "list": 2,
+      "index": 79,
+      "slot": "barrel"
+     },
+     {
+      "list": 2,
+      "index": 45,
+      "slot": "foregrip"
+     },
+     {
+      "list": 2,
+      "index": 82,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 2,
+      "index": 64,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 2,
+      "index": 16,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Soul Survivor"
+   },
+   {
+    "comp": 54,
+    "rarity": "05_legendary",
+    "name": "Zipgun",
+    "parts": [
+     {
+      "list": 2,
+      "index": 1,
+      "slot": "barrel"
+     },
+     {
+      "list": 2,
+      "index": 62,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 2,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 2,
+      "index": 42,
+      "slot": "grip"
+     },
+     {
+      "list": 2,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 2,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Zipper"
+   }
+  ],
+  "8": [
+   {
+    "comp": 59,
+    "rarity": "05_legendary",
+    "name": "02",
+    "parts": [
+     {
+      "list": 8,
+      "index": 8,
+      "slot": "barrel"
+     },
+     {
+      "list": 8,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 8,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 8,
+      "index": 65,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 8,
+      "index": 39,
+      "slot": "grip"
+     },
+     {
+      "list": 8,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 8,
+      "index": 32,
+      "slot": "scope_acc"
+     },
+     {
+      "list": 8,
+      "index": 5,
+      "slot": "body_acc"
+     }
+    ]
+   },
+   {
+    "comp": 53,
+    "rarity": "05_legendary",
+    "name": "bod",
+    "parts": [
+     {
+      "list": 8,
+      "index": 52,
+      "slot": "barrel"
+     },
+     {
+      "list": 8,
+      "index": 47,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Bod"
+   },
+   {
+    "comp": 82,
+    "rarity": "05_legendary",
+    "name": "CannonBrawl",
+    "parts": [
+     {
+      "list": 8,
+      "index": 60,
+      "slot": "barrel"
+     },
+     {
+      "list": 8,
+      "index": 81,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Swan Song"
+   },
+   {
+    "comp": 55,
+    "rarity": "05_legendary",
+    "name": "Heartgun",
+    "parts": [
+     {
+      "list": 8,
+      "index": 54,
+      "slot": "barrel"
+     },
+     {
+      "list": 8,
+      "index": 16,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Acey May "
+   },
+   {
+    "comp": 58,
+    "rarity": "05_legendary",
+    "name": "misslaser",
+    "parts": [
+     {
+      "list": 8,
+      "index": 57,
+      "slot": "barrel"
+     },
+     {
+      "list": 8,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 8,
+      "index": 56,
+      "slot": "foregrip"
+     },
+     {
+      "list": 8,
+      "index": 61,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 8,
+      "index": 39,
+      "slot": "grip"
+     }
+    ],
+    "display": "Missilaser"
+   },
+   {
+    "comp": 84,
+    "rarity": "05_legendary",
+    "name": "pragmate",
+    "parts": [
+     {
+      "list": 8,
+      "index": 83,
+      "slot": "barrel"
+     },
+     {
+      "list": 8,
+      "index": 16,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Pragmate"
+   }
+  ],
+  "20": [
+   {
+    "comp": 63,
+    "rarity": "05_legendary",
+    "name": "bloodstarved",
+    "parts": [
+     {
+      "list": 20,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 20,
+      "index": 80,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 1,
+      "index": 10,
+      "slot": "body_ele"
+     },
+     {
+      "list": 20,
+      "index": 64,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 44,
+      "slot": "grip"
+     },
+     {
+      "list": 20,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Darkbeast"
+   },
+   {
+    "comp": 2,
+    "rarity": "05_legendary",
+    "name": "follower",
+    "parts": [
+     {
+      "list": 20,
+      "index": 84,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 20,
+      "index": 1,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Prowler"
+   },
+   {
+    "comp": 68,
+    "rarity": "05_legendary",
+    "name": "GoreMaster",
+    "parts": [
+     {
+      "list": 20,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 20,
+      "index": 80,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 1,
+      "index": 10,
+      "slot": "body_ele"
+     },
+     {
+      "list": 20,
+      "index": 69,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 44,
+      "slot": "grip"
+     }
+    ],
+    "display": "Goremaster"
+   },
+   {
+    "comp": 74,
+    "rarity": "05_legendary",
+    "name": "handfrag",
+    "parts": [
+     {
+      "list": 20,
+      "index": 84,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 20,
+      "index": 73,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Hand Frag"
+   },
+   {
+    "comp": 65,
+    "rarity": "05_legendary",
+    "name": "Luty",
+    "parts": [
+     {
+      "list": 20,
+      "index": 60,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 80,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 20,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 20,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 29,
+      "slot": "scope"
+     },
+     {
+      "list": 20,
+      "index": 46,
+      "slot": "grip"
+     },
+     {
+      "list": 20,
+      "index": 52,
+      "slot": "foregrip"
+     },
+     {
+      "list": 20,
+      "index": 55,
+      "slot": "body_mag"
+     }
+    ],
+    "display": "Luty Madlad"
+   },
+   {
+    "comp": 70,
+    "rarity": "06_pearlescent",
+    "name": "Raiden",
+    "parts": [
+     {
+      "list": 20,
+      "index": 58,
+      "slot": "body_mag"
+     },
+     {
+      "list": 20,
+      "index": 52,
+      "slot": "foregrip"
+     },
+     {
+      "list": 20,
+      "index": 45,
+      "slot": "grip"
+     },
+     {
+      "list": 20,
+      "index": 59,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 80,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 20,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Raiden"
+   },
+   {
+    "comp": 72,
+    "rarity": "06_pearlescent",
+    "name": "Screwed",
+    "parts": [
+     {
+      "list": 20,
+      "index": 71,
+      "slot": "barrel"
+     },
+     {
+      "list": 20,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 20,
+      "index": 88,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 20,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 20,
+      "index": 43,
+      "slot": "grip"
+     },
+     {
+      "list": 20,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Screwstonian"
+   }
+  ],
+  "27": [
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "BonnieClyde",
+    "parts": [
+     {
+      "list": 27,
+      "index": 73,
+      "slot": "barrel"
+     },
+     {
+      "list": 27,
+      "index": 9,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 27,
+      "index": 26,
+      "slot": "magazine"
+     },
+     {
+      "list": 27,
+      "index": 37,
+      "slot": "scope"
+     },
+     {
+      "list": 27,
+      "index": 52,
+      "slot": "grip"
+     }
+    ],
+    "display": "Bonnie And Clyde"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "fishward",
+    "parts": [
+     {
+      "list": 27,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 27,
+      "index": 84,
+      "slot": "foregrip"
+     },
+     {
+      "list": 27,
+      "index": 25,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Fishward"
+   },
+   {
+    "comp": 89,
+    "rarity": "05_legendary",
+    "name": "FlashFuel",
+    "parts": [
+     {
+      "list": 27,
+      "index": 88,
+      "slot": "barrel"
+     },
+     {
+      "list": 27,
+      "index": 9,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 27,
+      "index": 86,
+      "slot": "foregrip"
+     },
+     {
+      "list": 27,
+      "index": 87,
+      "slot": "magazine"
+     },
+     {
+      "list": 27,
+      "index": 52,
+      "slot": "grip"
+     }
+    ],
+    "display": "Flash Fuel"
+   },
+   {
+    "comp": 81,
+    "rarity": "06_pearlescent",
+    "name": "Gomie",
+    "parts": [
+     {
+      "list": 27,
+      "index": 80,
+      "slot": "barrel"
+     },
+     {
+      "list": 27,
+      "index": 26,
+      "slot": "magazine"
+     },
+     {
+      "list": 27,
+      "index": 61,
+      "slot": "foregrip"
+     },
+     {
+      "list": 27,
+      "index": 52,
+      "slot": "grip"
+     },
+     {
+      "list": 27,
+      "index": 38,
+      "slot": "scope"
+     },
+     {
+      "list": 27,
+      "index": 42,
+      "slot": "scope_acc"
+     },
+     {
+      "list": 27,
+      "index": 9,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 27,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Gomie"
+   },
+   {
+    "comp": 74,
+    "rarity": "05_legendary",
+    "name": "Rowan",
+    "parts": [
+     {
+      "list": 27,
+      "index": 75,
+      "slot": "barrel"
+     },
+     {
+      "list": 27,
+      "index": 27,
+      "slot": "magazine"
+     },
+     {
+      "list": 27,
+      "index": 57,
+      "slot": "foregrip"
+     },
+     {
+      "list": 27,
+      "index": 31,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Rowan's Charge"
+   },
+   {
+    "comp": 79,
+    "rarity": "05_legendary",
+    "name": "Rowdy",
+    "parts": [
+     {
+      "list": 27,
+      "index": 78,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Rowdy Rider"
+   }
+  ],
+  "3": [
+   {
+    "comp": 91,
+    "rarity": "05_legendary",
+    "name": "Infection",
+    "parts": [
+     {
+      "list": 3,
+      "index": 90,
+      "slot": "barrel"
+     },
+     {
+      "list": 3,
+      "index": 70,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Infection"
+   },
+   {
+    "comp": 76,
+    "rarity": "05_legendary",
+    "name": "KingsGambit",
+    "parts": [
+     {
+      "list": 3,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 3,
+      "index": 49,
+      "slot": "foregrip"
+     },
+     {
+      "list": 3,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 3,
+      "index": 75,
+      "slot": "barrel"
+     },
+     {
+      "list": 3,
+      "index": 41,
+      "slot": "grip"
+     }
+    ],
+    "display": "King's Gambit"
+   },
+   {
+    "comp": 78,
+    "rarity": "05_legendary",
+    "name": "phantom_flame",
+    "parts": [
+     {
+      "list": 3,
+      "index": 70,
+      "slot": "foregrip"
+     },
+     {
+      "list": 3,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 3,
+      "index": 77,
+      "slot": "barrel"
+     },
+     {
+      "list": 3,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 3,
+      "index": 41,
+      "slot": "grip"
+     }
+    ],
+    "display": "Phantom Flame"
+   },
+   {
+    "comp": 74,
+    "rarity": "05_legendary",
+    "name": "QuickDraw",
+    "parts": [
+     {
+      "list": 3,
+      "index": 72,
+      "slot": "barrel"
+     }
+    ],
+    "display": "San Saba Songbird"
+   },
+   {
+    "comp": 81,
+    "rarity": "05_legendary",
+    "name": "seventh_sense",
+    "parts": [
+     {
+      "list": 3,
+      "index": 80,
+      "slot": "barrel"
+     },
+     {
+      "list": 3,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Seventh Sense"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "shalashaska",
+    "parts": [
+     {
+      "list": 3,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 3,
+      "index": 41,
+      "slot": "grip"
+     }
+    ],
+    "display": "Shalashaska"
+   },
+   {
+    "comp": 85,
+    "rarity": "05_legendary",
+    "name": "Shoals",
+    "parts": [
+     {
+      "list": 3,
+      "index": 84,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Shoals"
+   }
+  ],
+  "9": [
+   {
+    "comp": 101,
+    "rarity": "06_pearlescent",
+    "name": "Constable",
+    "parts": [
+     {
+      "list": 9,
+      "index": 102,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 94,
+      "slot": "magazine"
+     },
+     {
+      "list": 9,
+      "index": 41,
+      "slot": "grip"
+     },
+     {
+      "list": 9,
+      "index": 59,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 9,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Constable"
+   },
+   {
+    "comp": 100,
+    "rarity": "05_legendary",
+    "name": "Doeshot",
+    "parts": [
+     {
+      "list": 9,
+      "index": 99,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 94,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Doeshot"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "Hellwalker",
+    "parts": [
+     {
+      "list": 9,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 94,
+      "slot": "magazine"
+     },
+     {
+      "list": 9,
+      "index": 40,
+      "slot": "grip"
+     },
+     {
+      "list": 9,
+      "index": 68,
+      "slot": "foregrip"
+     },
+     {
+      "list": 9,
+      "index": 23,
+      "slot": "scope"
+     }
+    ],
+    "display": "Hellwalker"
+   },
+   {
+    "comp": 106,
+    "rarity": "05_legendary",
+    "name": "Hippogun",
+    "parts": [
+     {
+      "list": 9,
+      "index": 105,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 94,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Hippo Gun"
+   },
+   {
+    "comp": 85,
+    "rarity": "05_legendary",
+    "name": "RainbowVomit",
+    "parts": [
+     {
+      "list": 9,
+      "index": 86,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 87,
+      "slot": "magazine"
+     },
+     {
+      "list": 9,
+      "index": 76,
+      "slot": "body_ele"
+     },
+     {
+      "list": 9,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Rainbow Vomit"
+   },
+   {
+    "comp": 80,
+    "rarity": "05_legendary",
+    "name": "Slugger",
+    "parts": [
+     {
+      "list": 9,
+      "index": 79,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 23,
+      "slot": "scope"
+     },
+     {
+      "list": 9,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 9,
+      "index": 6,
+      "slot": "body_acc"
+     },
+     {
+      "list": 9,
+      "index": 78,
+      "slot": "magazine"
+     },
+     {
+      "list": 9,
+      "index": 40,
+      "slot": "grip"
+     },
+     {
+      "list": 9,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Hot Slugger"
+   },
+   {
+    "comp": 91,
+    "rarity": "05_legendary",
+    "name": "TKsWave",
+    "parts": [
+     {
+      "list": 9,
+      "index": 90,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 89,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "T.k's Wave"
+   },
+   {
+    "comp": 104,
+    "rarity": "05_legendary",
+    "name": "Verce",
+    "parts": [
+     {
+      "list": 9,
+      "index": 103,
+      "slot": "barrel"
+     },
+     {
+      "list": 9,
+      "index": 94,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Verce"
+   }
+  ],
+  "24": [
+   {
+    "comp": 73,
+    "rarity": "05_legendary",
+    "name": "ballista",
+    "parts": [
+     {
+      "list": 24,
+      "index": 72,
+      "slot": "barrel"
+     },
+     {
+      "list": 24,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 24,
+      "index": 45,
+      "slot": "foregrip"
+     },
+     {
+      "list": 24,
+      "index": 64,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 24,
+      "index": 28,
+      "slot": "scope"
+     },
+     {
+      "list": 24,
+      "index": 44,
+      "slot": "grip"
+     }
+    ],
+    "display": "Borstel Ballista"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Boomslang",
+    "parts": [
+     {
+      "list": 24,
+      "index": 74,
+      "slot": "barrel"
+     },
+     {
+      "list": 24,
+      "index": 15,
+      "slot": "magazine"
+     },
+     {
+      "list": 24,
+      "index": 18,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 24,
+      "index": 61,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 24,
+      "index": 42,
+      "slot": "grip"
+     },
+     {
+      "list": 24,
+      "index": 25,
+      "slot": "scope"
+     }
+    ],
+    "display": "Boomslang"
+   },
+   {
+    "comp": 83,
+    "rarity": "06_pearlescent",
+    "name": "Burrow",
+    "parts": [
+     {
+      "list": 24,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 24,
+      "index": 12,
+      "slot": "hyperion_secondary_acc"
+     },
+     {
+      "list": 24,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 24,
+      "index": 43,
+      "slot": "grip"
+     },
+     {
+      "list": 24,
+      "index": 50,
+      "slot": "foregrip"
+     },
+     {
+      "list": 24,
+      "index": 5,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Prism"
+   },
+   {
+    "comp": 78,
+    "rarity": "05_legendary",
+    "name": "fearstalker",
+    "parts": [
+     {
+      "list": 24,
+      "index": 77,
+      "slot": "barrel"
+     },
+     {
+      "list": 24,
+      "index": 81,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Fearstalker"
+   },
+   {
+    "comp": 87,
+    "rarity": "05_legendary",
+    "name": "outback",
+    "parts": [
+     {
+      "list": 24,
+      "index": 86,
+      "slot": "barrel"
+     },
+     {
+      "list": 24,
+      "index": 27,
+      "slot": "scope"
+     },
+     {
+      "list": 24,
+      "index": 14,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Wind Skimmer"
+   },
+   {
+    "comp": 76,
+    "rarity": "05_legendary",
+    "name": "Truck",
+    "parts": [
+     {
+      "list": 24,
+      "index": 75,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Truck"
+   }
+  ],
+  "289": [
+   {
+    "comp": 29,
+    "rarity": "05_legendary",
+    "name": "barrel",
+    "parts": [
+     {
+      "list": 289,
+      "index": 30,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Cooper Duper "
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "BottledLightning",
+    "parts": [
+     {
+      "list": 289,
+      "index": 26,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 14,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Bottled Lightning"
+   },
+   {
+    "comp": 25,
+    "rarity": "05_legendary",
+    "name": "GammaVoid",
+    "parts": [
+     {
+      "list": 289,
+      "index": 24,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 13,
+      "slot": "body_ele"
+     },
+     {
+      "list": 289,
+      "index": 7,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Gamma Void"
+   },
+   {
+    "comp": 28,
+    "rarity": "05_legendary",
+    "name": "Ichor",
+    "parts": [
+     {
+      "list": 289,
+      "index": 27,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Ichor"
+   },
+   {
+    "comp": 4,
+    "rarity": "05_legendary",
+    "name": "lightning",
+    "parts": [
+     {
+      "list": 289,
+      "index": 26,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Sparky Shield"
+   }
+  ],
+  "10": [
+   {
+    "comp": 86,
+    "rarity": "05_legendary",
+    "name": "assembler",
+    "parts": [
+     {
+      "list": 10,
+      "index": 85,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 10,
+      "index": 63,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 10,
+      "index": 84,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Decompiler"
+   },
+   {
+    "comp": 81,
+    "rarity": "05_legendary",
+    "name": "discybusiness",
+    "parts": [
+     {
+      "list": 10,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 10,
+      "index": 51,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Discy Business"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Kaleidosplode",
+    "parts": [
+     {
+      "list": 10,
+      "index": 56,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 63,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 10,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 10,
+      "index": 40,
+      "slot": "grip"
+     },
+     {
+      "list": 10,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 1,
+      "index": 11,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Kaleidosplode"
+   },
+   {
+    "comp": 100,
+    "rarity": "05_legendary",
+    "name": "kickballer",
+    "parts": [
+     {
+      "list": 10,
+      "index": 7,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 10,
+      "index": 51,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Kickballer"
+   },
+   {
+    "comp": 80,
+    "rarity": "05_legendary",
+    "name": "mantra",
+    "parts": [
+     {
+      "list": 10,
+      "index": 62,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     },
+     {
+      "list": 10,
+      "index": 16,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Mantra"
+   },
+   {
+    "comp": 61,
+    "rarity": "05_legendary",
+    "name": "reminisce",
+    "parts": [
+     {
+      "list": 10,
+      "index": 60,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 10,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 10,
+      "index": 63,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Reminisce"
+   },
+   {
+    "comp": 57,
+    "rarity": "05_legendary",
+    "name": "sweet_embrace",
+    "parts": [
+     {
+      "list": 10,
+      "index": 58,
+      "slot": "barrel"
+     },
+     {
+      "list": 10,
+      "index": 24,
+      "slot": "scope"
+     },
+     {
+      "list": 10,
+      "index": 59,
+      "slot": "foregrip"
+     },
+     {
+      "list": 10,
+      "index": 71,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     },
+     {
+      "list": 10,
+      "index": 16,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Sweet Embrace"
+   }
+  ],
+  "21": [
+   {
+    "comp": 93,
+    "rarity": "05_legendary",
+    "name": "accretion",
+    "parts": [
+     {
+      "list": 21,
+      "index": 92,
+      "slot": "barrel"
+     },
+     {
+      "list": 21,
+      "index": 91,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Honeymooner"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "Firework",
+    "parts": [
+     {
+      "list": 21,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 21,
+      "index": 72,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 21,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 21,
+      "index": 42,
+      "slot": "grip"
+     },
+     {
+      "list": 21,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 1,
+      "index": 48,
+      "slot": "body_ele"
+     },
+     {
+      "list": 21,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Matador's Match"
+   },
+   {
+    "comp": 85,
+    "rarity": "05_legendary",
+    "name": "flashcyclone",
+    "parts": [
+     {
+      "list": 21,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 11,
+      "slot": "body_ele"
+     },
+     {
+      "list": 21,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 21,
+      "index": 88,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Flash Cyclone"
+   },
+   {
+    "comp": 90,
+    "rarity": "06_pearlescent",
+    "name": "Juliet",
+    "parts": [
+     {
+      "list": 21,
+      "index": 89,
+      "slot": "barrel"
+     },
+     {
+      "list": 21,
+      "index": 69,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 21,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 21,
+      "index": 42,
+      "slot": "grip"
+     },
+     {
+      "list": 21,
+      "index": 48,
+      "slot": "foregrip"
+     },
+     {
+      "list": 21,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Juliet's Sparkle"
+   },
+   {
+    "comp": 60,
+    "rarity": "05_legendary",
+    "name": "OhmIgot",
+    "parts": [
+     {
+      "list": 21,
+      "index": 59,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 14,
+      "slot": "body_ele"
+     },
+     {
+      "list": 21,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 21,
+      "index": 65,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 21,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 21,
+      "index": 42,
+      "slot": "grip"
+     }
+    ],
+    "display": "Ohm I Got"
+   },
+   {
+    "comp": 63,
+    "rarity": "05_legendary",
+    "name": "PlasmaCoil",
+    "parts": [
+     {
+      "list": 21,
+      "index": 62,
+      "slot": "barrel"
+     },
+     {
+      "list": 21,
+      "index": 61,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 21,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 21,
+      "index": 42,
+      "slot": "grip"
+     },
+     {
+      "list": 21,
+      "index": 51,
+      "slot": "foregrip"
+     },
+     {
+      "list": 21,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 1,
+      "index": 5,
+      "slot": "body_ele"
+     },
+     {
+      "list": 21,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Plasma Coil"
+   },
+   {
+    "comp": 81,
+    "rarity": "05_legendary",
+    "name": "songbird",
+    "parts": [
+     {
+      "list": 21,
+      "index": 80,
+      "slot": "barrel"
+     },
+     {
+      "list": 21,
+      "index": 79,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Broken Wings"
+   }
+  ],
+  "25": [
+   {
+    "comp": 80,
+    "rarity": "05_legendary",
+    "name": "asher",
+    "parts": [
+     {
+      "list": 25,
+      "index": 65,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 25,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 25,
+      "index": 79,
+      "slot": "barrel"
+     },
+     {
+      "list": 25,
+      "index": 52,
+      "slot": "foregrip"
+     },
+     {
+      "list": 1,
+      "index": 10,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Asher's Rise"
+   },
+   {
+    "comp": 92,
+    "rarity": "05_legendary",
+    "name": "clarity",
+    "parts": [
+     {
+      "list": 25,
+      "index": 91,
+      "slot": "barrel"
+     },
+     {
+      "list": 25,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 25,
+      "index": 90,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Clarity"
+   },
+   {
+    "comp": 59,
+    "rarity": "05_legendary",
+    "name": "complex_root",
+    "parts": [
+     {
+      "list": 25,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 25,
+      "index": 20,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Complex Root"
+   },
+   {
+    "comp": 82,
+    "rarity": "06_pearlescent",
+    "name": "conflux",
+    "parts": [
+     {
+      "list": 25,
+      "index": 81,
+      "slot": "barrel"
+     },
+     {
+      "list": 25,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Conflux"
+   },
+   {
+    "comp": 61,
+    "rarity": "05_legendary",
+    "name": "katagawa",
+    "parts": [
+     {
+      "list": 25,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 25,
+      "index": 60,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     },
+     {
+      "list": 25,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Katagawa's Revenge"
+   },
+   {
+    "comp": 87,
+    "rarity": "05_legendary",
+    "name": "manifest",
+    "parts": [
+     {
+      "list": 25,
+      "index": 85,
+      "slot": "barrel"
+     },
+     {
+      "list": 25,
+      "index": 86,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Marshall's Claw"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "stealth",
+    "parts": [
+     {
+      "list": 25,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 25,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 25,
+      "index": 69,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 25,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Stealth & Seek"
+   }
+  ],
+  "15": [
+   {
+    "comp": 84,
+    "rarity": "05_legendary",
+    "name": "Avarice",
+    "parts": [
+     {
+      "list": 15,
+      "index": 83,
+      "slot": "barrel"
+     },
+     {
+      "list": 15,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Avarice"
+   },
+   {
+    "comp": 77,
+    "rarity": "06_pearlescent",
+    "name": "crowsourced",
+    "parts": [
+     {
+      "list": 15,
+      "index": 78,
+      "slot": "barrel"
+     },
+     {
+      "list": 15,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 15,
+      "index": 70,
+      "slot": "foregrip"
+     },
+     {
+      "list": 15,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Crow-sourced"
+   },
+   {
+    "comp": 75,
+    "rarity": "05_legendary",
+    "name": "GMR",
+    "parts": [
+     {
+      "list": 15,
+      "index": 2,
+      "slot": "barrel"
+     },
+     {
+      "list": 15,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 15,
+      "index": 70,
+      "slot": "foregrip"
+     },
+     {
+      "list": 15,
+      "index": 1,
+      "slot": "scope"
+     },
+     {
+      "list": 15,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "G.m.r."
+   },
+   {
+    "comp": 76,
+    "rarity": "05_legendary",
+    "name": "Goalkeeper",
+    "parts": [
+     {
+      "list": 15,
+      "index": 72,
+      "slot": "barrel"
+     },
+     {
+      "list": 15,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 15,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 15,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Goalkeeper"
+   },
+   {
+    "comp": 79,
+    "rarity": "06_pearlescent",
+    "name": "PChonk",
+    "parts": [
+     {
+      "list": 15,
+      "index": 80,
+      "slot": "barrel"
+     },
+     {
+      "list": 15,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 15,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 15,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 15,
+      "index": 39,
+      "slot": "grip"
+     },
+     {
+      "list": 15,
+      "index": 70,
+      "slot": "foregrip"
+     },
+     {
+      "list": 15,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Pachonk"
+   },
+   {
+    "comp": 81,
+    "rarity": "05_legendary",
+    "name": "Testament",
+    "parts": [
+     {
+      "list": 15,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 15,
+      "index": 56,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 15,
+      "index": 85,
+      "slot": "hyperion_secondary_acc"
+     },
+     {
+      "list": 1,
+      "index": 62,
+      "slot": "body_ele"
+     },
+     {
+      "list": 15,
+      "index": 70,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Divided Glow"
+   }
+  ],
+  "4": [
+   {
+    "comp": 76,
+    "rarity": "05_legendary",
+    "name": "Bully",
+    "parts": [
+     {
+      "list": 4,
+      "index": 75,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 4,
+      "index": 10,
+      "slot": "hyperion_secondary_acc"
+     },
+     {
+      "list": 4,
+      "index": 23,
+      "slot": "scope"
+     }
+    ],
+    "display": "Bully"
+   },
+   {
+    "comp": 80,
+    "rarity": "05_legendary",
+    "name": "NoisyCricket",
+    "parts": [
+     {
+      "list": 4,
+      "index": 79,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 39,
+      "slot": "grip"
+     },
+     {
+      "list": 4,
+      "index": 78,
+      "slot": "magazine"
+     },
+     {
+      "list": 4,
+      "index": 54,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Noisy Cricket"
+   },
+   {
+    "comp": 89,
+    "rarity": "05_legendary",
+    "name": "Patience",
+    "parts": [
+     {
+      "list": 4,
+      "index": 88,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 4,
+      "index": 54,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 4,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Virtue"
+   },
+   {
+    "comp": 87,
+    "rarity": "05_legendary",
+    "name": "Rhythm",
+    "parts": [
+     {
+      "list": 4,
+      "index": 86,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 4,
+      "index": 54,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 4,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Rhythm"
+   },
+   {
+    "comp": 53,
+    "rarity": "05_legendary",
+    "name": "RocketReload",
+    "parts": [
+     {
+      "list": 4,
+      "index": 81,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 1,
+      "slot": "magazine"
+     },
+     {
+      "list": 4,
+      "index": 58,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 4,
+      "index": 69,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 4,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Lucky Clover"
+   },
+   {
+    "comp": 85,
+    "rarity": "05_legendary",
+    "name": "Roulette",
+    "parts": [
+     {
+      "list": 4,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 68,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Roulette"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "Sunspot",
+    "parts": [
+     {
+      "list": 4,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 4,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 4,
+      "index": 54,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Sunspot"
+   }
+  ],
+  "26": [
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Fisheye",
+    "parts": [
+     {
+      "list": 26,
+      "index": 75,
+      "slot": "barrel"
+     },
+     {
+      "list": 26,
+      "index": 64,
+      "slot": "foregrip"
+     },
+     {
+      "list": 26,
+      "index": 74,
+      "slot": "magazine"
+     },
+     {
+      "list": 26,
+      "index": 53,
+      "slot": "grip"
+     },
+     {
+      "list": 26,
+      "index": 37,
+      "slot": "scope"
+     }
+    ],
+    "display": "Fisheye"
+   },
+   {
+    "comp": 82,
+    "rarity": "05_legendary",
+    "name": "ishmael",
+    "parts": [
+     {
+      "list": 26,
+      "index": 81,
+      "slot": "barrel"
+     },
+     {
+      "list": 26,
+      "index": 12,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 26,
+      "index": 27,
+      "slot": "magazine"
+     },
+     {
+      "list": 26,
+      "index": 80,
+      "slot": "foregrip"
+     },
+     {
+      "list": 26,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 26,
+      "index": 36,
+      "slot": "scope"
+     }
+    ],
+    "display": "Ishmael"
+   },
+   {
+    "comp": 86,
+    "rarity": "05_legendary",
+    "name": "petanque",
+    "parts": [
+     {
+      "list": 26,
+      "index": 85,
+      "slot": "barrel"
+     },
+     {
+      "list": 26,
+      "index": 12,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 26,
+      "index": 27,
+      "slot": "magazine"
+     },
+     {
+      "list": 26,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Petanque"
+   },
+   {
+    "comp": 79,
+    "rarity": "05_legendary",
+    "name": "Seamstress",
+    "parts": [
+     {
+      "list": 26,
+      "index": 78,
+      "slot": "barrel"
+     },
+     {
+      "list": 26,
+      "index": 77,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Rooker"
+   },
+   {
+    "comp": 76,
+    "rarity": "05_legendary",
+    "name": "symmetry",
+    "parts": [
+     {
+      "list": 26,
+      "index": 72,
+      "slot": "barrel"
+     },
+     {
+      "list": 26,
+      "index": 12,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 26,
+      "index": 27,
+      "slot": "magazine"
+     },
+     {
+      "list": 26,
+      "index": 64,
+      "slot": "foregrip"
+     },
+     {
+      "list": 26,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Symmetry"
+   },
+   {
+    "comp": 84,
+    "rarity": "06_pearlescent",
+    "name": "Temper",
+    "parts": [
+     {
+      "list": 26,
+      "index": 83,
+      "slot": "barrel"
+     },
+     {
+      "list": 26,
+      "index": 12,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 26,
+      "index": 28,
+      "slot": "magazine"
+     },
+     {
+      "list": 26,
+      "index": 60,
+      "slot": "foregrip"
+     },
+     {
+      "list": 26,
+      "index": 4,
+      "slot": "body_acc"
+     },
+     {
+      "list": 26,
+      "index": 53,
+      "slot": "grip"
+     }
+    ],
+    "display": "Solar Temper"
+   }
+  ],
+  "14": [
+   {
+    "comp": 35,
+    "rarity": "05_legendary",
+    "name": "Chuck",
+    "parts": [
+     {
+      "list": 14,
+      "index": 34,
+      "slot": "barrel"
+     },
+     {
+      "list": 14,
+      "index": 1,
+      "slot": "magazine"
+     },
+     {
+      "list": 14,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 14,
+      "index": 25,
+      "slot": "scope"
+     },
+     {
+      "list": 14,
+      "index": 66,
+      "slot": "foregrip"
+     },
+     {
+      "list": 14,
+      "index": 12,
+      "slot": "tediore_acc"
+     },
+     {
+      "list": 14,
+      "index": 45,
+      "slot": "grip"
+     }
+    ],
+    "display": "Chuck"
+   },
+   {
+    "comp": 36,
+    "rarity": "05_legendary",
+    "name": "DividedFocus",
+    "parts": [
+     {
+      "list": 14,
+      "index": 39,
+      "slot": "barrel"
+     },
+     {
+      "list": 14,
+      "index": 82,
+      "slot": "magazine"
+     },
+     {
+      "list": 14,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 14,
+      "index": 66,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Divided Focus"
+   },
+   {
+    "comp": 93,
+    "rarity": "05_legendary",
+    "name": "HotMod",
+    "parts": [
+     {
+      "list": 14,
+      "index": 81,
+      "slot": "barrel"
+     },
+     {
+      "list": 14,
+      "index": 80,
+      "slot": "foregrip"
+     },
+     {
+      "list": 14,
+      "index": 45,
+      "slot": "grip"
+     }
+    ],
+    "display": "Lovelorn"
+   },
+   {
+    "comp": 79,
+    "rarity": "05_legendary",
+    "name": "Laserdisc",
+    "parts": [
+     {
+      "list": 14,
+      "index": 78,
+      "slot": "barrel"
+     },
+     {
+      "list": 14,
+      "index": 82,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Laser Disker"
+   },
+   {
+    "comp": 77,
+    "rarity": "05_legendary",
+    "name": "Murder",
+    "parts": [
+     {
+      "list": 14,
+      "index": 76,
+      "slot": "barrel"
+     },
+     {
+      "list": 14,
+      "index": 82,
+      "slot": "magazine"
+     },
+     {
+      "list": 14,
+      "index": 50,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Murmur"
+   }
+  ],
+  "5": [
+   {
+    "comp": 87,
+    "rarity": "05_legendary",
+    "name": "01",
+    "parts": [
+     {
+      "list": 5,
+      "index": 48,
+      "slot": "grip"
+     },
+     {
+      "list": 5,
+      "index": 7,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 17,
+      "slot": "tediore_secondary_acc"
+     },
+     {
+      "list": 5,
+      "index": 12,
+      "slot": "tediore_acc"
+     },
+     {
+      "list": 5,
+      "index": 25,
+      "slot": "magazine"
+     },
+     {
+      "list": 5,
+      "index": 82,
+      "slot": "foregrip"
+     },
+     {
+      "list": 5,
+      "index": 32,
+      "slot": "scope"
+     },
+     {
+      "list": 5,
+      "index": 4,
+      "slot": "body_acc"
+     }
+    ]
+   },
+   {
+    "comp": 60,
+    "rarity": "05_legendary",
+    "name": "ATLien",
+    "parts": [
+     {
+      "list": 5,
+      "index": 59,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 55,
+      "slot": "tediore_acc"
+     },
+     {
+      "list": 5,
+      "index": 58,
+      "slot": "tediore_secondary_acc"
+     },
+     {
+      "list": 5,
+      "index": 57,
+      "slot": "grip"
+     }
+    ],
+    "display": "Budget Deity"
+   },
+   {
+    "comp": 99,
+    "rarity": "05_legendary",
+    "name": "EarlyExcess",
+    "parts": [
+     {
+      "list": 5,
+      "index": 94,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 93,
+      "slot": "foregrip"
+     },
+     {
+      "list": 5,
+      "index": 22,
+      "slot": "magazine"
+     },
+     {
+      "list": 5,
+      "index": 69,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 5,
+      "index": 14,
+      "slot": "tediore_secondary_acc"
+     },
+     {
+      "list": 5,
+      "index": 92,
+      "slot": "grip"
+     },
+     {
+      "list": 5,
+      "index": 55,
+      "slot": "tediore_acc"
+     }
+    ],
+    "display": "Overconsumption"
+   },
+   {
+    "comp": 86,
+    "rarity": "05_legendary",
+    "name": "Inscriber",
+    "parts": [
+     {
+      "list": 5,
+      "index": 85,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 84,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 5,
+      "index": 53,
+      "slot": "foregrip"
+     },
+     {
+      "list": 5,
+      "index": 72,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Inscriber"
+   },
+   {
+    "comp": 13,
+    "rarity": "05_legendary",
+    "name": "RelievingGuard",
+    "parts": [
+     {
+      "list": 5,
+      "index": 100,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Secured Relief"
+   },
+   {
+    "comp": 66,
+    "rarity": "05_legendary",
+    "name": "RubysGrasp",
+    "parts": [
+     {
+      "list": 5,
+      "index": 43,
+      "slot": "grip"
+     },
+     {
+      "list": 5,
+      "index": 65,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 17,
+      "slot": "tediore_secondary_acc"
+     },
+     {
+      "list": 5,
+      "index": 12,
+      "slot": "tediore_acc"
+     }
+    ],
+    "display": "Ruby's Grasp"
+   },
+   {
+    "comp": 89,
+    "rarity": "05_legendary",
+    "name": "Shammy",
+    "parts": [
+     {
+      "list": 5,
+      "index": 88,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 46,
+      "slot": "grip"
+     },
+     {
+      "list": 5,
+      "index": 22,
+      "slot": "magazine"
+     },
+     {
+      "list": 5,
+      "index": 53,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Shammy Kablammy"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Sideshow",
+    "parts": [
+     {
+      "list": 5,
+      "index": 67,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 22,
+      "slot": "magazine"
+     },
+     {
+      "list": 5,
+      "index": 46,
+      "slot": "grip"
+     },
+     {
+      "list": 5,
+      "index": 53,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Sideshow"
+   },
+   {
+    "comp": 13,
+    "rarity": "05_legendary",
+    "name": "TradingUp",
+    "parts": [
+     {
+      "list": 5,
+      "index": 90,
+      "slot": "barrel"
+     },
+     {
+      "list": 5,
+      "index": 102,
+      "slot": "scope"
+     }
+    ],
+    "display": "Paperclip"
+   }
+  ],
+  "11": [
+   {
+    "comp": 76,
+    "rarity": "05_legendary",
+    "name": "anarchy",
+    "parts": [
+     {
+      "list": 11,
+      "index": 62,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 11,
+      "index": 75,
+      "slot": "barrel"
+     },
+     {
+      "list": 11,
+      "index": 23,
+      "slot": "magazine"
+     },
+     {
+      "list": 11,
+      "index": 31,
+      "slot": "scope"
+     }
+    ],
+    "display": "Anarchy"
+   },
+   {
+    "comp": 78,
+    "rarity": "05_legendary",
+    "name": "commBD",
+    "parts": [
+     {
+      "list": 11,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 11,
+      "index": 64,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 11,
+      "index": 77,
+      "slot": "barrel"
+     },
+     {
+      "list": 11,
+      "index": 21,
+      "slot": "magazine"
+     },
+     {
+      "list": 11,
+      "index": 29,
+      "slot": "scope"
+     },
+     {
+      "list": 11,
+      "index": 43,
+      "slot": "grip"
+     },
+     {
+      "list": 11,
+      "index": 54,
+      "slot": "foregrip"
+     },
+     {
+      "list": 11,
+      "index": 9,
+      "slot": "tediore_acc"
+     }
+    ],
+    "display": "Forsaken Chaos"
+   },
+   {
+    "comp": 82,
+    "rarity": "06_pearlescent",
+    "name": "Eigenburst",
+    "parts": [
+     {
+      "list": 11,
+      "index": 81,
+      "slot": "barrel"
+     },
+     {
+      "list": 11,
+      "index": 23,
+      "slot": "magazine"
+     },
+     {
+      "list": 11,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Eigenburst"
+   },
+   {
+    "comp": 92,
+    "rarity": "05_legendary",
+    "name": "Fourier",
+    "parts": [
+     {
+      "list": 11,
+      "index": 91,
+      "slot": "barrel"
+     },
+     {
+      "list": 11,
+      "index": 52,
+      "slot": "foregrip"
+     },
+     {
+      "list": 11,
+      "index": 45,
+      "slot": "grip"
+     },
+     {
+      "list": 11,
+      "index": 93,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Fourier's Malady"
+   },
+   {
+    "comp": 80,
+    "rarity": "05_legendary",
+    "name": "HeavyTurret",
+    "parts": [
+     {
+      "list": 11,
+      "index": 79,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Husky Friend"
+   },
+   {
+    "comp": 90,
+    "rarity": "06_pearlescent",
+    "name": "sharkbait",
+    "parts": [
+     {
+      "list": 11,
+      "index": 89,
+      "slot": "barrel"
+     },
+     {
+      "list": 11,
+      "index": 85,
+      "slot": "grip"
+     },
+     {
+      "list": 11,
+      "index": 84,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 11,
+      "index": 52,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Sharkbait"
+   }
+  ],
+  "17": [
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Bugbear",
+    "parts": [
+     {
+      "list": 17,
+      "index": 54,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     },
+     {
+      "list": 17,
+      "index": 62,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 17,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 17,
+      "index": 45,
+      "slot": "foregrip"
+     },
+     {
+      "list": 17,
+      "index": 21,
+      "slot": "scope"
+     }
+    ],
+    "display": "Bugbear"
+   },
+   {
+    "comp": 56,
+    "rarity": "05_legendary",
+    "name": "coldshoulder",
+    "parts": [
+     {
+      "list": 17,
+      "index": 55,
+      "slot": "barrel"
+     },
+     {
+      "list": 17,
+      "index": 74,
+      "slot": "foregrip"
+     },
+     {
+      "list": 17,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 1,
+      "index": 11,
+      "slot": "body_ele"
+     },
+     {
+      "list": 17,
+      "index": 59,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 17,
+      "index": 9,
+      "slot": "hyperion_secondary_acc"
+     },
+     {
+      "list": 17,
+      "index": 22,
+      "slot": "scope"
+     }
+    ],
+    "display": "Cold Shoulder"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "fleabag",
+    "parts": [
+     {
+      "list": 17,
+      "index": 82,
+      "slot": "barrel"
+     },
+     {
+      "list": 17,
+      "index": 81,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Fleabag"
+   },
+   {
+    "comp": 85,
+    "rarity": "05_legendary",
+    "name": "lockjaw",
+    "parts": [
+     {
+      "list": 17,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 17,
+      "index": 74,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Lockjaw"
+   },
+   {
+    "comp": 78,
+    "rarity": "05_legendary",
+    "name": "PotatoThrower",
+    "parts": [
+     {
+      "list": 17,
+      "index": 77,
+      "slot": "barrel"
+     },
+     {
+      "list": 17,
+      "index": 57,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Potato Thrower Iv"
+   },
+   {
+    "comp": 90,
+    "rarity": "05_legendary",
+    "name": "Ripple",
+    "parts": [
+     {
+      "list": 17,
+      "index": 89,
+      "slot": "barrel"
+     },
+     {
+      "list": 17,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 1,
+      "index": 10,
+      "slot": "body_ele"
+     },
+     {
+      "list": 17,
+      "index": 88,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Ripple"
+   }
+  ],
+  "273": [
+   {
+    "comp": 43,
+    "rarity": "05_legendary",
+    "name": "DahlFather",
+    "parts": [
+     {
+      "list": 273,
+      "index": 42,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Heimdahl"
+   },
+   {
+    "comp": 34,
+    "rarity": "05_legendary",
+    "name": "Javelin",
+    "parts": [
+     {
+      "list": 273,
+      "index": 35,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Sprezzatura"
+   },
+   {
+    "comp": 45,
+    "rarity": "05_legendary",
+    "name": "Loiter",
+    "parts": [
+     {
+      "list": 273,
+      "index": 44,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Loiter Sploiter"
+   },
+   {
+    "comp": 36,
+    "rarity": "05_legendary",
+    "name": "ravenfire",
+    "parts": [
+     {
+      "list": 273,
+      "index": 40,
+      "slot": "barrel"
+     },
+     {
+      "list": 273,
+      "index": 27,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Ravenfire"
+   },
+   {
+    "comp": 38,
+    "rarity": "05_legendary",
+    "name": "sidewinder",
+    "parts": [
+     {
+      "list": 273,
+      "index": 37,
+      "slot": "barrel"
+     },
+     {
+      "list": 273,
+      "index": 15,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Sidewinder"
+   }
+  ],
+  "6": [
+   {
+    "comp": 59,
+    "rarity": "05_legendary",
+    "name": "Breadth",
+    "parts": [
+     {
+      "list": 6,
+      "index": 58,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 76,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Hardpoint"
+   },
+   {
+    "comp": 78,
+    "rarity": "06_pearlescent",
+    "name": "Handcannon",
+    "parts": [
+     {
+      "list": 6,
+      "index": 77,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 81,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Handcannon"
+   },
+   {
+    "comp": 85,
+    "rarity": "06_pearlescent",
+    "name": "Herald",
+    "parts": [
+     {
+      "list": 6,
+      "index": 86,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 84,
+      "slot": "foregrip"
+     },
+     {
+      "list": 6,
+      "index": 60,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Herald"
+   },
+   {
+    "comp": 53,
+    "rarity": "05_legendary",
+    "name": "QueensRest",
+    "parts": [
+     {
+      "list": 6,
+      "index": 52,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 76,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Queen's Rest"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Roach",
+    "parts": [
+     {
+      "list": 6,
+      "index": 54,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 60,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 6,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Roach"
+   },
+   {
+    "comp": 57,
+    "rarity": "05_legendary",
+    "name": "ScootShoot",
+    "parts": [
+     {
+      "list": 6,
+      "index": 56,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 76,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Scoot'n'shoot"
+   },
+   {
+    "comp": 88,
+    "rarity": "05_legendary",
+    "name": "Sledge",
+    "parts": [
+     {
+      "list": 6,
+      "index": 87,
+      "slot": "barrel"
+     },
+     {
+      "list": 6,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 1,
+      "index": 13,
+      "slot": "body_ele"
+     },
+     {
+      "list": 6,
+      "index": 76,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Critical Decay"
+   }
+  ],
+  "12": [
+   {
+    "comp": 86,
+    "rarity": "06_pearlescent",
+    "name": "AeroDramatic",
+    "parts": [
+     {
+      "list": 12,
+      "index": 85,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Aerodramatic"
+   },
+   {
+    "comp": 79,
+    "rarity": "05_legendary",
+    "name": "arctic",
+    "parts": [
+     {
+      "list": 12,
+      "index": 78,
+      "slot": "barrel"
+     },
+     {
+      "list": 12,
+      "index": 48,
+      "slot": "foregrip"
+     },
+     {
+      "list": 12,
+      "index": 65,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Arc-tan"
+   },
+   {
+    "comp": 83,
+    "rarity": "05_legendary",
+    "name": "Cormano",
+    "parts": [
+     {
+      "list": 12,
+      "index": 84,
+      "slot": "barrel"
+     },
+     {
+      "list": 12,
+      "index": 82,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Cormano"
+   },
+   {
+    "comp": 57,
+    "rarity": "05_legendary",
+    "name": "LeadBalloon",
+    "parts": [
+     {
+      "list": 12,
+      "index": 56,
+      "slot": "barrel"
+     },
+     {
+      "list": 12,
+      "index": 48,
+      "slot": "foregrip"
+     },
+     {
+      "list": 12,
+      "index": 65,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Lead Balloon"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Linebacker",
+    "parts": [
+     {
+      "list": 12,
+      "index": 58,
+      "slot": "barrel"
+     },
+     {
+      "list": 12,
+      "index": 61,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 12,
+      "index": 15,
+      "slot": "magazine"
+     },
+     {
+      "list": 12,
+      "index": 37,
+      "slot": "grip"
+     }
+    ],
+    "display": "Linebacker"
+   },
+   {
+    "comp": 77,
+    "rarity": "05_legendary",
+    "name": "Unstable_Kor",
+    "parts": [
+     {
+      "list": 12,
+      "index": 76,
+      "slot": "barrel"
+     },
+     {
+      "list": 12,
+      "index": 75,
+      "slot": "foregrip"
+     },
+     {
+      "list": 12,
+      "index": 61,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 12,
+      "index": 15,
+      "slot": "magazine"
+     },
+     {
+      "list": 12,
+      "index": 37,
+      "slot": "grip"
+     }
+    ],
+    "display": "Unstable Kor"
+   }
+  ],
+  "18": [
+   {
+    "comp": 100,
+    "rarity": "05_legendary",
+    "name": "bubbles",
+    "parts": [
+     {
+      "list": 18,
+      "index": 99,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 49,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 18,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Bubbles"
+   },
+   {
+    "comp": 88,
+    "rarity": "05_legendary",
+    "name": "DualDamage",
+    "parts": [
+     {
+      "list": 18,
+      "index": 70,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 69,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 18,
+      "index": 3,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Aegon's Dream"
+   },
+   {
+    "comp": 105,
+    "rarity": "05_legendary",
+    "name": "Extinction",
+    "parts": [
+     {
+      "list": 18,
+      "index": 104,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 46,
+      "slot": "underbarrel"
+     }
+    ],
+    "display": "Eradication"
+   },
+   {
+    "comp": 103,
+    "rarity": "05_legendary",
+    "name": "lasercutter",
+    "parts": [
+     {
+      "list": 18,
+      "index": 102,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 101,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 18,
+      "index": 72,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 18,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Laser-cutter"
+   },
+   {
+    "comp": 93,
+    "rarity": "05_legendary",
+    "name": "legendary 93",
+    "parts": [
+     {
+      "list": 18,
+      "index": 92,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 18,
+      "index": 91,
+      "slot": "underbarrel_acc"
+     }
+    ]
+   },
+   {
+    "comp": 63,
+    "rarity": "05_legendary",
+    "name": "Lucian",
+    "parts": [
+     {
+      "list": 18,
+      "index": 1,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 86,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 18,
+      "index": 72,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 18,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Lucian's Flank"
+   },
+   {
+    "comp": 107,
+    "rarity": "05_legendary",
+    "name": "Triplicate",
+    "parts": [
+     {
+      "list": 18,
+      "index": 106,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Triplicate"
+   },
+   {
+    "comp": 65,
+    "rarity": "05_legendary",
+    "name": "WomboCombo",
+    "parts": [
+     {
+      "list": 18,
+      "index": 64,
+      "slot": "barrel"
+     },
+     {
+      "list": 18,
+      "index": 72,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 18,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 18,
+      "index": 58,
+      "slot": "foregrip"
+     }
+    ],
+    "display": "Wombo Combo"
+   }
+  ],
+  "282": [
+   {
+    "comp": 26,
+    "rarity": "05_legendary",
+    "name": "AtlingGun",
+    "parts": [
+     {
+      "list": 282,
+      "index": 25,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Atling Gun"
+   },
+   {
+    "comp": 31,
+    "rarity": "05_legendary",
+    "name": "Flak",
+    "parts": [
+     {
+      "list": 282,
+      "index": 30,
+      "slot": "barrel"
+     },
+     {
+      "list": 282,
+      "index": 18,
+      "slot": "barrel_acc"
+     }
+    ],
+    "display": "Flak Cannon"
+   },
+   {
+    "comp": 33,
+    "rarity": "06_pearlescent",
+    "name": "Quattro",
+    "parts": [
+     {
+      "list": 282,
+      "index": 32,
+      "slot": "barrel"
+     },
+     {
+      "list": 1,
+      "index": 51,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Quadratus"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Splatoon",
+    "parts": [
+     {
+      "list": 282,
+      "index": 2,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Inkling"
+   }
+  ],
+  "22": [
+   {
+    "comp": 105,
+    "rarity": "05_legendary",
+    "name": "aura",
+    "parts": [
+     {
+      "list": 22,
+      "index": 104,
+      "slot": "barrel"
+     }
+    ],
+    "display": "Tempered Essence"
+   },
+   {
+    "comp": 88,
+    "rarity": "05_legendary",
+    "name": "BeeGun",
+    "parts": [
+     {
+      "list": 22,
+      "index": 87,
+      "slot": "barrel"
+     },
+     {
+      "list": 22,
+      "index": 80,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 22,
+      "index": 86,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Birt's Bees"
+   },
+   {
+    "comp": 94,
+    "rarity": "05_legendary",
+    "name": "brickhouse",
+    "parts": [
+     {
+      "list": 22,
+      "index": 93,
+      "slot": "barrel"
+     },
+     {
+      "list": 22,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 22,
+      "index": 50,
+      "slot": "underbarrel"
+     }
+    ],
+    "display": "Brickhouse"
+   },
+   {
+    "comp": 67,
+    "rarity": "05_legendary",
+    "name": "Kaoson",
+    "parts": [
+     {
+      "list": 22,
+      "index": 66,
+      "slot": "barrel"
+     },
+     {
+      "list": 22,
+      "index": 72,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 22,
+      "index": 15,
+      "slot": "magazine"
+     },
+     {
+      "list": 22,
+      "index": 48,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 22,
+      "index": 19,
+      "slot": "magazine_acc"
+     },
+     {
+      "list": 22,
+      "index": 26,
+      "slot": "scope"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     },
+     {
+      "list": 22,
+      "index": 44,
+      "slot": "grip"
+     }
+    ],
+    "display": "Kaoson"
+   },
+   {
+    "comp": 101,
+    "rarity": "06_pearlescent",
+    "name": "Locust",
+    "parts": [
+     {
+      "list": 22,
+      "index": 103,
+      "slot": "barrel"
+     },
+     {
+      "list": 22,
+      "index": 14,
+      "slot": "magazine"
+     },
+     {
+      "list": 22,
+      "index": 102,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 22,
+      "index": 44,
+      "slot": "grip"
+     },
+     {
+      "list": 22,
+      "index": 59,
+      "slot": "foregrip"
+     },
+     {
+      "list": 22,
+      "index": 3,
+      "slot": "body_acc"
+     },
+     {
+      "list": 22,
+      "index": 100,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Parasite"
+   },
+   {
+    "comp": 92,
+    "rarity": "05_legendary",
+    "name": "mercury",
+    "parts": [
+     {
+      "list": 22,
+      "index": 91,
+      "slot": "barrel"
+     },
+     {
+      "list": 22,
+      "index": 90,
+      "slot": "magazine_acc"
+     }
+    ],
+    "display": "Mercurious"
+   },
+   {
+    "comp": 1,
+    "rarity": "05_legendary",
+    "name": "Onslaught",
+    "parts": [
+     {
+      "list": 22,
+      "index": 68,
+      "slot": "barrel"
+     },
+     {
+      "list": 22,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 22,
+      "index": 72,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 22,
+      "index": 44,
+      "slot": "grip"
+     },
+     {
+      "list": 22,
+      "index": 26,
+      "slot": "scope"
+     }
+    ],
+    "display": "Onslaught"
+   }
+  ],
+  "16": [
+   {
+    "comp": 69,
+    "rarity": "05_legendary",
+    "name": "CrowdSourced",
+    "parts": [
+     {
+      "list": 16,
+      "index": 68,
+      "slot": "barrel"
+     },
+     {
+      "list": 16,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 16,
+      "index": 45,
+      "slot": "underbarrel"
+     }
+    ],
+    "display": "Midnight Defiance"
+   },
+   {
+    "comp": 93,
+    "rarity": "05_legendary",
+    "name": "Exhibition",
+    "parts": [
+     {
+      "list": 16,
+      "index": 92,
+      "slot": "barrel"
+     },
+     {
+      "list": 16,
+      "index": 52,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 16,
+      "index": 13,
+      "slot": "magazine"
+     }
+    ],
+    "display": "Exhibition"
+   },
+   {
+    "comp": 66,
+    "rarity": "05_legendary",
+    "name": "Finnity",
+    "parts": [
+     {
+      "list": 16,
+      "index": 1,
+      "slot": "barrel"
+     },
+     {
+      "list": 16,
+      "index": 77,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 16,
+      "index": 16,
+      "slot": "magazine"
+     },
+     {
+      "list": 16,
+      "index": 26,
+      "slot": "scope"
+     },
+     {
+      "list": 16,
+      "index": 71,
+      "slot": "grip"
+     },
+     {
+      "list": 1,
+      "index": 12,
+      "slot": "body_ele"
+     }
+    ],
+    "display": "Finnity Xxx-l"
+   },
+   {
+    "comp": 88,
+    "rarity": "05_legendary",
+    "name": "Hemorrhage",
+    "parts": [
+     {
+      "list": 16,
+      "index": 87,
+      "slot": "barrel"
+     },
+     {
+      "list": 16,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 16,
+      "index": 50,
+      "slot": "underbarrel"
+     },
+     {
+      "list": 16,
+      "index": 4,
+      "slot": "body_acc"
+     }
+    ],
+    "display": "Hemorrhage"
+   },
+   {
+    "comp": 91,
+    "rarity": "05_legendary",
+    "name": "LightGun",
+    "parts": [
+     {
+      "list": 16,
+      "index": 90,
+      "slot": "barrel"
+     },
+     {
+      "list": 16,
+      "index": 73,
+      "slot": "barrel_acc"
+     },
+     {
+      "list": 16,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 16,
+      "index": 27,
+      "slot": "scope"
+     }
+    ],
+    "display": "Light Gun"
+   },
+   {
+    "comp": 67,
+    "rarity": "05_legendary",
+    "name": "StopGap",
+    "parts": [
+     {
+      "list": 16,
+      "index": 72,
+      "slot": "barrel"
+     },
+     {
+      "list": 16,
+      "index": 13,
+      "slot": "magazine"
+     },
+     {
+      "list": 16,
+      "index": 52,
+      "slot": "underbarrel"
+     }
+    ],
+    "display": "Stop Gap"
+   }
+  ]
+ }
+}

@@ -1,0 +1,5573 @@
+{
+ "title": "Borderlands 4 Trainer",
+ "hotkey": "F8",
+ "width": 680,
+ "height": 800,
+ "tabs": [
+  {
+   "name": "Player",
+   "sections": [
+    {
+     "name": "Presets (also on hotkeys)",
+     "items": [
+      {
+       "id": "pr_god",
+       "type": "button",
+       "label": "God run  [F5]",
+       "button": "ON/OFF",
+       "tq": "TQ.PRESET",
+       "args": {
+        "name": "god_run"
+       },
+       "desc": "God mode + infinite ammo + infinite magazine + no damage + Action Skill always ready. Press again to undo.  Other hotkeys: F6 kill 80 m, F7 loot vacuum, F9 teleport to map pin, Ctrl+F9 save position, Shift+F9 go back.",
+       "hotkey": "F5"
+      },
+      {
+       "id": "pr_loot",
+       "type": "button",
+       "label": "Loot farm  [F11]",
+       "button": "ON/OFF",
+       "tq": "TQ.PRESET",
+       "args": {
+        "name": "loot_farm"
+       },
+       "desc": "Gear luck 500, XP x5, cash x5, enemy health x0.05.",
+       "hotkey": "F11"
+      },
+      {
+       "id": "pr_speed",
+       "type": "button",
+       "label": "Speed demon  [Ctrl+F5]",
+       "button": "ON/OFF",
+       "tq": "TQ.PRESET",
+       "args": {
+        "name": "speed"
+       },
+       "hotkey": "Ctrl+F5"
+      },
+      {
+       "id": "pr_fly",
+       "type": "button",
+       "label": "Fly through walls  [F10]",
+       "button": "ON/OFF",
+       "tq": "TQ.PRESET",
+       "args": {
+        "name": "fly"
+       },
+       "hotkey": "F10"
+      }
+     ]
+    },
+    {
+     "name": "Protection",
+     "items": [
+      {
+       "id": "god",
+       "type": "toggle",
+       "label": "God mode",
+       "toggle": "god",
+       "desc": "The game's own god lock (OakDamageStatics::SetGodLock). Re-applied after map changes."
+      },
+      {
+       "id": "invisible",
+       "type": "toggle",
+       "label": "Invisible to enemies",
+       "toggle": "invisible",
+       "hotkey": "F4",
+       "desc": "Enemies treat you as friendly and stop attacking - good for watching spawns, wars and bosses. Your allies still fight. Off = back to normal."
+      },
+      {
+       "id": "no_dmg",
+       "type": "button",
+       "label": "Take no damage (damage taken x0)",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "damage_taken_multiplier",
+        "v": 0,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "no_dmg_off",
+       "type": "button",
+       "label": "Normal damage taken",
+       "button": "RESET",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "damage_taken_multiplier",
+        "reset": true
+       }
+      },
+      {
+       "id": "overshield",
+       "type": "button",
+       "label": "Overshield +500",
+       "button": "ADD",
+       "api": "Player.AddOvershield",
+       "args": {
+        "Amount": 500
+       }
+      },
+      {
+       "id": "revive",
+       "type": "button",
+       "label": "Get up (Fight For Your Life)",
+       "button": "REVIVE",
+       "api": "Player.Revive"
+      }
+     ]
+    },
+    {
+     "name": "Level",
+     "items": [
+      {
+       "id": "set_level",
+       "type": "input",
+       "label": "Set character level",
+       "api": "Player.SetLevel",
+       "arg": "ExperienceLevel",
+       "desc": "The game's own BP_SetExperienceLevel: stats scale and skill points follow."
+      },
+      {
+       "id": "lvl30",
+       "type": "button",
+       "label": "Level 30",
+       "button": "SET",
+       "api": "Player.SetLevel",
+       "args": {
+        "ExperienceLevel": 30
+       }
+      },
+      {
+       "id": "lvl50",
+       "type": "button",
+       "label": "Level 50",
+       "button": "SET",
+       "api": "Player.SetLevel",
+       "args": {
+        "ExperienceLevel": 50
+       }
+      },
+      {
+       "id": "set_spec",
+       "type": "input",
+       "label": "Set specialization level",
+       "api": "Player.SetSpecLevel",
+       "arg": "ExperienceLevel"
+      }
+     ]
+    },
+    {
+     "name": "Status",
+     "items": [
+      {
+       "id": "r_lvl",
+       "type": "readout",
+       "label": "Level",
+       "readout": "level"
+      },
+      {
+       "id": "r_spec",
+       "type": "readout",
+       "label": "Specialization level",
+       "readout": "spec_level"
+      },
+      {
+       "id": "r_hp",
+       "type": "readout",
+       "label": "Health",
+       "readout": "health"
+      },
+      {
+       "id": "r_maxhp",
+       "type": "readout",
+       "label": "Max health",
+       "readout": "max_health"
+      },
+      {
+       "id": "r_sh",
+       "type": "readout",
+       "label": "Shield",
+       "readout": "shield"
+      },
+      {
+       "id": "r_maxsh",
+       "type": "readout",
+       "label": "Max shield",
+       "readout": "max_shield"
+      },
+      {
+       "id": "r_god",
+       "type": "readout",
+       "label": "God mode (game check)",
+       "readout": "god"
+      },
+      {
+       "id": "pos",
+       "type": "readout",
+       "label": "Position",
+       "readout": "position"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Combat",
+   "sections": [
+    {
+     "name": "Weapons",
+     "items": [
+      {
+       "id": "inf_ammo",
+       "type": "toggle",
+       "label": "Infinite reserve ammo",
+       "toggle": "inf_ammo",
+       "desc": "The game's own InfiniteAmmoLock."
+      },
+      {
+       "id": "refill_ammo",
+       "type": "button",
+       "label": "Refill ammo (weapon in hand)",
+       "button": "REFILL",
+       "api": "Weapon.RefillAmmo"
+      },
+      {
+       "id": "dmg_mult",
+       "type": "slider",
+       "label": "Damage multiplier",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "damage_dealt_multiplier",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 100,
+       "step": 1,
+       "default": 1,
+       "desc": "damage_dealt_multiplier through the game's attribute modifiers."
+      },
+      {
+       "id": "fire_mult",
+       "type": "slider",
+       "label": "Fire rate x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_fire_rate",
+        "mode": "mult"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "default": 1
+      },
+      {
+       "id": "instant_reload",
+       "type": "toggle",
+       "label": "Instant reload",
+       "toggle": "instant_reload",
+       "desc": "On: reloads finish almost at once. Off: normal reload. The speed slider below and this switch share one setting - the last one you use wins."
+      },
+      {
+       "id": "reload_speed",
+       "type": "slider",
+       "label": "Reload speed x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_reload_time",
+        "mode": "speed"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "default": 1,
+       "desc": "1 = normal, 2 = twice as fast, 10 = ten times as fast. Works on every gun and is kept after map changes."
+      },
+      {
+       "id": "no_spread",
+       "type": "button",
+       "label": "No spread",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_spread",
+        "v": 0,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "no_recoil",
+       "type": "button",
+       "label": "No recoil",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_recoil_scale",
+        "v": 0,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "fast_swap",
+       "type": "button",
+       "label": "Fast weapon swap",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "character_weapon_swap_time_scale",
+        "v": 0.2,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "inf_mag",
+       "type": "button",
+       "label": "Infinite magazine (no reloading)",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_shot_cost",
+        "v": 0,
+        "mode": "set"
+       },
+       "desc": "weapon_shot_cost 0: shots cost no ammo. Verified in game."
+      },
+      {
+       "id": "inf_mag_off",
+       "type": "button",
+       "label": "Normal magazine",
+       "button": "RESET",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_shot_cost",
+        "reset": true
+       }
+      },
+      {
+       "id": "pellets",
+       "type": "slider",
+       "label": "Projectiles per shot",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_projectile_per_shot",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 1
+      },
+      {
+       "id": "r_dmg",
+       "type": "readout",
+       "label": "Damage multiplier",
+       "readout": "damage_mult"
+      },
+      {
+       "id": "r_fire",
+       "type": "readout",
+       "label": "Fire rate",
+       "readout": "fire_rate"
+      },
+      {
+       "id": "r_reload",
+       "type": "readout",
+       "label": "Reload time",
+       "readout": "reload_time"
+      }
+     ]
+    },
+    {
+     "name": "Skills & gear",
+     "items": [
+      {
+       "id": "no_skill_cd",
+       "type": "toggle",
+       "label": "Action Skill always ready",
+       "toggle": "no_skill_cooldown"
+      },
+      {
+       "id": "skill_ready",
+       "type": "button",
+       "label": "Action Skill ready now",
+       "button": "READY",
+       "api": "Skill.RefillCooldown"
+      },
+      {
+       "id": "gadget_cd",
+       "type": "button",
+       "label": "Ordnance / gadget cooldown 0.5 s",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "equipped_gadget_cooldown",
+        "v": 0.5,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "repkit_cd",
+       "type": "button",
+       "label": "Repkit cooldown 1 s",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "character_repair_kit_cooldown",
+        "v": 1,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "melee_fast",
+       "type": "button",
+       "label": "Fast melee",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "melee_speed_multiplier",
+        "v": 2,
+        "mode": "set"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Enemies",
+     "items": [
+      {
+       "id": "kill50",
+       "type": "button",
+       "label": "Kill hostiles within 50 m",
+       "button": "KILL",
+       "tq": "TQ.KILL",
+       "args": {
+        "radius_m": 50
+       }
+      },
+      {
+       "id": "kill200",
+       "type": "button",
+       "label": "Kill hostiles within 200 m",
+       "button": "KILL",
+       "tq": "TQ.KILL",
+       "args": {
+        "radius_m": 200
+       }
+      },
+      {
+       "id": "freeze",
+       "type": "button",
+       "label": "Freeze hostiles within 80 m",
+       "button": "FREEZE",
+       "tq": "TQ.FREEZE",
+       "args": {
+        "radius_m": 80,
+        "on": true
+       }
+      },
+      {
+       "id": "unfreeze",
+       "type": "button",
+       "label": "Unfreeze hostiles",
+       "button": "UNFREEZE",
+       "tq": "TQ.FREEZE",
+       "args": {
+        "radius_m": 300,
+        "on": false
+       }
+      },
+      {
+       "id": "one_hit",
+       "type": "button",
+       "label": "One-hit kills (enemy health x0.01)",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "Att_PlayerDifficulty_EnemyHealth_Multiplier",
+        "v": 0.01,
+        "mode": "set"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Undo",
+     "items": [
+      {
+       "id": "attr_clear",
+       "type": "button",
+       "label": "Remove every stat change (back to normal)",
+       "button": "RESET",
+       "danger": true,
+       "tq": "TQ.ATTR_CLEAR"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Skills",
+   "sections": [
+    {
+     "name": "Action skill",
+     "items": [
+      {
+       "id": "sk_no_cd",
+       "type": "toggle",
+       "label": "No cooldown (always ready)",
+       "toggle": "no_skill_cooldown"
+      },
+      {
+       "id": "sk_endless",
+       "type": "toggle",
+       "label": "Never runs out (endless duration)",
+       "toggle": "skill_endless"
+      },
+      {
+       "id": "sk_fast_cd",
+       "type": "toggle",
+       "label": "Fast cooldown",
+       "toggle": "fast_cooldown",
+       "desc": "Cooldown refills at the speed set below (default 4x)."
+      },
+      {
+       "id": "sk_cd_speed",
+       "type": "slider",
+       "label": "Cooldown speed x",
+       "tq": "TQ.TOGGLE",
+       "args": {
+        "id": "fast_cooldown"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 20,
+       "step": 0.5,
+       "default": 4,
+       "desc": "1 = normal, 4 = four times as fast. Moving it switches Fast cooldown on. (No cooldown above makes it instant.)"
+      },
+      {
+       "id": "sk_ready",
+       "type": "button",
+       "label": "Action Skill ready now",
+       "button": "READY",
+       "api": "Skill.RefillCooldown"
+      }
+     ]
+    },
+    {
+     "name": "Skill points",
+     "items": [
+      {
+       "id": "sk_r_points",
+       "type": "readout",
+       "label": "Skill points earned",
+       "readout": "skill_points_earned"
+      },
+      {
+       "id": "sk_skill_points_1",
+       "type": "button",
+       "label": "Skill points +1",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "skill_points",
+        "add": 1
+       }
+      },
+      {
+       "id": "sk_skill_points_5",
+       "type": "button",
+       "label": "Skill points +5",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "skill_points",
+        "add": 5
+       }
+      },
+      {
+       "id": "sk_skill_points_10",
+       "type": "button",
+       "label": "Skill points +10",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "skill_points",
+        "add": 10
+       }
+      },
+      {
+       "id": "sk_set_points",
+       "type": "input",
+       "label": "Skill points earned - set to",
+       "tq": "TQ.POINTS",
+       "arg": "skill_points",
+       "button": "SET",
+       "desc": "Counts every point you have earned, spent ones included. Raising it gives you that many more unspent points; the Skills menu shows them at once."
+      },
+      {
+       "id": "sk_respec",
+       "desc": "Refunds every point spent in your skill trees right away. Open the skill menu and spend them again.",
+       "type": "button",
+       "label": "Respec skill trees (refund every spent point)",
+       "button": "RESPEC",
+       "danger": true,
+       "tq": "TQ.POINTS",
+       "args": {
+        "respec": true,
+        "graphs": "progress_"
+       }
+      },
+      {
+       "id": "sk_note",
+       "type": "label",
+       "text": "Added points and the skills you put them into are kept by the trainer: the game drops spends above your level when it saves or loads, and the trainer spends them again a second after you load in. Without the trainer the save shows a normal tree for your level."
+      }
+     ]
+    },
+    {
+     "name": "SDU (Storage Deck Upgrades)",
+     "items": [
+      {
+       "id": "sk_r_sdu",
+       "type": "readout",
+       "label": "SDU tokens earned",
+       "readout": "sdu_tokens_earned"
+      },
+      {
+       "id": "sk_sdu_100",
+       "type": "button",
+       "label": "SDU tokens +100",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "sdu_tokens",
+        "add": 100
+       }
+      },
+      {
+       "id": "sk_sdu_500",
+       "type": "button",
+       "label": "SDU tokens +500",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "sdu_tokens",
+        "add": 500
+       }
+      },
+      {
+       "id": "sk_sdu_1000",
+       "type": "button",
+       "label": "SDU tokens +1000",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "sdu_tokens",
+        "add": 1000
+       }
+      },
+      {
+       "id": "sk_set_sdu",
+       "type": "input",
+       "label": "SDU tokens earned - set to",
+       "tq": "TQ.POINTS",
+       "arg": "sdu_tokens",
+       "button": "SET",
+       "desc": "Counts every token you have earned, spent ones included. Raising it gives you that many more to spend in the SDU menu. Shared by all your characters; the game saves it itself."
+      },
+      {
+       "id": "sk_respec_sdu",
+       "desc": "Refunds every SDU token right away. Buy the upgrades again in the SDU menu.",
+       "type": "button",
+       "label": "Respec SDU upgrades (refund every spent token)",
+       "button": "RESPEC",
+       "danger": true,
+       "tq": "TQ.POINTS",
+       "args": {
+        "respec": true,
+        "graphs": "sdu"
+       }
+      },
+      {
+       "id": "sk_sdu_note",
+       "type": "label",
+       "text": "SDU tokens upgrade ammo, backpack, bank and lost loot space. Open the SDU menu to spend them."
+      }
+     ]
+    },
+    {
+     "name": "Specialization tokens",
+     "items": [
+      {
+       "id": "sk_r_spec",
+       "type": "readout",
+       "label": "Specialization tokens earned",
+       "readout": "spec_tokens_earned"
+      },
+      {
+       "id": "sk_spec_tokens_1",
+       "type": "button",
+       "label": "Specialization tokens +1",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "spec_tokens",
+        "add": 1
+       }
+      },
+      {
+       "id": "sk_spec_tokens_5",
+       "type": "button",
+       "label": "Specialization tokens +5",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "spec_tokens",
+        "add": 5
+       }
+      },
+      {
+       "id": "sk_set_spec",
+       "type": "input",
+       "label": "Specialization tokens earned - set to",
+       "tq": "TQ.POINTS",
+       "arg": "spec_tokens",
+       "button": "SET"
+      },
+      {
+       "id": "sk_respec_spec",
+       "desc": "Refunds every specialization token right away.",
+       "type": "button",
+       "label": "Respec specializations",
+       "button": "RESPEC",
+       "danger": true,
+       "tq": "TQ.POINTS",
+       "args": {
+        "respec": true,
+        "graphs": "progressgraph_specializations"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Movement",
+   "sections": [
+    {
+     "name": "Speed",
+     "items": [
+      {
+       "id": "inf_jump",
+       "type": "toggle",
+       "label": "Infinite jump (double jump without limit)",
+       "toggle": "infinite_jump",
+       "desc": "Keep pressing jump in the air to keep going up."
+      },
+      {
+       "id": "run_speed",
+       "type": "slider",
+       "label": "Run speed x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "ground_speed_scale",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 5,
+       "step": 0.1,
+       "default": 1
+      },
+      {
+       "id": "dash_speed",
+       "type": "slider",
+       "label": "Dash speed",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "dash_speed",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 2500,
+       "max": 15000,
+       "step": 250,
+       "default": 2500
+      },
+      {
+       "id": "free_vp",
+       "type": "toggle",
+       "label": "Free dash / double jump / glide",
+       "toggle": "free_vault_power"
+      },
+      {
+       "id": "time_scale",
+       "type": "slider",
+       "label": "Game speed",
+       "api": "World.TimeScale",
+       "arg": "TimeDilation",
+       "min": 0.1,
+       "max": 3,
+       "step": 0.1,
+       "default": 1,
+       "desc": "1 = normal, below 1 = slow motion."
+      }
+     ]
+    },
+    {
+     "name": "Fly & travel",
+     "items": [
+      {
+       "id": "super_jump",
+       "type": "button",
+       "label": "Super jump",
+       "button": "JUMP",
+       "api": "Move.Launch"
+      },
+      {
+       "id": "fly_on",
+       "type": "button",
+       "label": "Fly (look + W)",
+       "button": "ON",
+       "tq": "TQ.FLY",
+       "args": {
+        "on": true
+       }
+      },
+      {
+       "id": "noclip_on",
+       "type": "button",
+       "label": "Fly through walls",
+       "button": "ON",
+       "tq": "TQ.FLY",
+       "args": {
+        "on": true,
+        "noclip": true
+       }
+      },
+      {
+       "id": "fly_off",
+       "type": "button",
+       "label": "Walk again",
+       "button": "OFF",
+       "tq": "TQ.FLY",
+       "args": {
+        "on": false
+       }
+      },
+      {
+       "id": "pos_save",
+       "type": "button",
+       "label": "Save position",
+       "button": "SAVE",
+       "tq": "TQ.POS_SAVE",
+       "hotkey": "Ctrl+F9"
+      },
+      {
+       "id": "pos_load",
+       "type": "button",
+       "label": "Go to saved position",
+       "button": "GO",
+       "tq": "TQ.POS_LOAD",
+       "hotkey": "Shift+F9"
+      }
+     ]
+    },
+    {
+     "name": "Fast travel (game's own travel)",
+     "items": [
+      {
+       "id": "travel_in",
+       "type": "choice",
+       "label": "Travel to (pick or type a place)",
+       "tq": "TQ.TRAVEL",
+       "arg": "name",
+       "free_text": true,
+       "desc": "Open the list and start typing - it narrows down as you type. 353 places from the Places tab, sorted by kind. Enter takes the first match; a name not in the list is tried as typed (part of a station name works).",
+       "options": [
+        {
+         "label": "(pick from the list or type part of a name)",
+         "value": ""
+        },
+        {
+         "label": "Auger HQ  -  Towns & hubs (Mountains)",
+         "value": "World_P.FT_MOU_AugerHQ"
+        },
+        {
+         "label": "Central Alley  -  Towns & hubs (City)",
+         "value": "World_P.FT_City_MNT_CentralAlley"
+        },
+        {
+         "label": "City Ascension Plazza  -  Towns & hubs",
+         "value": "World_P.RS_City_AscensionPlazza"
+        },
+        {
+         "label": "City Meteor Transition  -  Towns & hubs",
+         "value": "World_P.FTS_City_Meteor_Transition"
+        },
+        {
+         "label": "City Mountain Safehouse  -  Towns & hubs",
+         "value": "World_P.FTS_City_MountainSafehouse"
+        },
+        {
+         "label": "City Mountain Safehouse 2  -  Towns & hubs",
+         "value": "World_P.FTS_City_MountainSafehouse2"
+        },
+        {
+         "label": "Claptrap Beach  -  Towns & hubs (Grasslands)",
+         "value": "World_P.RS_Grasslands_ClaptrapBeach"
+        },
+        {
+         "label": "Electi Town  -  Towns & hubs (Shattered Lands)",
+         "value": "World_P.FTS_ElectiTown"
+        },
+        {
+         "label": "Electi Town 1  -  Towns & hubs (Shattered Lands)",
+         "value": "World_P.RS_SHA_ElectiTown1"
+        },
+        {
+         "label": "Electi Town South Passage  -  Towns & hubs (Shattered Lands)",
+         "value": "World_P.RS_SHA_ElectiTown_SouthPassage"
+        },
+        {
+         "label": "Fortress HUB  -  Towns & hubs (Shattered Lands)",
+         "value": "World_P.FT_SHA_Fortress_HUB"
+        },
+        {
+         "label": "Plaza  -  Towns & hubs (City)",
+         "value": "World_P.RS_City_MNT_Plaza"
+        },
+        {
+         "label": "Safehouse  -  Towns & hubs (City)",
+         "value": "World_P.FTS_City_SHA_Safehouse"
+        },
+        {
+         "label": "Safehouse 1  -  Towns & hubs (City)",
+         "value": "World_P.FTS_City_SHA_Safehouse1"
+        },
+        {
+         "label": "Sanctuary 3  -  Towns & hubs (Mountains)",
+         "value": "World_P.FT_MOU_Sanctuary3"
+        },
+        {
+         "label": "Vito Bar  -  Towns & hubs (City)",
+         "value": "World_P.RS_City_SHA_VitoBar"
+        },
+        {
+         "label": "West Survivalist HQ  -  Towns & hubs (Grasslands)",
+         "value": "World_P.FT_GRA_West_SurvivalistHQ"
+        },
+        {
+         "label": "Zadras City Hideout  -  Towns & hubs",
+         "value": "World_P.FT_City_GRA_ZadrasCityHideout"
+        },
+        {
+         "label": "Zanes Bar  -  Towns & hubs (Shattered Lands)",
+         "value": "World_P.FT_SHA_ZanesBar"
+        },
+        {
+         "label": "North Cliffs Safehouse 4  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_NorthCliffs_Safehouse4"
+        },
+        {
+         "label": "Safehouse 1  -  Safehouses (Shattered Lands)",
+         "value": "World_P.FT_SHA_Safehouse1"
+        },
+        {
+         "label": "Safehouse 1 Timberland  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_Safehouse1_Timberland"
+        },
+        {
+         "label": "Safehouse 2  -  Safehouses (Shattered Lands)",
+         "value": "World_P.FT_SHA_Safehouse2"
+        },
+        {
+         "label": "Safehouse 2 Highlands  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_Safehouse2_Highlands"
+        },
+        {
+         "label": "Safehouse 2 Order Plateau  -  Safehouses (Shattered Lands)",
+         "value": "World_P.FT_SHA_Safehouse2_OrderPlateau"
+        },
+        {
+         "label": "Safehouse 3  -  Safehouses (City)",
+         "value": "World_P.FT_CITY_GRA_Safehouse3"
+        },
+        {
+         "label": "Safehouse 3  -  Safehouses (Grasslands)",
+         "value": "World_P.FT_GRA_Safehouse3"
+        },
+        {
+         "label": "Safehouse 3  -  Safehouses (Shattered Lands)  [FT_SA_Safehouse3]",
+         "value": "World_P.FT_SA_Safehouse3"
+        },
+        {
+         "label": "Safehouse 3  -  Safehouses (Shattered Lands)  [FT_SHA_Safehouse3]",
+         "value": "World_P.FT_SHA_Safehouse3"
+        },
+        {
+         "label": "Safehouse 3 Valley  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_Safehouse3_Valley"
+        },
+        {
+         "label": "Safehouse 4  -  Safehouses (Grasslands)",
+         "value": "World_P.FT_GRA_Safehouse4"
+        },
+        {
+         "label": "Safehouse Highlands  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_Safehouse_Highlands"
+        },
+        {
+         "label": "Safehouse Timberland  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_Safehouse_Timberland"
+        },
+        {
+         "label": "Safehouse Valley  -  Safehouses (Mountains)",
+         "value": "World_P.FT_MOU_Safehouse_Valley"
+        },
+        {
+         "label": "West North Safehouse  -  Safehouses (Grasslands)",
+         "value": "World_P.FT_GRA_West_NorthSafehouse"
+        },
+        {
+         "label": "West North Safehouse 2  -  Safehouses (Grasslands)",
+         "value": "World_P.FT_GRA_West_NorthSafehouse2"
+        },
+        {
+         "label": "Hydro Hills Silo Hill  -  Silos (Other)",
+         "value": "World_P.RS_HydroHills_SiloHill"
+        },
+        {
+         "label": "M Silo  -  Silos (Mountains)",
+         "value": "World_P.RS_MOU_M_Silo"
+        },
+        {
+         "label": "Silo 01  -  Silos (Grasslands)",
+         "value": "World_P.FT_GRA_Silo_01"
+        },
+        {
+         "label": "Silo 01  -  Silos (Shattered Lands)",
+         "value": "World_P.FT_SHA_Silo_01"
+        },
+        {
+         "label": "Silo 03  -  Silos (Shattered Lands)",
+         "value": "World_P.FT_SHA_Silo_03"
+        },
+        {
+         "label": "Silo 1 Central Valley  -  Silos (Mountains)",
+         "value": "World_P.FT_MOU_Silo1_CentralValley"
+        },
+        {
+         "label": "Silo 2 Eleci Plat  -  Silos (Shattered Lands)",
+         "value": "World_P.FT_SHA_Silo2_EleciPlat"
+        },
+        {
+         "label": "Silo 2 Gorge  -  Silos (Mountains)",
+         "value": "World_P.FT_MOU_Silo2_Gorge"
+        },
+        {
+         "label": "Silo 3  -  Silos (Grasslands)",
+         "value": "World_P.FT_GRA_Silo3"
+        },
+        {
+         "label": "Silo 3 North Valley  -  Silos (Mountains)",
+         "value": "World_P.FT_MOU_Silo3_NorthValley"
+        },
+        {
+         "label": "Silo Cave  -  Silos (Mountains)",
+         "value": "World_P.RS_MOU_SiloCave"
+        },
+        {
+         "label": "Silo Central Valley  -  Silos (Mountains)",
+         "value": "World_P.FT_MOU_Silo_CentralValley"
+        },
+        {
+         "label": "Silo Eleci Plat  -  Silos (Shattered Lands)",
+         "value": "World_P.FT_SHA_Silo_EleciPlat"
+        },
+        {
+         "label": "Silo Gorge  -  Silos (Mountains)",
+         "value": "World_P.FT_MOU_Silo_Gorge"
+        },
+        {
+         "label": "Silo North Valley  -  Silos (Mountains)",
+         "value": "World_P.FT_MOU_Silo_NorthValley"
+        },
+        {
+         "label": "West Silo 2  -  Silos (Grasslands)",
+         "value": "World_P.FT_GRA_West_Silo2"
+        },
+        {
+         "label": "Augerland Order Bunker Eridium Boss  -  Boss rooms & arenas (Mountains)",
+         "value": "World_P.RS_MOU_Augerland_OrderBunkerEridiumBoss"
+        },
+        {
+         "label": "Blacksite Boss  -  Boss rooms & arenas (Mountains)",
+         "value": "World_P.RS_MOU_Blacksite_Boss"
+        },
+        {
+         "label": "Bunker Boss Room  -  Boss rooms & arenas (City)",
+         "value": "World_P.RS_City_MNT_BunkerBossRoom"
+        },
+        {
+         "label": "Com Array Boss  -  Boss rooms & arenas (Mountains)",
+         "value": "World_P.RS_MOU_ComArrayBoss"
+        },
+        {
+         "label": "Electi Mission 3Bunker Final Boss  -  Boss rooms & arenas (Shattered Lands)",
+         "value": "World_P.RTS_SHA_ElectiMission3Bunker_FinalBoss"
+        },
+        {
+         "label": "Food Processing Plant Pre Boss  -  Boss rooms & arenas (Grasslands)",
+         "value": "World_P.RTS_GRA_FoodProcessingPlant_PreBoss"
+        },
+        {
+         "label": "Ho MInt Boss Drop  -  Boss rooms & arenas (Mountains)",
+         "value": "World_P.RTS_MOU_HoMIntBossDrop"
+        },
+        {
+         "label": "Hydro Plant Boss  -  Boss rooms & arenas (Grasslands)",
+         "value": "World_P.RS_GRA_HydroPlant_Boss"
+        },
+        {
+         "label": "KOTOMotherbase Boss  -  Boss rooms & arenas (Grasslands)",
+         "value": "World_P.RS_KOTOMotherbaseBoss"
+        },
+        {
+         "label": "Mine Boss Room  -  Boss rooms & arenas (City)",
+         "value": "World_P.RS_City_SHA_MineBossRoom"
+        },
+        {
+         "label": "Orderland Auger Mine Cursed Boss  -  Boss rooms & arenas (Mountains)",
+         "value": "World_P.RS_MOU_Orderland_AugerMineCursedBoss"
+        },
+        {
+         "label": "Orderland Order Bunker Brute Boss  -  Boss rooms & arenas (Mountains)",
+         "value": "World_P.RS_MOU_Orderland_OrderBunkerBruteBoss"
+        },
+        {
+         "label": "Scrapyard Great Dist 2 boss  -  Boss rooms & arenas (Shattered Lands)",
+         "value": "World_P.RS_SHA_Scrapyard_GreatDist2_boss"
+        },
+        {
+         "label": "Scrapyard Under SYard Cyn Boss  -  Boss rooms & arenas (Shattered Lands)",
+         "value": "World_P.RS_SHA_Scrapyard_UnderSYardCynBoss"
+        },
+        {
+         "label": "Splash Zone Boss  -  Boss rooms & arenas (Grasslands)",
+         "value": "World_P.RTS_GRA_SplashZoneBoss"
+        },
+        {
+         "label": "Thresher Arena  -  Boss rooms & arenas (Grasslands)",
+         "value": "World_P.RTS_GRA_ThresherArena"
+        },
+        {
+         "label": "Auger Mine Acid  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RTS_GRA_AugerMine_Acid"
+        },
+        {
+         "label": "Auger Mine Cultists  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RTS_GRA_AugerMine_Cultists"
+        },
+        {
+         "label": "Auger Mine Excavation  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RTS_SHA_AugerMine_Excavation"
+        },
+        {
+         "label": "Auger Mine Oasis  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RTS_SHA_AugerMine_Oasis"
+        },
+        {
+         "label": "Augerland Order Bunker Eridium Entr  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Augerland_OrderBunkerEridiumEntr"
+        },
+        {
+         "label": "Beach Auger Mine Oasis Entr  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_Beach_AugerMineOasisEntr"
+        },
+        {
+         "label": "Beach Mega Drill  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_Beach_MegaDrill"
+        },
+        {
+         "label": "Bunker Entrance  -  Dungeons & landmarks (City)",
+         "value": "World_P.RS_City_MNT_BunkerEntrance"
+        },
+        {
+         "label": "Bunker Sand  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RTS_SHA_Bunker_Sand"
+        },
+        {
+         "label": "Coastal BS Auger Mine Cult Entrance  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_CoastalBS_AugerMine_CultEntrance"
+        },
+        {
+         "label": "Drill Site Ripper Farmlands  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_DrillSite_RipperFarmlands"
+        },
+        {
+         "label": "Drill Station  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_DrillStation"
+        },
+        {
+         "label": "Drill Station Gorge  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_DrillStation_Gorge"
+        },
+        {
+         "label": "Drill Station Mid Point  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_DrillStation_MidPoint"
+        },
+        {
+         "label": "Drillsite BEACH  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_Drillsite_BEACH"
+        },
+        {
+         "label": "Drillsite Cliffs  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Drillsite_Cliffs"
+        },
+        {
+         "label": "Drone Factory  -  Dungeons & landmarks (City)",
+         "value": "World_P.RS_City_SHA_DroneFactory"
+        },
+        {
+         "label": "Electi Mission 3Bunker  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RTS_SHA_ElectiMission3Bunker"
+        },
+        {
+         "label": "Fortress Exterior  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_FortressExterior"
+        },
+        {
+         "label": "Fortress Flats Auger Mine Acid Entrance  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_FortressFlats_AugerMine_AcidEntrance"
+        },
+        {
+         "label": "Fortress Flats Mother Base Elev  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_FortressFlats_MotherBaseElev"
+        },
+        {
+         "label": "Fortress Flats Planetary Lab  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_FortressFlats_PlanetaryLab"
+        },
+        {
+         "label": "Gorge Auger Mine Frozen  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Gorge_AugerMine_Frozen"
+        },
+        {
+         "label": "Gorge Auger Mine Frozen Entrance  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Gorge_AugerMine_FrozenEntrance"
+        },
+        {
+         "label": "Hydro Plant  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_HydroPlant"
+        },
+        {
+         "label": "Kot OCoast Bunker Ordonite  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_KotOCoast_Bunker_Ordonite"
+        },
+        {
+         "label": "Kot OCoast Bunker Ordonite Entrance  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_KotOCoast_Bunker_OrdoniteEntrance"
+        },
+        {
+         "label": "Mine  -  Dungeons & landmarks (City)",
+         "value": "World_P.RS_City_SHA_Mine"
+        },
+        {
+         "label": "Mine Transition  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Mine_Transition"
+        },
+        {
+         "label": "Order Plat Auger Mine Excav Entr  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_OrderPlat_AugerMineExcavEntr"
+        },
+        {
+         "label": "Order Plat Drill Site Pass  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_OrderPlat_DrillSitePass"
+        },
+        {
+         "label": "Order Plat Order Bunker Sand Entr  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_OrderPlat_OrderBunkerSandEntr"
+        },
+        {
+         "label": "Orderland Auger Mine Entrance  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Orderland_AugerMineEntrance"
+        },
+        {
+         "label": "Orderland Fortress Foot  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.FT_MOU_Orderland_FortressFoot"
+        },
+        {
+         "label": "Orderland Order Bunker Brute Entr  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RS_MOU_Orderland_OrderBunkerBruteEntr"
+        },
+        {
+         "label": "Phase Bunker  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RTS_MOU_PhaseBunker"
+        },
+        {
+         "label": "Phase Factory  -  Dungeons & landmarks (Mountains)",
+         "value": "World_P.RTS_MOU_PhaseFactory"
+        },
+        {
+         "label": "Ripper Tun Order Bunker Flood  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_RipperTun_OrderBunker_Flood"
+        },
+        {
+         "label": "Ripper Tun Order Bunker Flood Entrance  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_RipperTun_OrderBunker_FloodEntrance"
+        },
+        {
+         "label": "Scrapyard Drill Station Tunn  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_Scrapyard_DrillStationTunn"
+        },
+        {
+         "label": "South Drill  -  Dungeons & landmarks (Shattered Lands)",
+         "value": "World_P.RS_SHA_South_Drill"
+        },
+        {
+         "label": "Underwater Lab Exterior  -  Dungeons & landmarks (City)",
+         "value": "World_P.FT_City_MNT_UnderwaterLabExterior"
+        },
+        {
+         "label": "Underwater Lab Interior  -  Dungeons & landmarks (City)",
+         "value": "World_P.RS_City_MNT_UnderwaterLabInterior"
+        },
+        {
+         "label": "West Drill  -  Dungeons & landmarks (Grasslands)",
+         "value": "World_P.RS_GRA_West_Drill"
+        },
+        {
+         "label": "Drill Station Secret Path  -  Rifts & secrets (Shattered Lands)",
+         "value": "World_P.RS_SHA_DrillStation_SecretPath"
+        },
+        {
+         "label": "Rift Planetary Escape Lab 1  -  Rifts & secrets (Other)",
+         "value": "World_P.TravelStation_Rift_PlanetaryEscape_Lab1"
+        },
+        {
+         "label": "Rift Planetary Escape Lab 2  -  Rifts & secrets (Other)",
+         "value": "World_P.TravelStation_Rift_PlanetaryEscape_Lab2"
+        },
+        {
+         "label": "Rift Planetary Escape Machine  -  Rifts & secrets (Other)",
+         "value": "World_P.Travelstation_Rift_PlanetaryEscape_Machine"
+        },
+        {
+         "label": "Rift Planetary Escape Surface  -  Rifts & secrets (Other)",
+         "value": "World_P.TravelStation_Rift_PlanetaryEscape_Surface"
+        },
+        {
+         "label": "Rift Planetary Escape Surface 3a  -  Rifts & secrets (Other)",
+         "value": "World_P.Travelstation_Rift_PlanetaryEscape_Surface3a"
+        },
+        {
+         "label": "Rift Planetary Escape Surface 3b  -  Rifts & secrets (Other)",
+         "value": "World_P.Travelstation_Rift_PlanetaryEscape_Surface3b"
+        },
+        {
+         "label": "Rift Planetary Escape Surface 4a  -  Rifts & secrets (Other)",
+         "value": "World_P.Travelstation_Rift_PlanetaryEscape_Surface4a"
+        },
+        {
+         "label": "Rift Planetary Escape Surface 4b  -  Rifts & secrets (Other)",
+         "value": "World_P.Travelstation_Rift_PlanetaryEscape_Surface4b"
+        },
+        {
+         "label": "Banjo DLC  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_BanjoDLC"
+        },
+        {
+         "label": "Beach  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Beach"
+        },
+        {
+         "label": "Below The Surface  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_BelowTheSurface"
+        },
+        {
+         "label": "Casting Call  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_CastingCall"
+        },
+        {
+         "label": "City 1B  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_City1B"
+        },
+        {
+         "label": "Claptrap Of Pandora  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_ClaptrapOfPandora"
+        },
+        {
+         "label": "Electi Faction 3  -  Mission arenas (replay) (Shattered Lands)",
+         "value": "World_P.MissionReplay_ElectiFaction3"
+        },
+        {
+         "label": "Faction Electi 1  -  Mission arenas (replay) (Shattered Lands)",
+         "value": "World_P.MissionReplay_FactionElecti1"
+        },
+        {
+         "label": "Flat Kairoser  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_FlatKairoser"
+        },
+        {
+         "label": "Gen IVIV  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_GenIVIV"
+        },
+        {
+         "label": "Gotta Go Fast  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_GottaGoFast"
+        },
+        {
+         "label": "Grasslands 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Grasslands1"
+        },
+        {
+         "label": "Grasslands 2A  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Grasslands2A"
+        },
+        {
+         "label": "Grasslands 2B  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Grasslands2B"
+        },
+        {
+         "label": "Grasslands 3  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Grasslands3"
+        },
+        {
+         "label": "Heist  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Heist"
+        },
+        {
+         "label": "Island Murder Mystery  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_IslandMurderMystery"
+        },
+        {
+         "label": "Legendary Vending Machine  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_LegendaryVendingMachine"
+        },
+        {
+         "label": "Lifes Purpose  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_LifesPurpose"
+        },
+        {
+         "label": "Mad Scientist  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_MadScientist"
+        },
+        {
+         "label": "Micro Nations 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_MicroNations1"
+        },
+        {
+         "label": "Micronations 2  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Micronations2"
+        },
+        {
+         "label": "Mountain 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Mountain1"
+        },
+        {
+         "label": "Mountain Faction 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_MountainFaction1"
+        },
+        {
+         "label": "Mountains 2A  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Mountains2A"
+        },
+        {
+         "label": "Mountains 2B  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Mountains2B"
+        },
+        {
+         "label": "Mountains 3  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Mountains3"
+        },
+        {
+         "label": "Mountains Faction Club  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_MountainsFaction_Club"
+        },
+        {
+         "label": "No Escape Room  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_NoEscapeRoom"
+        },
+        {
+         "label": "Obstacle Course Glide  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_ObstacleCourseGlide"
+        },
+        {
+         "label": "Obstacle Course Grapple  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_ObstacleCourseGrapple"
+        },
+        {
+         "label": "Old Raymond Part 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_OldRaymondPart1"
+        },
+        {
+         "label": "Old Raymond Part 2  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_OldRaymondPart2"
+        },
+        {
+         "label": "One Gassy Issue  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_OneGassyIssue"
+        },
+        {
+         "label": "Planetary Escape  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_PlanetaryEscape"
+        },
+        {
+         "label": "Price Of Freedom Part 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_PriceOfFreedomPart1"
+        },
+        {
+         "label": "Price Of Freedom Part 2  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_PriceOfFreedomPart2"
+        },
+        {
+         "label": "Price Of Freedom Part 3  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_PriceOfFreedomPart3"
+        },
+        {
+         "label": "Rocket Mosnters  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_RocketMosnters"
+        },
+        {
+         "label": "Search For Lilith  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_SearchForLilith"
+        },
+        {
+         "label": "Seeds Of Revolution Part 1  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_SeedsOfRevolutionPart1"
+        },
+        {
+         "label": "Seeds Of Revolution Part 2  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_SeedsOfRevolutionPart2"
+        },
+        {
+         "label": "Shatteredlands 1 A  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Shatteredlands1_A"
+        },
+        {
+         "label": "Shatteredlands 1 B  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Shatteredlands1_B"
+        },
+        {
+         "label": "Shatteredlands 1B  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Shatteredlands1B"
+        },
+        {
+         "label": "Shatteredlands 3  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_Shatteredlands3"
+        },
+        {
+         "label": "The Cure  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_TheCure"
+        },
+        {
+         "label": "Thresher Rancher  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_ThresherRancher"
+        },
+        {
+         "label": "What Lurks Beneath  -  Mission arenas (replay) (Other)",
+         "value": "World_P.MissionReplay_WhatLurksBeneath"
+        },
+        {
+         "label": "Beach Tower  -  Spots - Grasslands",
+         "value": "World_P.FT_GRA_BeachTower"
+        },
+        {
+         "label": "Beth Camp  -  Spots - Grasslands",
+         "value": "World_P.RTS_GRA_BethCamp"
+        },
+        {
+         "label": "Biosphere  -  Spots - Grasslands",
+         "value": "World_P.RTS_GRA_Biosphere"
+        },
+        {
+         "label": "Cliff Shacks  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_CliffShacks"
+        },
+        {
+         "label": "Coastal BS Event Airship  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_CoastalBS_EventAirship"
+        },
+        {
+         "label": "Coastal Dock 1  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_CoastalDock1"
+        },
+        {
+         "label": "Coastal Dock 2  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_CoastalDock2"
+        },
+        {
+         "label": "Coastal Hills  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_CoastalHills"
+        },
+        {
+         "label": "Distillery  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_Distillery"
+        },
+        {
+         "label": "East Road 01  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_East_Road01"
+        },
+        {
+         "label": "East Road 02  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road02"
+        },
+        {
+         "label": "East Road 03  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road03"
+        },
+        {
+         "label": "East Road 04  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road04"
+        },
+        {
+         "label": "East Road 05  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_East_Road05"
+        },
+        {
+         "label": "East Road 08  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road08"
+        },
+        {
+         "label": "East Road 09  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road09"
+        },
+        {
+         "label": "East Road 10  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road10"
+        },
+        {
+         "label": "East Road 11  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_East_Road11"
+        },
+        {
+         "label": "Evocarium Ripper Farmlands  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_Evocarium_RipperFarmlands"
+        },
+        {
+         "label": "Food Proc Start  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_FoodProcStart"
+        },
+        {
+         "label": "Food Processing Intro  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_FoodProcessingIntro"
+        },
+        {
+         "label": "Hill Cave  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_HillCave"
+        },
+        {
+         "label": "Hill Shack  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_HillShack"
+        },
+        {
+         "label": "KOTOFOB  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_KOTOFOB"
+        },
+        {
+         "label": "KOTOFOB 2  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_KOTOFOB2"
+        },
+        {
+         "label": "KOTOLieutenant  -  Spots - Grasslands",
+         "value": "World_P.RS_KOTOLieutenant"
+        },
+        {
+         "label": "Large Pond  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_LargePond"
+        },
+        {
+         "label": "Large Tree  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_LargeTree"
+        },
+        {
+         "label": "Mountain Pass  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_MountainPass"
+        },
+        {
+         "label": "Old Raymond  -  Spots - Grasslands",
+         "value": "World_P.RTS_GRA_OldRaymond"
+        },
+        {
+         "label": "POI Zadras House  -  Spots - Grasslands",
+         "value": "World_P.FT_GRA_POI_ZadrasHouse"
+        },
+        {
+         "label": "Ripper Camp  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperCamp"
+        },
+        {
+         "label": "Ripper Crane  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperCrane"
+        },
+        {
+         "label": "Ripper Farmlands  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperFarmlands"
+        },
+        {
+         "label": "Ripper FL Ripper Beach  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperFL_RipperBeach"
+        },
+        {
+         "label": "Ripper Tunn Exit Ledge  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperTunn_ExitLedge"
+        },
+        {
+         "label": "Ripper Tunn Start Ledge  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperTunn_StartLedge"
+        },
+        {
+         "label": "Ripper Tunnel  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_RipperTunnel"
+        },
+        {
+         "label": "River Beast Farm  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_RiverBeastFarm"
+        },
+        {
+         "label": "River Beast Farm Exit  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_RiverBeastFarmExit"
+        },
+        {
+         "label": "River West  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_RiverWest"
+        },
+        {
+         "label": "Solar Array  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_SolarArray"
+        },
+        {
+         "label": "Sorting Station  -  Spots - Grasslands",
+         "value": "World_P.RTS_GRA_SortingStation"
+        },
+        {
+         "label": "Water Treatment  -  Spots - Grasslands",
+         "value": "World_P.RTS_GRA_WaterTreatment"
+        },
+        {
+         "label": "Waterwheel Docks  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_WaterwheelDocks"
+        },
+        {
+         "label": "Waterwheel Exit  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_WaterwheelExit"
+        },
+        {
+         "label": "Waterwheel Lake  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_WaterwheelLake"
+        },
+        {
+         "label": "West Road 01  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road01"
+        },
+        {
+         "label": "West Road 02  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road02"
+        },
+        {
+         "label": "West Road 03  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road03"
+        },
+        {
+         "label": "West Road 04  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road04"
+        },
+        {
+         "label": "West Road 05  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road05"
+        },
+        {
+         "label": "West Road 06  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road06"
+        },
+        {
+         "label": "West Road 07  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road07"
+        },
+        {
+         "label": "West Road 08  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road08"
+        },
+        {
+         "label": "West Road 12  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road12"
+        },
+        {
+         "label": "West Road 13  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road13"
+        },
+        {
+         "label": "West Road 14  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road14"
+        },
+        {
+         "label": "West Road 15  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road15"
+        },
+        {
+         "label": "West Road 16  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road16"
+        },
+        {
+         "label": "West Road 17  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road17"
+        },
+        {
+         "label": "West Road 18  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road18"
+        },
+        {
+         "label": "West Road 19  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road19"
+        },
+        {
+         "label": "West Road 20  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road20"
+        },
+        {
+         "label": "West Road 21  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road21"
+        },
+        {
+         "label": "West Road 22  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road22"
+        },
+        {
+         "label": "West Road 23  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road23"
+        },
+        {
+         "label": "West Road 24  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road24"
+        },
+        {
+         "label": "West Road 25  -  Spots - Grasslands",
+         "value": "World_P.RS_Grasslands_West_Road25"
+        },
+        {
+         "label": "Western Cave  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_WesternCave"
+        },
+        {
+         "label": "Zone Trans GRAto MOU  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_ZoneTransGRAtoMOU"
+        },
+        {
+         "label": "Zone Trans GRAto SHA  -  Spots - Grasslands",
+         "value": "World_P.RS_GRA_ZoneTransGRAtoSHA"
+        },
+        {
+         "label": "Abandoned Auger Village  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_AbandonedAugerVillage"
+        },
+        {
+         "label": "Below Com Array  -  Spots - Mountains",
+         "value": "World_P.RTS_MOU_BelowComArray"
+        },
+        {
+         "label": "Blacksite Entrance  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_BlacksiteEntrance"
+        },
+        {
+         "label": "Blacksite Exit  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_BlacksiteExit"
+        },
+        {
+         "label": "BSExterior  -  Spots - Mountains",
+         "value": "World_P.RTS_MOU_BSExterior"
+        },
+        {
+         "label": "Cat Canyon  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_CatCanyon"
+        },
+        {
+         "label": "Chk Pnt Gorge  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_ChkPnt_Gorge"
+        },
+        {
+         "label": "Cliffs A  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_CliffsA"
+        },
+        {
+         "label": "Cliffs B  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_CliffsB"
+        },
+        {
+         "label": "Cliffs D  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_CliffsD"
+        },
+        {
+         "label": "Cliffs E  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_CliffsE"
+        },
+        {
+         "label": "Cliffs Entrance  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_CliffsEntrance"
+        },
+        {
+         "label": "Com Array Entrance  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_ComArrayEntrance"
+        },
+        {
+         "label": "Com Array Ice Hall  -  Spots - Mountains",
+         "value": "World_P.RTS_MOU_ComArrayIceHall"
+        },
+        {
+         "label": "Electi Plateau  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_ElectiPlateau"
+        },
+        {
+         "label": "Far mou base  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_Far_mou_base"
+        },
+        {
+         "label": "Gorge Event Colosseum Outside  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_Gorge_EventColosseumOutside"
+        },
+        {
+         "label": "Gorge Riverbend  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_Gorge_Riverbend"
+        },
+        {
+         "label": "Gorge Shore  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_Gorge_Shore"
+        },
+        {
+         "label": "HL North  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_HL_North"
+        },
+        {
+         "label": "Ho M Int Ent  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_HoM_Int_Ent"
+        },
+        {
+         "label": "Ho M Int FTunnel  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_HoM_Int_FTunnel"
+        },
+        {
+         "label": "Ho M Int Office  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_HoM_Int_Office"
+        },
+        {
+         "label": "Mining Lift  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_Mining_Lift"
+        },
+        {
+         "label": "Mountain Top Ship  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_MountainTop_Ship"
+        },
+        {
+         "label": "North Cliffs  -  Spots - Mountains",
+         "value": "World_P.FT_MOU_NorthCliffs"
+        },
+        {
+         "label": "Northern Corridor  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_NorthernCorridor"
+        },
+        {
+         "label": "Obstacle Course  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_ObstacleCourse"
+        },
+        {
+         "label": "Order Corridor  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_OrderCorridor"
+        },
+        {
+         "label": "Outside Temple  -  Spots - Mountains",
+         "value": "World_P.RTS_MOU_OutsideTemple"
+        },
+        {
+         "label": "Pto Sanc  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_PtoSanc"
+        },
+        {
+         "label": "Sanc Path S  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_Sanc_Path_S"
+        },
+        {
+         "label": "Security Checkpoint A  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_SecurityCheckpointA"
+        },
+        {
+         "label": "Security Checkpoint B  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_SecurityCheckpointB"
+        },
+        {
+         "label": "Temple  -  Spots - Mountains",
+         "value": "World_P.RTS_MOU_Temple"
+        },
+        {
+         "label": "Temple Leadup  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_TempleLeadup"
+        },
+        {
+         "label": "Und Grd Cave  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_UndGrd_Cave"
+        },
+        {
+         "label": "Water Wheel  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WaterWheel"
+        },
+        {
+         "label": "WS  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WS"
+        },
+        {
+         "label": "WS Alt  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WS_Alt"
+        },
+        {
+         "label": "WS Lower  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WS_Lower"
+        },
+        {
+         "label": "WS Tim Ent  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WS_Tim_Ent"
+        },
+        {
+         "label": "WW Int 1  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WW_Int1"
+        },
+        {
+         "label": "WW Int 2  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WW_Int2"
+        },
+        {
+         "label": "WW Plat  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_WW_Plat"
+        },
+        {
+         "label": "Zone Trans MOUto GRA  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_ZoneTransMOUtoGRA"
+        },
+        {
+         "label": "Zone Trans Mouto SHA  -  Spots - Mountains",
+         "value": "World_P.RS_MOU_ZoneTransMoutoSHA"
+        },
+        {
+         "label": "Airlock To City  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_AirlockToCity"
+        },
+        {
+         "label": "Beach Center  -  Spots - Shattered Lands",
+         "value": "World_P.RTS_SHA_BeachCenter"
+        },
+        {
+         "label": "Beach Electi North Passage  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Beach_ElectiNorthPassage"
+        },
+        {
+         "label": "Beach Shorefront  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Beach_Shorefront"
+        },
+        {
+         "label": "Beach Upper  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_BeachUpper"
+        },
+        {
+         "label": "Before Grassland Canyon  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_BeforeGrasslandCanyon"
+        },
+        {
+         "label": "Canyon Center East  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Canyon_CenterEast"
+        },
+        {
+         "label": "Canyon East Entrance  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Canyon_EastEntrance"
+        },
+        {
+         "label": "Canyon Entrance South  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_CanyonEntranceSouth"
+        },
+        {
+         "label": "Canyon South  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Canyon_South"
+        },
+        {
+         "label": "Canyon Towers  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Canyon_Towers"
+        },
+        {
+         "label": "Casting Call  -  Spots - Shattered Lands",
+         "value": "World_P.RTS_SHA_CastingCall"
+        },
+        {
+         "label": "City Entrance  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_CityEntrance"
+        },
+        {
+         "label": "Crater Ext  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Crater_Ext"
+        },
+        {
+         "label": "Electi Bridge South  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiBridgeSouth"
+        },
+        {
+         "label": "Electi Outlook  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiOutlook"
+        },
+        {
+         "label": "Electi Plat Crater Jump  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiPlat_CraterJump"
+        },
+        {
+         "label": "Electi Plat Great Dist 1  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiPlat_GreatDist1"
+        },
+        {
+         "label": "Electi Plat Moxxi Approach  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiPlat_MoxxiApproach"
+        },
+        {
+         "label": "Electi Plat Moxxi Entrance  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiPlat_MoxxiEntrance"
+        },
+        {
+         "label": "Electi Plat Moxxis Cave Exit  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiPlat_MoxxisCaveExit"
+        },
+        {
+         "label": "Electi Plateau Ripper Gate  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ElectiPlateauRipperGate"
+        },
+        {
+         "label": "Enter Grassland Canyon  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_EnterGrasslandCanyon"
+        },
+        {
+         "label": "Entrance Fracking Tower  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_EntranceFrackingTower"
+        },
+        {
+         "label": "Great Disturbance Cave 2  -  Spots - Shattered Lands",
+         "value": "World_P.RTS_SHA_GreatDisturbanceCave2"
+        },
+        {
+         "label": "Moxxis Room  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_MoxxisRoom"
+        },
+        {
+         "label": "Nat Plat Ripper Raid Road  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_NatPlat_RipperRaidRoad"
+        },
+        {
+         "label": "Order Plat South Road  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_OrderPlat_SouthRoad"
+        },
+        {
+         "label": "Scrap Yard Entrance  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ScrapYardEntrance"
+        },
+        {
+         "label": "Scrapyard Lower Road  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Scrapyard_LowerRoad"
+        },
+        {
+         "label": "Scrapyard M 2Rip Mach To Electi  -  Spots - Shattered Lands",
+         "value": "World_P.FT_SHA_Scrapyard_M2RipMachToElecti"
+        },
+        {
+         "label": "Scrapyard Under SYard Tunn  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_Scrapyard_UnderSYardTunn"
+        },
+        {
+         "label": "Seabase 2  -  Spots - Shattered Lands",
+         "value": "World_P.RTS_SHA_Seabase2"
+        },
+        {
+         "label": "SH Order Plateau  -  Spots - Shattered Lands",
+         "value": "World_P.FT_SHA_SH_OrderPlateau"
+        },
+        {
+         "label": "Srapyard Swamp  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_SrapyardSwamp"
+        },
+        {
+         "label": "Under Scrap Yard Canyon Entrance  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_UnderScrapYardCanyonEntrance"
+        },
+        {
+         "label": "Under Scrapyard  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_UnderScrapyard"
+        },
+        {
+         "label": "Zone Trans SHAto GRA  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ZoneTransSHAtoGRA"
+        },
+        {
+         "label": "Zone Trans SHAto MOU  -  Spots - Shattered Lands",
+         "value": "World_P.RS_SHA_ZoneTransSHAtoMOU"
+        },
+        {
+         "label": "Ascension Top  -  Spots - City",
+         "value": "World_P.RS_City_MNT_AscensionTop"
+        },
+        {
+         "label": "Canal  -  Spots - City",
+         "value": "World_P.RS_City_MNT_Canal"
+        },
+        {
+         "label": "Central  -  Spots - City",
+         "value": "World_P.RS_City_MNT_Central"
+        },
+        {
+         "label": "Dred  -  Spots - City",
+         "value": "World_P.RS_City_MNT_Dred"
+        },
+        {
+         "label": "Meteor Hole Industrial  -  Spots - City",
+         "value": "World_P.RS_City_SHA_MeteorHole_Industrial"
+        },
+        {
+         "label": "No Escape Room  -  Spots - City",
+         "value": "World_P.RS_City_MNT_NoEscapeRoom"
+        },
+        {
+         "label": "Nuclear Facility Top  -  Spots - City",
+         "value": "World_P.RS_City_SHA_NuclearFacility_Top"
+        },
+        {
+         "label": "Order Chokepoint  -  Spots - City",
+         "value": "World_P.RS_City_SHA_OrderChokepoint"
+        },
+        {
+         "label": "Ordonite Smelter  -  Spots - City",
+         "value": "World_P.RS_City_MNT_OrdoniteSmelter"
+        },
+        {
+         "label": "Ordonite Smelter 2  -  Spots - City",
+         "value": "World_P.RS_City_MNT_OrdoniteSmelter2"
+        },
+        {
+         "label": "Pre Red Light  -  Spots - City",
+         "value": "World_P.RS_City_SHA_PreRedLight"
+        },
+        {
+         "label": "Radioactive Pit  -  Spots - City",
+         "value": "World_P.RS_City_SHA_RadioactivePit"
+        },
+        {
+         "label": "To GRA Transition  -  Spots - City  [RS_City_MNT_To_GRA_Transition]",
+         "value": "World_P.RS_City_MNT_To_GRA_Transition"
+        },
+        {
+         "label": "To GRA Transition  -  Spots - City  [RS_City_SHA_To_GRA_Transition]",
+         "value": "World_P.RS_City_SHA_To_GRA_Transition"
+        },
+        {
+         "label": "To MNT Transition  -  Spots - City  [RS_City_GRA_To_MNT_Transition]",
+         "value": "World_P.RS_City_GRA_To_MNT_Transition"
+        },
+        {
+         "label": "To MNT Transition  -  Spots - City  [RS_City_SHA_To_MNT_Transition]",
+         "value": "World_P.RS_City_SHA_To_MNT_Transition"
+        },
+        {
+         "label": "To SHA Transition  -  Spots - City  [RS_City_GRA_To_SHA_Transition]",
+         "value": "World_P.RS_City_GRA_To_SHA_Transition"
+        },
+        {
+         "label": "To SHA Transition  -  Spots - City  [RS_City_MNT_To_SHA_Transition]",
+         "value": "World_P.RS_City_MNT_To_SHA_Transition"
+        },
+        {
+         "label": "Water Cooling Entrance  -  Spots - City",
+         "value": "World_P.RS_City_MNT_WaterCoolingEntrance"
+        },
+        {
+         "label": "FF Zadra Elevator  -  Spots - Other",
+         "value": "World_P.RS_FF_ZadraElevator"
+        },
+        {
+         "label": "Hydro Hills Dam  -  Spots - Other",
+         "value": "World_P.RS_HydroHills_Dam"
+        },
+        {
+         "label": "Hydro Hills Stockpile  -  Spots - Other",
+         "value": "World_P.RS_HydroHills_Stockpile"
+        },
+        {
+         "label": "MOUT Phase Underground  -  Spots - Other",
+         "value": "World_P.RTS_MOUT_PhaseUnderground"
+        },
+        {
+         "label": "Order Plateau Wildlife Battlefield  -  Spots - Other",
+         "value": "World_P.RS_OrderPlateauWildlifeBattlefield"
+        },
+        {
+         "label": "Shatterlands Crater Start  -  Spots - Other",
+         "value": "World_P.RS_Shatterlands_CraterStart"
+        }
+       ]
+      },
+      {
+       "id": "tr_hq",
+       "type": "button",
+       "label": "Crimson Resistance HQ (start)",
+       "button": "GO",
+       "tq": "TQ.TRAVEL",
+       "args": {
+        "name": "RS_Grasslands_ClaptrapBeach"
+       }
+      },
+      {
+       "id": "tr_elpis",
+       "type": "button",
+       "label": "ElectiTown",
+       "button": "GO",
+       "tq": "TQ.TRAVEL",
+       "args": {
+        "name": "FTS_ElectiTown"
+       }
+      },
+      {
+       "id": "tr_city",
+       "type": "button",
+       "label": "City - Ascension Plaza",
+       "button": "GO",
+       "tq": "TQ.TRAVEL",
+       "args": {
+        "name": "RS_City_AscensionPlazza"
+       }
+      },
+      {
+       "id": "tr_mnt",
+       "type": "button",
+       "label": "City - Mountain safehouse",
+       "button": "GO",
+       "tq": "TQ.TRAVEL",
+       "args": {
+        "name": "FTS_City_MountainSafehouse"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Loot",
+   "sections": [
+    {
+     "name": "Make items",
+     "items": [
+      {
+       "id": "mk_legendary",
+       "type": "choice",
+       "label": "Spawn legendary (pick or type a name)",
+       "tq": "TQ.LOOT",
+       "arg": "item",
+       "free_text": true,
+       "options": [
+        {
+         "label": "(pick from the list or type a name)",
+         "value": ""
+        },
+        {
+         "label": "Acey May  (HeartGun)  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_HeartGun_shiny"
+        },
+        {
+         "label": "Aegon's Dream (DualDamage)  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_DualDamage_shiny"
+        },
+        {
+         "label": "Aerodramatic  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_AeroDramatic_shiny"
+        },
+        {
+         "label": "Anarchy  -  Tediore Shotgun",
+         "value": "itempool_ted_sg_05_legendary_anarchy_shiny"
+        },
+        {
+         "label": "Arc-tan (arctic)  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_arctic_shiny"
+        },
+        {
+         "label": "Asher's Rise (Asher)  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_Asher_shiny"
+        },
+        {
+         "label": "Astonisher (relay)  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_relay_shiny"
+        },
+        {
+         "label": "Avarice  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_Avarice_shiny"
+        },
+        {
+         "label": "Birt's Bees (BeeGun)  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_BeeGun_shiny"
+        },
+        {
+         "label": "Bloody Lumberjack (Lumberjack)  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_Lumberjack_shiny"
+        },
+        {
+         "label": "Bod  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_Bod_shiny"
+        },
+        {
+         "label": "Bonnie And Clyde (BonnieClyde)  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_BonnieClyde_shiny"
+        },
+        {
+         "label": "Boomslang  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_05_legendary_Boomslang_shiny"
+        },
+        {
+         "label": "Borstel Ballista (Ballista)  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_05_legendary_Ballista_shiny"
+        },
+        {
+         "label": "Brickhouse  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_brickhouse_shiny"
+        },
+        {
+         "label": "Broken Wings (songbird)  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_songbird_shiny"
+        },
+        {
+         "label": "Bubbles  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_bubbles_shiny"
+        },
+        {
+         "label": "Budget Deity (ATLien)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_ATLien_shiny"
+        },
+        {
+         "label": "Bugbear  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_Bugbear_shiny"
+        },
+        {
+         "label": "Bully  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_Bully_shiny"
+        },
+        {
+         "label": "Chuck  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_Chuck_shiny"
+        },
+        {
+         "label": "Clarity  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_Clarity_shiny"
+        },
+        {
+         "label": "Cold Shoulder  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_ColdShoulder_shiny"
+        },
+        {
+         "label": "Complex Root  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_complex_root_shiny"
+        },
+        {
+         "label": "Convergence  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_convergence_shiny"
+        },
+        {
+         "label": "Cormano  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_Cormano_shiny"
+        },
+        {
+         "label": "corpohacker  -  class mods",
+         "value": "itempool_class_mods_05_legendary_corpohacker"
+        },
+        {
+         "label": "Crazed Earl  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_CrazedEarl_shiny"
+        },
+        {
+         "label": "Critical Decay (Sledge)  -  Torgue Pistol",
+         "value": "itempool_tor_PS_05_legendary_Sledge_shiny"
+        },
+        {
+         "label": "dark siren  -  class mods",
+         "value": "itempool_class_mods_05_legendary_dark_siren"
+        },
+        {
+         "label": "Darkbeast (bloodstarved)  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_bloodstarved_shiny"
+        },
+        {
+         "label": "Decompiler (assembler)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_assembler_shiny"
+        },
+        {
+         "label": "devourer  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_devourer_shiny"
+        },
+        {
+         "label": "Disc Jockey  -  Ripper Sniper",
+         "value": "ItemPool_BlackMarket_Comp_BOR_HW_DiscJockey"
+        },
+        {
+         "label": "Discy Business  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_DiscyBusiness_shiny"
+        },
+        {
+         "label": "Divided Focus  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_DividedFocus_shiny"
+        },
+        {
+         "label": "Doeshot  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Doeshot_shiny"
+        },
+        {
+         "label": "Enumeration  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_enumeration_shiny"
+        },
+        {
+         "label": "Eradication (Extinction)  -  Vladof Assault rifle",
+         "value": "itempool_jak_sr_legendary_Extinction_shiny"
+        },
+        {
+         "label": "Exhibition  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_exhibition_shiny"
+        },
+        {
+         "label": "exo soldier  -  class mods",
+         "value": "itempool_class_mods_05_legendary_exo_soldier"
+        },
+        {
+         "label": "Falke  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_falke_shiny"
+        },
+        {
+         "label": "Fearstalker  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_fearstalker_shiny"
+        },
+        {
+         "label": "Finnty  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_Finnty_shiny"
+        },
+        {
+         "label": "Fisheye  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_Fisheye_shiny"
+        },
+        {
+         "label": "Fishward  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_fishward_shiny"
+        },
+        {
+         "label": "Flash Cyclone  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_flashcyclone_shiny"
+        },
+        {
+         "label": "Flash Fuel  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_FlashFuel_shiny"
+        },
+        {
+         "label": "Fleabag  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_Fleabag_shiny"
+        },
+        {
+         "label": "Forsaken Chaos (CommBD)  -  Tediore Shotgun",
+         "value": "itempool_ted_sg_05_legendary_CommBD_shiny"
+        },
+        {
+         "label": "Fourier's Malady (Fourier)  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Fourier_shiny"
+        },
+        {
+         "label": "G.m.r. (GMR)  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_GMR_shiny"
+        },
+        {
+         "label": "Goalkeeper  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_Goalkeeper_shiny"
+        },
+        {
+         "label": "Golden God  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_GoldenGod_shiny"
+        },
+        {
+         "label": "Goremaster  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_GoreMaster_shiny"
+        },
+        {
+         "label": "gravitar  -  class mods",
+         "value": "itempool_class_mods_05_legendary_gravitar"
+        },
+        {
+         "label": "Hair Trigger (Demo)  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Demo_shiny"
+        },
+        {
+         "label": "Hand Frag  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_handfrag_shiny"
+        },
+        {
+         "label": "Hard Dark (DarkHard)  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_DarkHard_shiny"
+        },
+        {
+         "label": "Hardpoint (Breadth)  -  Torgue Pistol",
+         "value": "itempool_tor_PS_05_legendary_Breadth_shiny"
+        },
+        {
+         "label": "Hellfire  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_hellfire_shiny"
+        },
+        {
+         "label": "Hellwalker  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_Hellwalker_shiny"
+        },
+        {
+         "label": "Hemorrhage  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_hemorrhage_shiny"
+        },
+        {
+         "label": "Hippo Gun  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Hippogun_shiny"
+        },
+        {
+         "label": "Honeymooner (accretion)  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_accretion_shiny"
+        },
+        {
+         "label": "Hot Slugger (Slugger)  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_Slugger_shiny"
+        },
+        {
+         "label": "Husky Friend (HeavyTurret)  -  Tediore Shotgun",
+         "value": "itempool_ted_sg_05_legendary_HeavyTurret_shiny"
+        },
+        {
+         "label": "Infection  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_Infection_shiny"
+        },
+        {
+         "label": "Inscriber  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_Inscriber_shiny"
+        },
+        {
+         "label": "Ishmael  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_Ishmael_shiny"
+        },
+        {
+         "label": "Jail-broken Gatling (Jailbroken)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Jailbroken_shiny"
+        },
+        {
+         "label": "Kaleidosplode  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Kaleidosplode_shiny"
+        },
+        {
+         "label": "Kaoson  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_KaoSon_shiny"
+        },
+        {
+         "label": "Katagawa's Revenge (katagawa)  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_katagawa_shiny"
+        },
+        {
+         "label": "Kickballer  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_kickballer_shiny"
+        },
+        {
+         "label": "King's Gambit (KingsGambit)  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_KingsGambit_shiny"
+        },
+        {
+         "label": "Laser Disker (laserdisc)  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_laserdisc_shiny"
+        },
+        {
+         "label": "Laser-cutter  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_lasercutter_shiny"
+        },
+        {
+         "label": "Lead Balloon  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_LeadBalloon_shiny"
+        },
+        {
+         "label": "Light Gun  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_LightGun_shiny"
+        },
+        {
+         "label": "Linebacker  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Linebacker_shiny"
+        },
+        {
+         "label": "Lockjaw  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_lockjaw_shiny"
+        },
+        {
+         "label": "Lovelorn (HotMod)  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_HotMod_shiny"
+        },
+        {
+         "label": "Lucian's Flank (Lucian)  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_Lucian_shiny"
+        },
+        {
+         "label": "Lucky Clover (RocketReload)  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_RocketReload_shiny"
+        },
+        {
+         "label": "Luty Madlad (Luty)  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_Luty_shiny"
+        },
+        {
+         "label": "Mantra  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_mantra_shiny"
+        },
+        {
+         "label": "Marshall's Claw (manifest)  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_manifest_shiny"
+        },
+        {
+         "label": "Mercredi  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_mercredi_shiny"
+        },
+        {
+         "label": "Mercurious (mercury)  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_mercury_shiny"
+        },
+        {
+         "label": "Midnight Defiance (CrowdSourced)  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_CrowdSourced_shiny"
+        },
+        {
+         "label": "Missilaser (misslaser)  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_misslaser_shiny"
+        },
+        {
+         "label": "Murmur (murder)  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_murder_shiny"
+        },
+        {
+         "label": "Noisy Cricket  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_NoisyCricket_shiny"
+        },
+        {
+         "label": "Ohm I Got  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_OhmIGot_shiny"
+        },
+        {
+         "label": "Onslaught  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_Onslaught_shiny"
+        },
+        {
+         "label": "Oscar Mike (om)  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_om_shiny"
+        },
+        {
+         "label": "Overconsumption (EarlyExcess)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_EarlyExcess_shiny"
+        },
+        {
+         "label": "Pachonk (Pchonk)  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_Pchonk_shiny"
+        },
+        {
+         "label": "paladin  -  class mods",
+         "value": "itempool_class_mods_05_legendary_paladin"
+        },
+        {
+         "label": "Petanque  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_petanque_shiny"
+        },
+        {
+         "label": "Phantom Flame  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_Phantom_Flame_shiny"
+        },
+        {
+         "label": "Plasma Coil  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_PlasmaCoil_shiny"
+        },
+        {
+         "label": "Plumb Bob  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_PlumbBob_shiny"
+        },
+        {
+         "label": "Potato Thrower Iv (PotatoThrower)  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_PotatoThrower_shiny"
+        },
+        {
+         "label": "Pragmate  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_pragmate_shiny"
+        },
+        {
+         "label": "Prince Harming (Prince)  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_Prince_shiny"
+        },
+        {
+         "label": "Prism (Burrow)  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_legendary_Burrow_shiny"
+        },
+        {
+         "label": "Prowler (follower)  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_follower_shiny"
+        },
+        {
+         "label": "Queen's Rest (QueensRest)  -  Torgue Pistol",
+         "value": "itempool_tor_ps_05_legendary_QueensRest_shiny"
+        },
+        {
+         "label": "Rainbow Vomit  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_RainbowVomit_shiny"
+        },
+        {
+         "label": "Rainmaker  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_rainmaker_shiny"
+        },
+        {
+         "label": "Rangefinder  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_Rangefinder_shiny"
+        },
+        {
+         "label": "Reminisce  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_reminisce_shiny"
+        },
+        {
+         "label": "Rhythm  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_Rhythm_shiny"
+        },
+        {
+         "label": "Ripple  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_Ripple_shiny"
+        },
+        {
+         "label": "Roach  -  Torgue Pistol",
+         "value": "itempool_tor_ps_05_legendary_Roach_shiny"
+        },
+        {
+         "label": "robo dealer  -  class mods",
+         "value": "itempool_class_mods_05_legendary_robo_dealer"
+        },
+        {
+         "label": "Roil  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_roil_shiny"
+        },
+        {
+         "label": "Rooker (seamstress)  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_seamstress_shiny"
+        },
+        {
+         "label": "Roulette  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_Roulette_shiny"
+        },
+        {
+         "label": "Rowan's Charge (Rowan)  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_Rowan_shiny"
+        },
+        {
+         "label": "Rowdy Rider (rowdy)  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_rowdy_shiny"
+        },
+        {
+         "label": "Ruby's Grasp (RubysGrasp)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_RubysGrasp_shiny"
+        },
+        {
+         "label": "San Saba Songbird (QuickDraw)  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_QuickDraw_shiny"
+        },
+        {
+         "label": "Scoot'n'shoot (scootshoot)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_scootshoot_shiny"
+        },
+        {
+         "label": "Seventh Sense  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_seventh_sense_shiny"
+        },
+        {
+         "label": "Shalashaska  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_Shalashaska_shiny"
+        },
+        {
+         "label": "Shammy Kablammy (Shammy)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_Shammy_shiny"
+        },
+        {
+         "label": "Shardenfreude  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_Shardenfreude_shiny"
+        },
+        {
+         "label": "Shield Overflow (blackout)  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_blackout_shiny"
+        },
+        {
+         "label": "Shoals  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_shoals_shiny"
+        },
+        {
+         "label": "Sideshow  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_Sideshow_shiny"
+        },
+        {
+         "label": "Silver Sliver  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_silversliver_shiny"
+        },
+        {
+         "label": "Soul Survivor  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_soulsurvivor_shiny"
+        },
+        {
+         "label": "Star Helix  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_star_helix_shiny"
+        },
+        {
+         "label": "Stealth & Seek (Stealth)  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_Stealth_shiny"
+        },
+        {
+         "label": "Stop Gap  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_StopGap_shiny"
+        },
+        {
+         "label": "Stray  -  Ripper Sniper",
+         "value": "itempool_bor_sr_05_legendary_Stray_shiny"
+        },
+        {
+         "label": "Streamer  -  Ripper Heavy weapon",
+         "value": "ItemPool_BlackMarket_Comp_BOR_HW_Streamer"
+        },
+        {
+         "label": "Sunspot  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_sunspot_shiny"
+        },
+        {
+         "label": "Swan Song (Cannonbrawl)  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_Cannonbrawl_shiny"
+        },
+        {
+         "label": "Sweet Embrace  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Sweet_Embrace_shiny"
+        },
+        {
+         "label": "Symmetry  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_Symmetry_shiny"
+        },
+        {
+         "label": "T.k's Wave (TKsWave)  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_TKsWave_shiny"
+        },
+        {
+         "label": "Tankbuster  -  Ripper Sniper",
+         "value": "itempool_bor_sr_05_legendary_tankbuster_shiny"
+        },
+        {
+         "label": "Tempered Essence (aura)  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_aura_shiny"
+        },
+        {
+         "label": "Triplicate  -  Vladof Assault rifle",
+         "value": "itempool_jak_sr_legendary_Triplicate_shiny"
+        },
+        {
+         "label": "Truck  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_05_legendary_Truck_shiny"
+        },
+        {
+         "label": "Unstable  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Unstable_shiny"
+        },
+        {
+         "label": "Vamoose  -  Ripper Sniper",
+         "value": "itempool_bor_sr_05_legendary_Vamoose_shiny"
+        },
+        {
+         "label": "Verce  -  Jakobs Shotgun",
+         "value": "itempool_JAK_sg_05_legendary_Verce_shiny"
+        },
+        {
+         "label": "Whiskey Foxtrot (WF)  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_WF_shiny"
+        },
+        {
+         "label": "Wind Skimmer (outback)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_outback_shiny"
+        },
+        {
+         "label": "Wombo Combo  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_WomboCombo_shiny"
+        },
+        {
+         "label": "Zipper (Zipgun)  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_Zipgun_shiny"
+        }
+       ],
+       "desc": "Open the list and start typing - it narrows down as you type (in-game or Gearbox names). Enter takes the first match; a name not in the list is tried as typed. Boss / DLC-only legendaries are made in Gear Maker."
+      },
+      {
+       "id": "mk_pool",
+       "type": "input",
+       "label": "Spawn from any item pool (name)",
+       "tq": "TQ.LOOT",
+       "arg": "pool",
+       "args": {}
+      },
+      {
+       "id": "lg_ar",
+       "type": "button",
+       "label": "Legendary assault rifle",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_ar_05_legendary"
+       }
+      },
+      {
+       "id": "lg_ps",
+       "type": "button",
+       "label": "Legendary pistol",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_ps_05_legendary"
+       }
+      },
+      {
+       "id": "lg_sg",
+       "type": "button",
+       "label": "Legendary shotgun",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_sg_05_legendary"
+       }
+      },
+      {
+       "id": "lg_sm",
+       "type": "button",
+       "label": "Legendary SMG",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_sm_05_legendary"
+       }
+      },
+      {
+       "id": "lg_sr",
+       "type": "button",
+       "label": "Legendary sniper",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_sr_05_legendary"
+       }
+      },
+      {
+       "id": "lg_hw",
+       "type": "button",
+       "label": "Legendary heavy weapon",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_hw_05_legendary"
+       }
+      },
+      {
+       "id": "pearl_ar",
+       "type": "button",
+       "label": "Pearl assault rifle",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_ar_06_pearl"
+       }
+      },
+      {
+       "id": "lg_shield",
+       "type": "button",
+       "label": "Legendary shield",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_shields_05_legendary"
+       }
+      },
+      {
+       "id": "lg_cm",
+       "type": "button",
+       "label": "Legendary class mod",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_class_mods_05_legendary"
+       }
+      },
+      {
+       "id": "lg_gren",
+       "type": "button",
+       "label": "Legendary ordnance",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_grenade_gadgets_05_legendary"
+       }
+      },
+      {
+       "id": "lg_rep",
+       "type": "button",
+       "label": "Legendary repkit",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_repkit_05_legendary"
+       }
+      },
+      {
+       "id": "lg_enh",
+       "type": "button",
+       "label": "Legendary enhancement",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_enhancements_05_legendary"
+       }
+      },
+      {
+       "id": "lootsplosion",
+       "type": "button",
+       "label": "Lootsplosion x10 (random gear)",
+       "button": "DROP",
+       "tq": "TQ.LOOT",
+       "args": {
+        "pool": "itempool_guns_all",
+        "count": 10
+       }
+      }
+     ]
+    },
+    {
+     "name": "Pick up",
+     "items": [
+      {
+       "id": "vacuum",
+       "type": "button",
+       "label": "Bring all loot within 60 m to me",
+       "button": "BRING",
+       "tq": "TQ.VACUUM",
+       "args": {
+        "radius_m": 60
+       },
+       "hotkey": "F7"
+      }
+     ]
+    },
+    {
+     "name": "Items & storage",
+     "items": [
+      {
+       "id": "ser_all",
+       "type": "button",
+       "label": "Save every item code (serials.txt)",
+       "button": "SAVE",
+       "tq": "TQ.SERIALS",
+       "args": {
+        "where": "all"
+       },
+       "desc": "Backpack, equipped, bank and ground items -> serials.txt in the trainer folder (codes save editors use)."
+      },
+      {
+       "id": "ser_w1",
+       "type": "button",
+       "label": "Copy code of weapon slot 1",
+       "button": "COPY",
+       "tq": "TQ.SERIALS",
+       "args": {
+        "where": "equipped",
+        "copy": "equipped:0",
+        "save": false
+       }
+      },
+      {
+       "id": "ser_w2",
+       "type": "button",
+       "label": "Copy code of weapon slot 2",
+       "button": "COPY",
+       "tq": "TQ.SERIALS",
+       "args": {
+        "where": "equipped",
+        "copy": "equipped:1",
+        "save": false
+       }
+      },
+      {
+       "id": "bp_big",
+       "type": "toggle",
+       "label": "Backpack 60 slots",
+       "toggle": "big_backpack"
+      },
+      {
+       "id": "bank_big",
+       "type": "toggle",
+       "label": "Bank 500 slots",
+       "toggle": "big_bank"
+      },
+      {
+       "id": "radar_leg",
+       "type": "button",
+       "label": "Legendary loot on the compass",
+       "button": "ON",
+       "tq": "TQ.CONSOLE",
+       "args": {
+        "cmd": "oak.ui.EnableLegendaryLootOnRadar 1"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Builder",
+   "sections": [
+    {
+     "name": "Weapon builder",
+     "items": [
+      {
+       "id": "b_maker",
+       "type": "choice",
+       "label": "Manufacturer",
+       "tq": "TQ.BUILDER_SET",
+       "args": {
+        "key": "maker"
+       },
+       "arg": "v",
+       "options": [
+        {
+         "label": "Any",
+         "value": ""
+        },
+        {
+         "label": "Ripper",
+         "value": "bor"
+        },
+        {
+         "label": "Daedalus",
+         "value": "dad"
+        },
+        {
+         "label": "Jakobs",
+         "value": "jak"
+        },
+        {
+         "label": "Maliwan",
+         "value": "mal"
+        },
+        {
+         "label": "Order",
+         "value": "ord"
+        },
+        {
+         "label": "Tediore",
+         "value": "ted"
+        },
+        {
+         "label": "Torgue",
+         "value": "tor"
+        },
+        {
+         "label": "Vladof",
+         "value": "vla"
+        }
+       ]
+      },
+      {
+       "id": "b_type",
+       "type": "choice",
+       "label": "Weapon type",
+       "tq": "TQ.BUILDER_SET",
+       "args": {
+        "key": "type"
+       },
+       "arg": "v",
+       "options": [
+        {
+         "label": "Assault rifle",
+         "value": "ar"
+        },
+        {
+         "label": "Pistol",
+         "value": "ps"
+        },
+        {
+         "label": "Shotgun",
+         "value": "sg"
+        },
+        {
+         "label": "SMG",
+         "value": "sm"
+        },
+        {
+         "label": "Sniper rifle",
+         "value": "sr"
+        },
+        {
+         "label": "Heavy weapon",
+         "value": "hw"
+        }
+       ],
+       "desc": "Who makes what: Assault rifle: Daedalus, Jakobs, Order, Tediore, Torgue, Vladof  Pistol: Daedalus, Jakobs, Order, Tediore, Torgue  Shotgun: Ripper, Daedalus, Jakobs, Maliwan, Tediore, Torgue  SMG: Ripper, Daedalus, Maliwan, Vladof  Sniper rifle: Ripper, Jakobs, Maliwan, Order, Vladof  Heavy weapon: Ripper, Maliwan, Torgue, Vladof"
+      },
+      {
+       "id": "b_rarity",
+       "type": "choice",
+       "label": "Rarity",
+       "tq": "TQ.BUILDER_SET",
+       "args": {
+        "key": "rarity"
+       },
+       "arg": "v",
+       "options": [
+        {
+         "label": "Any",
+         "value": 0
+        },
+        {
+         "label": "Common",
+         "value": 1
+        },
+        {
+         "label": "Uncommon",
+         "value": 2
+        },
+        {
+         "label": "Rare",
+         "value": 3
+        },
+        {
+         "label": "Epic",
+         "value": 4
+        },
+        {
+         "label": "Legendary",
+         "value": 5
+        },
+        {
+         "label": "Pearl (type only)",
+         "value": 6
+        }
+       ],
+       "desc": "Common..Epic: rolled from the maker's own pool until the rarity matches. Legendary: one of that maker+type's named legendaries. Pearl: the type's pearl pool."
+      },
+      {
+       "id": "b_level",
+       "type": "slider",
+       "label": "Item level (0 = your level)",
+       "tq": "TQ.BUILDER_SET",
+       "args": {
+        "key": "level"
+       },
+       "arg": "v",
+       "min": 0,
+       "max": 60,
+       "step": 1,
+       "default": 0
+      },
+      {
+       "id": "b_leg",
+       "type": "choice",
+       "label": "Or a named legendary",
+       "tq": "TQ.BUILDER_SET",
+       "args": {
+        "key": "legendary"
+       },
+       "arg": "v",
+       "options": [
+        {
+         "label": "(none - use the choices above)",
+         "value": ""
+        },
+        {
+         "label": "Acey May  (HeartGun)  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_HeartGun_shiny"
+        },
+        {
+         "label": "Aegon's Dream (DualDamage)  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_DualDamage_shiny"
+        },
+        {
+         "label": "Aerodramatic  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_AeroDramatic_shiny"
+        },
+        {
+         "label": "Anarchy  -  Tediore Shotgun",
+         "value": "itempool_ted_sg_05_legendary_anarchy_shiny"
+        },
+        {
+         "label": "Arc-tan (arctic)  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_arctic_shiny"
+        },
+        {
+         "label": "Asher's Rise (Asher)  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_Asher_shiny"
+        },
+        {
+         "label": "Astonisher (relay)  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_relay_shiny"
+        },
+        {
+         "label": "Avarice  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_Avarice_shiny"
+        },
+        {
+         "label": "Birt's Bees (BeeGun)  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_BeeGun_shiny"
+        },
+        {
+         "label": "Bloody Lumberjack (Lumberjack)  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_Lumberjack_shiny"
+        },
+        {
+         "label": "Bod  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_Bod_shiny"
+        },
+        {
+         "label": "Bonnie And Clyde (BonnieClyde)  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_BonnieClyde_shiny"
+        },
+        {
+         "label": "Boomslang  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_05_legendary_Boomslang_shiny"
+        },
+        {
+         "label": "Borstel Ballista (Ballista)  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_05_legendary_Ballista_shiny"
+        },
+        {
+         "label": "Brickhouse  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_brickhouse_shiny"
+        },
+        {
+         "label": "Broken Wings (songbird)  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_songbird_shiny"
+        },
+        {
+         "label": "Bubbles  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_bubbles_shiny"
+        },
+        {
+         "label": "Budget Deity (ATLien)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_ATLien_shiny"
+        },
+        {
+         "label": "Bugbear  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_Bugbear_shiny"
+        },
+        {
+         "label": "Bully  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_Bully_shiny"
+        },
+        {
+         "label": "Chuck  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_Chuck_shiny"
+        },
+        {
+         "label": "Clarity  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_Clarity_shiny"
+        },
+        {
+         "label": "Cold Shoulder  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_ColdShoulder_shiny"
+        },
+        {
+         "label": "Complex Root  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_complex_root_shiny"
+        },
+        {
+         "label": "Convergence  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_convergence_shiny"
+        },
+        {
+         "label": "Cormano  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_Cormano_shiny"
+        },
+        {
+         "label": "corpohacker  -  class mods",
+         "value": "itempool_class_mods_05_legendary_corpohacker"
+        },
+        {
+         "label": "Crazed Earl  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_CrazedEarl_shiny"
+        },
+        {
+         "label": "Critical Decay (Sledge)  -  Torgue Pistol",
+         "value": "itempool_tor_PS_05_legendary_Sledge_shiny"
+        },
+        {
+         "label": "dark siren  -  class mods",
+         "value": "itempool_class_mods_05_legendary_dark_siren"
+        },
+        {
+         "label": "Darkbeast (bloodstarved)  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_bloodstarved_shiny"
+        },
+        {
+         "label": "Decompiler (assembler)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_assembler_shiny"
+        },
+        {
+         "label": "devourer  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_devourer_shiny"
+        },
+        {
+         "label": "Disc Jockey  -  Ripper Sniper",
+         "value": "ItemPool_BlackMarket_Comp_BOR_HW_DiscJockey"
+        },
+        {
+         "label": "Discy Business  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_DiscyBusiness_shiny"
+        },
+        {
+         "label": "Divided Focus  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_DividedFocus_shiny"
+        },
+        {
+         "label": "Doeshot  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Doeshot_shiny"
+        },
+        {
+         "label": "Enumeration  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_enumeration_shiny"
+        },
+        {
+         "label": "Eradication (Extinction)  -  Vladof Assault rifle",
+         "value": "itempool_jak_sr_legendary_Extinction_shiny"
+        },
+        {
+         "label": "Exhibition  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_exhibition_shiny"
+        },
+        {
+         "label": "exo soldier  -  class mods",
+         "value": "itempool_class_mods_05_legendary_exo_soldier"
+        },
+        {
+         "label": "Falke  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_falke_shiny"
+        },
+        {
+         "label": "Fearstalker  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_fearstalker_shiny"
+        },
+        {
+         "label": "Finnty  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_Finnty_shiny"
+        },
+        {
+         "label": "Fisheye  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_Fisheye_shiny"
+        },
+        {
+         "label": "Fishward  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_fishward_shiny"
+        },
+        {
+         "label": "Flash Cyclone  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_flashcyclone_shiny"
+        },
+        {
+         "label": "Flash Fuel  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_FlashFuel_shiny"
+        },
+        {
+         "label": "Fleabag  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_Fleabag_shiny"
+        },
+        {
+         "label": "Forsaken Chaos (CommBD)  -  Tediore Shotgun",
+         "value": "itempool_ted_sg_05_legendary_CommBD_shiny"
+        },
+        {
+         "label": "Fourier's Malady (Fourier)  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Fourier_shiny"
+        },
+        {
+         "label": "G.m.r. (GMR)  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_GMR_shiny"
+        },
+        {
+         "label": "Goalkeeper  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_Goalkeeper_shiny"
+        },
+        {
+         "label": "Golden God  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_GoldenGod_shiny"
+        },
+        {
+         "label": "Goremaster  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_GoreMaster_shiny"
+        },
+        {
+         "label": "gravitar  -  class mods",
+         "value": "itempool_class_mods_05_legendary_gravitar"
+        },
+        {
+         "label": "Hair Trigger (Demo)  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Demo_shiny"
+        },
+        {
+         "label": "Hand Frag  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_handfrag_shiny"
+        },
+        {
+         "label": "Hard Dark (DarkHard)  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_DarkHard_shiny"
+        },
+        {
+         "label": "Hardpoint (Breadth)  -  Torgue Pistol",
+         "value": "itempool_tor_PS_05_legendary_Breadth_shiny"
+        },
+        {
+         "label": "Hellfire  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_hellfire_shiny"
+        },
+        {
+         "label": "Hellwalker  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_Hellwalker_shiny"
+        },
+        {
+         "label": "Hemorrhage  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_hemorrhage_shiny"
+        },
+        {
+         "label": "Hippo Gun  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Hippogun_shiny"
+        },
+        {
+         "label": "Honeymooner (accretion)  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_accretion_shiny"
+        },
+        {
+         "label": "Hot Slugger (Slugger)  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_Slugger_shiny"
+        },
+        {
+         "label": "Husky Friend (HeavyTurret)  -  Tediore Shotgun",
+         "value": "itempool_ted_sg_05_legendary_HeavyTurret_shiny"
+        },
+        {
+         "label": "Infection  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_Infection_shiny"
+        },
+        {
+         "label": "Inscriber  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_Inscriber_shiny"
+        },
+        {
+         "label": "Ishmael  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_Ishmael_shiny"
+        },
+        {
+         "label": "Jail-broken Gatling (Jailbroken)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Jailbroken_shiny"
+        },
+        {
+         "label": "Kaleidosplode  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Kaleidosplode_shiny"
+        },
+        {
+         "label": "Kaoson  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_KaoSon_shiny"
+        },
+        {
+         "label": "Katagawa's Revenge (katagawa)  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_katagawa_shiny"
+        },
+        {
+         "label": "Kickballer  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_kickballer_shiny"
+        },
+        {
+         "label": "King's Gambit (KingsGambit)  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_KingsGambit_shiny"
+        },
+        {
+         "label": "Laser Disker (laserdisc)  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_laserdisc_shiny"
+        },
+        {
+         "label": "Laser-cutter  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_lasercutter_shiny"
+        },
+        {
+         "label": "Lead Balloon  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_LeadBalloon_shiny"
+        },
+        {
+         "label": "Light Gun  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_LightGun_shiny"
+        },
+        {
+         "label": "Linebacker  -  Torgue Shotgun",
+         "value": "itempool_tor_sg_05_legendary_Linebacker_shiny"
+        },
+        {
+         "label": "Lockjaw  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_lockjaw_shiny"
+        },
+        {
+         "label": "Lovelorn (HotMod)  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_HotMod_shiny"
+        },
+        {
+         "label": "Lucian's Flank (Lucian)  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_Lucian_shiny"
+        },
+        {
+         "label": "Lucky Clover (RocketReload)  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_RocketReload_shiny"
+        },
+        {
+         "label": "Luty Madlad (Luty)  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_Luty_shiny"
+        },
+        {
+         "label": "Mantra  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_mantra_shiny"
+        },
+        {
+         "label": "Marshall's Claw (manifest)  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_manifest_shiny"
+        },
+        {
+         "label": "Mercredi  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_mercredi_shiny"
+        },
+        {
+         "label": "Mercurious (mercury)  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_mercury_shiny"
+        },
+        {
+         "label": "Midnight Defiance (CrowdSourced)  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_CrowdSourced_shiny"
+        },
+        {
+         "label": "Missilaser (misslaser)  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_misslaser_shiny"
+        },
+        {
+         "label": "Murmur (murder)  -  Tediore Assault rifle",
+         "value": "itempool_ted_ar_05_legendary_murder_shiny"
+        },
+        {
+         "label": "Noisy Cricket  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_NoisyCricket_shiny"
+        },
+        {
+         "label": "Ohm I Got  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_OhmIGot_shiny"
+        },
+        {
+         "label": "Onslaught  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_Onslaught_shiny"
+        },
+        {
+         "label": "Oscar Mike (om)  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_om_shiny"
+        },
+        {
+         "label": "Overconsumption (EarlyExcess)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_EarlyExcess_shiny"
+        },
+        {
+         "label": "Pachonk (Pchonk)  -  Order Assault rifle",
+         "value": "itempool_ord_ar_05_legendary_Pchonk_shiny"
+        },
+        {
+         "label": "paladin  -  class mods",
+         "value": "itempool_class_mods_05_legendary_paladin"
+        },
+        {
+         "label": "Petanque  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_petanque_shiny"
+        },
+        {
+         "label": "Phantom Flame  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_Phantom_Flame_shiny"
+        },
+        {
+         "label": "Plasma Coil  -  Maliwan SMG",
+         "value": "itempool_mal_sm_05_legendary_PlasmaCoil_shiny"
+        },
+        {
+         "label": "Plumb Bob  -  Ripper Shotgun",
+         "value": "itempool_bor_sg_05_legendary_PlumbBob_shiny"
+        },
+        {
+         "label": "Potato Thrower Iv (PotatoThrower)  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_PotatoThrower_shiny"
+        },
+        {
+         "label": "Pragmate  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_pragmate_shiny"
+        },
+        {
+         "label": "Prince Harming (Prince)  -  Ripper SMG",
+         "value": "itempool_bor_sm_05_legendary_Prince_shiny"
+        },
+        {
+         "label": "Prism (Burrow)  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_legendary_Burrow_shiny"
+        },
+        {
+         "label": "Prowler (follower)  -  Daedalus SMG",
+         "value": "itempool_dad_sm_05_legendary_follower_shiny"
+        },
+        {
+         "label": "Queen's Rest (QueensRest)  -  Torgue Pistol",
+         "value": "itempool_tor_ps_05_legendary_QueensRest_shiny"
+        },
+        {
+         "label": "Rainbow Vomit  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_RainbowVomit_shiny"
+        },
+        {
+         "label": "Rainmaker  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_rainmaker_shiny"
+        },
+        {
+         "label": "Rangefinder  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_Rangefinder_shiny"
+        },
+        {
+         "label": "Reminisce  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_reminisce_shiny"
+        },
+        {
+         "label": "Rhythm  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_Rhythm_shiny"
+        },
+        {
+         "label": "Ripple  -  Torgue Assault rifle",
+         "value": "itempool_tor_ar_05_legendary_Ripple_shiny"
+        },
+        {
+         "label": "Roach  -  Torgue Pistol",
+         "value": "itempool_tor_ps_05_legendary_Roach_shiny"
+        },
+        {
+         "label": "robo dealer  -  class mods",
+         "value": "itempool_class_mods_05_legendary_robo_dealer"
+        },
+        {
+         "label": "Roil  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_roil_shiny"
+        },
+        {
+         "label": "Rooker (seamstress)  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_seamstress_shiny"
+        },
+        {
+         "label": "Roulette  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_Roulette_shiny"
+        },
+        {
+         "label": "Rowan's Charge (Rowan)  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_Rowan_shiny"
+        },
+        {
+         "label": "Rowdy Rider (rowdy)  -  Jakobs Assault rifle",
+         "value": "itempool_jak_ar_05_legendary_rowdy_shiny"
+        },
+        {
+         "label": "Ruby's Grasp (RubysGrasp)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_RubysGrasp_shiny"
+        },
+        {
+         "label": "San Saba Songbird (QuickDraw)  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_QuickDraw_shiny"
+        },
+        {
+         "label": "Scoot'n'shoot (scootshoot)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_scootshoot_shiny"
+        },
+        {
+         "label": "Seventh Sense  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_seventh_sense_shiny"
+        },
+        {
+         "label": "Shalashaska  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_Shalashaska_shiny"
+        },
+        {
+         "label": "Shammy Kablammy (Shammy)  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_Shammy_shiny"
+        },
+        {
+         "label": "Shardenfreude  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_Shardenfreude_shiny"
+        },
+        {
+         "label": "Shield Overflow (blackout)  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_blackout_shiny"
+        },
+        {
+         "label": "Shoals  -  Jakobs Pistol",
+         "value": "itempool_jak_ps_05_legendary_shoals_shiny"
+        },
+        {
+         "label": "Sideshow  -  Tediore Pistol",
+         "value": "itempool_ted_ps_05_legendary_Sideshow_shiny"
+        },
+        {
+         "label": "Silver Sliver  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_silversliver_shiny"
+        },
+        {
+         "label": "Soul Survivor  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_soulsurvivor_shiny"
+        },
+        {
+         "label": "Star Helix  -  Daedalus Assault rifle",
+         "value": "itempool_dad_ar_05_legendary_star_helix_shiny"
+        },
+        {
+         "label": "Stealth & Seek (Stealth)  -  Maliwan Sniper",
+         "value": "itempool_mal_sr_05_legendary_Stealth_shiny"
+        },
+        {
+         "label": "Stop Gap  -  Vladof Sniper",
+         "value": "itempool_vla_sr_05_legendary_StopGap_shiny"
+        },
+        {
+         "label": "Stray  -  Ripper Sniper",
+         "value": "itempool_bor_sr_05_legendary_Stray_shiny"
+        },
+        {
+         "label": "Streamer  -  Ripper Heavy weapon",
+         "value": "ItemPool_BlackMarket_Comp_BOR_HW_Streamer"
+        },
+        {
+         "label": "Sunspot  -  Order Pistol",
+         "value": "itempool_ord_ps_05_legendary_sunspot_shiny"
+        },
+        {
+         "label": "Swan Song (Cannonbrawl)  -  Daedalus Shotgun",
+         "value": "itempool_dad_sg_05_legendary_Cannonbrawl_shiny"
+        },
+        {
+         "label": "Sweet Embrace  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Sweet_Embrace_shiny"
+        },
+        {
+         "label": "Symmetry  -  Order Sniper",
+         "value": "itempool_ord_sr_05_legendary_Symmetry_shiny"
+        },
+        {
+         "label": "T.k's Wave (TKsWave)  -  Jakobs Shotgun",
+         "value": "itempool_jak_sg_05_legendary_TKsWave_shiny"
+        },
+        {
+         "label": "Tankbuster  -  Ripper Sniper",
+         "value": "itempool_bor_sr_05_legendary_tankbuster_shiny"
+        },
+        {
+         "label": "Tempered Essence (aura)  -  Vladof SMG",
+         "value": "itempool_vla_sm_05_legendary_aura_shiny"
+        },
+        {
+         "label": "Triplicate  -  Vladof Assault rifle",
+         "value": "itempool_jak_sr_legendary_Triplicate_shiny"
+        },
+        {
+         "label": "Truck  -  Jakobs Sniper",
+         "value": "itempool_jak_sr_05_legendary_Truck_shiny"
+        },
+        {
+         "label": "Unstable  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_Unstable_shiny"
+        },
+        {
+         "label": "Vamoose  -  Ripper Sniper",
+         "value": "itempool_bor_sr_05_legendary_Vamoose_shiny"
+        },
+        {
+         "label": "Verce  -  Jakobs Shotgun",
+         "value": "itempool_JAK_sg_05_legendary_Verce_shiny"
+        },
+        {
+         "label": "Whiskey Foxtrot (WF)  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_WF_shiny"
+        },
+        {
+         "label": "Wind Skimmer (outback)  -  Maliwan Shotgun",
+         "value": "itempool_mal_sg_05_legendary_outback_shiny"
+        },
+        {
+         "label": "Wombo Combo  -  Vladof Assault rifle",
+         "value": "itempool_vla_ar_05_legendary_WomboCombo_shiny"
+        },
+        {
+         "label": "Zipper (Zipgun)  -  Daedalus Pistol",
+         "value": "itempool_dad_ps_05_legendary_Zipgun_shiny"
+        }
+       ],
+       "desc": "Overrides the choices above. 156 legendaries."
+      },
+      {
+       "id": "b_build",
+       "type": "button",
+       "label": "BUILD (drops in front of you)",
+       "button": "BUILD",
+       "tq": "TQ.BUILD",
+       "desc": "The game's own loot generation picks the parts. Real item, keeps after save. Named legendaries only drop from about level 15: below that the builder raises the level by itself and tells you."
+      },
+      {
+       "id": "b_stop",
+       "type": "button",
+       "label": "Stop the running build",
+       "button": "STOP",
+       "tq": "TQ.BUILD",
+       "args": {
+        "cancel": true
+       },
+       "desc": "Cancels a build that is still re-rolling."
+      },
+      {
+       "id": "b_vac",
+       "type": "button",
+       "label": "Bring builds to me",
+       "button": "BRING",
+       "tq": "TQ.VACUUM",
+       "args": {
+        "radius_m": 20
+       }
+      }
+     ]
+    },
+    {
+     "name": "Weapon in hand - stats",
+     "items": [
+      {
+       "id": "ws_dmg",
+       "type": "slider",
+       "label": "Damage x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_damage",
+        "mode": "mult"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 50,
+       "step": 1,
+       "default": 1
+      },
+      {
+       "id": "ws_rate",
+       "type": "slider",
+       "label": "Fire rate x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_fire_rate",
+        "mode": "mult"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "default": 1
+      },
+      {
+       "id": "ws_mag",
+       "type": "slider",
+       "label": "Magazine size",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_max_loaded_ammo",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 500,
+       "step": 1,
+       "default": 4,
+       "desc": "Verified: 4 -> 50 after a reload."
+      },
+      {
+       "id": "ws_reload",
+       "type": "slider",
+       "label": "Reload time (s)",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_reload_time",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 0.05,
+       "max": 5,
+       "step": 0.05,
+       "default": 2
+      },
+      {
+       "id": "ws_crit",
+       "type": "slider",
+       "label": "Crit bonus",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_damage_modifier_add_critical_hit",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 0,
+       "max": 10,
+       "step": 0.1,
+       "default": 0.2
+      },
+      {
+       "id": "ws_pellets",
+       "type": "slider",
+       "label": "Projectiles per shot",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_projectile_per_shot",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 10,
+       "step": 1,
+       "default": 1
+      },
+      {
+       "id": "ws_speed",
+       "type": "slider",
+       "label": "Projectile speed x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_projectile_speed_scale",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 0.5,
+       "max": 5,
+       "step": 0.1,
+       "default": 1
+      },
+      {
+       "id": "ws_spread",
+       "type": "button",
+       "label": "No spread",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_spread",
+        "v": 0,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "ws_recoil",
+       "type": "button",
+       "label": "No recoil",
+       "button": "ON",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "weapon_recoil_scale",
+        "v": 0,
+        "mode": "set"
+       }
+      },
+      {
+       "id": "ws_reset",
+       "type": "button",
+       "label": "Reset weapon stats",
+       "button": "RESET",
+       "tq": "TQ.PRESET",
+       "args": {
+        "name": "weapon_reset",
+        "on": true
+       }
+      },
+      {
+       "id": "ws_r_dmg",
+       "type": "readout",
+       "label": "Damage per shot",
+       "readout": "weapon_damage"
+      },
+      {
+       "id": "ws_r_mag",
+       "type": "readout",
+       "label": "Magazine",
+       "readout": "loaded_ammo"
+      },
+      {
+       "id": "ws_r_rate",
+       "type": "readout",
+       "label": "Fire rate",
+       "readout": "fire_rate"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Items",
+   "page": "items",
+   "sections": []
+  },
+  {
+   "name": "Gear Maker",
+   "page": "gearmaker",
+   "sections": []
+  },
+  {
+   "name": "Difficulty",
+   "sections": [
+    {
+     "name": "Presets",
+     "items": [
+      {
+       "id": "diff_preset",
+       "type": "choice",
+       "label": "Difficulty preset",
+       "tq": "TQ.DIFF",
+       "args": {},
+       "arg": "preset",
+       "options": [
+        {
+         "label": "0 - Normal (trainer off)",
+         "value": "0"
+        },
+        {
+         "label": "1 - Baby's First Murder Spree",
+         "value": "1"
+        },
+        {
+         "label": "2 - Claptrap Could Beat This",
+         "value": "2"
+        },
+        {
+         "label": "3 - My Grandma Hits Harder",
+         "value": "3"
+        },
+        {
+         "label": "4 - Enemies Forgot Their Guns",
+         "value": "4"
+        },
+        {
+         "label": "5 - Participation Trophy Hunter",
+         "value": "5"
+        },
+        {
+         "label": "6 - Mildly Spicy Meatballs",
+         "value": "6"
+        },
+        {
+         "label": "7 - Shit Just Got Real-ish",
+         "value": "7"
+        },
+        {
+         "label": "8 - Psychos on Bath Salts",
+         "value": "8"
+        },
+        {
+         "label": "9 - Badassery Has Consequences",
+         "value": "9"
+        },
+        {
+         "label": "10 - Your Shield Is a Suggestion",
+         "value": "10"
+        },
+        {
+         "label": "11 - Respawn Simulator 3000",
+         "value": "11"
+        },
+        {
+         "label": "12 - God Has Left Pandora",
+         "value": "12"
+        },
+        {
+         "label": "13 - WTF IS THIS BULLSHIT?!",
+         "value": "13"
+        },
+        {
+         "label": "Custom / chaos mix (move any slider)",
+         "value": "-1"
+        }
+       ],
+       "desc": "Ordered from ridiculously easy to WHAT THE ACTUAL HELL. Sets every slider below; change any slider afterwards for your own mix.",
+       "diff": "preset"
+      },
+      {
+       "id": "diff_now",
+       "type": "readout",
+       "label": "Now playing",
+       "readout": "difficulty"
+      },
+      {
+       "id": "diff_chaos",
+       "type": "button",
+       "label": "Surprise me (random hard mix + funny name)",
+       "button": "CHAOS",
+       "tq": "TQ.DIFF",
+       "args": {
+        "chaos": true
+       },
+       "desc": "Picks a random level 7-13 mix, shakes the numbers and gives it a random name."
+      },
+      {
+       "id": "diff_off",
+       "type": "button",
+       "label": "Back to the game's normal difficulty",
+       "button": "RESET",
+       "tq": "TQ.DIFF",
+       "args": {
+        "reset": true
+       },
+       "desc": "Removes every enemy tweak (live enemies go back to normal within a second)."
+      },
+      {
+       "id": "diff_stats",
+       "type": "readout",
+       "label": "This session",
+       "readout": "difficulty_stats"
+      }
+     ]
+    },
+    {
+     "name": "Enemies",
+     "items": [
+      {
+       "id": "diff_hp",
+       "type": "slider",
+       "label": "Enemy health, shields & armor x",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "health"
+       },
+       "arg": "v",
+       "diff": "health",
+       "min": 0.1,
+       "max": 20,
+       "step": 0.05,
+       "default": 1,
+       "desc": "Every health bar of each enemy (flesh, shield, armor). Fresh enemies start full."
+      },
+      {
+       "id": "diff_dmg",
+       "type": "slider",
+       "label": "Enemy damage x",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "damage"
+       },
+       "arg": "v",
+       "diff": "damage",
+       "min": 0,
+       "max": 20,
+       "step": 0.05,
+       "default": 1,
+       "desc": "How hard enemies hit (their damage_dealt_multiplier)."
+      },
+      {
+       "id": "diff_spd",
+       "type": "slider",
+       "label": "Enemy move speed x",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "speed"
+       },
+       "arg": "v",
+       "diff": "speed",
+       "min": 0.3,
+       "max": 3,
+       "step": 0.05,
+       "default": 1,
+       "desc": "How fast enemies run."
+      },
+      {
+       "id": "diff_rfx",
+       "type": "slider",
+       "label": "Enemy reflexes (their whole clock) x",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "reflex"
+       },
+       "arg": "v",
+       "diff": "reflex",
+       "min": 0.5,
+       "max": 2,
+       "step": 0.05,
+       "default": 1,
+       "desc": "Speeds up or slows down everything an enemy does: attacks, reactions, animations. Above 1.3 gets silly."
+      },
+      {
+       "id": "diff_acc",
+       "type": "slider",
+       "label": "Enemy aim accuracy x",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "accuracy"
+       },
+       "arg": "v",
+       "diff": "accuracy",
+       "min": 0.1,
+       "max": 4,
+       "step": 0.05,
+       "default": 1,
+       "desc": "Gun enemies only: how well they aim."
+      },
+      {
+       "id": "diff_fire",
+       "type": "slider",
+       "label": "Enemy fire rate x",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "fire_rate"
+       },
+       "arg": "v",
+       "diff": "fire_rate",
+       "min": 0.2,
+       "max": 4,
+       "step": 0.05,
+       "default": 1,
+       "desc": "Gun enemies only: how fast they shoot."
+      },
+      {
+       "id": "diff_arm",
+       "type": "slider",
+       "label": "Enemies use guns from your backpack %",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "arm"
+       },
+       "arg": "v",
+       "diff": "arm",
+       "min": 0,
+       "max": 100,
+       "step": 5,
+       "default": 0,
+       "desc": "Chance a gun enemy is handed a random weapon from your backpack (legendaries included) - build a weapon, then watch them use it."
+      }
+     ]
+    },
+    {
+     "name": "Numbers & bosses",
+     "items": [
+      {
+       "id": "diff_budget",
+       "type": "slider",
+       "label": "World spawn amount x (the game's own spawner)",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "budget"
+       },
+       "arg": "v",
+       "diff": "budget",
+       "min": 0.25,
+       "max": 6,
+       "step": 0.25,
+       "default": 1,
+       "desc": "The game's spawn director budget (gbx.Spawn.BudgetScale): areas fill with more (or fewer) real camps and herds, placed by the game itself. Takes effect as areas load - leave and come back. Tested: x1 = 7-10 enemies at a camp, x5 = 22-33."
+      },
+      {
+       "id": "diff_extra",
+       "type": "slider",
+       "label": "Extra enemies per enemy",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "extra"
+       },
+       "arg": "v",
+       "diff": "extra",
+       "min": 0,
+       "max": 5,
+       "step": 0.25,
+       "default": 0,
+       "desc": "Each new enemy brings this many friends (0.5 = half the time one more). Max 40 extra a minute. Bosses are never copied."
+      },
+      {
+       "id": "diff_badass",
+       "type": "slider",
+       "label": "Badass upgrade chance %",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "badass"
+       },
+       "arg": "v",
+       "diff": "badass",
+       "min": 0,
+       "max": 100,
+       "step": 5,
+       "default": 0,
+       "desc": "Chance an extra enemy is the Badass version (when the game has one)."
+      },
+      {
+       "id": "diff_bossmin",
+       "type": "slider",
+       "label": "Boss ambush every N minutes (0 = off)",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "boss_minutes"
+       },
+       "arg": "v",
+       "diff": "boss_minutes",
+       "min": 0,
+       "max": 30,
+       "step": 1,
+       "default": 0,
+       "desc": "A random boss (replay / rift bosses) shows up in front of you every N minutes - only out in the world, not in town."
+      },
+      {
+       "id": "diff_boss_now",
+       "type": "button",
+       "label": "Spawn a random boss now",
+       "button": "BOSS",
+       "tq": "TQ.DIFF",
+       "args": {
+        "boss": ""
+       },
+       "desc": "18 m in front of you. Uses the current enemy health/damage settings."
+      },
+      {
+       "id": "diff_boss_name",
+       "type": "input",
+       "label": "Spawn a boss by name (e.g. CrazyEarl, Icemaw)",
+       "button": "SPAWN",
+       "tq": "TQ.DIFF",
+       "arg": "boss",
+       "desc": "Part of the character name. BL.DIFF {bosses:true} lists the boss names."
+      }
+     ]
+    },
+    {
+     "name": "Rewards",
+     "items": [
+      {
+       "id": "diff_loot",
+       "type": "slider",
+       "label": "Extra gun drop chance %",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "loot"
+       },
+       "arg": "v",
+       "diff": "loot",
+       "min": 0,
+       "max": 100,
+       "step": 5,
+       "default": 0,
+       "desc": "On every kill: chance of one extra gun."
+      },
+      {
+       "id": "diff_leg",
+       "type": "slider",
+       "label": "Extra legendary drop chance %",
+       "tq": "TQ.DIFF",
+       "args": {
+        "key": "legendary"
+       },
+       "arg": "v",
+       "diff": "legendary",
+       "min": 0,
+       "max": 50,
+       "step": 1,
+       "default": 0,
+       "desc": "On every kill: chance of a legendary (x5 on bosses)."
+      },
+      {
+       "id": "diff_more",
+       "type": "label",
+       "text": "More XP / cash: Money tab (Combat XP x, Cash pickups x)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Enemies",
+   "page": "enemies",
+   "sections": []
+  },
+  {
+   "name": "World",
+   "sections": [
+    {
+     "name": "Time",
+     "items": [
+      {
+       "id": "tod",
+       "type": "slider",
+       "label": "Time of day (hour)",
+       "tq": "TQ.TIME",
+       "arg": "hour",
+       "min": 0,
+       "max": 23.5,
+       "step": 0.5,
+       "default": 12
+      },
+      {
+       "id": "tod_pause",
+       "type": "button",
+       "label": "Freeze the clock",
+       "button": "PAUSE",
+       "tq": "TQ.TIME",
+       "args": {
+        "pause": true
+       }
+      },
+      {
+       "id": "tod_run",
+       "type": "button",
+       "label": "Clock runs again",
+       "button": "RUN",
+       "tq": "TQ.TIME",
+       "args": {
+        "pause": false
+       }
+      }
+     ]
+    },
+    {
+     "name": "Enemies",
+     "items": [
+      {
+       "id": "spawn_in",
+       "type": "input",
+       "label": "Spawn character (name or part, e.g. Psycho)",
+       "tq": "TQ.SPAWN",
+       "arg": "name",
+       "args": {
+        "count": 1,
+        "dist": 800
+       },
+       "desc": "1883 spawnable characters in actors.json. Spawned 8 m in front."
+      },
+      {
+       "id": "sp_psy",
+       "type": "button",
+       "label": "Spawn 3 Psychos",
+       "button": "SPAWN",
+       "tq": "TQ.SPAWN",
+       "args": {
+        "name": "Char_PsychoBasic_Female",
+        "count": 3
+       }
+      },
+      {
+       "id": "sp_gun",
+       "type": "button",
+       "label": "Spawn 3 bandit gunners",
+       "button": "SPAWN",
+       "tq": "TQ.SPAWN",
+       "args": {
+        "name": "Char_GunToterSMG_Male",
+        "count": 3
+       }
+      },
+      {
+       "id": "kill_xp",
+       "type": "button",
+       "label": "Kill hostiles within 80 m (with XP)",
+       "button": "KILL",
+       "tq": "TQ.KILL",
+       "args": {
+        "radius_m": 80
+       },
+       "hotkey": "F6"
+      }
+     ]
+    },
+    {
+     "name": "HUD",
+     "items": [
+      {
+       "id": "hud_on",
+       "type": "button",
+       "label": "Show enemy info + loot on screen",
+       "button": "ON",
+       "tq": "TQ.HUD",
+       "args": {
+        "on": true
+       }
+      },
+      {
+       "id": "hud_off",
+       "type": "button",
+       "label": "Hide HUD",
+       "button": "OFF",
+       "tq": "TQ.HUD",
+       "args": {
+        "on": false
+       }
+      }
+     ]
+    },
+    {
+     "name": "Map",
+     "items": [
+      {
+       "id": "wp_go",
+       "type": "button",
+       "label": "Teleport to my map pin  [F9]",
+       "button": "GO",
+       "tq": "TQ.WAYPOINT",
+       "desc": "Open the map (M), right-click a spot = Custom Pin.",
+       "hotkey": "F9"
+      },
+      {
+       "id": "console",
+       "type": "input",
+       "label": "Console command / cvar",
+       "tq": "TQ.CONSOLE",
+       "arg": "cmd",
+       "desc": "Runs one of the game's console commands."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Places",
+   "page": "places",
+   "sections": []
+  },
+  {
+   "name": "Camera",
+   "sections": [
+    {
+     "name": "MATRIX look + bullet time",
+     "items": [
+      {
+       "id": "cam_matrix",
+       "type": "button",
+       "label": "Matrix look on / off",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "matrix": "toggle"
+       },
+       "desc": "Green Matrix colours and code rain on the screen. Only a screen effect: it works in first person, third person (Third person section) and the free camera. Bullet time is its own switch below.",
+       "hotkey": "Ctrl+F3"
+      },
+      {
+       "id": "cam_bullet",
+       "type": "button",
+       "label": "Bullet time on / off",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "bullet": "toggle"
+       },
+       "desc": "The world runs in slow motion while you keep your normal speed. Works with or without the Matrix look, in any camera view."
+      },
+      {
+       "id": "cam_mslow",
+       "type": "slider",
+       "label": "World speed in bullet time",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "matrix_slow",
+       "cam": "matrix_slow",
+       "min": 0.05,
+       "max": 1,
+       "step": 0.05,
+       "default": 0.2,
+       "desc": "0.2 = the world at 20% speed. You stay at normal speed."
+      },
+      {
+       "id": "cam_mtint",
+       "type": "button",
+       "label": "Green Matrix tint on / off",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "matrix_tint": "toggle"
+       },
+       "desc": "The green colour grade of the Matrix view."
+      },
+      {
+       "id": "cam_rain",
+       "type": "button",
+       "label": "Code rain on / off",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "rain": "toggle"
+       },
+       "desc": "Green Matrix code raining down the screen while the Matrix view is on."
+      },
+      {
+       "id": "cam_rdens",
+       "type": "slider",
+       "label": "Code rain amount",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "rain_density",
+       "cam": "rain_density",
+       "min": 0.1,
+       "max": 3,
+       "step": 0.1,
+       "default": 1.3,
+       "desc": "1.3 = a full Matrix screen. Below 1 = fewer columns, above 1 = several streams per column (code storm)."
+      },
+      {
+       "id": "cam_rspeed",
+       "type": "slider",
+       "label": "Code rain speed",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "rain_speed",
+       "cam": "rain_speed",
+       "min": 0.1,
+       "max": 4,
+       "step": 0.1,
+       "default": 1,
+       "desc": "How fast the code falls."
+      },
+      {
+       "id": "cam_ralpha",
+       "type": "slider",
+       "label": "Code rain strength",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "rain_alpha",
+       "cam": "rain_alpha",
+       "min": 0.1,
+       "max": 1,
+       "step": 0.05,
+       "default": 0.9,
+       "desc": "How strongly the rain covers the game picture."
+      },
+      {
+       "id": "cam_rsize",
+       "type": "slider",
+       "label": "Code rain glyph size",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "rain_size",
+       "cam": "rain_size",
+       "min": 8,
+       "max": 40,
+       "step": 1,
+       "default": 24,
+       "desc": "Size of the falling characters (scaled up automatically above 1080p)."
+      }
+     ]
+    },
+    {
+     "name": "Free camera (photo / spectator)",
+     "items": [
+      {
+       "id": "cam_free",
+       "type": "button",
+       "label": "Free camera on / off",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "free": "toggle"
+       },
+       "desc": "Fly the camera anywhere: mouse looks, W/A/S/D moves, Space up, C down, Shift fast. Your character stays where it is.",
+       "hotkey": "F3"
+      },
+      {
+       "id": "cam_speed",
+       "type": "slider",
+       "label": "Free camera speed x",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "speed",
+       "cam": "speed",
+       "min": 0.1,
+       "max": 8,
+       "step": 0.1,
+       "default": 1,
+       "desc": "How fast the free camera flies."
+      },
+      {
+       "id": "cam_freeze",
+       "type": "button",
+       "label": "Freeze the world (photo pause)",
+       "button": "FREEZE",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "freeze": "toggle"
+       },
+       "desc": "Stops the world clock - bullets, enemies, effects hang in the air. The free camera still moves. Press again to unfreeze."
+      },
+      {
+       "id": "cam_hud",
+       "type": "button",
+       "label": "Hide / show the HUD",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "hud": "toggle"
+       },
+       "desc": "Clean screenshots: hides the game HUD.",
+       "hotkey": "Shift+F3"
+      }
+     ]
+    },
+    {
+     "name": "Third person (over the shoulder)",
+     "items": [
+      {
+       "id": "tp_on",
+       "type": "button",
+       "label": "Third person on / off",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "third": "toggle"
+       },
+       "hotkey": "Ctrl+F4",
+       "desc": "The game's own third-person camera, moved over your shoulder so the crosshair sits on open ground. Shots go where the crosshair points."
+      },
+      {
+       "id": "tp_swap",
+       "type": "button",
+       "label": "Swap shoulder",
+       "button": "SWAP",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "tp_left": "toggle"
+       },
+       "hotkey": "Ctrl+F6",
+       "desc": "Right <-> left shoulder. While aiming in third person: click the left stick (L3) or the middle mouse button. The side you pick is remembered."
+      },
+      {
+       "id": "tp_dist",
+       "type": "slider",
+       "label": "Camera distance (cm)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_dist",
+       "cam": "tp_dist",
+       "min": 100,
+       "max": 600,
+       "step": 10,
+       "default": 230,
+       "desc": "How far behind you the camera sits. The game's default is 256."
+      },
+      {
+       "id": "tp_side",
+       "type": "slider",
+       "label": "Shoulder offset (cm)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_side",
+       "cam": "tp_side",
+       "min": 0,
+       "max": 150,
+       "step": 5,
+       "default": 65,
+       "desc": "0 = straight behind you (the character covers the crosshair)."
+      },
+      {
+       "id": "tp_height",
+       "type": "slider",
+       "label": "Camera height (cm)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_height",
+       "cam": "tp_height",
+       "min": -80,
+       "max": 80,
+       "step": 5,
+       "default": -15,
+       "desc": "Up / down from eye level."
+      },
+      {
+       "id": "tp_conv",
+       "type": "slider",
+       "label": "Pick-up aim distance (cm)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_converge",
+       "cam": "tp_converge",
+       "min": 100,
+       "max": 1500,
+       "step": 25,
+       "default": 350,
+       "desc": "The camera turns slightly inward so the crosshair and your character's 'use' line meet this far ahead - items, chests and doors under the crosshair can be picked up / opened."
+      },
+      {
+       "id": "tp_aim",
+       "type": "button",
+       "label": "Aim zoom (mouse or gamepad)",
+       "button": "ON/OFF",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "tp_aim": "toggle"
+       },
+       "desc": "While you aim (right mouse or left trigger) the camera pulls in over the shoulder, zooms, and shows an aim reticle."
+      },
+      {
+       "id": "tp_adist",
+       "type": "slider",
+       "label": "Aim: camera distance (cm)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_aim_dist",
+       "cam": "tp_aim_dist",
+       "min": 60,
+       "max": 300,
+       "step": 5,
+       "default": 120,
+       "desc": "Camera distance while aiming."
+      },
+      {
+       "id": "tp_aside",
+       "type": "slider",
+       "label": "Aim: shoulder offset (cm)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_aim_side",
+       "cam": "tp_aim_side",
+       "min": 0,
+       "max": 120,
+       "step": 5,
+       "default": 50,
+       "desc": "Shoulder offset while aiming."
+      },
+      {
+       "id": "tp_afov",
+       "type": "slider",
+       "label": "Aim: field of view",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "tp_aim_fov",
+       "cam": "tp_aim_fov",
+       "min": 30,
+       "max": 90,
+       "step": 1,
+       "default": 60,
+       "desc": "Lower = more zoom while aiming."
+      }
+     ]
+    },
+    {
+     "name": "View",
+     "items": [
+      {
+       "id": "cam_first",
+       "type": "button",
+       "label": "First person (normal)",
+       "button": "SET",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "mode": "Default"
+       },
+       "desc": "The game's normal camera."
+      },
+      {
+       "id": "cam_orbit",
+       "type": "button",
+       "label": "Orbit / side camera",
+       "button": "SET",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "mode": "ThirdPersonOrbit"
+       },
+       "desc": "The game's orbit camera mode (used by some skills)."
+      },
+      {
+       "id": "cam_fov",
+       "type": "slider",
+       "label": "Field of view (0 = game setting)",
+       "tq": "TQ.CAMERA",
+       "args": {},
+       "arg": "fov",
+       "cam": "fov",
+       "min": 0,
+       "max": 150,
+       "step": 1,
+       "default": 0,
+       "desc": "Wider or narrower view without touching your game settings. 0 = use the game's own FOV."
+      },
+      {
+       "id": "cam_reset",
+       "type": "button",
+       "label": "Reset camera",
+       "button": "RESET",
+       "tq": "TQ.CAMERA",
+       "args": {
+        "reset": true
+       },
+       "desc": "Back to first person, HUD on, normal FOV, world unfrozen, free camera off."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Missions",
+   "page": "missions",
+   "sections": []
+  },
+  {
+   "name": "Money",
+   "sections": [
+    {
+     "name": "Gains & difficulty",
+     "items": [
+      {
+       "id": "xp_mult",
+       "type": "slider",
+       "label": "Combat XP x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "Att_CombatXP_Multiplier",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 20,
+       "step": 1,
+       "default": 1
+      },
+      {
+       "id": "cash_mult",
+       "type": "slider",
+       "label": "Cash pickups x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "Att_PickupCash_Multiplier",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 1,
+       "max": 20,
+       "step": 1,
+       "default": 1
+      },
+      {
+       "id": "eri_mult",
+       "type": "slider",
+       "label": "Eridium pickups bonus",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "Att_PickupEridium_Multiplier",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 0,
+       "max": 20,
+       "step": 1,
+       "default": 0
+      },
+      {
+       "id": "luck",
+       "type": "slider",
+       "label": "Loot luck (better rarity)",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "Att_Luck_Gear",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 0,
+       "max": 1000,
+       "step": 10,
+       "default": 0,
+       "desc": "Att_Luck_Gear: the game's own gear-luck attribute used by loot rolls."
+      },
+      {
+       "id": "enemy_hp",
+       "type": "slider",
+       "label": "Enemy health x",
+       "tq": "TQ.ATTR",
+       "args": {
+        "name": "Att_PlayerDifficulty_EnemyHealth_Multiplier",
+        "mode": "set"
+       },
+       "arg": "v",
+       "min": 0.1,
+       "max": 5,
+       "step": 0.1,
+       "default": 1
+      }
+     ]
+    },
+    {
+     "name": "Currency",
+     "items": [
+      {
+       "id": "cash10k",
+       "type": "button",
+       "label": "Cash +10,000",
+       "button": "ADD",
+       "api": "Currency.AddCash",
+       "args": {
+        "Amount": 10000
+       }
+      },
+      {
+       "id": "cash1m",
+       "type": "button",
+       "label": "Cash +1,000,000",
+       "button": "ADD",
+       "api": "Currency.AddCash",
+       "args": {
+        "Amount": 1000000
+       }
+      },
+      {
+       "id": "cash_in",
+       "type": "input",
+       "label": "Add cash (amount)",
+       "api": "Currency.AddCash",
+       "arg": "Amount"
+      },
+      {
+       "id": "eri1k",
+       "type": "button",
+       "label": "Eridium +1,000",
+       "button": "ADD",
+       "api": "Currency.AddEridium",
+       "args": {
+        "Amount": 1000
+       }
+      },
+      {
+       "id": "eri_in",
+       "type": "input",
+       "label": "Add eridium (amount)",
+       "api": "Currency.AddEridium",
+       "arg": "Amount"
+      },
+      {
+       "id": "r_cash",
+       "type": "readout",
+       "label": "Cash",
+       "readout": "cash"
+      },
+      {
+       "id": "r_eri",
+       "type": "readout",
+       "label": "Eridium",
+       "readout": "eridium"
+      }
+     ]
+    },
+    {
+     "name": "Vault Cards",
+     "items": [
+      {
+       "id": "vc2_tok",
+       "type": "button",
+       "label": "Vault Card 2: +10 tokens",
+       "button": "ADD",
+       "tq": "TQ.VAULTCARD",
+       "args": {
+        "card": 2,
+        "tokens": 10
+       },
+       "desc": "Adds 10 Vault Card 2 tokens - spend them in the game's Vault Card menu. Works on any Vault Card that is active on this character."
+      },
+      {
+       "id": "vc_lvl",
+       "type": "input",
+       "label": "Vault Card 2: set level",
+       "desc": "Sets Vault Card 2 to the level you type.",
+       "tq": "TQ.VAULTCARD",
+       "arg": "level",
+       "args": {
+        "card": 2
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Save",
+   "sections": [
+    {
+     "name": "Progress (instant)",
+     "items": [
+      {
+       "id": "sdu_set",
+       "type": "input",
+       "label": "SDU tokens - set to",
+       "tq": "TQ.POINTS",
+       "arg": "sdu_tokens",
+       "button": "SET",
+       "desc": "SDU tokens are shared by all your characters; the game saves the new amount itself."
+      },
+      {
+       "id": "sdu_add",
+       "type": "button",
+       "label": "SDU tokens +500",
+       "button": "ADD",
+       "tq": "TQ.POINTS",
+       "args": {
+        "pool": "sdu_tokens",
+        "add": 500
+       }
+      },
+      {
+       "id": "respec_skills",
+       "desc": "Refunds every point spent in your skill trees right away. Open the skill menu and spend them again.",
+       "type": "button",
+       "label": "Respec skill trees (refund every spent point)",
+       "button": "RESPEC",
+       "danger": true,
+       "tq": "TQ.POINTS",
+       "args": {
+        "respec": true,
+        "graphs": "progress_"
+       }
+      },
+      {
+       "id": "respec_spec",
+       "desc": "Refunds every specialization token right away.",
+       "type": "button",
+       "label": "Respec specializations",
+       "button": "RESPEC",
+       "danger": true,
+       "tq": "TQ.POINTS",
+       "args": {
+        "respec": true,
+        "graphs": "progressgraph_specializations"
+       }
+      },
+      {
+       "id": "pts_info",
+       "type": "button",
+       "label": "Show skill points / tokens",
+       "button": "SHOW",
+       "tq": "TQ.POINTS",
+       "args": {}
+      },
+      {
+       "id": "pts_note",
+       "type": "label",
+       "text": "Skill points come from your level - raise it on the Player tab (Set level). Respec gives every spent point back."
+      }
+     ]
+    },
+    {
+     "name": "Save editor (applies when the game starts)",
+     "items": [
+      {
+       "id": "sv_note",
+       "type": "label",
+       "text": "The game only reads your save when it starts. Queue changes here, then press Apply & restart (the game closes and opens again, your progress is saved first)."
+      },
+      {
+       "id": "sv_items",
+       "type": "input",
+       "label": "Add items by serial (paste one or many)",
+       "tq": "TQ.SAVE_QUEUE",
+       "arg": "serials",
+       "button": "QUEUE",
+       "desc": "Item codes start with @U. Several can be pasted at once, separated by spaces."
+      },
+      {
+       "id": "sv_diff",
+       "type": "choice",
+       "label": "Difficulty",
+       "tq": "TQ.SAVE_QUEUE",
+       "args": {
+        "key": "difficulty"
+       },
+       "arg": "value",
+       "options": [
+        "Easy",
+        "Normal",
+        "Hard"
+       ]
+      },
+      {
+       "id": "sv_uvh",
+       "type": "input",
+       "label": "UVH level (experimental)",
+       "tq": "TQ.SAVE_QUEUE",
+       "args": {
+        "key": "uvh_level"
+       },
+       "arg": "value",
+       "button": "QUEUE",
+       "desc": "Writes the Ultimate Vault Hunter level fields used by earlier saves; not verified on the current game version."
+      },
+      {
+       "id": "sv_show",
+       "type": "button",
+       "label": "Show character + queued changes",
+       "button": "SHOW",
+       "tq": "TQ.SAVE",
+       "args": {}
+      },
+      {
+       "id": "sv_clear",
+       "type": "button",
+       "label": "Clear queued changes",
+       "button": "CLEAR",
+       "tq": "TQ.SAVE_CLEAR",
+       "args": {}
+      },
+      {
+       "id": "sv_apply",
+       "type": "button",
+       "label": "Apply & restart the game",
+       "button": "RESTART",
+       "danger": true,
+       "tq": "TQ.SAVE_RESTART",
+       "args": {},
+       "desc": "Closes the game like the X button; the trainer starts it again and writes the queued changes first (a backup of the save is kept in bin\\save_backups)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "dev": true,
+   "name": "Perf test",
+   "sections": [
+    {
+     "name": "Pause trainer jobs one at a time (move around and feel the difference)",
+     "items": [
+      {
+       "id": "perf_all_on",
+       "type": "button",
+       "label": "Resume everything",
+       "button": "RESUME",
+       "tq": "TQ.PERF",
+       "args": {
+        "on": "all"
+       },
+       "desc": "Turns every job below back on."
+      },
+      {
+       "id": "perf_all_off",
+       "type": "button",
+       "label": "Pause ALL trainer jobs",
+       "button": "PAUSE",
+       "tq": "TQ.PERF",
+       "args": {
+        "off": "all"
+       },
+       "desc": "Stops every background job at once (the overlay itself keeps running). Use Resume everything to undo."
+      },
+      {
+       "id": "perf_refresh_readouts",
+       "type": "button",
+       "label": "Pause / resume: Panel readouts",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "refresh_readouts"
+       },
+       "desc": "Reads the numbers shown in the panel (health, level...) once a second. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_loot_tick",
+       "type": "button",
+       "label": "Pause / resume: Loot jobs",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "loot_tick"
+       },
+       "desc": "Auto pick-up / loot magnet. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_hud_tick",
+       "type": "button",
+       "label": "Pause / resume: Enemy HUD / loot radar",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "hud_tick"
+       },
+       "desc": "Collects the on-screen enemy and loot labels. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_build_tick",
+       "type": "button",
+       "label": "Pause / resume: Weapon builder",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "build_tick"
+       },
+       "desc": "Finishes weapon-builder jobs. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_diff_tick",
+       "type": "button",
+       "label": "Pause / resume: Difficulty",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "diff_tick"
+       },
+       "desc": "Difficulty tweaks + spawn budget check. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_enemy_tick",
+       "type": "button",
+       "label": "Pause / resume: Enemies / spawn swap / territories",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "enemy_tick"
+       },
+       "desc": "Spawn jobs, spawn swap and the territory learning. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_camera_tick",
+       "type": "button",
+       "label": "Pause / resume: Camera (third person, Matrix, free cam, FOV)",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "camera_tick"
+       },
+       "desc": "Every camera feature, including third-person aim. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_attrs_tick",
+       "type": "button",
+       "label": "Pause / resume: Stat modifiers",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "attrs_tick"
+       },
+       "desc": "Re-applies your stat changes after a respawn / zone change. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_toggles",
+       "type": "button",
+       "label": "Pause / resume: Saved toggles (inf ammo, no cooldown...)",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "toggles"
+       },
+       "desc": "Re-applies the toggles you switched on, every 0.5 s. A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_hotkeys_tick",
+       "type": "button",
+       "label": "Pause / resume: Trainer hotkeys",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "hotkeys_tick"
+       },
+       "desc": "Watches the trainer hotkeys (F3, F4, Ctrl+F4...). A message at the top of the screen says what is paused."
+      },
+      {
+       "id": "perf_file_watch",
+       "type": "button",
+       "label": "Pause / resume: Panel file watcher",
+       "button": "ON/OFF",
+       "tq": "TQ.PERF",
+       "args": {
+        "toggle": "file_watch"
+       },
+       "desc": "Reloads panel.json / api.json when they change. A message at the top of the screen says what is paused."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

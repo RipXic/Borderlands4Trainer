@@ -1,0 +1,31 @@
+#include <winver.h>
+#include "version.h"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION    VER_MAJOR,VER_MINOR,VER_PATCH,VER_BUILD
+ PRODUCTVERSION VER_MAJOR,VER_MINOR,VER_PATCH,VER_BUILD
+ FILEFLAGSMASK  0x3fL
+ FILEFLAGS      0x0L
+ FILEOS         VOS_NT_WINDOWS32
+ FILETYPE       VFT_APP
+ FILESUBTYPE    VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      VER_PUBLISHER
+            VALUE "FileDescription",  "Borderlands 4 Trainer - starts the trainer for Borderlands 4 (single-player)"
+            VALUE "FileVersion",      VER_STRING
+            VALUE "InternalName",     "BL4Trainer"
+            VALUE "LegalCopyright",   VER_COPYRIGHT
+            VALUE "OriginalFilename", "BL4Trainer.exe"
+            VALUE "ProductName",      VER_PRODUCT
+            VALUE "ProductVersion",   VER_STRING
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

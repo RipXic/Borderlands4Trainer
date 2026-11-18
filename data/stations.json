@@ -1,0 +1,1797 @@
+[
+ {
+  "name": "World_P.FTS_City_Meteor_Transition",
+  "short": "FTS_City_Meteor_Transition",
+  "kind": "FTS"
+ },
+ {
+  "name": "World_P.FTS_City_MountainSafehouse",
+  "short": "FTS_City_MountainSafehouse",
+  "kind": "FTS"
+ },
+ {
+  "name": "World_P.FTS_City_MountainSafehouse2",
+  "short": "FTS_City_MountainSafehouse2",
+  "kind": "FTS"
+ },
+ {
+  "name": "World_P.FTS_City_SHA_Safehouse",
+  "short": "FTS_City_SHA_Safehouse",
+  "kind": "FTS"
+ },
+ {
+  "name": "World_P.FTS_City_SHA_Safehouse1",
+  "short": "FTS_City_SHA_Safehouse1",
+  "kind": "FTS"
+ },
+ {
+  "name": "World_P.FTS_ElectiTown",
+  "short": "FTS_ElectiTown",
+  "kind": "FTS"
+ },
+ {
+  "name": "World_P.FT_CITY_GRA_Safehouse3",
+  "short": "FT_CITY_GRA_Safehouse3",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_City_GRA_ZadrasCityHideout",
+  "short": "FT_City_GRA_ZadrasCityHideout",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_City_MNT_CentralAlley",
+  "short": "FT_City_MNT_CentralAlley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_City_MNT_UnderwaterLabExterior",
+  "short": "FT_City_MNT_UnderwaterLabExterior",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_BeachTower",
+  "short": "FT_GRA_BeachTower",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_POI_ZadrasHouse",
+  "short": "FT_GRA_POI_ZadrasHouse",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_Safehouse3",
+  "short": "FT_GRA_Safehouse3",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_Safehouse4",
+  "short": "FT_GRA_Safehouse4",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_Silo3",
+  "short": "FT_GRA_Silo3",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_Silo_01",
+  "short": "FT_GRA_Silo_01",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_West_NorthSafehouse",
+  "short": "FT_GRA_West_NorthSafehouse",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_West_NorthSafehouse2",
+  "short": "FT_GRA_West_NorthSafehouse2",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_West_Silo2",
+  "short": "FT_GRA_West_Silo2",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_GRA_West_SurvivalistHQ",
+  "short": "FT_GRA_West_SurvivalistHQ",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_AugerHQ",
+  "short": "FT_MOU_AugerHQ",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_NorthCliffs",
+  "short": "FT_MOU_NorthCliffs",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_NorthCliffs_Safehouse4",
+  "short": "FT_MOU_NorthCliffs_Safehouse4",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Orderland_FortressFoot",
+  "short": "FT_MOU_Orderland_FortressFoot",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Safehouse1_Timberland",
+  "short": "FT_MOU_Safehouse1_Timberland",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Safehouse2_Highlands",
+  "short": "FT_MOU_Safehouse2_Highlands",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Safehouse3_Valley",
+  "short": "FT_MOU_Safehouse3_Valley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Safehouse_Highlands",
+  "short": "FT_MOU_Safehouse_Highlands",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Safehouse_Timberland",
+  "short": "FT_MOU_Safehouse_Timberland",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Safehouse_Valley",
+  "short": "FT_MOU_Safehouse_Valley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Sanctuary3",
+  "short": "FT_MOU_Sanctuary3",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Silo1_CentralValley",
+  "short": "FT_MOU_Silo1_CentralValley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Silo2_Gorge",
+  "short": "FT_MOU_Silo2_Gorge",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Silo3_NorthValley",
+  "short": "FT_MOU_Silo3_NorthValley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Silo_CentralValley",
+  "short": "FT_MOU_Silo_CentralValley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Silo_Gorge",
+  "short": "FT_MOU_Silo_Gorge",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_MOU_Silo_NorthValley",
+  "short": "FT_MOU_Silo_NorthValley",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SA_Safehouse3",
+  "short": "FT_SA_Safehouse3",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Fortress_HUB",
+  "short": "FT_SHA_Fortress_HUB",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_SH_OrderPlateau",
+  "short": "FT_SHA_SH_OrderPlateau",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Safehouse1",
+  "short": "FT_SHA_Safehouse1",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Safehouse2",
+  "short": "FT_SHA_Safehouse2",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Safehouse2_OrderPlateau",
+  "short": "FT_SHA_Safehouse2_OrderPlateau",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Safehouse3",
+  "short": "FT_SHA_Safehouse3",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Scrapyard_M2RipMachToElecti",
+  "short": "FT_SHA_Scrapyard_M2RipMachToElecti",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Silo2_EleciPlat",
+  "short": "FT_SHA_Silo2_EleciPlat",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Silo_01",
+  "short": "FT_SHA_Silo_01",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Silo_03",
+  "short": "FT_SHA_Silo_03",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_Silo_EleciPlat",
+  "short": "FT_SHA_Silo_EleciPlat",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.FT_SHA_ZanesBar",
+  "short": "FT_SHA_ZanesBar",
+  "kind": "FT"
+ },
+ {
+  "name": "World_P.MissionReplay_BanjoDLC",
+  "short": "MissionReplay_BanjoDLC",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Beach",
+  "short": "MissionReplay_Beach",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_BelowTheSurface",
+  "short": "MissionReplay_BelowTheSurface",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_CastingCall",
+  "short": "MissionReplay_CastingCall",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_City1B",
+  "short": "MissionReplay_City1B",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_ClaptrapOfPandora",
+  "short": "MissionReplay_ClaptrapOfPandora",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_ElectiFaction3",
+  "short": "MissionReplay_ElectiFaction3",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_FactionElecti1",
+  "short": "MissionReplay_FactionElecti1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_FlatKairoser",
+  "short": "MissionReplay_FlatKairoser",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_GenIVIV",
+  "short": "MissionReplay_GenIVIV",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_GottaGoFast",
+  "short": "MissionReplay_GottaGoFast",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Grasslands1",
+  "short": "MissionReplay_Grasslands1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Grasslands2A",
+  "short": "MissionReplay_Grasslands2A",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Grasslands2B",
+  "short": "MissionReplay_Grasslands2B",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Grasslands3",
+  "short": "MissionReplay_Grasslands3",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Heist",
+  "short": "MissionReplay_Heist",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_IslandMurderMystery",
+  "short": "MissionReplay_IslandMurderMystery",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_LegendaryVendingMachine",
+  "short": "MissionReplay_LegendaryVendingMachine",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_LifesPurpose",
+  "short": "MissionReplay_LifesPurpose",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_MadScientist",
+  "short": "MissionReplay_MadScientist",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_MicroNations1",
+  "short": "MissionReplay_MicroNations1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Micronations2",
+  "short": "MissionReplay_Micronations2",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Mountain1",
+  "short": "MissionReplay_Mountain1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_MountainFaction1",
+  "short": "MissionReplay_MountainFaction1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Mountains2A",
+  "short": "MissionReplay_Mountains2A",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Mountains2B",
+  "short": "MissionReplay_Mountains2B",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Mountains3",
+  "short": "MissionReplay_Mountains3",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_MountainsFaction_Club",
+  "short": "MissionReplay_MountainsFaction_Club",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_NoEscapeRoom",
+  "short": "MissionReplay_NoEscapeRoom",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_ObstacleCourseGlide",
+  "short": "MissionReplay_ObstacleCourseGlide",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_ObstacleCourseGrapple",
+  "short": "MissionReplay_ObstacleCourseGrapple",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_OldRaymondPart1",
+  "short": "MissionReplay_OldRaymondPart1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_OldRaymondPart2",
+  "short": "MissionReplay_OldRaymondPart2",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_OneGassyIssue",
+  "short": "MissionReplay_OneGassyIssue",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_PlanetaryEscape",
+  "short": "MissionReplay_PlanetaryEscape",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_PriceOfFreedomPart1",
+  "short": "MissionReplay_PriceOfFreedomPart1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_PriceOfFreedomPart2",
+  "short": "MissionReplay_PriceOfFreedomPart2",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_PriceOfFreedomPart3",
+  "short": "MissionReplay_PriceOfFreedomPart3",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_RocketMosnters",
+  "short": "MissionReplay_RocketMosnters",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_SearchForLilith",
+  "short": "MissionReplay_SearchForLilith",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_SeedsOfRevolutionPart1",
+  "short": "MissionReplay_SeedsOfRevolutionPart1",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_SeedsOfRevolutionPart2",
+  "short": "MissionReplay_SeedsOfRevolutionPart2",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Shatteredlands1B",
+  "short": "MissionReplay_Shatteredlands1B",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Shatteredlands1_A",
+  "short": "MissionReplay_Shatteredlands1_A",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Shatteredlands1_B",
+  "short": "MissionReplay_Shatteredlands1_B",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_Shatteredlands3",
+  "short": "MissionReplay_Shatteredlands3",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_TheCure",
+  "short": "MissionReplay_TheCure",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_ThresherRancher",
+  "short": "MissionReplay_ThresherRancher",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.MissionReplay_WhatLurksBeneath",
+  "short": "MissionReplay_WhatLurksBeneath",
+  "kind": "MISSIONREPLAY"
+ },
+ {
+  "name": "World_P.RS_City_AscensionPlazza",
+  "short": "RS_City_AscensionPlazza",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_GRA_To_MNT_Transition",
+  "short": "RS_City_GRA_To_MNT_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_GRA_To_SHA_Transition",
+  "short": "RS_City_GRA_To_SHA_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_AscensionTop",
+  "short": "RS_City_MNT_AscensionTop",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_BunkerBossRoom",
+  "short": "RS_City_MNT_BunkerBossRoom",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_BunkerEntrance",
+  "short": "RS_City_MNT_BunkerEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_Canal",
+  "short": "RS_City_MNT_Canal",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_Central",
+  "short": "RS_City_MNT_Central",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_Dred",
+  "short": "RS_City_MNT_Dred",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_NoEscapeRoom",
+  "short": "RS_City_MNT_NoEscapeRoom",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_OrdoniteSmelter",
+  "short": "RS_City_MNT_OrdoniteSmelter",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_OrdoniteSmelter2",
+  "short": "RS_City_MNT_OrdoniteSmelter2",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_Plaza",
+  "short": "RS_City_MNT_Plaza",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_To_GRA_Transition",
+  "short": "RS_City_MNT_To_GRA_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_To_SHA_Transition",
+  "short": "RS_City_MNT_To_SHA_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_UnderwaterLabInterior",
+  "short": "RS_City_MNT_UnderwaterLabInterior",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_MNT_WaterCoolingEntrance",
+  "short": "RS_City_MNT_WaterCoolingEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_DroneFactory",
+  "short": "RS_City_SHA_DroneFactory",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_MeteorHole_Industrial",
+  "short": "RS_City_SHA_MeteorHole_Industrial",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_Mine",
+  "short": "RS_City_SHA_Mine",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_MineBossRoom",
+  "short": "RS_City_SHA_MineBossRoom",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_NuclearFacility_Top",
+  "short": "RS_City_SHA_NuclearFacility_Top",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_OrderChokepoint",
+  "short": "RS_City_SHA_OrderChokepoint",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_PreRedLight",
+  "short": "RS_City_SHA_PreRedLight",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_RadioactivePit",
+  "short": "RS_City_SHA_RadioactivePit",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_To_GRA_Transition",
+  "short": "RS_City_SHA_To_GRA_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_To_MNT_Transition",
+  "short": "RS_City_SHA_To_MNT_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_City_SHA_VitoBar",
+  "short": "RS_City_SHA_VitoBar",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_FF_ZadraElevator",
+  "short": "RS_FF_ZadraElevator",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_CliffShacks",
+  "short": "RS_GRA_CliffShacks",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_CoastalBS_AugerMine_CultEntrance",
+  "short": "RS_GRA_CoastalBS_AugerMine_CultEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_CoastalBS_EventAirship",
+  "short": "RS_GRA_CoastalBS_EventAirship",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_CoastalDock1",
+  "short": "RS_GRA_CoastalDock1",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_CoastalDock2",
+  "short": "RS_GRA_CoastalDock2",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_Distillery",
+  "short": "RS_GRA_Distillery",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_DrillSite_RipperFarmlands",
+  "short": "RS_GRA_DrillSite_RipperFarmlands",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_East_Road01",
+  "short": "RS_GRA_East_Road01",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_East_Road05",
+  "short": "RS_GRA_East_Road05",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_Evocarium_RipperFarmlands",
+  "short": "RS_GRA_Evocarium_RipperFarmlands",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_FoodProcStart",
+  "short": "RS_GRA_FoodProcStart",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_FoodProcessingIntro",
+  "short": "RS_GRA_FoodProcessingIntro",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_FortressFlats_AugerMine_AcidEntrance",
+  "short": "RS_GRA_FortressFlats_AugerMine_AcidEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_FortressFlats_MotherBaseElev",
+  "short": "RS_GRA_FortressFlats_MotherBaseElev",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_FortressFlats_PlanetaryLab",
+  "short": "RS_GRA_FortressFlats_PlanetaryLab",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_HillCave",
+  "short": "RS_GRA_HillCave",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_HillShack",
+  "short": "RS_GRA_HillShack",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_HydroPlant",
+  "short": "RS_GRA_HydroPlant",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_HydroPlant_Boss",
+  "short": "RS_GRA_HydroPlant_Boss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_KOTOFOB",
+  "short": "RS_GRA_KOTOFOB",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_KOTOFOB2",
+  "short": "RS_GRA_KOTOFOB2",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_KotOCoast_Bunker_Ordonite",
+  "short": "RS_GRA_KotOCoast_Bunker_Ordonite",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_KotOCoast_Bunker_OrdoniteEntrance",
+  "short": "RS_GRA_KotOCoast_Bunker_OrdoniteEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_MountainPass",
+  "short": "RS_GRA_MountainPass",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperCamp",
+  "short": "RS_GRA_RipperCamp",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperCrane",
+  "short": "RS_GRA_RipperCrane",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperFL_RipperBeach",
+  "short": "RS_GRA_RipperFL_RipperBeach",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperFarmlands",
+  "short": "RS_GRA_RipperFarmlands",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperTun_OrderBunker_Flood",
+  "short": "RS_GRA_RipperTun_OrderBunker_Flood",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperTun_OrderBunker_FloodEntrance",
+  "short": "RS_GRA_RipperTun_OrderBunker_FloodEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperTunn_ExitLedge",
+  "short": "RS_GRA_RipperTunn_ExitLedge",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperTunn_StartLedge",
+  "short": "RS_GRA_RipperTunn_StartLedge",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_RipperTunnel",
+  "short": "RS_GRA_RipperTunnel",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_SolarArray",
+  "short": "RS_GRA_SolarArray",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_West_Drill",
+  "short": "RS_GRA_West_Drill",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_WesternCave",
+  "short": "RS_GRA_WesternCave",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_ZoneTransGRAtoMOU",
+  "short": "RS_GRA_ZoneTransGRAtoMOU",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_GRA_ZoneTransGRAtoSHA",
+  "short": "RS_GRA_ZoneTransGRAtoSHA",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_ClaptrapBeach",
+  "short": "RS_Grasslands_ClaptrapBeach",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_CoastalHills",
+  "short": "RS_Grasslands_CoastalHills",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road02",
+  "short": "RS_Grasslands_East_Road02",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road03",
+  "short": "RS_Grasslands_East_Road03",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road04",
+  "short": "RS_Grasslands_East_Road04",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road08",
+  "short": "RS_Grasslands_East_Road08",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road09",
+  "short": "RS_Grasslands_East_Road09",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road10",
+  "short": "RS_Grasslands_East_Road10",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_East_Road11",
+  "short": "RS_Grasslands_East_Road11",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_LargePond",
+  "short": "RS_Grasslands_LargePond",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_LargeTree",
+  "short": "RS_Grasslands_LargeTree",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_RiverBeastFarm",
+  "short": "RS_Grasslands_RiverBeastFarm",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_RiverBeastFarmExit",
+  "short": "RS_Grasslands_RiverBeastFarmExit",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_RiverWest",
+  "short": "RS_Grasslands_RiverWest",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_WaterwheelDocks",
+  "short": "RS_Grasslands_WaterwheelDocks",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_WaterwheelExit",
+  "short": "RS_Grasslands_WaterwheelExit",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_WaterwheelLake",
+  "short": "RS_Grasslands_WaterwheelLake",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road01",
+  "short": "RS_Grasslands_West_Road01",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road02",
+  "short": "RS_Grasslands_West_Road02",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road03",
+  "short": "RS_Grasslands_West_Road03",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road04",
+  "short": "RS_Grasslands_West_Road04",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road05",
+  "short": "RS_Grasslands_West_Road05",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road06",
+  "short": "RS_Grasslands_West_Road06",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road07",
+  "short": "RS_Grasslands_West_Road07",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road08",
+  "short": "RS_Grasslands_West_Road08",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road12",
+  "short": "RS_Grasslands_West_Road12",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road13",
+  "short": "RS_Grasslands_West_Road13",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road14",
+  "short": "RS_Grasslands_West_Road14",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road15",
+  "short": "RS_Grasslands_West_Road15",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road16",
+  "short": "RS_Grasslands_West_Road16",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road17",
+  "short": "RS_Grasslands_West_Road17",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road18",
+  "short": "RS_Grasslands_West_Road18",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road19",
+  "short": "RS_Grasslands_West_Road19",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road20",
+  "short": "RS_Grasslands_West_Road20",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road21",
+  "short": "RS_Grasslands_West_Road21",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road22",
+  "short": "RS_Grasslands_West_Road22",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road23",
+  "short": "RS_Grasslands_West_Road23",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road24",
+  "short": "RS_Grasslands_West_Road24",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Grasslands_West_Road25",
+  "short": "RS_Grasslands_West_Road25",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_HydroHills_Dam",
+  "short": "RS_HydroHills_Dam",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_HydroHills_SiloHill",
+  "short": "RS_HydroHills_SiloHill",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_HydroHills_Stockpile",
+  "short": "RS_HydroHills_Stockpile",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_KOTOLieutenant",
+  "short": "RS_KOTOLieutenant",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_KOTOMotherbaseBoss",
+  "short": "RS_KOTOMotherbaseBoss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_AbandonedAugerVillage",
+  "short": "RS_MOU_AbandonedAugerVillage",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Augerland_OrderBunkerEridiumBoss",
+  "short": "RS_MOU_Augerland_OrderBunkerEridiumBoss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Augerland_OrderBunkerEridiumEntr",
+  "short": "RS_MOU_Augerland_OrderBunkerEridiumEntr",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_BlacksiteEntrance",
+  "short": "RS_MOU_BlacksiteEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_BlacksiteExit",
+  "short": "RS_MOU_BlacksiteExit",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Blacksite_Boss",
+  "short": "RS_MOU_Blacksite_Boss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_CatCanyon",
+  "short": "RS_MOU_CatCanyon",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ChkPnt_Gorge",
+  "short": "RS_MOU_ChkPnt_Gorge",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_CliffsA",
+  "short": "RS_MOU_CliffsA",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_CliffsB",
+  "short": "RS_MOU_CliffsB",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_CliffsD",
+  "short": "RS_MOU_CliffsD",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_CliffsE",
+  "short": "RS_MOU_CliffsE",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_CliffsEntrance",
+  "short": "RS_MOU_CliffsEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ComArrayBoss",
+  "short": "RS_MOU_ComArrayBoss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ComArrayEntrance",
+  "short": "RS_MOU_ComArrayEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_DrillStation_Gorge",
+  "short": "RS_MOU_DrillStation_Gorge",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Drillsite_Cliffs",
+  "short": "RS_MOU_Drillsite_Cliffs",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ElectiPlateau",
+  "short": "RS_MOU_ElectiPlateau",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Far_mou_base",
+  "short": "RS_MOU_Far_mou_base",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_FortressExterior",
+  "short": "RS_MOU_FortressExterior",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Gorge_AugerMine_Frozen",
+  "short": "RS_MOU_Gorge_AugerMine_Frozen",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Gorge_AugerMine_FrozenEntrance",
+  "short": "RS_MOU_Gorge_AugerMine_FrozenEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Gorge_EventColosseumOutside",
+  "short": "RS_MOU_Gorge_EventColosseumOutside",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Gorge_Riverbend",
+  "short": "RS_MOU_Gorge_Riverbend",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Gorge_Shore",
+  "short": "RS_MOU_Gorge_Shore",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_HL_North",
+  "short": "RS_MOU_HL_North",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_HoM_Int_Ent",
+  "short": "RS_MOU_HoM_Int_Ent",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_HoM_Int_FTunnel",
+  "short": "RS_MOU_HoM_Int_FTunnel",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_HoM_Int_Office",
+  "short": "RS_MOU_HoM_Int_Office",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_M_Silo",
+  "short": "RS_MOU_M_Silo",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Mine_Transition",
+  "short": "RS_MOU_Mine_Transition",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Mining_Lift",
+  "short": "RS_MOU_Mining_Lift",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_MountainTop_Ship",
+  "short": "RS_MOU_MountainTop_Ship",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_NorthernCorridor",
+  "short": "RS_MOU_NorthernCorridor",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ObstacleCourse",
+  "short": "RS_MOU_ObstacleCourse",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_OrderCorridor",
+  "short": "RS_MOU_OrderCorridor",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Orderland_AugerMineCursedBoss",
+  "short": "RS_MOU_Orderland_AugerMineCursedBoss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Orderland_AugerMineEntrance",
+  "short": "RS_MOU_Orderland_AugerMineEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Orderland_OrderBunkerBruteBoss",
+  "short": "RS_MOU_Orderland_OrderBunkerBruteBoss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Orderland_OrderBunkerBruteEntr",
+  "short": "RS_MOU_Orderland_OrderBunkerBruteEntr",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_PtoSanc",
+  "short": "RS_MOU_PtoSanc",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_Sanc_Path_S",
+  "short": "RS_MOU_Sanc_Path_S",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_SecurityCheckpointA",
+  "short": "RS_MOU_SecurityCheckpointA",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_SecurityCheckpointB",
+  "short": "RS_MOU_SecurityCheckpointB",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_SiloCave",
+  "short": "RS_MOU_SiloCave",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_TempleLeadup",
+  "short": "RS_MOU_TempleLeadup",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_UndGrd_Cave",
+  "short": "RS_MOU_UndGrd_Cave",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WS",
+  "short": "RS_MOU_WS",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WS_Alt",
+  "short": "RS_MOU_WS_Alt",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WS_Lower",
+  "short": "RS_MOU_WS_Lower",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WS_Tim_Ent",
+  "short": "RS_MOU_WS_Tim_Ent",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WW_Int1",
+  "short": "RS_MOU_WW_Int1",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WW_Int2",
+  "short": "RS_MOU_WW_Int2",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WW_Plat",
+  "short": "RS_MOU_WW_Plat",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_WaterWheel",
+  "short": "RS_MOU_WaterWheel",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ZoneTransMOUtoGRA",
+  "short": "RS_MOU_ZoneTransMOUtoGRA",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_MOU_ZoneTransMoutoSHA",
+  "short": "RS_MOU_ZoneTransMoutoSHA",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_OrderPlateauWildlifeBattlefield",
+  "short": "RS_OrderPlateauWildlifeBattlefield",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_AirlockToCity",
+  "short": "RS_SHA_AirlockToCity",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_BeachUpper",
+  "short": "RS_SHA_BeachUpper",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Beach_AugerMineOasisEntr",
+  "short": "RS_SHA_Beach_AugerMineOasisEntr",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Beach_ElectiNorthPassage",
+  "short": "RS_SHA_Beach_ElectiNorthPassage",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Beach_MegaDrill",
+  "short": "RS_SHA_Beach_MegaDrill",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Beach_Shorefront",
+  "short": "RS_SHA_Beach_Shorefront",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_BeforeGrasslandCanyon",
+  "short": "RS_SHA_BeforeGrasslandCanyon",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_CanyonEntranceSouth",
+  "short": "RS_SHA_CanyonEntranceSouth",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Canyon_CenterEast",
+  "short": "RS_SHA_Canyon_CenterEast",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Canyon_EastEntrance",
+  "short": "RS_SHA_Canyon_EastEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Canyon_South",
+  "short": "RS_SHA_Canyon_South",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Canyon_Towers",
+  "short": "RS_SHA_Canyon_Towers",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_CityEntrance",
+  "short": "RS_SHA_CityEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Crater_Ext",
+  "short": "RS_SHA_Crater_Ext",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_DrillStation",
+  "short": "RS_SHA_DrillStation",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_DrillStation_MidPoint",
+  "short": "RS_SHA_DrillStation_MidPoint",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_DrillStation_SecretPath",
+  "short": "RS_SHA_DrillStation_SecretPath",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Drillsite_BEACH",
+  "short": "RS_SHA_Drillsite_BEACH",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiBridgeSouth",
+  "short": "RS_SHA_ElectiBridgeSouth",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiOutlook",
+  "short": "RS_SHA_ElectiOutlook",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiPlat_CraterJump",
+  "short": "RS_SHA_ElectiPlat_CraterJump",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiPlat_GreatDist1",
+  "short": "RS_SHA_ElectiPlat_GreatDist1",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiPlat_MoxxiApproach",
+  "short": "RS_SHA_ElectiPlat_MoxxiApproach",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiPlat_MoxxiEntrance",
+  "short": "RS_SHA_ElectiPlat_MoxxiEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiPlat_MoxxisCaveExit",
+  "short": "RS_SHA_ElectiPlat_MoxxisCaveExit",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiPlateauRipperGate",
+  "short": "RS_SHA_ElectiPlateauRipperGate",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiTown1",
+  "short": "RS_SHA_ElectiTown1",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ElectiTown_SouthPassage",
+  "short": "RS_SHA_ElectiTown_SouthPassage",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_EnterGrasslandCanyon",
+  "short": "RS_SHA_EnterGrasslandCanyon",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_EntranceFrackingTower",
+  "short": "RS_SHA_EntranceFrackingTower",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_MoxxisRoom",
+  "short": "RS_SHA_MoxxisRoom",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_NatPlat_RipperRaidRoad",
+  "short": "RS_SHA_NatPlat_RipperRaidRoad",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_OrderPlat_AugerMineExcavEntr",
+  "short": "RS_SHA_OrderPlat_AugerMineExcavEntr",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_OrderPlat_DrillSitePass",
+  "short": "RS_SHA_OrderPlat_DrillSitePass",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_OrderPlat_OrderBunkerSandEntr",
+  "short": "RS_SHA_OrderPlat_OrderBunkerSandEntr",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_OrderPlat_SouthRoad",
+  "short": "RS_SHA_OrderPlat_SouthRoad",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ScrapYardEntrance",
+  "short": "RS_SHA_ScrapYardEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Scrapyard_DrillStationTunn",
+  "short": "RS_SHA_Scrapyard_DrillStationTunn",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Scrapyard_GreatDist2_boss",
+  "short": "RS_SHA_Scrapyard_GreatDist2_boss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Scrapyard_LowerRoad",
+  "short": "RS_SHA_Scrapyard_LowerRoad",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Scrapyard_UnderSYardCynBoss",
+  "short": "RS_SHA_Scrapyard_UnderSYardCynBoss",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_Scrapyard_UnderSYardTunn",
+  "short": "RS_SHA_Scrapyard_UnderSYardTunn",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_South_Drill",
+  "short": "RS_SHA_South_Drill",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_SrapyardSwamp",
+  "short": "RS_SHA_SrapyardSwamp",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_UnderScrapYardCanyonEntrance",
+  "short": "RS_SHA_UnderScrapYardCanyonEntrance",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_UnderScrapyard",
+  "short": "RS_SHA_UnderScrapyard",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ZoneTransSHAtoGRA",
+  "short": "RS_SHA_ZoneTransSHAtoGRA",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_SHA_ZoneTransSHAtoMOU",
+  "short": "RS_SHA_ZoneTransSHAtoMOU",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RS_Shatterlands_CraterStart",
+  "short": "RS_Shatterlands_CraterStart",
+  "kind": "RS"
+ },
+ {
+  "name": "World_P.RTS_GRA_AugerMine_Acid",
+  "short": "RTS_GRA_AugerMine_Acid",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_AugerMine_Cultists",
+  "short": "RTS_GRA_AugerMine_Cultists",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_BethCamp",
+  "short": "RTS_GRA_BethCamp",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_Biosphere",
+  "short": "RTS_GRA_Biosphere",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_FoodProcessingPlant_PreBoss",
+  "short": "RTS_GRA_FoodProcessingPlant_PreBoss",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_OldRaymond",
+  "short": "RTS_GRA_OldRaymond",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_SortingStation",
+  "short": "RTS_GRA_SortingStation",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_SplashZoneBoss",
+  "short": "RTS_GRA_SplashZoneBoss",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_ThresherArena",
+  "short": "RTS_GRA_ThresherArena",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_GRA_WaterTreatment",
+  "short": "RTS_GRA_WaterTreatment",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOUT_PhaseUnderground",
+  "short": "RTS_MOUT_PhaseUnderground",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_BSExterior",
+  "short": "RTS_MOU_BSExterior",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_BelowComArray",
+  "short": "RTS_MOU_BelowComArray",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_ComArrayIceHall",
+  "short": "RTS_MOU_ComArrayIceHall",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_HoMIntBossDrop",
+  "short": "RTS_MOU_HoMIntBossDrop",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_OutsideTemple",
+  "short": "RTS_MOU_OutsideTemple",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_PhaseBunker",
+  "short": "RTS_MOU_PhaseBunker",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_PhaseFactory",
+  "short": "RTS_MOU_PhaseFactory",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_MOU_Temple",
+  "short": "RTS_MOU_Temple",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_AugerMine_Excavation",
+  "short": "RTS_SHA_AugerMine_Excavation",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_AugerMine_Oasis",
+  "short": "RTS_SHA_AugerMine_Oasis",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_BeachCenter",
+  "short": "RTS_SHA_BeachCenter",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_Bunker_Sand",
+  "short": "RTS_SHA_Bunker_Sand",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_CastingCall",
+  "short": "RTS_SHA_CastingCall",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_ElectiMission3Bunker",
+  "short": "RTS_SHA_ElectiMission3Bunker",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_ElectiMission3Bunker_FinalBoss",
+  "short": "RTS_SHA_ElectiMission3Bunker_FinalBoss",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_GreatDisturbanceCave2",
+  "short": "RTS_SHA_GreatDisturbanceCave2",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.RTS_SHA_Seabase2",
+  "short": "RTS_SHA_Seabase2",
+  "kind": "RTS"
+ },
+ {
+  "name": "World_P.TravelStation_Cinematic_AvaTC",
+  "short": "TravelStation_Cinematic_AvaTC",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Cinematic_CalderTC",
+  "short": "TravelStation_Cinematic_CalderTC",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Cinematic_ClaptrapTC",
+  "short": "TravelStation_Cinematic_ClaptrapTC",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Cinematic_CouncilIntro",
+  "short": "TravelStation_Cinematic_CouncilIntro",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Cinematic_NudgeTC",
+  "short": "TravelStation_Cinematic_NudgeTC",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Cinematic_ZadraTC",
+  "short": "TravelStation_Cinematic_ZadraTC",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Rift_PlanetaryEscape_Lab1",
+  "short": "TravelStation_Rift_PlanetaryEscape_Lab1",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Rift_PlanetaryEscape_Lab2",
+  "short": "TravelStation_Rift_PlanetaryEscape_Lab2",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.TravelStation_Rift_PlanetaryEscape_Surface",
+  "short": "TravelStation_Rift_PlanetaryEscape_Surface",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.Travelstation_Rift_PlanetaryEscape_Machine",
+  "short": "Travelstation_Rift_PlanetaryEscape_Machine",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface3a",
+  "short": "Travelstation_Rift_PlanetaryEscape_Surface3a",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface3b",
+  "short": "Travelstation_Rift_PlanetaryEscape_Surface3b",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface4a",
+  "short": "Travelstation_Rift_PlanetaryEscape_Surface4a",
+  "kind": "TRAVELSTATION"
+ },
+ {
+  "name": "World_P.Travelstation_Rift_PlanetaryEscape_Surface4b",
+  "short": "Travelstation_Rift_PlanetaryEscape_Surface4b",
+  "kind": "TRAVELSTATION"
+ }
+]
