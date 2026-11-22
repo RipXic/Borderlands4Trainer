@@ -43,6 +43,10 @@ Nothing in the game folder is changed. To remove it, close the game and delete t
 
 ## Problems and crash reports
 
+- **The trainer does not attach** ("Windows refused access to Borderlands4.exe"): if Steam or the game runs as
+  administrator, `BL4Trainer.exe` offers to restart itself as administrator - click Yes. If it still fails, antivirus
+  or security software is probably blocking it: add the trainer folder as an exception. `loader.log` next to
+  `BL4Trainer.exe` records each attach step with the Windows error codes - attach it when you open an issue.
 - The trainer writes `trainer.log` next to itself and keeps the last 20 sessions in `logs\`.
 - If the game closes unexpectedly, that session's log is kept in `logs\crashes\crashes_###.log` (never deleted).
 - **Settings > Support > Create trainer report** makes one text file (also copied to the clipboard) that checks the
@@ -56,12 +60,12 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.0.0
+python package.py 1.0.1
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`
 and `build\BL4Trainer.exe`). `package.py` puts the binaries next to the contents of `data\` in `release\BL4Trainer\`,
-zips it as `release\BL4Trainer_1.0.0.zip` - the same layout as the release download - and prints SHA-256 checksums.
+zips it as `release\BL4Trainer_1.0.1.zip` - the same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
 
@@ -72,7 +76,7 @@ zips it as `release\BL4Trainer_1.0.0.zip` - the same layout as the release downl
   functions in memory (`src/ue.cpp`, `src/bl4.cpp`, `src/items.cpp`).
 - No network code: the DLL opens no sockets and talks to nothing outside the game.
 - Nothing in the game folder is changed. Edits to your character end up in your save because the game saves them.
-- Files it writes, all inside its own folder: `trainer.log`, `logs\`, `settings.json`, `data\` (switched-on options,
+- Files it writes, all inside its own folder: `loader.log`, `trainer.log`, `logs\`, `settings.json`, `data\` (switched-on options,
   edited values, positions), `save_backups\` and `serials.txt` (when you export item serials).
 - Never touches premium currency, SHiFT-managed items (golden keys) or paid content: Vault Card tools only work on
   cards that are active on your character.
