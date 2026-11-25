@@ -342,6 +342,17 @@ void Init(HWND hwnd) {
     install_input_hooks();
     log("[overlay] input attached to window %p", hwnd);
 }
+// the overlay moved to another window of the game (recreated window, splash window gone)
+void Reattach(HWND hwnd) {
+    using namespace wb;
+    if (!o_WndProc) { Init(hwnd); return; }
+    if (hwnd == g_hwnd) return;
+    if (IsWindow(g_hwnd) && (WNDPROC)GetWindowLongPtrW(g_hwnd, GWLP_WNDPROC) == hk_WndProc)
+        SetWindowLongPtrW(g_hwnd, GWLP_WNDPROC, (LONG_PTR)o_WndProc);
+    g_hwnd = hwnd;
+    o_WndProc = (WNDPROC)SetWindowLongPtrW(hwnd, GWLP_WNDPROC, (LONG_PTR)hk_WndProc);
+    log("[overlay] input moved to window %p", hwnd);
+}
 void Shutdown() {
     using namespace wb;
     if (o_WndProc && g_hwnd) SetWindowLongPtrW(g_hwnd, GWLP_WNDPROC, (LONG_PTR)o_WndProc);
@@ -504,9 +515,23 @@ namespace wb {
 
 bool install_overlay() {
     bool okh = trinity::hooks::InstallDX12Hooks();
+    for (int i = 0; i < 10 && !okh && trinity::hooks::DX12HooksRetryable(); ++i) {   // graphics not ready yet: try again
+        Sleep(1000);
+        okh = trinity::hooks::InstallDX12Hooks();
+    }
     g_hooks_ok = okh;
+    if (!okh) set_attach_state(3); else set_attach_state_min(2);
     log("[overlay] DX12 hooks %s", okh ? "installed" : "FAILED");
     return okh;
+}
+
+void overlay_ready(unsigned w, unsigned h) {
+    g_overlay_drawn = true; set_attach_state(4);
+    static bool told = false;
+    if (told) return;
+    told = true;
+    toast("Trainer ready - press " + hotkey_name(current_hotkey()) + " to open it");
+    (void)w; (void)h;
 }
 
 json overlay_status() {   // both builds: the trainer report checks it

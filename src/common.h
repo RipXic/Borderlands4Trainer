@@ -21,7 +21,7 @@ using json = nlohmann::json;
 
 namespace wb {
 
-constexpr const char* kVersion = "1.0.1";
+constexpr const char* kVersion = "1.0.2";
 constexpr const char* kGameExe = "Borderlands4.exe";
 
 struct Config {
@@ -65,6 +65,9 @@ bool crash_last_session();                     // the previous game session ende
 int crash_log_count();                         // crashes saved in logs\crashes
 std::string crash_log_dir();
 std::string log_file_path();
+void set_attach_state(long v);                  // what the loader tells the user (core.cpp)
+extern std::atomic<bool> g_overlay_drawn;
+void set_attach_state_min(long v);              // only raises it
 void session_end_marker(bool process_exit);
 void start_mod_dll_watch();                    // "[mods]" lines: other DLLs in the game
 void install_crash_diagnostics();

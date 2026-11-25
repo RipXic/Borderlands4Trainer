@@ -6,6 +6,7 @@
 #include "trinity/core/state.h"
 #include "trinity/gui/icons.h"   // IconsInit / IconsRecordUploads / DrawItemIcon
 
+namespace wb { void overlay_ready(unsigned w, unsigned h); void set_attach_state(long v); }
 namespace trinity {
     struct Settings { static void ClaimOwnership() {} };
     namespace ui {
@@ -15,7 +16,7 @@ namespace trinity {
     }
     namespace gui { void Render(); bool WantsDraw(); }
     namespace input {
-        void Init(HWND hwnd); void Shutdown();
+        void Init(HWND hwnd); void Reattach(HWND hwnd); void Shutdown();
         // Serialises ImGui's input queue between the window thread (hk_WndProc) and the present thread
         // (the NewFrame calls, the overlay's own mouse / gamepad events). Never held while drawing.
         void Lock(); void Unlock();

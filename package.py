@@ -1,6 +1,6 @@
 """Put the built trainer and its data into release\\BL4Trainer\\ and zip it as release\\BL4Trainer_<version>.zip
 (the same layout as the release download), then print SHA-256 checksums.
-Usage: build.bat, then  python package.py 1.0.1"""
+Usage: build.bat, then  python package.py 1.0.2"""
 import hashlib
 import os
 import shutil

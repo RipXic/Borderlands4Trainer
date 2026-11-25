@@ -81,6 +81,20 @@ void log(const char* fmt, ...) {
 }
 
 HMODULE self_module() { return g_self; }
+// read by the loader: 1 started, 2 hooks installed, 3 hooks failed, 4 panel draws, 5 folder name not usable, 6 panel setup failed
+void set_attach_state(long v) {
+    static volatile LONG* p = []() -> volatile LONG* {
+        char n[64]; sprintf_s(n, "Local\\nativeState_%lu", GetCurrentProcessId());
+        HANDLE m = CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, 0, sizeof(LONG), n);   // kept open for the session
+        return m ? (volatile LONG*)MapViewOfFile(m, FILE_MAP_WRITE, 0, 0, sizeof(LONG)) : nullptr;
+    }();
+    if (p) InterlockedExchange(p, v);
+}
+void set_attach_state_min(long v) {   // the panel may already draw by the time the install call returns
+    static std::mutex m; std::lock_guard<std::mutex> lk(m);
+    if (!g_overlay_drawn) set_attach_state(v);
+}
+std::atomic<bool> g_overlay_drawn{ false };
 void release_active_marker() { if (g_active_marker) { CloseHandle(g_active_marker); g_active_marker = nullptr; } }
 void log_close() { std::lock_guard<std::mutex> lk(g_log_mtx); if (g_log_file) { fclose(g_log_file); g_log_file = nullptr; } }
 
@@ -687,12 +701,31 @@ static void log_session_start() {
 // ------------------------------------------------------------------ entry
 static DWORD WINAPI init_thread(LPVOID) {
     using namespace wb;
-    char path[MAX_PATH]; GetModuleFileNameA(g_self, path, MAX_PATH);
-    std::string p = path; g_cfg.root = p.substr(0, p.find_last_of("\\/"));
+    // The trainer opens its files by narrow (ANSI) names: a folder with letters outside the system's code page is
+    // used by its short (8.3) name instead; without one the trainer cannot find its files.
+    std::string p;
+    {
+        static wchar_t w[32768], sh[32768];
+        GetModuleFileNameW(g_self, w, 32768);
+        auto narrow = [](const wchar_t* s, std::string& out) {
+            char b[MAX_PATH * 3] = {}; BOOL lost = FALSE;
+            const bool utf8 = GetACP() == CP_UTF8;
+            if (!WideCharToMultiByte(CP_ACP, utf8 ? 0 : WC_NO_BEST_FIT_CHARS, s, -1, b, sizeof b, nullptr, utf8 ? nullptr : &lost) || lost || strlen(b) >= MAX_PATH - 80) return false;
+            out = b; return true;
+        };
+        if (!narrow(w, p) && !(GetShortPathNameW(w, sh, 32768) && narrow(sh, p))) {
+            set_attach_state(5);
+            MessageBoxW(nullptr, L"The trainer folder's path is too long or has letters the game cannot read.\n\nMove the folder to a short path with plain letters, for example C:\\BL4Trainer, and start the game again.",
+                        L"Borderlands 4 Trainer", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+            return 0;
+        }
+    }
+    g_cfg.root = p.substr(0, p.find_last_of("\\/"));
     std::string leaf = g_cfg.root.substr(g_cfg.root.find_last_of("\\/") + 1);
     if (_stricmp(leaf.c_str(), "loaded") == 0) g_cfg.root = g_cfg.root.substr(0, g_cfg.root.find_last_of("\\/"));
     const std::string logname = "trainer";
     open_session_log(logname);
+    set_attach_state(1);
     { char nm[64]; sprintf_s(nm, "Local\\nativeActive_%lu", GetCurrentProcessId()); g_active_marker = CreateMutexA(nullptr, FALSE, nm); }
     log("Borderlands 4 Trainer %s starting", kVersion);
     log_session_start();

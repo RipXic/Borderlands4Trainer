@@ -41,13 +41,43 @@ static void say(WORD color, const char* tag, const char* msg) {
 #define GOOD(m) say(10, "  OK", m)
 #define BAD(m)  say(12, "FAIL", m)
 
-static DWORD find_pid() {
+// Two files of the game are called Borderlands4.exe: the starter in the game folder and the game itself in
+// OakGame\Binaries\Win64. Attaching to the starter does nothing in game.
+enum ProcKind { kStarter, kUnknown, kGame };
+static ProcKind proc_kind(DWORD pid) {
+    ProcKind k = kUnknown;
+    if (HANDLE p = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid)) {
+        static wchar_t path[32768]; DWORD n = 32768;
+        if (QueryFullProcessImageNameW(p, 0, path, &n)) {
+            _wcslwr_s(path);
+            k = wcsstr(path, L"\\binaries\\win") ? kGame : kStarter;
+        }
+        CloseHandle(p);
+    }
+    return k;
+}
+
+// the game's process (0 = not running). *starter: a starter process is running (the game is about to appear)
+static DWORD find_pid(bool* starter = nullptr) {
+    if (starter) *starter = false;
     HANDLE s = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-    PROCESSENTRY32W e{ sizeof e }; DWORD pid = 0;
-    for (BOOL k = Process32FirstW(s, &e); k; k = Process32NextW(s, &e))
-        if (_wcsicmp(e.szExeFile, kGameExe) == 0 && e.cntThreads > 0) { pid = e.th32ProcessID; break; }   // 0 threads = dead shell kept by a handle (after a crash)
+    if (s == INVALID_HANDLE_VALUE) return 0;
+    struct P { DWORD pid, parent; } ps[16]; int n = 0;
+    PROCESSENTRY32W e{ sizeof e };
+    for (BOOL k = Process32FirstW(s, &e); k && n < 16; k = Process32NextW(s, &e))
+        if (_wcsicmp(e.szExeFile, kGameExe) == 0 && e.cntThreads > 0) ps[n++] = { e.th32ProcessID, e.th32ParentProcessID };   // 0 threads = dead shell kept by a handle (after a crash)
     CloseHandle(s);
-    return pid;
+    DWORD unknown = 0;
+    for (int i = 0; i < n; ++i) {
+        const ProcKind k = proc_kind(ps[i].pid);
+        if (k == kGame) return ps[i].pid;
+        if (k == kStarter) { if (starter) *starter = true; continue; }
+        // path not readable (protected / elevated): a process started by another Borderlands4.exe is the game
+        bool child = false;
+        for (int x = 0; x < n; ++x) if (x != i && ps[x].pid == ps[i].parent) child = true;
+        if (!unknown || child) unknown = ps[i].pid;
+    }
+    return unknown;
 }
 
 static bool has_module(DWORD pid, const wchar_t* name) {
@@ -64,6 +94,35 @@ static bool bridge_active(DWORD pid) {
     char nm[64]; sprintf_s(nm, "Local\\nativeActive_%lu", pid);
     HANDLE h = OpenMutexA(SYNCHRONIZE, FALSE, nm);
     if (h) { CloseHandle(h); return true; }
+    return false;
+}
+
+// What the DLL in the game says about itself: 1 = started, 2 = graphics hooks installed, 3 = hooks failed,
+// 4 = the panel draws on the game's window, 5 = cannot use the trainer folder's name, 6 = panel setup failed. 0 = nothing yet.
+static LONG dll_state(DWORD pid) {
+    char nm[64]; sprintf_s(nm, "Local\\nativeState_%lu", pid);
+    LONG v = 0;
+    if (HANDLE m = OpenFileMappingA(FILE_MAP_READ, FALSE, nm)) {
+        if (auto p = (volatile LONG*)MapViewOfFile(m, FILE_MAP_READ, 0, 0, sizeof(LONG))) { v = *p; UnmapViewOfFile((const void*)p); }
+        CloseHandle(m);
+    }
+    return v;
+}
+// wait until the DLL reports at least `want` (or a failure); tells the user what is wrong. true = fine
+static bool report_dll(DWORD pid, LONG want, int seconds) {
+    LONG v = 0;
+    for (int i = 0; i < seconds * 10; ++i) {
+        v = dll_state(pid);
+        if (v == 3 || v >= want) break;
+        if (i % 10 == 9 && find_pid() != pid) { logf("the game process ended"); return false; }
+        Sleep(100);
+    }
+    logf("trainer state in the game: %ld", v);
+    if (v == 4 || v == want) return true;
+    if (v == 5) BAD("The trainer folder's name has letters the game cannot read. Move the folder to e.g. C:\\BL4Trainer, restart the game and try again.");
+    else if (v == 3 || v == 6) BAD("The trainer is in the game but could not set up its panel. Restart the game and start it with BL4Trainer.exe. Send trainer.log if it happens again.");
+    else if (v == 2) BAD("The trainer is in the game but has not drawn on the game window yet. If the hotkey does nothing: turn Frame Generation off, or close the game and start it with BL4Trainer.exe.");
+    else BAD("The trainer was loaded but did not start. Send trainer.log and loader.log.");
     return false;
 }
 
@@ -186,9 +245,16 @@ int wmain(int argc, wchar_t** argv) {
         for (int i = 0; i < 600 && find_pid(); ++i) Sleep(100);
         Sleep(8000);   // let Steam notice the game has closed
     }
-    DWORD pid = find_pid();
+    bool starter = false;
+    DWORD pid = find_pid(&starter);
     bool early = false;
-    if (!pid) {
+    if (!pid && starter) {   // the starter is up, the game itself is about to appear
+        INFO("Borderlands 4 is starting...");
+        for (int i = 0; i < 60 * 40 && !pid; ++i) { Sleep(25); pid = find_pid(); }
+        if (pid) early = true;
+    }
+    if (pid && early) {
+    } else if (!pid) {
         if (attach_only) { BAD("Borderlands 4 is not running."); Sleep(3000); return 3; }
         INFO("Borderlands 4 is not running - starting it through Steam...");
         ShellExecuteW(nullptr, L"open", kSteamUrl, nullptr, nullptr, SW_SHOWNORMAL);
@@ -201,8 +267,16 @@ int wmain(int argc, wchar_t** argv) {
     } else if (force_early) {
         early = true;   // restarted as administrator right after the game started: still attach before the swapchain
     }
+    bool again = false;   // the game restarted itself and this is the second attach
+    for (;;) {
     char buf[160]; sprintf_s(buf, "Found Borderlands4.exe (pid %lu)", pid); GOOD(buf);
-    if (bridge_active(pid)) { GOOD("The trainer is already attached. Press your panel hotkey in game (default INSERT)."); Sleep(3000); return 0; }
+    if (bridge_active(pid)) {
+        GOOD("The trainer is already attached. Press your panel hotkey in game (default INSERT).");
+        const LONG st = dll_state(pid);
+        logf("trainer state in the game: %ld", st);
+        if (st && st != 4) { report_dll(pid, 4, 1); Sleep(12000); }
+        Sleep(3000); return 0;
+    }
 
     {   // check access first: without it the DirectX wait below cannot see the game's modules and would wait for nothing
         DWORD err = 0;
@@ -224,12 +298,32 @@ int wmain(int argc, wchar_t** argv) {
         INFO("Game already running - late attach (overlay draws when DLSS Frame Generation is off).");
     }
 
+    {   // one loader per game process (two may be waiting for the same restart)
+        char nm[64]; sprintf_s(nm, "Local\\nativeLoad_%lu", pid);
+        CreateMutexA(nullptr, FALSE, nm);   // kept until this loader closes
+        if (GetLastError() == ERROR_ALREADY_EXISTS) { INFO("Another trainer window is already attaching to this game."); Sleep(3000); return 0; }
+    }
     std::wstring copy = stage_copy(dir, dll);
     if (copy.empty()) { BAD("Could not copy native.dll (is the trainer folder read-only?)."); Sleep(4000); return 8; }
     if (!inject(pid, copy)) { BAD("Attach failed - details are in loader.log in the trainer folder."); Sleep(15000); return 7; }
     GOOD(early ? "Trainer attached early (full overlay support)." : "Trainer attached.");
+    if (!report_dll(pid, early ? 2 : 4, 20) && find_pid() == pid) { Sleep(15000); return 9; }   // game gone: it may be restarting, see below
     INFO("Press your panel hotkey in game (default INSERT; change it on the SETTINGS page).");
 
-    Sleep(3000);
-    return 0;
+    // After a game patch the game restarts itself ("-relaunch") a minute or so after it started: the new process has no
+    // trainer. Stay around for the first minutes and attach to the new one as well.
+    INFO("You can play now. This window closes by itself; leave it open until the main menu (the game restarts itself after a game patch).");
+    HANDLE ph = OpenProcess(SYNCHRONIZE, FALSE, pid);
+    if (!ph) { Sleep(3000); return 0; }
+    const DWORD ended = WaitForSingleObject(ph, again ? 3 * 60000 : 5 * 60000);
+    CloseHandle(ph);
+    if (ended != WAIT_OBJECT_0) return 0;
+    INFO("The game closed - waiting up to 3 minutes in case it restarts itself...");
+    const DWORD old = pid;
+    pid = 0;
+    for (int i = 0; i < 180 * 40; ++i) { Sleep(25); pid = find_pid(); if (pid && pid != old) break; pid = 0; }
+    if (!pid) { INFO("It did not restart."); Sleep(2000); return 0; }
+    INFO("The game restarted - attaching again...");
+    early = true; again = true;
+    }
 }

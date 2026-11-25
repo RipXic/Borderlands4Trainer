@@ -47,6 +47,9 @@ Nothing in the game folder is changed. To remove it, close the game and delete t
   administrator, `BL4Trainer.exe` offers to restart itself as administrator - click Yes. If it still fails, antivirus
   or security software is probably blocking it: add the trainer folder as an exception. `loader.log` next to
   `BL4Trainer.exe` records each attach step with the Windows error codes - attach it when you open an issue.
+- **It attached but nothing opens**: the game shows "Trainer ready - press INSERT" when the panel works. The game restarts
+  itself after a game patch: leave the `BL4Trainer.exe` window open until the main menu so it can attach again. Still
+  nothing: open an issue with `loader.log` and `trainer.log`, how you start the game and your game version.
 - The trainer writes `trainer.log` next to itself and keeps the last 20 sessions in `logs\`.
 - If the game closes unexpectedly, that session's log is kept in `logs\crashes\crashes_###.log` (never deleted).
 - **Settings > Support > Create trainer report** makes one text file (also copied to the clipboard) that checks the
@@ -60,12 +63,12 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.0.1
+python package.py 1.0.2
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`
 and `build\BL4Trainer.exe`). `package.py` puts the binaries next to the contents of `data\` in `release\BL4Trainer\`,
-zips it as `release\BL4Trainer_1.0.1.zip` - the same layout as the release download - and prints SHA-256 checksums.
+zips it as `release\BL4Trainer_1.0.2.zip` - the same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
 

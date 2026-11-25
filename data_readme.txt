@@ -31,4 +31,7 @@ The trainer does not attach ("Windows refused access")? If Steam or the game run
 BL4Trainer.exe asks to restart as administrator - click Yes. If it still fails, antivirus is
 probably blocking it: add this folder as an exception. Send loader.log if you need help.
 
+Attached but nothing opens? The game restarts itself after a game patch: leave the BL4Trainer.exe
+window open until the main menu so it can attach again. Still nothing: send loader.log and trainer.log.
+
 Official download: https://github.com/RipXic/Borderlands4Trainer/releases

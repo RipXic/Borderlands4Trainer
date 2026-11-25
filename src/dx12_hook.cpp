@@ -70,7 +70,22 @@ namespace trinity::hooks
     // can spin up auxiliary swapchains on other windows; we only ever want the one
     // the game renders the world into. Locked on the first successful wrap so later
     // auxiliary creations are ignored.
+    // (Since 1.0.2 only informational - which window the overlay draws on is decided per present, see OverlayMayDraw.)
     static HWND g_wrappedHwnd = nullptr;
+
+    // Last present of a wrapped swapchain, and of the one the overlay draws on.
+    static ULONGLONG g_lastWrappedPresent = 0;
+    static ULONGLONG g_lastDrawnPresent   = 0;
+    static std::vector<HWND>  g_wrappedWindows;      // guarded by g_wrapLock
+    static SRWLOCK            g_wrapLock = SRWLOCK_INIT;
+    static bool WindowIsWrapped(HWND h)
+    {
+        bool found = false;
+        AcquireSRWLockShared(&g_wrapLock);
+        for (HWND w : g_wrappedWindows) if (w == h) { found = true; break; }
+        ReleaseSRWLockShared(&g_wrapLock);
+        return found;
+    }
 
     // --- Rendering resources ------------------------------------------------
     struct FrameContext
@@ -506,6 +521,16 @@ namespace trinity::hooks
             CleanupRenderTargets(); // same count, fresh buffers
         }
 
+        if (desc.OutputWindow && desc.OutputWindow != g_hwnd)
+        {
+            // the game moved to another window: ImGui's window backend and the input hook follow it
+            input::Lock();
+            ImGui_ImplWin32_Shutdown();
+            ImGui_ImplWin32_Init(desc.OutputWindow);
+            input::Unlock();
+            input::Reattach(desc.OutputWindow);
+            LOG("Overlay moved to window %p (was %p).", desc.OutputWindow, g_hwnd);
+        }
         g_hwnd      = desc.OutputWindow;
         g_swapChain = swapChain;
         g_scWidth   = newW;
@@ -742,18 +767,26 @@ namespace trinity::hooks
         oExecuteCommandLists(queue, numLists, lists);
     }
 
+    // A frame could not be drawn: say why (once per reason). RenderOverlay closes a panel that stays invisible.
+    static bool Skip(const char* why)
+    {
+        static const char* s_last = nullptr;
+        if (why != s_last) { s_last = why; LOG_ERR("Overlay frame not drawn: %s.", why); }
+        return false;
+    }
+
     // Records + submits the overlay. Kept as its own function so hkPresent can
     // wrap the call in __try/__except without object-unwinding conflicts.
-    static void DrawOverlay(IDXGISwapChain3* swapChain)
+    static bool DrawOverlay(IDXGISwapChain3* swapChain)
     {
         // Pin our render targets to the live swapchain before touching them.
         // A DLSS Frame Generation toggle silently swaps it; if the rebuild
         // fails, sit this frame out rather than draw into freed buffers.
         if (!ReconcileSwapChain(swapChain))
-            return;
+            return Skip("swapchain not usable");
 
         if (!EnsureCompositePipeline(g_scFormat))
-            return;
+            return Skip("no pipeline for this back buffer format");
 
         // Hold our own ref on the present queue for the duration of this frame
         // so a concurrent republish can't pull it out from under us. Not
@@ -768,7 +801,7 @@ namespace trinity::hooks
         }
         LeaveCriticalSection(&g_queueLock);
         if (!submitQueue)
-            return;
+            return Skip("present queue not known yet");
 
         if (ui::g_needFontRebuild)
         {
@@ -811,7 +844,7 @@ namespace trinity::hooks
                 {
                     input::Unlock();
                     submitQueue->Release();
-                    return; // ImGui::NewFrame not called yet - nothing to unwind
+                    return Skip("offscreen target"); // ImGui::NewFrame not called yet - nothing to unwind
                 }
             }
         }
@@ -829,7 +862,7 @@ namespace trinity::hooks
             // out of bounds. Should not happen after ReconcileSwapChain, but a
             // freed device is worse than a dropped overlay frame.
             submitQueue->Release();
-            return;
+            return Skip("back buffer index");
         }
         FrameContext& frame = g_frames[idx];
 
@@ -842,7 +875,7 @@ namespace trinity::hooks
             {
                 // GPU still on this allocator's last frame: drop this overlay frame, never reset it in use.
                 submitQueue->Release();
-                return;
+                return Skip("GPU still busy");
             }
         }
 
@@ -920,7 +953,7 @@ namespace trinity::hooks
         if (FAILED(g_commandList->Close()))
         {
             submitQueue->Release();
-            return;
+            return Skip("command list");
         }
 
         ID3D12CommandList* toExec[] = { g_commandList };
@@ -928,7 +961,37 @@ namespace trinity::hooks
         submitQueue->Signal(g_fence, ++g_fenceValue);
         frame.fenceValue = g_fenceValue;
         submitQueue->Release();
+        return true;
     }
+
+    // Which swapchain gets the overlay. Small windows (splash screens, probes), hidden windows and swapchains that
+    // are not Direct3D 12 never do. Once the overlay is on a window it stays there until that window is gone, hidden
+    // or stopped presenting for 2 seconds - or a window more than twice as big shows up.
+    static bool OverlayMayDraw(IDXGISwapChain3* swapChain)
+    {
+        const ULONGLONG now = GetTickCount64();
+        if (g_imguiReady && swapChain == g_swapChain) { g_lastDrawnPresent = now; return true; }
+
+        DXGI_SWAP_CHAIN_DESC desc = {};
+        if (FAILED(swapChain->GetDesc(&desc)) || !desc.OutputWindow) return false;
+        if (desc.BufferDesc.Width < 320 || desc.BufferDesc.Height < 200 || !IsWindowVisible(desc.OutputWindow)) return false;
+        ID3D12Device* dev = nullptr;
+        if (FAILED(swapChain->GetDevice(IID_PPV_ARGS(&dev))) || !dev) return false;
+        const bool otherDevice = g_imguiReady && dev != g_device;
+        dev->Release();
+        if (otherDevice) return false;
+        if (g_imguiReady && desc.OutputWindow != g_hwnd && IsWindow(g_hwnd) && IsWindowVisible(g_hwnd))
+        {
+            const bool stale  = now - g_lastDrawnPresent > 2000;
+            const bool bigger = static_cast<UINT64>(desc.BufferDesc.Width) * desc.BufferDesc.Height >
+                                static_cast<UINT64>(g_scWidth) * g_scHeight * 2;
+            if (!stale && !bigger) return false;
+        }
+        g_lastDrawnPresent = now;
+        return true;
+    }
+
+    static void ReleaseOverlayObjects();
 
     // Init-if-needed and draw the overlay into swapChain's current back buffer.
     // Returns whether a frame was actually submitted (for the post-present device
@@ -936,19 +999,32 @@ namespace trinity::hooks
     // drawing - those are Streamline's read-only finished frames, left untouched.
     static bool RenderOverlay(IDXGISwapChain3* swapChain, bool isGameFacing)
     {
-        if (!isGameFacing)
+        if (!isGameFacing || !OverlayMayDraw(swapChain))
             return false;
 
         if (!g_imguiReady && !g_initFailed)
         {
             // Init needs only the swapchain (device comes from it). The present
             // queue is captured separately by hkExecuteCommandLists.
+            static ULONGLONG s_nextTry = 0;
+            static int       s_tries   = 0;
+            if (GetTickCount64() < s_nextTry) return false;
             if (InitImGui(swapChain))
+            {
                 g_imguiReady = true;
+                wb::overlay_ready(g_scWidth, g_scHeight);
+            }
             else
             {
-                g_initFailed = true;
-                LOG_ERR("Overlay init failed - Trinity is disabled for this session.");
+                ReleaseOverlayObjects();   // nothing half made stays behind
+                s_nextTry = GetTickCount64() + 2000;
+                if (++s_tries >= 10)
+                {
+                    g_initFailed = true;
+                    wb::set_attach_state(6);
+                    LOG_ERR("Overlay init failed %d times - the panel is off for this session.", s_tries);
+                }
+                else LOG_ERR("Overlay init failed (try %d) - trying again.", s_tries);
             }
         }
 
@@ -974,8 +1050,17 @@ namespace trinity::hooks
         bool drew = false;
         __try
         {
-            DrawOverlay(swapChain);
-            drew = true;
+            drew = DrawOverlay(swapChain);
+            // a panel that is open but cannot be drawn must not keep the game's input
+            static ULONGLONG s_failSince = 0;
+            if (drew) s_failSince = 0;
+            else if (!s_failSince) s_failSince = GetTickCount64();
+            else if (st.menuOpen && GetTickCount64() - s_failSince > 3000)
+            {
+                st.menuOpen = false;
+                s_failSince = 0;
+                LOG_ERR("The panel could not be drawn for 3 seconds - closed again.");
+            }
         }
         __except (EXCEPTION_EXECUTE_HANDLER)
         {
@@ -1102,7 +1187,24 @@ namespace trinity::hooks
     // untouched - under DLSS-G the native present is Streamline's read-only frame.
     static HRESULT WINAPI hkPresent(IDXGISwapChain3* swapChain, UINT syncInterval, UINT flags)
     {
-        const bool drew = RenderOverlay(swapChain, !g_wrapperActive);
+        // A wrapper owns the drawing - unless no wrapped swapchain presents at all (the game draws through one that
+        // was not created the usual way). Never on a window that has a wrapped swapchain: those native presents can be
+        // Frame Generation's read-only frames.
+        bool native = !g_wrapperActive;
+        if (!native && GetTickCount64() - g_lastWrappedPresent > 5000)
+        {
+            DXGI_SWAP_CHAIN_DESC d = {};
+            if (SUCCEEDED(swapChain->GetDesc(&d)) && d.OutputWindow && !WindowIsWrapped(d.OutputWindow))
+            {
+                native = true;
+                if (g_presentQueuePinned)
+                {
+                    g_presentQueuePinned = false;   // that queue belongs to a wrapped swapchain: find this one's
+                    LOG("No wrapped swapchain presents - drawing on the game's own swapchain.");
+                }
+            }
+        }
+        const bool drew = RenderOverlay(swapChain, native);
         const HRESULT hr = oPresent(swapChain, syncInterval, flags);
         PostPresentDeviceCheck(drew);
         return hr;
@@ -1112,7 +1214,7 @@ namespace trinity::hooks
         IDXGISwapChain3* swapChain, UINT bufferCount,
         UINT width, UINT height, DXGI_FORMAT format, UINT flags)
     {
-        if (!g_imguiReady || g_wrapperActive)
+        if (!g_imguiReady || swapChain != g_swapChain || (g_wrapperActive && GetTickCount64() - g_lastWrappedPresent <= 5000))
             return oResizeBuffers(swapChain, bufferCount, width, height, format, flags);
         PreResizeCleanup();
         const HRESULT hr = oResizeBuffers(swapChain, bufferCount, width, height, format, flags);
@@ -1149,7 +1251,13 @@ namespace trinity::hooks
     class WrappedIDXGISwapChain final : public IDXGISwapChain4
     {
     public:
-        explicit WrappedIDXGISwapChain(IDXGISwapChain4* inner) : m_inner(inner) {}
+        WrappedIDXGISwapChain(IDXGISwapChain4* inner, ID3D12CommandQueue* queue, HWND hwnd) : m_inner(inner), m_queue(queue), m_hwnd(hwnd)
+        {
+            if (m_queue) m_queue->AddRef();
+            AcquireSRWLockExclusive(&g_wrapLock);
+            g_wrappedWindows.push_back(hwnd);
+            ReleaseSRWLockExclusive(&g_wrapLock);
+        }
 
         // IUnknown ----------------------------------------------------------
         HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, void** ppv) override
@@ -1188,6 +1296,11 @@ namespace trinity::hooks
                     }
                     g_swapChain = nullptr; // the next present rebuilds through ReconcileSwapChain
                 }
+                AcquireSRWLockExclusive(&g_wrapLock);
+                for (size_t i = 0; i < g_wrappedWindows.size(); ++i)
+                    if (g_wrappedWindows[i] == m_hwnd) { g_wrappedWindows.erase(g_wrappedWindows.begin() + i); break; }
+                ReleaseSRWLockExclusive(&g_wrapLock);
+                if (m_queue) m_queue->Release();
                 m_inner->Release();
                 delete this;
             }
@@ -1206,7 +1319,7 @@ namespace trinity::hooks
         // IDXGISwapChain ----------------------------------------------------
         HRESULT STDMETHODCALLTYPE Present(UINT syncInterval, UINT flags) override
         {
-            const bool drew = RenderOverlay(m_inner, true);
+            const bool drew = Draw();
             const HRESULT hr = m_inner->Present(syncInterval, flags);
             PostPresentDeviceCheck(drew);
             return hr;
@@ -1217,9 +1330,10 @@ namespace trinity::hooks
         HRESULT STDMETHODCALLTYPE GetDesc(DXGI_SWAP_CHAIN_DESC* d) override { return m_inner->GetDesc(d); }
         HRESULT STDMETHODCALLTYPE ResizeBuffers(UINT bc, UINT w, UINT h, DXGI_FORMAT f, UINT fl) override
         {
-            PreResizeCleanup();
+            const bool mine = static_cast<IDXGISwapChain3*>(m_inner) == g_swapChain;   // not another window's swapchain
+            if (mine) PreResizeCleanup();
             const HRESULT hr = m_inner->ResizeBuffers(bc, w, h, f, fl);
-            PostResizeRebuild(m_inner);
+            if (mine) PostResizeRebuild(m_inner);
             return hr;
         }
         HRESULT STDMETHODCALLTYPE ResizeTarget(const DXGI_MODE_DESC* p) override { return m_inner->ResizeTarget(p); }
@@ -1234,7 +1348,7 @@ namespace trinity::hooks
         HRESULT STDMETHODCALLTYPE GetCoreWindow(REFIID riid, void** pp) override { return m_inner->GetCoreWindow(riid, pp); }
         HRESULT STDMETHODCALLTYPE Present1(UINT syncInterval, UINT flags, const DXGI_PRESENT_PARAMETERS* pp) override
         {
-            const bool drew = RenderOverlay(m_inner, true);
+            const bool drew = Draw();
             const HRESULT hr = m_inner->Present1(syncInterval, flags, pp);
             PostPresentDeviceCheck(drew);
             return hr;
@@ -1261,14 +1375,15 @@ namespace trinity::hooks
         HRESULT STDMETHODCALLTYPE SetColorSpace1(DXGI_COLOR_SPACE_TYPE c) override
         {
             const HRESULT hr = m_inner->SetColorSpace1(c);
-            if (SUCCEEDED(hr)) OnColorSpaceChanged(c);
+            if (SUCCEEDED(hr)) m_colorSpace = c;   // taken over when this swapchain is drawn on
             return hr;
         }
         HRESULT STDMETHODCALLTYPE ResizeBuffers1(UINT bc, UINT w, UINT h, DXGI_FORMAT f, UINT fl, const UINT* nodeMask, IUnknown* const* pQueues) override
         {
-            PreResizeCleanup();
+            const bool mine = static_cast<IDXGISwapChain3*>(m_inner) == g_swapChain;
+            if (mine) PreResizeCleanup();
             const HRESULT hr = m_inner->ResizeBuffers1(bc, w, h, f, fl, nodeMask, pQueues);
-            PostResizeRebuild(m_inner);
+            if (mine) PostResizeRebuild(m_inner);
             return hr;
         }
 
@@ -1276,6 +1391,19 @@ namespace trinity::hooks
         HRESULT STDMETHODCALLTYPE SetHDRMetaData(DXGI_HDR_METADATA_TYPE t, UINT s, void* d) override { return m_inner->SetHDRMetaData(t, s, d); }
 
     private:
+        bool Draw()
+        {
+            g_lastWrappedPresent = GetTickCount64();
+            const bool drewBefore = static_cast<IDXGISwapChain3*>(m_inner) == g_swapChain;
+            if (!drewBefore && !OverlayMayDraw(m_inner)) return false;
+            // this swapchain's own present queue and color space, whatever other windows use
+            if (m_queue && m_queue != g_presentQueue) PublishPresentQueue(m_queue, true);
+            OnColorSpaceChanged(m_colorSpace);
+            return RenderOverlay(m_inner, true);
+        }
+        ID3D12CommandQueue*   m_queue;
+        HWND                  m_hwnd;
+        DXGI_COLOR_SPACE_TYPE m_colorSpace = DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709; // SDR until the game says otherwise
         IDXGISwapChain4* m_inner;
         LONG             m_ref = 1;
     };
@@ -1283,7 +1411,7 @@ namespace trinity::hooks
     // Replace *pp (the real swapchain the game just created) with a wrapper that
     // owns it, so every Present routes through us first. hwnd is the window the
     // swapchain was created for - used to ignore auxiliary windows.
-    static void WrapSwapChain(IDXGISwapChain1** pp, HWND hwnd)
+    static void WrapSwapChain(IDXGISwapChain1** pp, HWND hwnd, ID3D12CommandQueue* queue)
     {
         if (!pp || !*pp) return;
 
@@ -1297,8 +1425,10 @@ namespace trinity::hooks
         // other window: those are auxiliary surfaces (the engine/Streamline create
         // them) and wrapping them buys nothing while risking a fight with SL's own
         // bookkeeping.
-        if (g_wrappedHwnd && hwnd && hwnd != g_wrappedHwnd)
-            return;
+        // (1.0.2: every window's swapchain is wrapped; OverlayMayDraw picks the one that gets the panel. Locking onto the
+        // first window left the panel dead when the game then used another one.)
+        if (!queue)
+            return; // not a Direct3D 12 swapchain
 
         IDXGISwapChain4* inner = nullptr;
         if (FAILED((*pp)->QueryInterface(IID_PPV_ARGS(&inner))) || !inner)
@@ -1307,15 +1437,10 @@ namespace trinity::hooks
         // Transfer the caller's ref to the wrapper: QI added a ref (inner), drop
         // the raw ref, hand back the wrapper (ref=1) which owns inner.
         (*pp)->Release();
-        auto* wrapper = new WrappedIDXGISwapChain(inner);
+        auto* wrapper = new WrappedIDXGISwapChain(inner, queue, hwnd);
         *pp = static_cast<IDXGISwapChain1*>(wrapper);
 
         if (hwnd) g_wrappedHwnd = hwnd;
-
-        // A freshly created swapchain is plain SDR until the game calls SetColorSpace1 on it (which it does
-        // through the wrapper, after this). Forget the previous chain's color space - HDR switched off in
-        // the settings recreates the chain and never calls SetColorSpace1 again.
-        OnColorSpaceChanged(DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709);
 
         // Log the layer on EVERY wrap - the pre-FG chain and the FG-active re-wrap
         // can be different objects. inner->Present in sl.*/nvngx/amd*/xess = a FG
@@ -1365,10 +1490,9 @@ namespace trinity::hooks
                 ID3D12CommandQueue* pq = nullptr;
                 if (device && SUCCEEDED(device->QueryInterface(IID_PPV_ARGS(&pq))) && pq)
                 {
-                    PublishPresentQueue(pq, true);
+                    WrapSwapChain(ppSwapChain, hwnd, pq);
                     pq->Release();
                 }
-                WrapSwapChain(ppSwapChain, hwnd);
             }
         }
         return hr;
@@ -1535,8 +1659,12 @@ namespace trinity::hooks
         hooks::RearmXInputHooks();
     }
 
+    static bool g_installRetryable = false;
+    bool DX12HooksRetryable() { return g_installRetryable; }
+
     bool InstallDX12Hooks()
     {
+        g_installRetryable = false;
         void* presentAddr    = nullptr;
         void* resizeAddr     = nullptr;
         void* execAddr       = nullptr;
@@ -1544,6 +1672,7 @@ namespace trinity::hooks
 
         if (!GetVTableAddresses(presentAddr, resizeAddr, execAddr, colorSpaceAddr))
         {
+            g_installRetryable = true;
             LOG_ERR("Failed to resolve DX12 vtable addresses.");
             return false;
         }
@@ -1584,6 +1713,23 @@ namespace trinity::hooks
         exeName = exeName ? exeName + 1 : exePath;
         LOG("DX12 hooks installed (%s, pid %lu).", exeName, GetCurrentProcessId());
         return true;
+    }
+
+    // everything a failed InitImGui may have left behind (no ImGui yet: its context is made last)
+    static void ReleaseOverlayObjects()
+    {
+        CleanupRenderTargets();
+        for (auto& f : g_frames)
+            if (f.commandAllocator) { f.commandAllocator->Release(); f.commandAllocator = nullptr; }
+        g_frames.clear();
+        g_swapChain = nullptr; g_bufferCount = 0; g_scWidth = 0; g_scHeight = 0; g_scFormat = DXGI_FORMAT_UNKNOWN;
+        ReleaseOffscreenTarget();
+        if (g_fenceEvent)  { CloseHandle(g_fenceEvent); g_fenceEvent = nullptr; }
+        if (g_fence)       { g_fence->Release();       g_fence = nullptr; }
+        if (g_commandList) { g_commandList->Release(); g_commandList = nullptr; }
+        if (g_srvHeap)     { g_srvHeap->Release();     g_srvHeap = nullptr; }
+        if (g_rtvHeap)     { g_rtvHeap->Release();     g_rtvHeap = nullptr; }
+        if (g_device)      { g_device->Release();      g_device = nullptr; }
     }
 
     void RemoveDX12Hooks()
