@@ -5,7 +5,8 @@
 //   1. every DirectSound call is passed on unchanged to the real Windows dsound.dll (System32), so game sound works -
 //      or to dsound_chain.dll when the user kept another mod's dsound.dll under that name;
 //   2. before the game's own code starts, it loads the user's other mods the way the common ASI loaders do:
-//      *.asi in Win64, Win64\scripts and Win64\plugins, and *.dll in Win64\mods (alphabetical order);
+//      *.asi in Win64, Win64\scripts and Win64\plugins, and *.dll in Win64\mods (alphabetical order), plus the
+//      Borderlands 4 SDK (Win64\Plugins\*.dll) when its own dsound.dll was replaced;
 //   3. a small thread loads BL4Trainer\native.dll once Windows has finished loading the game's DLLs.
 // Each start writes BL4Trainer\loaded_mods.log (file names only). Uninstall: delete dsound.dll and the BL4Trainer folder.
 #define WIN32_LEAN_AND_MEAN
@@ -94,7 +95,7 @@ int WINAPI p_BL4TrainerProxy() { return 1; }
 }
 
 // ------------------------------------------------------------------ the user's other mods
-static void load_folder(const std::wstring& sub, const wchar_t* pattern) {
+static void load_folder(const std::wstring& sub, const wchar_t* pattern, DWORD flags = 0) {
     const std::wstring dir = sub.empty() ? g_dir : g_dir + L"\\" + sub;
     std::vector<std::wstring> names;
     WIN32_FIND_DATAW fd; HANDLE fh = FindFirstFileW((dir + L"\\" + pattern).c_str(), &fd);
@@ -104,15 +105,26 @@ static void load_folder(const std::wstring& sub, const wchar_t* pattern) {
     std::sort(names.begin(), names.end(), [](const std::wstring& a, const std::wstring& b) { return _wcsicmp(a.c_str(), b.c_str()) < 0; });
     for (const auto& n : names) {
         const std::wstring shown = sub.empty() ? n : sub + L"\\" + n;
-        if (LoadLibraryW((dir + L"\\" + n).c_str())) mlog(L"loaded " + shown);
+        if (LoadLibraryExW((dir + L"\\" + n).c_str(), nullptr, flags)) mlog(L"loaded " + shown);
         else mlog(L"FAILED " + shown + L" (error " + std::to_wstring(GetLastError()) + L")");
     }
+}
+// The Borderlands 4 SDK (oak2 mod manager) normally comes with its own dsound.dll ("pluginloader") that loads every
+// *.dll in Win64\Plugins. When the trainer's dsound.dll replaced it, load them here the same way, so the SDK and its
+// console still start. Skipped when the SDK is already loaded (its pluginloader was kept as dsound_chain.dll).
+static void load_sdk_plugins() {
+    const std::wstring sdk = g_dir + L"\\Plugins\\unrealsdk.dll";
+    if (GetFileAttributesW(sdk.c_str()) == INVALID_FILE_ATTRIBUTES) return;
+    if (GetModuleHandleW(sdk.c_str())) { mlog(L"Borderlands 4 SDK: already loaded by dsound_chain.dll"); return; }
+    mlog(L"Borderlands 4 SDK found in Plugins - loading it (like its own plugin loader)");
+    load_folder(L"Plugins", L"*.dll", LOAD_LIBRARY_SEARCH_DEFAULT_DIRS | LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR);
 }
 static volatile LONG g_mods_done = 0;
 static void load_mods(const wchar_t* when) {
     if (InterlockedExchange(&g_mods_done, 1)) return;
     mlog(std::wstring(L"Borderlands 4 Trainer loader - loading other mods (") + when + L")");
     init_chain();
+    load_sdk_plugins();
     load_folder(L"", L"*.asi");
     load_folder(L"scripts", L"*.asi");
     load_folder(L"plugins", L"*.asi");

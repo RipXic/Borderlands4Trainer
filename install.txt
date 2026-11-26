@@ -30,6 +30,10 @@ Other mods
 - Already have a dsound.dll in Win64 (from another mod)? Don't overwrite it: rename yours to
   dsound_chain.dll first, then copy the trainer's dsound.dll. Both are loaded, and sound calls go
   through dsound_chain.dll. (If the old one was only an ASI loader, you can also just delete it.)
+- Borderlands 4 SDK (oak2 mod manager, mods set up with the 'mods' console command): it comes
+  with its own dsound.dll. If the trainer's replaced it, nothing to do: the trainer starts the
+  SDK from Win64\Plugins by itself, console included. Keeping the SDK's file as
+  dsound_chain.dll works too.
 - Pak mods (Content\Paks) are not affected by the trainer at all.
 - BL4Trainer\loaded_mods.log lists what was loaded at the last game start.
 

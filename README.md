@@ -48,7 +48,8 @@ No game file is changed. To remove it, close the game and delete `dsound.dll` an
 **Other mods:** `dsound.dll` also loads your other mods before the game starts, the way ASI loaders do: `*.asi` in
 `Win64`, `Win64\scripts` and `Win64\plugins`, and `*.dll` in `Win64\mods` (alphabetical order). If `Win64` already
 has a `dsound.dll` from another mod, rename it to `dsound_chain.dll` before copying the trainer's: both are loaded and
-sound calls go through it. Pak mods are not affected. `BL4Trainer\loaded_mods.log` lists what was loaded.
+sound calls go through it. The Borderlands 4 SDK (oak2 mod manager) is started from `Win64\Plugins` too when its own
+`dsound.dll` was replaced, console included. Pak mods are not affected. `BL4Trainer\loaded_mods.log` lists what was loaded.
 
 **Updating from 1.0.x:** the trainer has no exe any more. Delete the old `BL4Trainer` folder; to keep your hotkey and
 switched-on options, copy `settings.json` and `data\` from it into the new `BL4Trainer` folder in `Win64`.
@@ -72,12 +73,12 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.1.1
+python package.py 1.1.2
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`)
 and the drop-in loader (`build\dsound.dll`). `package.py` puts `native.dll` next to the contents of `data\` in
-`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.1.zip` - the
+`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.2.zip` - the
 same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)

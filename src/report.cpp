@@ -207,6 +207,12 @@ std::string report_create(std::string* out_path) {
             out << "  " << scrub(l) << "\n"; ++n;
         }
         if (!n) out << "  (no loaded_mods.log)\n";
+        {   // Borderlands 4 SDK (oak2 mod manager): Win64\Plugins\unrealsdk.dll
+            wchar_t exe[MAX_PATH] = {}; GetModuleFileNameW(nullptr, exe, MAX_PATH); std::error_code sec;
+            const fs::path sdk = fs::path(exe).parent_path() / "Plugins" / "unrealsdk.dll";
+            if (fs::exists(sdk, sec))
+                out << "  Borderlands 4 SDK: installed, " << (GetModuleHandleW(sdk.c_str()) ? "running" : "NOT running") << "\n";
+        }
         out << "\n";
     }
     out << "LAST LINES OF THIS SESSION'S LOG\n";

@@ -471,6 +471,16 @@ static LONG CALLBACK veh(EXCEPTION_POINTERS* ep) {
         if (std::find(seen.begin(), seen.end(), key) != seen.end()) { t_in_veh = false; return EXCEPTION_CONTINUE_SEARCH; }
         if (seen.size() < 512) seen.push_back(key);
     }
+    // C++ throws that never pass through our code are other mods' business (the Borderlands 4 SDK's Python throws and
+    // catches many on purpose): only the first 3 are logged, so they don't push our own lines out of the log and report.
+    if (cxx && !ours_stack) {
+        static std::atomic<int> foreign{0};
+        const int n = foreign.fetch_add(1);
+        if (n >= 3) {
+            if (n == 3) log("[diag] more C++ throws outside the trainer (other mods) - not logged");
+            t_in_veh = false; return EXCEPTION_CONTINUE_SEARCH;
+        }
+    }
     const bool important = !cxx && (ours_at || code != EXCEPTION_ACCESS_VIOLATION || outer_caught);   // never capped (still deduped by address)
     if (!important && g_diag_count.fetch_add(1) >= 60) { t_in_veh = false; return EXCEPTION_CONTINUE_SEARCH; }
     char what[160];
