@@ -1,11 +1,13 @@
 // Borderlands 4 Trainer - Copyright (c) 2026 RipXic. Source-available, see LICENSE.
 // (panel\panel.json's "hotkey" is the UMG F8 panel's and is ignored here; config.json no longer has a toggle key).
+//    "feature_hotkeys": {"F5": {"vk": 119, "ctrl": true, ...}, "F6": {"off": true}}}   (only the keys the player changed)
 // Missing / invalid file or field = default. Written atomically (settings.json.tmp + MoveFileEx replace).
 // The hotkey is also published to the shared input mapping (overlay.cpp) so the copy that owns the overlay - the first
 #include "common.h"
 #include <fstream>
 #include <algorithm>
 #include <cmath>
+#include <map>
 
 namespace wb {
 
@@ -66,8 +68,57 @@ std::string hotkey_name(const Hotkey& h) {
     return s + key_name(h.vk);
 }
 
+// ---- trainer feature hotkeys: default key name -> packed key (0 = off). Read on the game thread, written by the panel.
+static std::mutex g_fk_mtx;
+static std::map<std::string, int> g_fk;
+static std::atomic<unsigned> g_fk_gen{1};
+
+bool hotkey_parse(const std::string& s0, Hotkey& out) {
+    Hotkey h; h.vk = 0; std::string key = s0;
+    for (;;) {
+        const size_t p = key.find('+'); if (p == std::string::npos || p == 0) break;
+        std::string mod = key.substr(0, p); for (auto& c : mod) c = (char)tolower((unsigned char)c);
+        while (!mod.empty() && mod.back() == ' ') mod.pop_back();
+        if (mod == "ctrl") h.ctrl = true; else if (mod == "shift") h.shift = true; else if (mod == "alt") h.alt = true; else break;
+        key = key.substr(p + 1); while (!key.empty() && key[0] == ' ') key.erase(0, 1);
+    }
+    for (auto& c : key) c = (char)toupper((unsigned char)c);
+    if (key.size() >= 2 && key[0] == 'F' && isdigit((unsigned char)key[1])) { const int n = atoi(key.c_str() + 1); if (n >= 1 && n <= 24) h.vk = VK_F1 + n - 1; }
+    else if (key.size() == 1 && isalnum((unsigned char)key[0])) h.vk = key[0];
+    else if (key.rfind("NUM", 0) == 0 && key.size() == 4 && isdigit((unsigned char)key[3])) h.vk = VK_NUMPAD0 + (key[3] - '0');
+    else {
+        static const std::pair<const char*, int> m[] = { {"HOME", VK_HOME}, {"END", VK_END}, {"PAGEUP", VK_PRIOR}, {"PAGEDOWN", VK_NEXT},
+            {"DELETE", VK_DELETE}, {"UP", VK_UP}, {"DOWN", VK_DOWN}, {"LEFT", VK_LEFT}, {"RIGHT", VK_RIGHT}, {"PAUSE", VK_PAUSE} };
+        for (auto& kv : m) if (key == kv.first) h.vk = kv.second;
+    }
+    if (!h.vk) return false;
+    out = h; return true;
+}
+
+std::string hotkey_short(const Hotkey& h) {
+    std::string s;
+    if (h.ctrl) s += "Ctrl+";
+    if (h.shift) s += "Shift+";
+    if (h.alt) s += "Alt+";
+    return s + key_name(h.vk);
+}
+
+int feature_key(const std::string& def) {
+    { std::lock_guard<std::mutex> lk(g_fk_mtx); auto it = g_fk.find(def); if (it != g_fk.end()) return it->second; }
+    Hotkey h; return hotkey_parse(def, h) ? hotkey_pack(h) : 0;
+}
+bool feature_key_changed(const std::string& def) { std::lock_guard<std::mutex> lk(g_fk_mtx); return g_fk.count(def) != 0; }
+void feature_key_set(const std::string& def, int packed) {
+    { std::lock_guard<std::mutex> lk(g_fk_mtx);
+      Hotkey d; const int dp = hotkey_parse(def, d) ? hotkey_pack(d) : 0;
+      if (packed < 0 || packed == dp) g_fk.erase(def); else g_fk[def] = packed; }
+    ++g_fk_gen;
+}
+unsigned feature_keys_gen() { return g_fk_gen.load(); }
+
 void settings_load() {
     Settings s;   // defaults
+    std::map<std::string, int> fk;
     std::ifstream f(settings_path(), std::ios::binary);
     if (f) {
         try {
@@ -83,13 +134,23 @@ void settings_load() {
                 }
                 auto us = j.find("ui_scale");
                 if (us != j.end() && us->is_number()) { const double v = us->get<double>(); if (std::isfinite(v)) s.ui_scale = (float)std::clamp(v, 0.75, 1.5); }
+                auto fj = j.find("feature_hotkeys");
+                if (fj != j.end() && fj->is_object())
+                    for (auto& kv : fj->items()) {
+                        const json& v = kv.value(); if (!v.is_object()) continue;
+                        if (v.value("off", false)) { fk[kv.key()] = 0; continue; }
+                        Hotkey h; h.vk = v.value("vk", 0); h.ctrl = v.value("ctrl", false); h.shift = v.value("shift", false); h.alt = v.value("alt", false);
+                        if (hotkey_vk_allowed(h.vk)) fk[kv.key()] = hotkey_pack(h);
+                    }
             }
         } catch (std::exception& e) {
             log("[settings] settings.json is not valid (%s) - using defaults", e.what());
-            s = Settings();
+            s = Settings(); fk.clear();
         }
     }
     g_settings = s;
+    { std::lock_guard<std::mutex> lk(g_fk_mtx); g_fk = fk; } ++g_fk_gen;
+    if (!fk.empty()) log("[settings] %d trainer hotkey(s) moved or switched off", (int)fk.size());
     overlay_publish_hotkey(hotkey_pack(g_settings.hotkey));
     log("[settings] panel hotkey %s, ui scale %.2f%s", hotkey_name(g_settings.hotkey).c_str(),
         g_settings.ui_scale, f ? "" : " (no settings.json - defaults)");
@@ -100,6 +161,14 @@ bool settings_save(std::string* err) {
         {"hotkey", { {"vk", g_settings.hotkey.vk}, {"ctrl", g_settings.hotkey.ctrl}, {"shift", g_settings.hotkey.shift}, {"alt", g_settings.hotkey.alt} }},
         {"ui_scale", std::round(g_settings.ui_scale * 100.0) / 100.0},
     };
+    {   json fj = json::object(); std::lock_guard<std::mutex> lk(g_fk_mtx);
+        for (auto& kv : g_fk) {
+            if (!kv.second) { fj[kv.first] = { {"off", true} }; continue; }
+            const Hotkey h = hotkey_unpack(kv.second);
+            fj[kv.first] = { {"vk", h.vk}, {"ctrl", h.ctrl}, {"shift", h.shift}, {"alt", h.alt} };
+        }
+        if (!fj.empty()) j["feature_hotkeys"] = fj;
+    }
     overlay_publish_hotkey(hotkey_pack(g_settings.hotkey));
     const std::string path = settings_path(), tmp = path + ".tmp";
     {

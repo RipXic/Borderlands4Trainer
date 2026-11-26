@@ -311,6 +311,19 @@ static bool write_field(uintptr_t o, const std::string& field, double v, std::st
     return ue::set_num(base, leaf, v);
 }
 
+// numeric read of a field (the same kinds write_field writes); false = not readable as a number
+static bool read_field_num(uintptr_t o, const std::string& field, double& out) {
+    uintptr_t base = 0; ue::Prop leaf;
+    if (!ue::resolve(o, ue::class_of(o), field, base, leaf)) return false;
+    if (leaf.type == "StructProperty") {
+        const std::string sn = ue::name_of(leaf.owner_struct);
+        if (sn == "GbxAttributeInteger") { int32_t i = 0; if (!ue::mread(base + leaf.offset + 4, &i, 4)) return false; out = i; return true; }
+        if (sn == "GbxAttributeFloat") { float f = 0; if (!ue::mread(base + leaf.offset + 4, &f, 4)) return false; out = f; return true; }
+        return false;
+    }
+    out = ue::get_num(base, leaf); return true;
+}
+
 // prepare args: merge, fill v, resolve "target:<t>" and "$r:<readout>"
 static bool prep_args(const json& a, const json& args, const json& v, const std::string& name, json& merged, json& err) {
     merged = a.value("args", json::object());
@@ -360,8 +373,17 @@ static json exec_spec(const json& a, const json& args, const json& v, const std:
         if (!val.is_number() && !val.is_boolean()) return fail("NEEDS_VALUE", name + " needs a number (v)");
         const double d = val.is_boolean() ? (val.get<bool>() ? 1 : 0) : val.get<double>();
         json fields = a.contains("fields") ? a["fields"] : json::array({ a["field"] });
-        for (auto& f : fields) { std::string w; if (!write_field(o, f.get<std::string>(), d, &w)) return fail("WRITE", w); }
+        // "raise_only": never lower the field (backpack / bank size: another mod such as Bigger Backpack SDK may
+        // have set a bigger size - the trainer keeps "at least" its own value instead of fighting it every 2 s)
+        const bool raise_only = a.value("raise_only", false) || merged.value("raise_only", false);
+        json kept = json::array();
+        for (auto& f : fields) {
+            const std::string fn = f.get<std::string>(); double cur = 0;
+            if (raise_only && read_field_num(o, fn, cur) && cur >= d) { kept.push_back(fn); continue; }
+            std::string w; if (!write_field(o, fn, d, &w)) return fail("WRITE", w);
+        }
         r = ok({ {"set", fields}, {"value", d}, {"on", ue::full_name(o)} });
+        if (!kept.empty()) r["data"]["kept_bigger"] = kept;
     } else {
         ue::journal_scope(true);
         r = ue::call_json(o, a.value("func", ""), merged, player_pawn());
@@ -3888,19 +3910,57 @@ static void enemy_tick() {
 // polled on the game thread while the game window is in front (edge-triggered, Ctrl/Shift/Alt prefixes allowed).
 static json tq_exec(const std::string& name, const json& a);
 static std::set<std::string> g_presets_on;
+// What a preset found before it switched things on: toggle id -> its earlier value, attribute -> its earlier modifier
+// (null = was off). Turning the preset off puts those back instead of switching them off (2026-11-26: God run OFF
+// switched off infinite ammo / Action Skill always ready that the player had on before).
+static std::map<std::string, json> g_preset_prev;
+static std::string preset_cmd(const json& st) { std::string c = st.value("cmd", std::string()); if (c.rfind("BL.", 0) == 0) c = "TQ." + c.substr(3); return c; }
+static json preset_snapshot(const json& steps) {
+    json prev = { {"toggles", json::object()}, {"attrs", json::object()} };
+    for (auto& st : steps) {
+        const std::string c = preset_cmd(st); const json a = st.value("args", json::object());
+        if (c == "TQ.TOGGLE" && a.contains("id")) { const std::string tid = a["id"].get<std::string>();
+            std::lock_guard<std::mutex> lk(g_mtx); prev["toggles"][tid] = g_active.contains(tid) ? g_active[tid] : json(); }
+        else if (c == "TQ.ATTR" && a.contains("name") && !a.contains("reset")) { const std::string n = a["name"].get<std::string>();
+            auto it = g_mods.find(n); prev["attrs"][n] = it == g_mods.end() ? json() : json{ {"type", it->second.type}, {"value", it->second.value} }; }
+    }
+    return prev;
+}
+// an undo step for something that was already on before the preset: put the earlier state back (empty = run the step)
+static json preset_restore(const json& st, const json& prev) {
+    const std::string c = preset_cmd(st); const json a = st.value("args", json::object());
+    if (c == "TQ.TOGGLE" && a.contains("id")) {
+        const std::string tid = a["id"].get<std::string>(); const json t = prev["toggles"].value(tid, json());
+        if (t.is_null()) return json();
+        { std::lock_guard<std::mutex> lk(g_mtx); if (g_active.contains(tid) && g_active[tid] == t) return ok({ {"kept", tid} }); }
+        return set_toggle(tid, t);
+    }
+    if (c == "TQ.ATTR" && a.contains("name")) {
+        const std::string n = a["name"].get<std::string>(); const json m = prev["attrs"].value(n, json());
+        if (m.is_null()) return json();
+        const int ty = m.value("type", 4);
+        return attr_set({ {"name", n}, {"v", m.value("value", 1.0)}, {"mode", ty == 3 ? "mult" : ty == 2 ? "add" : ty == 0 ? "scale_add" : "set"} });
+    }
+    return json();
+}
 static json run_preset(const std::string& id, int want /* -1 flip, 0 off, 1 on */) {
     const json pr = g_api.value("presets", json::object());
     if (!pr.contains(id)) return fail("NO_PRESET", id);
     const bool on = want < 0 ? !g_presets_on.count(id) : want == 1;
+    // "off" for a preset that is not on does nothing: its undo list would switch off options the player had on
+    if (!on && !g_presets_on.count(id)) return ok({ {"preset", id}, {"on", false}, {"steps", json::array()}, {"note", "was not on"} });
     const json steps = pr[id].value(on ? "steps" : "undo", json::array());
+    if (on && !g_presets_on.count(id)) g_preset_prev[id] = preset_snapshot(steps);
+    const json prev = !on && g_preset_prev.count(id) ? g_preset_prev[id] : json();
     json out = json::array(); int okn = 0;
     for (auto& st : steps) {
-        std::string c = st.value("cmd", std::string()); if (c.rfind("BL.", 0) == 0) c = "TQ." + c.substr(3);
-        json r = tq_exec(c, st.value("args", json::object()));
+        const std::string c = preset_cmd(st);
+        json r = prev.is_object() ? preset_restore(st, prev) : json();
+        if (r.is_null()) r = tq_exec(c, st.value("args", json::object()));
         out.push_back({ {"cmd", c}, {"ok", r.value("ok", false)}, {"msg", r.value("message", std::string())} });
         if (r.value("ok", false)) ++okn;
     }
-    if (on) g_presets_on.insert(id); else g_presets_on.erase(id);
+    if (on) g_presets_on.insert(id); else { g_presets_on.erase(id); g_preset_prev.erase(id); }
     const std::string label = pr[id].value("label", id);
     toast(label + (on ? " ON" : " OFF") + " (" + std::to_string(okn) + "/" + std::to_string(steps.size()) + ")");
     plog("preset " + id + (on ? " on" : " off"));
@@ -3919,17 +3979,17 @@ static int vk_of(const std::string& k0) {
 // ~0.4 ms a frame (2026-11-18 BL.PERF, 15 hotkeys) - twice the whole cheat keeper. Now: each key read once, 50 Hz.
 struct HotkeyDef { std::string id; int vk = 0; bool ctrl = false, shift = false, alt = false; bool was = false; };
 static void hotkeys_tick() {
-    static std::vector<HotkeyDef> defs; static unsigned gen = ~0u; static ULONGLONG last = 0;
-    if (gen != g_api_gen) {
-        gen = g_api_gen; std::vector<HotkeyDef> fresh;
+    static std::vector<HotkeyDef> defs; static unsigned gen = ~0u, kgen = ~0u; static ULONGLONG last = 0;
+    if (gen != g_api_gen || kgen != feature_keys_gen()) {
+        gen = g_api_gen; kgen = feature_keys_gen(); std::vector<HotkeyDef> fresh;
         for (auto& kv : api_tbl("hotkeys").items()) {
-            HotkeyDef d; d.id = kv.key(); std::string key = kv.key();
-            for (;;) { const size_t p = key.find('+'); if (p == std::string::npos) break;
-                std::string mod = key.substr(0, p); for (auto& c : mod) c = (char)tolower((unsigned char)c);
-                if (mod == "ctrl") d.ctrl = true; else if (mod == "shift") d.shift = true; else if (mod == "alt") d.alt = true;
-                key = key.substr(p + 1); }
-            d.vk = vk_of(key); if (!d.vk) continue;
-            for (auto& o : defs) if (o.id == d.id) d.was = o.was;
+            // d.id stays the api.json key (the default); the key actually read is the player's choice (Settings)
+            HotkeyDef d; d.id = kv.key();
+            const int packed = feature_key(kv.key()); if (!packed) continue;   // switched off by the player
+            const Hotkey h = hotkey_unpack(packed);
+            d.vk = h.vk; d.ctrl = h.ctrl; d.shift = h.shift; d.alt = h.alt; if (!d.vk) continue;
+            d.was = (GetAsyncKeyState(d.vk) & 0x8000) != 0;
+            for (auto& o : defs) if (o.id == d.id && o.vk == d.vk) d.was = d.was || o.was;
             fresh.push_back(std::move(d));
         }
         defs = std::move(fresh);
@@ -3942,9 +4002,10 @@ static void hotkeys_tick() {
     int seen_vk[32]; bool seen_dn[32]; int ns = 0;
     auto key_dn = [&](int vk) { for (int i = 0; i < ns; ++i) if (seen_vk[i] == vk) return seen_dn[i];
         const bool d = held(vk); if (ns < 32) { seen_vk[ns] = vk; seen_dn[ns] = d; ++ns; } return d; };
+    const bool picking = panel_capturing();   // Settings is waiting for a new key: that key press is not a hotkey
     for (auto& d : defs) {
         const bool now = key_dn(d.vk) && ctrl == d.ctrl && shift == d.shift && alt == d.alt;
-        if (now && !d.was) {
+        if (now && !d.was && !picking) {
             const json& hk = api_tbl("hotkeys"); auto it = hk.find(d.id);
             if (it != hk.end()) try {
                 const json& h = *it;
@@ -4270,7 +4331,10 @@ static json tq_exec(const std::string& name, const json& a) {
         if (name == "TQ.PRESET") return run_preset(a.value("name", std::string()), a.contains("on") ? (a["on"].get<bool>() ? 1 : 0) : -1);
         if (name == "TQ.PRESETS") { json out = json::object(); const json pr = g_api.value("presets", json::object());
             for (auto& kv : pr.items()) out[kv.key()] = { {"label", kv.value().value("label", kv.key())}, {"on", g_presets_on.count(kv.key()) > 0} };
-            return ok({ {"presets", out}, {"hotkeys", g_api.value("hotkeys", json::object())} }); }
+            json keys = json::object();   // default key -> the key in use now ("off" = switched off in Settings)
+            const json hks = g_api.value("hotkeys", json::object());
+            for (auto& kv : hks.items()) { const int p = feature_key(kv.key()); keys[kv.key()] = p ? hotkey_short(hotkey_unpack(p)) : "off"; }
+            return ok({ {"presets", out}, {"hotkeys", g_api.value("hotkeys", json::object())}, {"keys", keys} }); }
         if (name == "TQ.TRAVEL") return travel_cmd(a);
         if (name == "TQ.ENUM") return enum_values(a.value("name", ""));
         if (name == "TQ.TARGET") {

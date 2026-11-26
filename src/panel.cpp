@@ -80,6 +80,8 @@ struct Tab { std::string name, page; std::vector<Section> sections; };   // page
 
 static std::recursive_mutex g_mtx;
 static std::vector<Tab> g_tabs;
+// a trainer hotkey as shown in the panel: the key the player chose in Settings, or "Off"
+static std::string feature_key_shown(const std::string& def) { const int p = feature_key(def); return p ? hotkey_short(hotkey_unpack(p)) : "Off"; }
 static std::string g_title = "BORDERLANDS 4 TRAINER";
 static std::string g_load_msg;
 static int g_tab = 0;
@@ -726,11 +728,12 @@ static void draw_item_skin(Item& it) {
         const ImVec2 a(bx, p0.y + (rowh - bsz.y) * .5f), b(a.x + bsz.x, a.y + bsz.y);
         draw(dl, "badge", a, b);
         const std::string pre = jstr(g_lay, "badge_prefix");
-        if (pre.empty() || it.hotkey.size() > 4) text(dl, g_font_skin, a, b, rgb_(kYellow), upper(it.hotkey).c_str());
+        const std::string hk = upper(feature_key_shown(it.hotkey));   // the key in use now (Settings > Trainer hotkeys)
+        if (pre.empty() || hk.size() > 4) text(dl, g_font_skin, a, b, rgb_(kYellow), hk.c_str());
         else {
             const float half = a.x + (b.x - a.x) * .52f;
             text(dl, g_font_skin, ImVec2(a.x + 12 * K, a.y), ImVec2(half, b.y), rgb_(kWhite), pre.c_str(), .5f, true, .8f);
-            text(dl, g_font_skin, ImVec2(half, a.y), ImVec2(b.x - 10 * K, b.y), rgb_(kYellow), upper(it.hotkey).c_str(), .5f);
+            text(dl, g_font_skin, ImVec2(half, a.y), ImVec2(b.x - 10 * K, b.y), rgb_(kYellow), hk.c_str(), .5f);
         }
     }
     const float cr = it.hotkey.empty() && it.type != "toggle" ? p1.x - pad : bx - 14 * K;   // right edge for the control
@@ -842,7 +845,8 @@ static void kv_row(const char* k, const std::string& v) {
 // only: GetAsyncKeyState 0x08..0xFE minus mouse buttons / bare modifiers / Windows keys). Esc cancels, 10 s timeout.
 // Ctrl / Shift / Alt held at that moment become part of the hotkey. While waiting, the overlay ignores the panel
 // toggle (overlay_hotkey_capture_ping), so pressing the current hotkey here does not close the panel.
-static bool g_capturing = false;
+static volatile bool g_capturing = false;
+bool panel_capturing() { return g_capturing; }
 static ULONGLONG g_cap_until = 0;
 static bool g_cap_prev[256] = {};
 static std::string g_set_msg;
@@ -859,7 +863,10 @@ static void settings_commit(const std::string& what) {
 static bool game_focused() { DWORD pid = 0; GetWindowThreadProcessId(GetForegroundWindow(), &pid); return pid == GetCurrentProcessId(); }
 static bool key_held(int vk) { return (GetAsyncKeyState(vk) & 0x8000) != 0; }
 
-static void capture_begin() {
+static std::string g_cap_target;       // "" = the panel hotkey, else a trainer hotkey (its api.json default key)
+static std::string g_cap_label;
+static void capture_begin(const std::string& target = std::string(), const std::string& label = std::string()) {
+    g_cap_target = target; g_cap_label = label;
     g_capturing = true; g_cap_until = GetTickCount64() + 10000;
     for (int vk = 0; vk < 256; ++vk) g_cap_prev[vk] = key_held(vk);
     overlay_hotkey_capture_ping();
@@ -884,25 +891,78 @@ static void capture_poll() {
     if (!got) return;
     Hotkey h; h.vk = got; h.ctrl = key_held(VK_CONTROL); h.shift = key_held(VK_SHIFT); h.alt = key_held(VK_MENU);
     g_capturing = false;
+    if (!g_cap_target.empty()) {
+        feature_key_set(g_cap_target, hotkey_pack(h));
+        settings_commit(g_cap_label + " is now " + hotkey_short(h));
+        return;
+    }
     g_settings.hotkey = h;
     settings_commit("Panel hotkey is now " + hotkey_name(h));
+}
+
+// Settings > Trainer hotkeys: every hotkey shown in the panel (api.json "hotkeys"), movable to another key or off.
+// Other mods use F-keys too (Third Person Camera SDK: F5 / F6), and one key press would then do both.
+static void draw_feature_hotkeys(float bh) {
+    struct Row { std::string def, label; };
+    std::vector<Row> rows;
+    {   std::lock_guard<std::recursive_mutex> lk(g_mtx);
+        for (auto& tb : g_tabs) for (auto& sc : tb.sections) for (auto& it : sc.items) {
+            if (it.hotkey.empty()) continue;
+            bool dup = false; for (auto& r : rows) if (r.def == it.hotkey) dup = true; if (dup) continue;
+            std::string lb = it.label; const size_t br = lb.find('['); if (br != std::string::npos) lb.resize(br);
+            while (!lb.empty() && lb.back() == ' ') lb.pop_back();
+            rows.push_back({ it.hotkey, lb.empty() ? it.hotkey : lb });
+        } }
+    section_header("Trainer hotkeys");
+    text_dim("Another mod using the same key? Move the trainer's key or switch it off - one key press would otherwise do both.");
+    const int panel_key = hotkey_pack(g_settings.hotkey);
+    for (size_t i = 0; i < rows.size(); ++i) {
+        const Row& r = rows[i]; const int p = feature_key(r.def);
+        ImGui::PushID((int)i);
+        ImGui::AlignTextToFramePadding(); ImGui::TextUnformatted(r.label.c_str());
+        ImGui::SameLine(S(300)); ImGui::TextUnformatted(p ? hotkey_short(hotkey_unpack(p)).c_str() : "Off");
+        if (feature_key_changed(r.def)) { ImGui::SameLine(); text_dim("(default " + r.def + ")"); }
+        ImGui::SameLine(S(520));
+        const bool busy = g_capturing && g_cap_target == r.def;
+        if (busy) { if (ui::danger("Cancel", S(110), bh)) capture_cancel("Cancelled - hotkey unchanged"); }
+        else if (ui::primary("Change...", S(110), bh) && !g_capturing) capture_begin(r.def, r.label);
+        ImGui::SameLine();
+        if (ui::primary(p ? "Off" : "On", S(70), bh)) { feature_key_set(r.def, p ? 0 : -1); settings_commit(r.label + (p ? " hotkey off" : " hotkey back on (" + r.def + ")")); }
+        ImGui::SameLine();
+        if (ui::primary("Default", S(90), bh)) { feature_key_set(r.def, -1); settings_commit(r.label + " hotkey back to " + r.def); }
+        // clashes: the panel key, or two trainer hotkeys on one key
+        if (p) {
+            std::string clash;
+            if ((p & 0x7FF) == (panel_key & 0x7FF)) clash = "the panel hotkey";
+            for (size_t k = 0; k < rows.size() && clash.empty(); ++k)
+                if (k != i && (feature_key(rows[k].def) & 0x7FF) == (p & 0x7FF)) clash = rows[k].label;
+            if (!clash.empty()) text_dim("Same key as " + clash + " - pick another key.", ui::kAmber);
+        }
+        if (busy) {
+            const int left = (int)((g_cap_until - std::min(g_cap_until, GetTickCount64())) / 1000) + 1;
+            text_dim("Press the new key now (optionally with Ctrl / Shift / Alt). Esc cancels. " + std::to_string(left) + " s", ui::kAmber);
+        }
+        ImGui::PopID();
+    }
 }
 
 static void draw_settings_tab() {
     const float bh = ImGui::GetFrameHeight() + S(4);
     section_header("Panel hotkey");
     kv_row("Keyboard", hotkey_name(g_settings.hotkey));
-    if (g_capturing) {
+    if (g_capturing && g_cap_target.empty()) {
         const int left = (int)((g_cap_until - std::min(g_cap_until, GetTickCount64())) / 1000) + 1;
         text_dim("Press the new key now (optionally with Ctrl / Shift / Alt). Mouse buttons are ignored, Esc cancels. "
                  + std::to_string(left) + " s", ui::kAmber);
         if (ui::danger("Cancel##capx", S(160), bh)) capture_cancel("Cancelled - hotkey unchanged");
     } else {
-        if (ui::primary("Change...##hk", S(160), bh)) capture_begin();
+        if (ui::primary("Change...##hk", S(160), bh) && !g_capturing) capture_begin();
         ImGui::SameLine();
         if (ui::primary("Reset to INSERT##hkr", S(180), bh)) { g_settings.hotkey = Hotkey(); settings_commit("Panel hotkey reset to INSERT"); }
     }
     kv_row("Controller", "LB + D-pad Down opens / closes the panel, Start closes it");
+
+    draw_feature_hotkeys(bh);
 
     section_header("Display");
     ImGui::AlignTextToFramePadding();

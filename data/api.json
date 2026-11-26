@@ -286,13 +286,15 @@
    "target": "player.ps",
    "field": "BackpackContainer.MaxSize",
    "arg": "v",
-   "desc": "backpack capacity (OakPlayerState.BackpackContainer.MaxSize, memory write - no game setter). Normal 16 + SDU upgrades"
+   "desc": "backpack capacity (OakPlayerState.BackpackContainer.MaxSize, memory write - no game setter). Normal 16 + SDU upgrades. raise_only: never lowers a bigger size another mod set",
+   "raise_only": true
   },
   "Inventory.BankSize": {
    "target": "player.ps",
    "field": "BankContainer.MaxSize",
    "arg": "v",
-   "desc": "bank capacity (BankContainer.MaxSize, memory write)"
+   "desc": "bank capacity (BankContainer.MaxSize, memory write). raise_only: never lowers a bigger size another mod set",
+   "raise_only": true
   },
   "Player.Revive": {
    "target": "player.pawn",
@@ -775,7 +777,7 @@
    "every_ms": 500
   },
   "big_backpack": {
-   "desc": "Backpack capacity kept at the chosen size (re-applied every 2 s and after loads)",
+   "desc": "Backpack capacity kept at least at the chosen size (re-applied every 2 s and after loads; a bigger size from another mod is left alone)",
    "value": 60,
    "on": {
     "action": "Inventory.BackpackSize"
@@ -786,7 +788,7 @@
    "every_ms": 2000
   },
   "big_bank": {
-   "desc": "Bank capacity kept at the chosen size",
+   "desc": "Bank capacity kept at least at the chosen size (a bigger size from another mod is left alone)",
    "value": 500,
    "on": {
     "action": "Inventory.BankSize"

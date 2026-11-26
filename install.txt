@@ -34,6 +34,8 @@ Other mods
   with its own dsound.dll. If the trainer's replaced it, nothing to do: the trainer starts the
   SDK from Win64\Plugins by itself, console included. Keeping the SDK's file as
   dsound_chain.dll works too.
+- Another mod uses the same key as the trainer (for example Third Person Camera SDK on F5 / F6)?
+  In the trainer open Settings > Trainer hotkeys and move the trainer's key or switch it off.
 - Pak mods (Content\Paks) are not affected by the trainer at all.
 - BL4Trainer\loaded_mods.log lists what was loaded at the last game start.
 

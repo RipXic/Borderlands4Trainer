@@ -21,7 +21,7 @@ Files the trainer writes, all inside this folder:
   logs\crashes\          the log of every game session that ended unexpectedly (kept)
   logs\reports\          trainer reports (Settings > Support > Create trainer report)
   data\                  options you switched on, edited values, positions
-  settings.json          panel hotkey, scale, look
+  settings.json          panel hotkey, trainer hotkeys, scale, look
   save_backups\          a copy of your save before every save-editor change
 
 Something not working? In the trainer open Settings > Support > "Create trainer report" and

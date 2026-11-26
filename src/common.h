@@ -21,7 +21,7 @@ using json = nlohmann::json;
 
 namespace wb {
 
-constexpr const char* kVersion = "1.1.2";
+constexpr const char* kVersion = "1.1.3";
 constexpr const char* kGameExe = "Borderlands4.exe";
 
 struct Config {
@@ -52,6 +52,15 @@ std::string key_name(int vk);                  // "INSERT", "F5", "NUM 3", ...
 std::string hotkey_name(const Hotkey& h);      // "CTRL + SHIFT + F5"
 int hotkey_pack(const Hotkey& h);              // vk | ctrl 0x100 | shift 0x200 | alt 0x400 | valid 0x8000
 Hotkey hotkey_unpack(int packed);
+// Trainer feature hotkeys (api.json "hotkeys", e.g. "F5", "Ctrl+F9"): the player can move each one to another key or
+// switch it off in Settings (other mods may use the same keys); saved in settings.json "feature_hotkeys".
+bool hotkey_parse(const std::string& s, Hotkey& out);   // "Ctrl+F5" -> Hotkey (F1-F24, A-Z, 0-9, NUM0-9, HOME ...)
+std::string hotkey_short(const Hotkey& h);              // "Ctrl+F5" (short form for the panel badges)
+int  feature_key(const std::string& def);               // packed key now used for this default, 0 = switched off
+bool feature_key_changed(const std::string& def);       // the player moved or switched off this key
+void feature_key_set(const std::string& def, int packed);   // packed 0 = off; -1 = back to the default
+unsigned feature_keys_gen();                            // bumped on every change / load (hotkeys rebuild)
+bool panel_capturing();                                 // panel.cpp: Settings is waiting for a new key
 void overlay_publish_hotkey(int packed);
 void overlay_hotkey_capture_ping();            // overlay.cpp: "waiting for a key" - the panel toggle is ignored meanwhile
 inline bool developer_mode() { return !WB_PUBLIC && g_settings.developer_mode; }

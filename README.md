@@ -25,7 +25,7 @@ it (controller: **LB + D-pad Down**).
 | Missions | Mission tools |
 | Money | Cash, eridium, gain multipliers, loot luck, Vault Card tokens and level (cards active on your character) |
 | Save | Progress tools and a save editor that applies when the game starts (your save is backed up first) |
-| Settings | Panel hotkey, panel size and look, crash logs, trainer report |
+| Settings | Panel hotkey, trainer hotkeys (move or switch off each one), panel size and look, crash logs, trainer report |
 
 Options you switch on are remembered and switched on again when you are back in the game.
 
@@ -49,7 +49,8 @@ No game file is changed. To remove it, close the game and delete `dsound.dll` an
 `Win64`, `Win64\scripts` and `Win64\plugins`, and `*.dll` in `Win64\mods` (alphabetical order). If `Win64` already
 has a `dsound.dll` from another mod, rename it to `dsound_chain.dll` before copying the trainer's: both are loaded and
 sound calls go through it. The Borderlands 4 SDK (oak2 mod manager) is started from `Win64\Plugins` too when its own
-`dsound.dll` was replaced, console included. Pak mods are not affected. `BL4Trainer\loaded_mods.log` lists what was loaded.
+`dsound.dll` was replaced, console included. Another mod on the same key as the trainer (e.g. F5)? Move the trainer's key or switch it off in
+Settings > Trainer hotkeys. Pak mods are not affected. `BL4Trainer\loaded_mods.log` lists what was loaded.
 
 **Updating from 1.0.x:** the trainer has no exe any more. Delete the old `BL4Trainer` folder; to keep your hotkey and
 switched-on options, copy `settings.json` and `data\` from it into the new `BL4Trainer` folder in `Win64`.
@@ -73,12 +74,12 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.1.2
+python package.py 1.1.3
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`)
 and the drop-in loader (`build\dsound.dll`). `package.py` puts `native.dll` next to the contents of `data\` in
-`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.2.zip` - the
+`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.3.zip` - the
 same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
