@@ -642,18 +642,11 @@ static json cmd_inner(const std::string& name, const json& a) {
         // find the window first: without it nothing is started (before, the loader was already waiting when this failed)
         HWND hw = game_window();
         if (!hw) return fail("WINDOW", "game window not found - quit the game yourself and start it again; the queued edits apply at the next start");
-        const std::wstring loader = std::filesystem::path(g_cfg.root).wstring() + L"\\nativeLoader.exe";
-        const std::wstring alt = std::filesystem::path(g_cfg.root).wstring() + L"\\BL4Trainer.exe";
-        const std::wstring exe = GetFileAttributesW(loader.c_str()) != INVALID_FILE_ATTRIBUTES ? loader : alt;
-        // the loader must not be a child of the game (Steam would count it as the game still running and refuse the new
-        // launch): Explorer starts it; the pid to wait for goes through restart.txt
-        { std::ofstream rf(fs::path(g_cfg.root) / "restart.txt", std::ios::trunc); rf << GetCurrentProcessId(); }
-        const std::wstring args = L"\"" + exe + L"\"";
-        if ((INT_PTR)ShellExecuteW(nullptr, L"open", L"explorer.exe", args.c_str(), nullptr, SW_SHOWNORMAL) <= 32) {
-            std::error_code ec; fs::remove(fs::path(g_cfg.root) / "restart.txt", ec);
-            return fail("LOADER", "could not start the loader"); }
+        // 1.1.0: no trainer exe any more - the game closes like clicking X (it saves first); started again from Steam,
+        // dsound.dll loads the trainer, which applies the queued edits before the game reads the save
         PostMessageW(hw, WM_CLOSE, 0, 0);
-        return ok(json::object(), "closing the game - it starts again with the edits");
+        toast("Closing the game - start it again from Steam, the save edits are applied when it starts");
+        return ok(json::object(), "closing the game - start it again from Steam; the queued edits are applied when it starts");
     }
     return fail("UNKNOWN", name);
 }

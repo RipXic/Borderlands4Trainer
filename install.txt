@@ -1,0 +1,34 @@
+Borderlands 4 Trainer {version} - install
+=========================================
+
+Single player only. Personal use. Made for the Steam version of Borderlands 4.
+
+Install
+1. In Steam right-click Borderlands 4 > Manage > Browse local files.
+2. Open the folder OakGame\Binaries\Win64 (the folder with Borderlands4.exe in it).
+3. Copy dsound.dll AND the BL4Trainer folder from this zip into that folder.
+4. Start the game from Steam as usual. The game loads the trainer by itself - there is nothing
+   else to run. When it is ready the game shows "Trainer ready - press INSERT to open it".
+5. In game press INSERT to open or close the trainer (controller: LB + D-pad Down).
+
+Back up your saves first: options that change your character (level, skill points, items,
+save editor) end up in your save because the game saves them itself.
+Saves: Documents\My Games\Borderlands 4\Saved\SaveGames
+
+Updating from 1.0.x
+- The trainer has no .exe any more. Delete your old BL4Trainer folder (wherever you put it).
+- To keep your hotkey and switched-on options, copy settings.json and the data folder from the
+  old folder into the new BL4Trainer folder in Win64.
+
+Uninstall: close the game and delete dsound.dll and the BL4Trainer folder from Win64.
+Play without the trainer for a while: rename dsound.dll to dsound.dll.off (rename it back later).
+
+Another mod that also uses a file named dsound.dll cannot be installed at the same time.
+dsound.dll passes every sound call on to Windows' own dsound.dll, so game sound is not changed.
+
+The game restarts itself after it downloads a patch: that is fine, the trainer is loaded again
+every time the game starts.
+
+Something not working? See BL4Trainer\README.txt.
+
+Official download: https://github.com/RipXic/Borderlands4Trainer/releases

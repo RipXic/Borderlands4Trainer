@@ -31,25 +31,30 @@ Options you switch on are remembered and switched on again when you are back in 
 
 ## Using it
 
-1. Download the release zip and unzip the `BL4Trainer` folder anywhere (keep its files together).
-2. Run `BL4Trainer.exe`. If the game is not running it starts it through Steam and attaches by itself; if it is running
-   it attaches right away.
-3. In game press **Insert** to open or close the trainer.
+1. Download the release zip.
+2. In Steam right-click Borderlands 4 > **Manage > Browse local files** and open `OakGame\Binaries\Win64` (the folder
+   with `Borderlands4.exe`).
+3. Copy `dsound.dll` **and** the `BL4Trainer` folder from the zip into it.
+4. Start the game from Steam as usual. The game loads the trainer by itself - there is nothing else to run. When it is
+   ready the game shows "Trainer ready - press INSERT to open it".
+5. In game press **Insert** to open or close the trainer.
 
 **Back up your saves first** - level, skill point, item and save editor changes end up in your save because the game
 saves them itself. Saves: `Documents\My Games\Borderlands 4\Saved\SaveGames`. Single player only.
 
-Nothing in the game folder is changed. To remove it, close the game and delete the folder.
+No game file is changed. To remove it, close the game and delete `dsound.dll` and the `BL4Trainer` folder from
+`Win64`. To play without it for a while, rename `dsound.dll` to `dsound.dll.off`. Another mod that also uses a
+`dsound.dll` cannot be installed at the same time.
+
+**Updating from 1.0.x:** the trainer has no exe any more. Delete the old `BL4Trainer` folder; to keep your hotkey and
+switched-on options, copy `settings.json` and `data\` from it into the new `BL4Trainer` folder in `Win64`.
 
 ## Problems and crash reports
 
-- **The trainer does not attach** ("Windows refused access to Borderlands4.exe"): if Steam or the game runs as
-  administrator, `BL4Trainer.exe` offers to restart itself as administrator - click Yes. If it still fails, antivirus
-  or security software is probably blocking it: add the trainer folder as an exception. `loader.log` next to
-  `BL4Trainer.exe` records each attach step with the Windows error codes - attach it when you open an issue.
-- **It attached but nothing opens**: the game shows "Trainer ready - press INSERT" when the panel works. The game restarts
-  itself after a game patch: leave the `BL4Trainer.exe` window open until the main menu so it can attach again. Still
-  nothing: open an issue with `loader.log` and `trainer.log`, how you start the game and your game version.
+- **No "Trainer ready" message and no `trainer.log`**: the game did not load the trainer. Check that `dsound.dll` and
+  the `BL4Trainer` folder are both directly in `OakGame\Binaries\Win64` (not in a subfolder and not in the game's top
+  folder) and that antivirus did not remove `dsound.dll`.
+- **"Trainer ready" but nothing opens**: open an issue with `trainer.log`, how you start the game and your game version.
 - The trainer writes `trainer.log` next to itself and keeps the last 20 sessions in `logs\`.
 - If the game closes unexpectedly, that session's log is kept in `logs\crashes\crashes_###.log` (never deleted).
 - **Settings > Support > Create trainer report** makes one text file (also copied to the clipboard) that checks the
@@ -63,23 +68,26 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.0.2
+python package.py 1.1.0
 ```
 
-`build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`
-and `build\BL4Trainer.exe`). `package.py` puts the binaries next to the contents of `data\` in `release\BL4Trainer\`,
-zips it as `release\BL4Trainer_1.0.2.zip` - the same layout as the release download - and prints SHA-256 checksums.
+`build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`)
+and the drop-in loader (`build\dsound.dll`). `package.py` puts `native.dll` next to the contents of `data\` in
+`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.0.zip` - the
+same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
 
-- `BL4Trainer.exe` (`loader/loader.cpp`) starts the game through Steam if needed and loads `native.dll` into
-  `Borderlands4.exe` with `LoadLibraryW`. It copies the DLL into a `loaded\` folder next to itself first, so the original
-  file is never locked.
+- `dsound.dll` (`proxy/dsound_proxy.cpp`) is a drop-in loader, the same well-known way other mod loaders work: the game
+  imports `dsound.dll`, and Windows looks for it in the game's own folder first. It passes every DirectSound call on,
+  unchanged, to Windows' own `dsound.dll` in System32, and starts one thread that loads `BL4Trainer\native.dll` - only
+  inside `Borderlands4.exe`. There is no exe: no other program starts the game, opens its process or writes into it.
 - The DLL (`src/`) draws its panel through DirectX 12 hooks (MinHook) and works with the game's own engine objects and
   functions in memory (`src/ue.cpp`, `src/bl4.cpp`, `src/items.cpp`).
 - No network code: the DLL opens no sockets and talks to nothing outside the game.
-- Nothing in the game folder is changed. Edits to your character end up in your save because the game saves them.
-- Files it writes, all inside its own folder: `loader.log`, `trainer.log`, `logs\`, `settings.json`, `data\` (switched-on options,
+- No game file is changed (it only adds `dsound.dll` and its folder). Edits to your character end up in your save
+  because the game saves them.
+- Files it writes, all inside its own folder: `trainer.log`, `logs\`, `settings.json`, `data\` (switched-on options,
   edited values, positions), `save_backups\` and `serials.txt` (when you export item serials).
 - Never touches premium currency, SHiFT-managed items (golden keys) or paid content: Vault Card tools only work on
   cards that are active on your character.
@@ -95,8 +103,9 @@ of it. See [LICENSE](LICENSE). Official download: https://github.com/RipXic/Bord
 | --- | --- |
 | `src/` | The trainer DLL: overlay and panel (`overlay.cpp`, `dx12_hook.cpp`, `panel.cpp`, `skin.cpp`, `ui_kit.h`), engine access (`ue.cpp`), the game features (`bl4.cpp`, `items.cpp`, `savefile.cpp`, `serial.cpp`), logs and the trainer report (`core.cpp`, `report.cpp`) |
 | `src/trinity/` | Controller input (XInput / DualSense), ported from Trinity (MIT) |
-| `loader/` | `BL4Trainer.exe`: starts the game if needed and attaches the DLL |
+| `proxy/` | `dsound.dll`: the drop-in loader the game loads by itself; passes sound calls on and loads the trainer |
 | `res/` | Version information |
+| `install.txt`, `data_readme.txt` | `INSTALL.txt` and `BL4Trainer\README.txt` in the release zip |
 | `data/` | Files shipped next to the DLL: the panel layout, item / enemy / place catalogs, legendary recipes, the panel skin |
 | `third_party/` | [Dear ImGui](https://github.com/ocornut/imgui) 1.91.9b, [MinHook](https://github.com/TsudaKageyu/minhook), [nlohmann/json](https://github.com/nlohmann/json) - each under its own license |
 

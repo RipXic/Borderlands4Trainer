@@ -83,12 +83,7 @@ void log(const char* fmt, ...) {
 HMODULE self_module() { return g_self; }
 // read by the loader: 1 started, 2 hooks installed, 3 hooks failed, 4 panel draws, 5 folder name not usable, 6 panel setup failed
 void set_attach_state(long v) {
-    static volatile LONG* p = []() -> volatile LONG* {
-        char n[64]; sprintf_s(n, "Local\\nativeState_%lu", GetCurrentProcessId());
-        HANDLE m = CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, 0, sizeof(LONG), n);   // kept open for the session
-        return m ? (volatile LONG*)MapViewOfFile(m, FILE_MAP_WRITE, 0, 0, sizeof(LONG)) : nullptr;
-    }();
-    if (p) InterlockedExchange(p, v);
+    (void)v;   // 1.1.0: the trainer is DLL-only (dsound.dll loads it) - there is no loader window to report to
 }
 void set_attach_state_min(long v) {   // the panel may already draw by the time the install call returns
     static std::mutex m; std::lock_guard<std::mutex> lk(m);
@@ -715,7 +710,7 @@ static DWORD WINAPI init_thread(LPVOID) {
         };
         if (!narrow(w, p) && !(GetShortPathNameW(w, sh, 32768) && narrow(sh, p))) {
             set_attach_state(5);
-            MessageBoxW(nullptr, L"The trainer folder's path is too long or has letters the game cannot read.\n\nMove the folder to a short path with plain letters, for example C:\\BL4Trainer, and start the game again.",
+            MessageBoxW(nullptr, L"The trainer folder's path is too long or has letters the game cannot read, so the trainer cannot start.\n\nThe BL4Trainer folder must be in the game's OakGame\\Binaries\\Win64 folder. If the game is installed in a folder with special letters, move the game to a Steam library with a short, plain path (Steam > game Properties > Installed Files > Move install folder).",
                         L"Borderlands 4 Trainer", MB_OK | MB_ICONWARNING | MB_TOPMOST);
             return 0;
         }
@@ -724,9 +719,12 @@ static DWORD WINAPI init_thread(LPVOID) {
     std::string leaf = g_cfg.root.substr(g_cfg.root.find_last_of("\\/") + 1);
     if (_stricmp(leaf.c_str(), "loaded") == 0) g_cfg.root = g_cfg.root.substr(0, g_cfg.root.find_last_of("\\/"));
     const std::string logname = "trainer";
-    open_session_log(logname);
+    // one trainer per game: dsound.dll loads this copy at start; an old 1.0.x BL4Trainer.exe (or a second copy of the
+    // folder) must not load another one on top of it
+    { char nm[64]; sprintf_s(nm, "Local\\nativeActive_%lu", GetCurrentProcessId()); g_active_marker = CreateMutexA(nullptr, FALSE, nm);
+      if (g_active_marker && GetLastError() == ERROR_ALREADY_EXISTS) { CloseHandle(g_active_marker); g_active_marker = nullptr; return 0; } }
+    open_session_log(logname);       // after the check above: a refused second copy must not rotate this copy's log
     set_attach_state(1);
-    { char nm[64]; sprintf_s(nm, "Local\\nativeActive_%lu", GetCurrentProcessId()); g_active_marker = CreateMutexA(nullptr, FALSE, nm); }
     log("Borderlands 4 Trainer %s starting", kVersion);
     log_session_start();
     install_crash_diagnostics();     // [diag] lines for the crash log (no minidumps in this build)

@@ -1,6 +1,6 @@
 @echo off
 rem Borderlands 4 Trainer - build script (Visual Studio 2022 or newer, x64).
-rem Output: build\native.dll + build\BL4Trainer.exe
+rem Output: build\native.dll + build\dsound.dll
 setlocal
 set ROOT=%~dp0
 set TP=%ROOT%third_party
@@ -28,11 +28,12 @@ echo === trainer
 cl %FLAGS% %INC% /c /Fo"%OBJ%\\" "%ROOT%src\core.cpp" "%ROOT%src\overlay.cpp" "%ROOT%src\panel.cpp" "%ROOT%src\settings.cpp" "%ROOT%src\dx12_hook.cpp" "%ROOT%src\skin.cpp" "%ROOT%src\ue.cpp" "%ROOT%src\bl4.cpp" "%ROOT%src\savefile.cpp" "%ROOT%src\serial.cpp" "%ROOT%src\items.cpp" "%ROOT%src\report.cpp" "%ROOT%src\trinity\hooks\xinput_hook.cpp" "%ROOT%src\trinity\hooks\dualsense.cpp" || exit /b 1
 echo === version resources
 rc /nologo /i "%ROOT%res" /fo "%OBJ%\dll_version.res" "%ROOT%res\dll.rc" || exit /b 1
-rc /nologo /i "%ROOT%res" /fo "%OBJ%\loader_version.res" "%ROOT%res\loader.rc" || exit /b 1
+rc /nologo /i "%ROOT%res" /fo "%OUT%\proxy_version.res.tmp" "%ROOT%res\proxy.rc" || exit /b 1
 echo === link
 link /nologo /DLL /OUT:"%OUT%\native.dll" "%OBJ%\*.obj" "%OBJ%\dll_version.res" user32.lib gdi32.lib psapi.lib d3d12.lib dxgi.lib dwmapi.lib imm32.lib version.lib d3dcompiler.lib xinput9_1_0.lib hid.lib setupapi.lib ole32.lib windowscodecs.lib advapi32.lib || exit /b 1
-echo === loader
-cl /nologo /O2 /MT /EHsc /std:c++17 /DUNICODE /D_UNICODE /DWB_PUBLIC=1 "%ROOT%loader\loader.cpp" /Fo"%OUT%\loader.obj.tmp" /Fe"%OUT%\BL4Trainer.exe" /link "%OBJ%\loader_version.res" user32.lib shell32.lib || exit /b 1
-del "%OUT%\loader.obj.tmp" 2>nul
+echo === dsound.dll (drop-in loader: the game loads it by itself, it loads BL4Trainer\native.dll)
+cl /nologo /O2 /MT /EHsc /std:c++17 /DUNICODE /D_UNICODE /DWB_PUBLIC=1 /c "%ROOT%proxy\dsound_proxy.cpp" /Fo"%OUT%\dsound_proxy.obj.tmp" || exit /b 1
+link /nologo /DLL /DEF:"%ROOT%proxy\dsound.def" /OUT:"%OUT%\dsound.dll" "%OUT%\dsound_proxy.obj.tmp" "%OUT%\proxy_version.res.tmp" kernel32.lib || exit /b 1
+del "%OUT%\dsound_proxy.obj.tmp" "%OUT%\proxy_version.res.tmp" "%OUT%\dsound.exp" "%OUT%\dsound.lib" 2>nul
 echo BUILD OK
 endlocal

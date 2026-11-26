@@ -3,19 +3,18 @@ Borderlands 4 Trainer {version}
 
 Single player only. Personal use.
 
-1. Keep every file in this folder together (anywhere you like).
-2. Run BL4Trainer.exe. If the game is not running it starts it through Steam and attaches
-   by itself; if it is running it attaches right away.
-3. In game press INSERT to open or close the trainer (controller: LB + D-pad Down).
+This folder goes into the game's OakGame\Binaries\Win64 folder, next to dsound.dll (see INSTALL.txt
+in the zip). Start the game from Steam as usual: the game loads the trainer by itself.
+In game press INSERT to open or close the trainer (controller: LB + D-pad Down).
 
 Back up your saves first: options that change your character (level, skill points, items,
 save editor) end up in your save because the game saves them itself.
 Saves: Documents\My Games\Borderlands 4\Saved\SaveGames
 
-Nothing in the game folder is changed. To remove the trainer, close the game and delete this folder.
+No game file is changed. To remove the trainer, close the game and delete dsound.dll and this
+folder from Win64.
 
 Files the trainer writes, all inside this folder:
-  loader.log             what BL4Trainer.exe did on its last run (send it if the trainer does not attach)
   trainer.log            this game session's log
   logs\                  the last 20 sessions' logs
   logs\crashes\          the log of every game session that ended unexpectedly (kept)
@@ -27,11 +26,10 @@ Files the trainer writes, all inside this folder:
 Something not working? In the trainer open Settings > Support > "Create trainer report" and
 send the report (it is also copied to your clipboard). User name and folders are removed from it.
 
-The trainer does not attach ("Windows refused access")? If Steam or the game runs as administrator,
-BL4Trainer.exe asks to restart as administrator - click Yes. If it still fails, antivirus is
-probably blocking it: add this folder as an exception. Send loader.log if you need help.
-
-Attached but nothing opens? The game restarts itself after a game patch: leave the BL4Trainer.exe
-window open until the main menu so it can attach again. Still nothing: send loader.log and trainer.log.
+No "Trainer ready" message and no trainer.log in this folder? Then the game did not load the
+trainer. Check that dsound.dll and this BL4Trainer folder are both directly in
+OakGame\Binaries\Win64 (not in a subfolder, and not in the game's top folder) and that
+antivirus did not remove dsound.dll. Still nothing: send trainer.log (if there is one), how you
+start the game and your game version.
 
 Official download: https://github.com/RipXic/Borderlands4Trainer/releases

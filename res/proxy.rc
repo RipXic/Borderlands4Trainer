@@ -7,7 +7,7 @@ VS_VERSION_INFO VERSIONINFO
  FILEFLAGSMASK  0x3fL
  FILEFLAGS      0x0L
  FILEOS         VOS_NT_WINDOWS32
- FILETYPE       VFT_APP
+ FILETYPE       VFT_DLL
  FILESUBTYPE    VFT2_UNKNOWN
 BEGIN
     BLOCK "StringFileInfo"
@@ -15,11 +15,11 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName",      VER_PUBLISHER
-            VALUE "FileDescription",  "Borderlands 4 Trainer - starts the trainer for Borderlands 4 (single-player)"
+            VALUE "FileDescription",  "Borderlands 4 Trainer drop-in loader - loads the trainer when the game starts and passes sound calls to Windows dsound.dll"
             VALUE "FileVersion",      VER_STRING
-            VALUE "InternalName",     "BL4Trainer"
+            VALUE "InternalName",     "dsound"
             VALUE "LegalCopyright",   VER_COPYRIGHT
-            VALUE "OriginalFilename", "BL4Trainer.exe"
+            VALUE "OriginalFilename", "dsound.dll"
             VALUE "ProductName",      VER_PRODUCT
             VALUE "ProductVersion",   VER_STRING
         END

@@ -5347,7 +5347,7 @@
       {
        "id": "sv_note",
        "type": "label",
-       "text": "The game only reads your save when it starts. Queue changes here, then press Apply & restart (the game closes and opens again, your progress is saved first)."
+       "text": "The game only reads your save when it starts. Queue changes here, then press Apply & close (the game saves and closes; start it again from Steam and the changes are written before it loads your save)."
       },
       {
        "id": "sv_items",
@@ -5404,12 +5404,12 @@
       {
        "id": "sv_apply",
        "type": "button",
-       "label": "Apply & restart the game",
-       "button": "RESTART",
+       "label": "Apply & close the game",
+       "button": "CLOSE",
        "danger": true,
        "tq": "TQ.SAVE_RESTART",
        "args": {},
-       "desc": "Closes the game like the X button; the trainer starts it again and writes the queued changes first (a backup of the save is kept in bin\\save_backups)."
+       "desc": "Closes the game like the X button. Start it again from Steam: the trainer writes the queued changes before the game reads the save (a backup of the save is kept in save_backups)."
       }
      ]
     }
