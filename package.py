@@ -1,6 +1,6 @@
 """Put the built trainer into release\\package\\ and zip it as release\\BL4Trainer_<version>.zip (the same layout as the
 release download: dsound.dll + INSTALL.txt + the BL4Trainer folder), then print SHA-256 checksums.
-Usage: build.bat, then  python package.py 1.1.0"""
+Usage: build.bat, then  python package.py 1.1.1"""
 import hashlib
 import os
 import shutil

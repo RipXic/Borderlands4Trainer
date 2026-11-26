@@ -12,3 +12,4 @@ EXPORTS
     DirectSoundFullDuplexCreate=p_DirectSoundFullDuplexCreate   @10
     DirectSoundCreate8=p_DirectSoundCreate8                     @11
     DirectSoundCaptureCreate8=p_DirectSoundCaptureCreate8       @12
+    BL4TrainerProxy=p_BL4TrainerProxy                           PRIVATE

@@ -16,6 +16,7 @@ folder from Win64.
 
 Files the trainer writes, all inside this folder:
   trainer.log            this game session's log
+  loaded_mods.log        other mods dsound.dll loaded at the last game start (see INSTALL.txt)
   logs\                  the last 20 sessions' logs
   logs\crashes\          the log of every game session that ended unexpectedly (kept)
   logs\reports\          trainer reports (Settings > Support > Create trainer report)

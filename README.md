@@ -43,8 +43,12 @@ Options you switch on are remembered and switched on again when you are back in 
 saves them itself. Saves: `Documents\My Games\Borderlands 4\Saved\SaveGames`. Single player only.
 
 No game file is changed. To remove it, close the game and delete `dsound.dll` and the `BL4Trainer` folder from
-`Win64`. To play without it for a while, rename `dsound.dll` to `dsound.dll.off`. Another mod that also uses a
-`dsound.dll` cannot be installed at the same time.
+`Win64`. To play without it for a while, rename `dsound.dll` to `dsound.dll.off`.
+
+**Other mods:** `dsound.dll` also loads your other mods before the game starts, the way ASI loaders do: `*.asi` in
+`Win64`, `Win64\scripts` and `Win64\plugins`, and `*.dll` in `Win64\mods` (alphabetical order). If `Win64` already
+has a `dsound.dll` from another mod, rename it to `dsound_chain.dll` before copying the trainer's: both are loaded and
+sound calls go through it. Pak mods are not affected. `BL4Trainer\loaded_mods.log` lists what was loaded.
 
 **Updating from 1.0.x:** the trainer has no exe any more. Delete the old `BL4Trainer` folder; to keep your hotkey and
 switched-on options, copy `settings.json` and `data\` from it into the new `BL4Trainer` folder in `Win64`.
@@ -68,26 +72,28 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.1.0
+python package.py 1.1.1
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`)
 and the drop-in loader (`build\dsound.dll`). `package.py` puts `native.dll` next to the contents of `data\` in
-`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.0.zip` - the
+`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.1.zip` - the
 same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
 
 - `dsound.dll` (`proxy/dsound_proxy.cpp`) is a drop-in loader, the same well-known way other mod loaders work: the game
   imports `dsound.dll`, and Windows looks for it in the game's own folder first. It passes every DirectSound call on,
-  unchanged, to Windows' own `dsound.dll` in System32, and starts one thread that loads `BL4Trainer\native.dll` - only
-  inside `Borderlands4.exe`. There is no exe: no other program starts the game, opens its process or writes into it.
+  unchanged, to Windows' own `dsound.dll` in System32 (or to `dsound_chain.dll` if you kept another mod's), and starts
+  one thread that loads `BL4Trainer\native.dll` - only inside `Borderlands4.exe`. Like ASI loaders, it points the
+  game's entry for one call at its own code, loads the mod files you put in the folders above, puts the entry back and
+  lets the game start. There is no exe: no other program starts the game, opens its process or writes into it.
 - The DLL (`src/`) draws its panel through DirectX 12 hooks (MinHook) and works with the game's own engine objects and
   functions in memory (`src/ue.cpp`, `src/bl4.cpp`, `src/items.cpp`).
 - No network code: the DLL opens no sockets and talks to nothing outside the game.
 - No game file is changed (it only adds `dsound.dll` and its folder). Edits to your character end up in your save
   because the game saves them.
-- Files it writes, all inside its own folder: `trainer.log`, `logs\`, `settings.json`, `data\` (switched-on options,
+- Files it writes, all inside its own folder: `trainer.log`, `loaded_mods.log`, `logs\`, `settings.json`, `data\` (switched-on options,
   edited values, positions), `save_backups\` and `serials.txt` (when you export item serials).
 - Never touches premium currency, SHiFT-managed items (golden keys) or paid content: Vault Card tools only work on
   cards that are active on your character.

@@ -38,7 +38,10 @@ json ok(json data, const std::string& msg) {
     return { {"ok", true}, {"code", "OK"}, {"message", msg}, {"data", data}, {"warnings", json::array()} };
 }
 json fail(const std::string& code, const std::string& msg) {
-    return { {"ok", false}, {"code", code}, {"message", msg}, {"data", nullptr}, {"warnings", json::array()} };
+    // NOT_SOLO is shown to players: say what it means and what to send if it is wrong (the report shows why)
+    const std::string m = code != "NOT_SOLO" ? msg
+        : "Not in someone else's game: you joined another player's game, so their game decides. Not true? Please send the trainer report (Settings > Support).";
+    return { {"ok", false}, {"code", code}, {"message", m}, {"data", nullptr}, {"warnings", json::array()} };
 }
 
 std::string to_hex(const uint8_t* p, size_t n) {

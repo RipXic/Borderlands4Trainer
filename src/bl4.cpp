@@ -197,17 +197,32 @@ static json session_uncached() {
     const bool standalone = r.value("ok", false) && r["data"]["ReturnValue"].value("value", 0.0) != 0;
     json rs = ue::call_json(ksl, "IsServer", json::object(), pawn);
     const bool server = rs.value("ok", false) && rs["data"]["ReturnValue"].value("value", 0.0) != 0;
+    // a client = this PC joined someone else's game: only when the game positively said so (both calls answered)
+    const bool client = r.value("ok", false) && rs.value("ok", false) && !standalone && !server;
     // Borderlands 4 hosts every session as a listen server (co-op ready) even when you play alone: count the players.
     int players = 0;   // GameplayStatics::GetNumPlayerStates (the old find_all(PlayerState) walked every object: ~30 ms)
     { static uintptr_t gsl = 0; if (!gsl || !ue::alive(gsl)) gsl = ue::cdo_of(ue::find_class("GameplayStatics"));
       json np = ue::call_json(gsl, "GetNumPlayerStates", { {"WorldContextObject", "addr:" + hexstr(pawn)} }, 0);
       if (np.value("ok", false)) players = (int)np["data"]["ReturnValue"].value("value", 0.0);
       else for (uintptr_t ps : ue::find_all(ue::find_class("PlayerState"), false, 16)) if (ue::outer_of(ps) == ue::outer_of(pawn)) ++players; }
-    s["net"] = standalone ? "standalone" : (server ? "listen_server" : "client");
+    // Other people in the game = player controllers on this host that are not local (one per connected player).
+    // The player-state count alone was wrong for some solo players (a host with nobody else counted more than 1).
+    int pcs = -1, local_pcs = -1;
+    { static uintptr_t gsl = 0; if (!gsl || !ue::alive(gsl)) gsl = ue::cdo_of(ue::find_class("GameplayStatics"));
+      const json wc = { {"WorldContextObject", "addr:" + hexstr(pawn)} };
+      json a = ue::call_json(gsl, "GetNumPlayerControllers", wc, 0);
+      if (a.value("ok", false)) pcs = (int)a["data"]["ReturnValue"].value("value", 0.0);
+      json b = ue::call_json(gsl, "GetNumLocalPlayerControllers", wc, 0);
+      if (b.value("ok", false)) local_pcs = (int)b["data"]["ReturnValue"].value("value", 0.0); }
+    const int remote = (pcs >= 0 && local_pcs >= 1) ? std::max(0, pcs - local_pcs) : -1;   // -1 = unknown
+    s["net"] = standalone ? "standalone" : server ? "listen_server" : client ? "client" : "unknown";
     s["players"] = players;
-    // "standalone" = safe to change things: a real standalone game, or a host session with nobody else in it.
-    // A client (joined someone else's game) or a host with other players is never solo.
-    s["standalone"] = standalone || (server && players == 1);
+    s["remote_players"] = remote;
+    s["solo"] = standalone || (server && (remote >= 0 ? remote == 0 : players == 1));   // shown in the report only
+    // "standalone" = the trainer may change things. 1.1.1: no longer "nobody else here" (that check refused some players
+    // who play alone). It is your own game - alone or hosting co-op friends. Only refused when you joined someone
+    // else's game (their game decides there, and changes would hit their world), and only when the game said so.
+    s["standalone"] = !client;
     // map = the world the pawn lives in (pawn -> PersistentLevel -> World)
     s["map"] = ue::name_of(ue::outer_of(ue::outer_of(pawn)));
     return s;
@@ -1337,7 +1352,8 @@ static json diff_cmd(const json& a) {
     }
     if (a.contains("on") && a["on"].is_boolean()) { g_diff["on"] = a["on"].get<bool>(); changed = true; }
     if (changed) {
-        json s = session(); if (!s.value("standalone", false)) { g_diff = diff_before; return fail("NOT_SOLO", "solo only"); }
+        // saved even without a character (menu, loading): it is applied once you are in your own game
+        json s = session(); if (s.value("in_game", false) && !s.value("standalone", false)) { g_diff = diff_before; return fail("NOT_SOLO", "solo only"); }
         ++g_diff_gen; g_boss_next = 0; diff_player();
         std::ofstream(diff_file()) << g_diff.dump(1);
         { std::lock_guard<std::mutex> lk(g_mtx); g_diff_snap = g_diff; ++g_ver; }

@@ -23,7 +23,16 @@ Updating from 1.0.x
 Uninstall: close the game and delete dsound.dll and the BL4Trainer folder from Win64.
 Play without the trainer for a while: rename dsound.dll to dsound.dll.off (rename it back later).
 
-Another mod that also uses a file named dsound.dll cannot be installed at the same time.
+Other mods
+- The trainer's dsound.dll also loads your other mods, the way ASI loaders do, before the game
+  starts: *.asi files in Win64, Win64\scripts and Win64\plugins, and *.dll files in Win64\mods
+  (in alphabetical order). So .asi mods keep working if an ASI loader's dsound.dll was replaced.
+- Already have a dsound.dll in Win64 (from another mod)? Don't overwrite it: rename yours to
+  dsound_chain.dll first, then copy the trainer's dsound.dll. Both are loaded, and sound calls go
+  through dsound_chain.dll. (If the old one was only an ASI loader, you can also just delete it.)
+- Pak mods (Content\Paks) are not affected by the trainer at all.
+- BL4Trainer\loaded_mods.log lists what was loaded at the last game start.
+
 dsound.dll passes every sound call on to Windows' own dsound.dll, so game sound is not changed.
 
 The game restarts itself after it downloads a patch: that is fine, the trainer is loaded again

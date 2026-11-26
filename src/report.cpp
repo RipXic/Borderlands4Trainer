@@ -143,12 +143,12 @@ std::string report_create(std::string* out_path) {
     else { const bool hooks = ov.value("hooks", false); const uint64_t frames = ov.value("frames_drawn", (uint64_t)0);
       check("Overlay (panel drawing)", hooks && frames > 0, hooks ? std::to_string(frames) + " frames drawn" : "graphics hooks failed");
       check("Input", ov.value("input_attached", false), ov.value("input_attached", false) ? "keyboard and mouse reach the panel" : "the panel is not attached to the game window"); }
-    if (in_game) check("Character loaded", true, "level " + std::to_string((int)player.value("level", 0.0)) + (solo ? ", solo" : ", not solo"));
+    if (in_game) check("Character loaded", true, "level " + std::to_string((int)player.value("level", 0.0)) + (solo ? ", your own game" : ", joined someone else's game"));
     else {
         notes.push_back("No character was loaded when the report was made - load your character first for a complete report.");
         body << "  [ -- ] Character - none loaded (load one and make the report again for the full check)\n";
     }
-    if (in_game && !solo) notes.push_back("Not a solo session: the trainer's options work in single player only.");
+    if (in_game && !solo) notes.push_back("You joined someone else's game: the trainer only changes things in your own game.");
 
     // this session's log
     std::vector<std::string> warn;
@@ -182,7 +182,9 @@ std::string report_create(std::string* out_path) {
         << "Game:      Borderlands 4 " << game_version << " (exe " << exe_ver << ")\n"
         << "Made for:  " << made_for << "\n"
         << "System:    " << windows_version() << "\n"
-        << "Session:   " << (in_game ? std::string(solo ? "solo" : "not solo") + ", character loaded" : "no character loaded") << "\n"
+        << "Session:   " << (in_game ? std::string(solo ? "own game" : "joined someone else's game") + ", character loaded" : "no character loaded")
+        << (in_game ? " (" + st.value("net", std::string("?")) + ", player states " + std::to_string(st.value("players", -1))
+                      + ", other players " + std::to_string(st.value("remote_players", -1)) + (st.value("solo", false) ? ", alone" : ", not alone") + ")" : std::string()) << "\n"
         << "Made:      " << now_text() << "\n\n"
         << body.str() << "\n";
     if (!notes.empty()) { out << "NOTES\n"; for (auto& n : notes) out << "  - " << n.get<std::string>() << "\n"; out << "\n"; }
@@ -194,6 +196,17 @@ std::string report_create(std::string* out_path) {
     if (!crash.empty()) {
         out << "LAST CRASH (" << crash_log_count() << " saved in logs\\crashes)\n";
         for (auto& c : crash) out << "  " << scrub(c) << "\n";
+        out << "\n";
+    }
+    {   // what dsound.dll loaded besides the trainer (other mods, dsound_chain.dll) - file names only
+        std::ifstream f(g_cfg.root + "\\loaded_mods.log", std::ios::binary); std::string l; int n = 0;
+        out << "OTHER MODS LOADED BY DSOUND.DLL (loaded_mods.log)\n";
+        while (f && std::getline(f, l) && n < 60) {
+            if (l.size() >= 3 && (unsigned char)l[0] == 0xEF) l = l.substr(3);   // UTF-8 BOM
+            if (!l.empty() && l.back() == '\r') l.pop_back();
+            out << "  " << scrub(l) << "\n"; ++n;
+        }
+        if (!n) out << "  (no loaded_mods.log)\n";
         out << "\n";
     }
     out << "LAST LINES OF THIS SESSION'S LOG\n";
