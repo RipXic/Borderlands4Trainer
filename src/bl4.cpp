@@ -864,8 +864,25 @@ static bool attr_apply(AttrMod& m, std::string* why) {
     m.pawn = pawn; return true;
 }
 static json attr_set(const json& a) {
-    json s = session(); if (!s.value("standalone", false)) return fail("NOT_SOLO", "solo only");
+    json s = session();
+    const bool ing = s.value("in_game", false) && player_pawn() != 0;
+    if (ing && !s.value("standalone", false)) return fail("NOT_SOLO", "solo only");
     const std::string n = a.value("name", std::string()); if (n.empty()) return fail("BAD_ARG", "name");
+    // 2026-11-27: at the main menu (no character yet) a stat change used to fail ("solo only") and the 1.1.4 sliders then
+    // jumped back to their default. Now it is kept and applied when the character is in the game (attrs_tick: pawn 0).
+    if (!ing) {
+        const bool rst = a.contains("reset") || (a.contains("v") && a["v"].is_null())
+                      || (a.value("mode", std::string()) == "speed" && a.contains("v") && a["v"].is_number() && std::fabs(a["v"].get<double>() - 1.0) < 1e-6);
+        auto old = g_mods.find(n); if (old != g_mods.end()) { attr_remove(old->second); g_mods.erase(old); }
+        if (rst) { save_attrs(); return ok({ {"name", n}, {"reset", true}, {"note", "back to normal"} }); }
+        if (!a.contains("v") || !a["v"].is_number()) return fail("NEEDS_VALUE", "v = number");
+        AttrMod m; m.name = n; m.value = a["v"].get<double>(); std::string t = a.value("mode", std::string("set"));
+        if (t == "speed") { if (!(m.value > 0.01)) return fail("BAD_ARG", "v > 0"); m.value = 1.0 / m.value; t = "mult"; }
+        m.type = t == "mult" ? 3 : t == "add" ? 2 : t == "scale_add" ? 0 : 4;
+        m.pawn = 0; g_mods[n] = m; save_attrs();
+        plog("attr " + n + " " + t + " " + std::to_string(m.value) + " queued (no character yet)");
+        return ok({ {"name", n}, {"queued", true}, {"note", "applies when your character is in the game"} });
+    }
     json before = attr_get(n); if (before.is_object()) return fail("NO_ATTR", before.value("error", std::string()));
     if (a.contains("reset") || (a.contains("v") && a["v"].is_null())) {
         auto it = g_mods.find(n); if (it != g_mods.end()) { attr_remove(it->second); g_mods.erase(it); save_attrs(); }
