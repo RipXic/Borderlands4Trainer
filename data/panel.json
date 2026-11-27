@@ -5248,27 +5248,55 @@
      "name": "Vault Cards",
      "items": [
       {
+       "id": "vc_pick",
+       "type": "choice",
+       "label": "Vault Card",
+       "tq": "TQ.VAULTCARD",
+       "arg": "pick",
+       "vc": true,
+       "options": [
+        {
+         "label": "Vault Card 1",
+         "value": 1
+        },
+        {
+         "label": "Vault Card 2",
+         "value": 2
+        },
+        {
+         "label": "Vault Card 3",
+         "value": 3
+        },
+        {
+         "label": "Vault Card 4",
+         "value": 4
+        },
+        {
+         "label": "Vault Card 5",
+         "value": 5
+        }
+       ],
+       "desc": "Which Vault Card the two items below use. Only a card that is active on this character works - the trainer never unlocks a card (some are paid content)."
+      },
+      {
        "id": "vc2_tok",
        "type": "button",
-       "label": "Vault Card 2: +10 tokens",
+       "label": "Vault Card: +10 tokens",
        "button": "ADD",
        "tq": "TQ.VAULTCARD",
        "args": {
-        "card": 2,
         "tokens": 10
        },
-       "desc": "Adds 10 Vault Card 2 tokens - spend them in the game's Vault Card menu. Works on any Vault Card that is active on this character."
+       "desc": "Adds 10 tokens to the Vault Card picked above - spend them in the game's Vault Card menu. Works on any Vault Card that is active on this character."
       },
       {
        "id": "vc_lvl",
        "type": "input",
-       "label": "Vault Card 2: set level",
-       "desc": "Sets Vault Card 2 to the level you type.",
+       "label": "Vault Card: set level",
+       "desc": "Sets the Vault Card picked above to the level you type.",
        "tq": "TQ.VAULTCARD",
        "arg": "level",
-       "args": {
-        "card": 2
-       }
+       "args": {}
       }
      ]
     }

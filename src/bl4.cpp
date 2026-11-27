@@ -821,10 +821,19 @@ struct AttrMod { std::string name; int type = 3; double value = 1; std::vector<u
 static std::map<std::string, AttrMod> g_mods;
 static std::string attrs_file() { return g_data_dir + "\\attrs.json"; }
 static uintptr_t attr_lib() { static uintptr_t l = 0; if (!l || !ue::alive(l)) l = ue::cdo_of(ue::find_class("GbxAttributeBlueprintLibrary")); return l; }
+// name -> {type, value} of every active stat change, for the panel: its stat sliders show the value that is really on
+// (2026-11-27: after a restart the stats were re-applied, but the sliders started at their default - "it all reset")
+static json g_mods_snap = json::object(); static std::mutex g_mods_snap_mtx;
+static void mods_snap_update() {
+    json j = json::object();
+    for (auto& [k, m] : g_mods) j[k] = { {"type", m.type}, {"value", m.value} };
+    std::lock_guard<std::mutex> lk(g_mods_snap_mtx); g_mods_snap = std::move(j);
+}
 static void save_attrs() {
     json j = json::object();
     for (auto& [k, m] : g_mods) j[k] = { {"type", m.type}, {"value", m.value}, {"handle", to_hex(m.handle.data(), m.handle.size())}, {"pawn", hexstr(m.pawn)} };
     save_toggles(); std::ofstream(attrs_file()) << j.dump(1);
+    mods_snap_update();
 }
 static json attr_get(const std::string& n, uintptr_t on = 0) {
     if (!on) on = player_pawn(); if (!on) return json{ {"error", "no player character"} };
@@ -2316,7 +2325,19 @@ static json builder_info(const json& a) {   // catalog + current choice; {parts:
 // Some Vault Card tracks belong to paid content: the trainer never activates or buys a card. It only sets the level
 // (OakPlayerState::BP_SetExperienceLevel "VaultCard0N_Experience") and adds tokens (GiveCurrency "VaultCard0N_Tokens")
 // for a card whose ExperienceState entry says bIsUnlocked.
+// The card the panel's Vault Card buttons use (Money tab "Vault Card" choice), remembered in <data>\vaultcard.json.
+// 2026-11-27: the buttons were fixed to card 2 and the player could not pick another one.
+static int g_vc_card = 2;
+static std::string vc_file() { return g_data_dir + "\\vaultcard.json"; }
 static json vaultcard_cmd(const json& a) {
+    if (a.contains("pick")) {   // {pick: n} = the card the buttons use (no game access needed: works at the main menu too)
+        const json& p = a["pick"];
+        const int c = p.is_number() ? (int)std::clamp(p.get<double>(), 0.0, 1000.0) : p.is_string() ? atoi(p.get<std::string>().c_str()) : 0;
+        if (c < 1 || c > 99) return fail("BAD_ARG", "pick: 1..99");
+        { std::lock_guard<std::mutex> lk(g_mtx); g_vc_card = c; }
+        std::ofstream(vc_file()) << json({ {"card", c} }).dump();
+        return ok({ {"card", c}, {"note", "the Vault Card buttons now use card " + std::to_string(c)} });
+    }
     json s = session(); if (!s.value("standalone", false)) return fail("NOT_SOLO", "solo only");
     uintptr_t ps = player_ps(); uintptr_t pc = player_pc(); if (!ps || !pc) return fail("NO_PS", "no player");
     // which tracks are unlocked: ExperienceState entries (0x60): level @0, SName ExperienceId @0x28 (FName @+0xC), bIsUnlocked @0x50
@@ -2329,9 +2350,10 @@ static json vaultcard_cmd(const json& a) {
         int32_t lvl = 0; uint8_t un = 0; ue::rd_as(e, lvl); ue::rd_as(e + 0x50, un);
         cards[nm.substr(0, 11)] = { {"level", lvl}, {"unlocked", un != 0} };
     }
-    if (!a.contains("card")) return ok({ {"cards", cards} });
-    if (!a["card"].is_number()) return fail("BAD_ARG", "card: 1..99");
-    const int c = (int)std::clamp(a["card"].get<double>(), -1.0, 1000.0);
+    const bool acts = a.contains("tokens") || a.contains("level");
+    if (!a.contains("card") && !acts) return ok({ {"cards", cards}, {"picked", g_vc_card} });
+    if (a.contains("card") && !a["card"].is_number()) return fail("BAD_ARG", "card: 1..99");
+    const int c = a.contains("card") ? (int)std::clamp(a["card"].get<double>(), -1.0, 1000.0) : g_vc_card;   // no card = the picked one
     if (c < 1 || c > 99) return fail("BAD_ARG", "card: 1..99");   // a bigger number overflowed the id buffer (sprintf_s ends the process)
     char id[16]; snprintf(id, sizeof id, "VaultCard%02d", c);
     if (!cards.contains(id)) return fail("NO_CARD", std::string(id) + " not on this character");
@@ -3203,6 +3225,9 @@ void init(const std::string& data_dir, const std::string& panel_spec) {
         try { for (size_t i = 0; i + 1 < hx.size(); i += 3) m.handle.push_back((uint8_t)std::stoul(hx.substr(i, 2), nullptr, 16)); } catch (...) { m.handle.clear(); }
         try { m.pawn = std::stoull(kv.value().value("pawn", std::string("0")), nullptr, 16); } catch (...) { m.pawn = 0; }
         g_mods[m.name] = m; } }
+    mods_snap_update();
+    { json j = read_json(vc_file()); if (j.is_object() && j.contains("card") && j["card"].is_number_integer()) {
+        const int c = j["card"].get<int>(); if (c >= 1 && c <= 99) g_vc_card = c; } }
     static bool ticking = false;
     if (!ticking) {
         ticking = true;
@@ -4399,7 +4424,19 @@ json state() {
                   vals[it.value("id", "")] = g_active.contains(tid) ? g_active[tid] : json(false); }
               else if (it.contains("cam")) { const std::string ck = it["cam"].get<std::string>(); if (g_cam_snap.contains(ck)) vals[it.value("id", "")] = g_cam_snap[ck]; }
               else if (it.contains("diff")) { const std::string dk = it["diff"].get<std::string>();   // difficulty sliders follow the preset
-                  if (g_diff_snap.contains(dk)) vals[it.value("id", "")] = g_diff_snap[dk]; } } } } }
+                  if (g_diff_snap.contains(dk)) vals[it.value("id", "")] = g_diff_snap[dk]; }
+              else if (it.value("vc", false)) vals[it.value("id", "")] = g_vc_card;   // Vault Card choice (Money tab)
+              else if (it.value("type", "") == "slider" && it.value("tq", "") == "TQ.ATTR" && it.contains("args") && it["args"].is_object()) {
+                  // stat sliders show the stat change that is really on (saved in attrs.json, re-applied after a restart);
+                  // "x times faster") is not shown on this slider.
+                  const json& ar = it["args"]; const std::string an = ar.value("name", std::string()), mode = ar.value("mode", std::string("set"));
+                  const int want = (mode == "mult" || mode == "speed") ? 3 : mode == "add" ? 2 : mode == "scale_add" ? 0 : 4;
+                  json m; { std::lock_guard<std::mutex> lk2(g_mods_snap_mtx); if (g_mods_snap.contains(an)) m = g_mods_snap[an]; }
+                  if (m.is_object() && m.value("type", -1) == want) {
+                      double v = m.value("value", 1.0);
+                      if (mode == "speed") v = v > 1e-6 ? 1.0 / v : 1.0;
+                      vals[it.value("id", "")] = std::round(v * 1000.0) / 1000.0;
+                  } else if (m.is_null() && it.contains("default") && it["default"].is_number()) vals[it.value("id", "")] = it["default"]; } } } } }
     return { {"seq_done", g_seq_done}, {"results", g_results}, {"values", vals}, {"readouts", g_ro_cache},
              {"keeper", { {"ready", ue::ready()}, {"note", "BL4 trainer"} }}, {"player", json::object()}, {"panel_log", g_log} };
 }

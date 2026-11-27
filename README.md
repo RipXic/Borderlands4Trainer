@@ -23,7 +23,7 @@ it (controller: **LB + D-pad Down**).
 | Places | Teleport and travel to every station and landmark, sorted by kind and region |
 | Camera | Matrix look (green screen effect + code rain), bullet time, free camera, third person over the shoulder, field of view, HUD on / off |
 | Missions | Mission tools |
-| Money | Cash, eridium, gain multipliers, loot luck, Vault Card tokens and level (cards active on your character) |
+| Money | Cash, eridium, gain multipliers, loot luck, Vault Card tokens and level for the card you pick (cards active on your character) |
 | Save | Progress tools and a save editor that applies when the game starts (your save is backed up first) |
 | Settings | Panel hotkey, trainer hotkeys (move or switch off each one), panel size and look, crash logs, trainer report |
 
@@ -74,12 +74,12 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.1.3
+python package.py 1.1.4
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`)
 and the drop-in loader (`build\dsound.dll`). `package.py` puts `native.dll` next to the contents of `data\` in
-`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.3.zip` - the
+`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.4.zip` - the
 same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
