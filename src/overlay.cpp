@@ -140,6 +140,10 @@ static void apply_panel_theme(float k) {
     c[ImGuiCol_TextSelectedBg] = hex(accent, 0.45f); c[ImGuiCol_NavHighlight] = hex(accent);
     c[ImGuiCol_PlotHistogram] = hex(accent); c[ImGuiCol_PlotLines] = hex(accent);
     s.ScaleAllSizes(k);
+    // ScaleAllSizes rounds the cursor scale DOWN to a whole number: below 1080p (k 0.9) it became 0 and the panel's
+    // mouse cursor was invisible (2026-11-27, puppo2: 1423x889 window). Never smaller than 1, and not rounded.
+    s.MouseCursorScale = std::max(1.0f, k);
+    log("[overlay] panel scale %.2f, mouse cursor scale %.2f", k, s.MouseCursorScale);
 }
 
 static void load_fonts(float k) {

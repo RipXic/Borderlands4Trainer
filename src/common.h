@@ -21,7 +21,7 @@ using json = nlohmann::json;
 
 namespace wb {
 
-constexpr const char* kVersion = "1.1.5";
+constexpr const char* kVersion = "1.1.6";
 constexpr const char* kGameExe = "Borderlands4.exe";
 
 struct Config {

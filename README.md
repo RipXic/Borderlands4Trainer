@@ -74,12 +74,12 @@ Python 3 for packaging.
 
 ```bat
 build.bat
-python package.py 1.1.5
+python package.py 1.1.6
 ```
 
 `build.bat` finds Visual Studio with `vswhere`, builds MinHook and Dear ImGui once, then the trainer (`build\native.dll`)
 and the drop-in loader (`build\dsound.dll`). `package.py` puts `native.dll` next to the contents of `data\` in
-`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.5.zip` - the
+`release\package\BL4Trainer\`, adds `dsound.dll` and `INSTALL.txt`, zips it as `release\BL4Trainer_1.1.6.zip` - the
 same layout as the release download - and prints SHA-256 checksums.
 
 ## What the trainer does (and does not do)
